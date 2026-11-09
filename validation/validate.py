@@ -113,25 +113,35 @@ def read_front_matter(file_path):
     """
     Read simple key-value YAML front matter.
 
+    Handles:
+    - UTF-8 files with or without a byte-order mark (BOM).
+    - Windows, Unix and Mac line endings.
+    - Whitespace surrounding the front matter markers.
+
     This supports the scalar metadata fields used
     by the current IKL Markdown content files.
     """
     try:
-        content = file_path.read_text(encoding="utf-8")
-    except OSError as error:
+        content = file_path.read_text(encoding="utf-8-sig")
+
+    except (OSError, UnicodeError) as error:
         report_error(f"Cannot read {file_path}: {error}")
         return None
 
     lines = content.splitlines()
 
     if not lines or lines[0].strip() != "---":
+        first_line = repr(lines[0]) if lines else "<empty file>"
+
         report_error(
-            f"{file_path} has no opening front matter marker."
+            f"{file_path} has no opening front matter marker. "
+            f"First line read by validator: {first_line}"
         )
         return None
 
     try:
         closing_index = lines.index("---", 1)
+
     except ValueError:
         report_error(
             f"{file_path} has no closing front matter marker."
@@ -179,6 +189,7 @@ def validate_concept_file(file_path):
         concept = json.loads(
             file_path.read_text(encoding="utf-8")
         )
+
     except (OSError, json.JSONDecodeError) as error:
         report_error(
             f"Cannot read valid JSON from {file_path}: {error}"
@@ -252,6 +263,7 @@ def validate_concept_file(file_path):
             f"{file_path.name}: learning_objectives "
             "must be a non-empty list."
         )
+
     else:
         for number, objective in enumerate(
             objectives, start=1
