@@ -1,0 +1,24 @@
+
+title: Interactive Knowledge Lexicon
+description: Isolated proof of concept for a reusable, data-driven educational lexicon.
+baseurl: "/ikl-reusable-architecture-poc"
+url: "https://jyv5fhwvft-a11y.github.io"
+
+markdown: kramdown
+highlighter: rouge
+
+collections:
+  learning_content:
+    output: false
+
+defaults:
+  - scope:
+      path: ""
+      type: learning_content
+    values:
+      layout: null
+
+exclude:
+  - validation/
+  - tests/
+  - README.md
