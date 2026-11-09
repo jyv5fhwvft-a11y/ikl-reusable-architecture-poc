@@ -1,5 +1,6 @@
+
 ---
-id: IKL-OS-002-CB-01
+content_block_id: IKL-OS-002-CB-01
 concept_id: IKL-OS-002
 section_id: IKL-OS-002-SEC-01
 section_number: 1
