@@ -1,0 +1,42 @@
+
+{
+  "id": "IKL-CN-001",
+  "slug": "ping",
+  "title": "Ping",
+  "subject": "Computer Networking",
+  "topic": "Network Connectivity and Diagnostics",
+  "description": "A network diagnostic utility used to test whether a destination can be reached across an IP network and to measure round-trip time.",
+  "learning_levels": [
+    "first-grader",
+    "beginner",
+    "undergraduate",
+    "expert"
+  ],
+  "learning_objectives": [
+    {
+      "id": "IKL-CN-001-LO-01",
+      "text": "Explain what Ping is and why it is used."
+    },
+    {
+      "id": "IKL-CN-001-LO-02",
+      "text": "Describe how an ICMP Echo Request and Echo Reply work."
+    },
+    {
+      "id": "IKL-CN-001-LO-03",
+      "text": "Interpret basic Ping results and round-trip time."
+    }
+  ],
+  "content_blocks": [
+    "IKL-CN-001-CB-01"
+  ],
+  "related_concepts": [
+    "IP Addresses",
+    "DNS",
+    "ICMP",
+    "Routers",
+    "Packets",
+    "Network Connectivity",
+    "Latency",
+    "Bandwidth"
+  ]
+}
