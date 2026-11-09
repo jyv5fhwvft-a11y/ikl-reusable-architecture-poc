@@ -1,4 +1,3 @@
-
 """
 IKL Reusable Architecture — Validator Tests
 
@@ -58,7 +57,7 @@ def make_content_file(file_path, content_id, concept_id):
     """Create valid Markdown front matter for a test content block."""
 
     content = f"""---
-id: {content_id}
+content_block_id: {content_id}
 concept_id: {concept_id}
 section_id: TEST-SECTION-01
 section_number: 1
@@ -161,7 +160,7 @@ class ValidatorTests(unittest.TestCase):
             self.write_concept(concept)
 
             make_content_file(
-                self.content_dir / slug / "definition.md",
+                self.content_dir / slug / f"{content_id}.md",
                 content_id,
                 record["id"]
             )
@@ -177,6 +176,12 @@ class ValidatorTests(unittest.TestCase):
         self.assertIn(
             fixture["expected_error"],
             result.stdout
+        )
+
+        self.assertNotIn(
+            "references missing content block",
+            result.stdout,
+            "The duplicate-ID test should not have missing content references."
         )
 
     def test_missing_content_reference(self):
@@ -203,10 +208,10 @@ class ValidatorTests(unittest.TestCase):
 
         self.write_concept(concept)
 
-        # Create only the content blocks listed as available.
+        # Create each available content block in its own file.
         for content_id in fixture["available_content_blocks"]:
             make_content_file(
-                self.content_dir / slug / "definition.md",
+                self.content_dir / slug / f"{content_id}.md",
                 content_id,
                 concept_id
             )
@@ -222,6 +227,18 @@ class ValidatorTests(unittest.TestCase):
         self.assertIn(
             fixture["expected_error"],
             result.stdout
+        )
+
+        self.assertNotIn(
+            "references missing content block 'IKL-TEST-002-CB-01'",
+            result.stdout,
+            "The available content block should be recognised."
+        )
+
+        self.assertEqual(
+            result.stdout.count("references missing content block"),
+            1,
+            "Exactly one content reference should be missing."
         )
 
 
