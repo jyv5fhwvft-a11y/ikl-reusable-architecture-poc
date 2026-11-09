@@ -1,0 +1,45 @@
+
+name: IKL Proof of Concept — Validation and Build
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate-and-build:
+
+    name: Validate data, run tests and build site
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+
+      - name: Check out repository
+        uses: actions/checkout@v6
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate IKL concept data
+        run: python validation/validate.py
+
+      - name: Run automated validator tests
+        run: python -m unittest discover -s tests -p "test_*.py" -v
+
+      - name: Build Jekyll website
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
