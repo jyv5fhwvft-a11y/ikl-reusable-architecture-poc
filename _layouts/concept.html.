@@ -1,4 +1,3 @@
-
 ---
 ---
 {% assign concept = site.data.concepts[page.concept_slug] %}
@@ -43,7 +42,7 @@
         <h2>Explore the concept</h2>
 
         {% for content_id in concept.content_blocks %}
-          {% assign content_block = site.learning_content | where: "id", content_id | first %}
+          {% assign content_block = site.learning_content | where: "content_block_id", content_id | first %}
 
           {% if content_block %}
             {% include concept/content-block.html content_block=content_block %}
