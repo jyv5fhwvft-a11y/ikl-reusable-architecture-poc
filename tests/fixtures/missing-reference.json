@@ -1,0 +1,18 @@
+
+{
+  "test_name": "Missing content reference",
+  "description": "A concept references a content block that does not exist.",
+  "concept": {
+    "id": "IKL-TEST-002",
+    "slug": "test-concept",
+    "content_blocks": [
+      "IKL-TEST-002-CB-01",
+      "IKL-TEST-002-CB-99"
+    ]
+  },
+  "available_content_blocks": [
+    "IKL-TEST-002-CB-01"
+  ],
+  "expected_result": "fail",
+  "expected_error": "references missing content block 'IKL-TEST-002-CB-99'"
+}
