@@ -1,8 +1,7 @@
+
 ---
 ---
 {% assign concept = site.data.concepts[page.concept_slug] %}
-{% assign learning_collection = site.collections | where: "label", "learning_content" | first %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -39,55 +38,6 @@
           {% endfor %}
         </ul>
       </section>
-
-      <!-- TEMPORARY COLLECTION DIAGNOSTIC -->
-      <section class="collection-diagnostic">
-        <h2>Temporary Collection Diagnostic</h2>
-
-        <h3>Check 1: Collection registration</h3>
-
-        {% if learning_collection %}
-          <p>Collection registered: YES</p>
-          <p>Collection label: {{ learning_collection.label }}</p>
-          <p>Documents in collection: {{ learning_collection.docs.size }}</p>
-        {% else %}
-          <p>Collection registered: NO</p>
-        {% endif %}
-
-        <h3>Check 2: Direct collection access</h3>
-        <p>Documents in site.learning_content: {{ site.learning_content.size }}</p>
-
-        <h3>Check 3: Loaded document details</h3>
-
-        {% if learning_collection and learning_collection.docs.size > 0 %}
-
-          <ul>
-            {% for document in learning_collection.docs %}
-              <li>
-                <p>Document path: {{ document.relative_path }}</p>
-                <p>Document ID: {{ document.id | default: "MISSING" }}</p>
-                <p>Concept ID: {{ document.concept_id | default: "MISSING" }}</p>
-              </li>
-            {% endfor %}
-          </ul>
-
-        {% else %}
-          <p>No documents were found in the registered collection.</p>
-        {% endif %}
-
-        <h3>Check 4: Ping content block</h3>
-
-        {% assign diagnostic_ping = learning_collection.docs | where: "id", "IKL-CN-001-CB-01" | first %}
-
-        {% if diagnostic_ping %}
-          <p>Ping content block found: YES</p>
-          <p>Matched document: {{ diagnostic_ping.relative_path }}</p>
-        {% else %}
-          <p>Ping content block found: NO</p>
-        {% endif %}
-
-      </section>
-      <!-- END TEMPORARY COLLECTION DIAGNOSTIC -->
 
       <section class="concept-content">
         <h2>Explore the concept</h2>
