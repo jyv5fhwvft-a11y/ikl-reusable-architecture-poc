@@ -15,62 +15,65 @@ order: 1
 
 Ping is a network diagnostic utility that helps us check whether another device or destination can be reached across an IP network.
 
-It sends a message called an ICMP Echo Request and waits for an ICMP Echo Reply.
+It sends a message called an **ICMP Echo Request** and waits for an **ICMP Echo Reply**.
 
-If a reply is received, Ping reports information such as the round-trip time.
+If a reply is received, Ping reports information such as the round-trip time — how long the message takes to travel to the destination and return.
 
 ## First-grader explanation
 
-Imagine calling a friend on the telephone.
+Imagine you are standing in one room and your friend is standing in another room.
 
-You say, "Are you there?"
+You call out:
 
-Your friend answers, "Yes, I'm here!"
+"Can you hear me?"
 
-Ping works in a similar way. Your computer sends a message to another computer and waits for a response.
+Your friend replies:
 
-If the response arrives, you know that the destination was reachable and responded to your test.
+"Yes, I can hear you!"
 
-## Analogy
+Now you know that your friend can hear you.
 
-Think of Ping as knocking on someone's door.
+Ping works in a similar way with computers.
 
-- You knock on the door: Echo Request.
-- The person hears the knock.
-- The person knocks back: Echo Reply.
-- You measure how long the whole exchange takes.
+Your computer sends a small message to another computer and waits for a reply.
 
-The time taken for the message to travel to the destination and the reply to return is called round-trip time.
+- If a reply comes back, the destination responded.
+- If no reply comes back, your computer did not receive a response.
+- The time taken for the message to go and return helps us understand how quickly the destination responded.
+
+**In simple words:** Ping is like calling another computer to see whether it answers.
 
 ## Beginner explanation
 
-Ping is commonly used by network administrators and users to investigate connectivity problems.
+Computers communicate with one another through networks.
 
-It uses the Internet Control Message Protocol (ICMP).
+Sometimes we need to check whether a particular destination, such as another computer, a server, or a network device, is responding.
 
-A successful reply indicates that the destination responded to the Ping request. However, a missing reply does not always mean the destination is offline. A firewall or network policy may block ICMP messages.
+Ping helps us perform this basic connectivity test.
 
-## Technical explanation
+When we run a Ping command:
 
-Ping typically sends ICMP Echo Request messages to a destination IP address.
+1. Our computer prepares an ICMP Echo Request.
+2. The request travels through the IP network towards the destination.
+3. If the destination is configured to respond and the request is permitted, it sends an ICMP Echo Reply.
+4. Our computer receives the reply and calculates the round-trip time.
 
-The destination may respond with ICMP Echo Reply messages.
+For example, a Ping result might show:
 
-The originating device measures the elapsed time between sending the request and receiving the reply.
+- The destination responded.
+- The round-trip time was 25 milliseconds.
+- No packet loss occurred during the test.
 
-This measurement is commonly expressed in milliseconds (ms).
-
-Ping can help investigate:
-
-- Network reachability
-- Round-trip time
-- Packet loss
-- Possible network connectivity problems
+These results provide useful information about network connectivity and responsiveness.
 
 ## Important distinction
 
-Ping does not measure available bandwidth.
+A successful Ping response indicates that the destination responded to the ICMP Echo Request.
 
-It also does not prove that every application or service on the destination is working.
+However, a failed Ping does not automatically mean that the destination device is switched off or unreachable.
 
-It tests a particular form of network communication and reports the response it receives.
+A firewall, network configuration, or security policy may block ICMP messages even when other network services are working.
+
+## Remember
+
+**Ping is a network diagnostic utility that uses ICMP Echo Requests and Echo Replies to test whether a destination responds across an IP network and to measure round-trip time.**
