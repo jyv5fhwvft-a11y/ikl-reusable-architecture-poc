@@ -1,0 +1,861 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>IKL — Reusable Project Architecture</title>
+
+  <style>
+    :root {
+      --navy: #142b4a;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --green: #15803d;
+      --green-light: #f0fdf4;
+      --amber: #b45309;
+      --amber-light: #fffbeb;
+      --grey: #64748b;
+      --grey-light: #f1f5f9;
+      --teal: #0f766e;
+      --text: #243247;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --background: #f5f8fc;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    header {
+      padding: 48px 6%;
+      background: var(--navy);
+      color: white;
+    }
+
+    header h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3rem);
+    }
+
+    header p {
+      max-width: 850px;
+      color: #dbeafe;
+    }
+
+    .container {
+      width: min(94%, 1100px);
+      margin: 32px auto;
+    }
+
+    section {
+      margin-bottom: 28px;
+      padding: 28px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 3px 14px rgba(20, 43, 74, 0.04);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--navy);
+    }
+
+    h3 {
+      color: var(--navy);
+    }
+
+    .subtitle {
+      color: var(--muted);
+    }
+
+    .status-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin: 20px 0;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: bold;
+    }
+
+    .done {
+      color: var(--green);
+      background: var(--green-light);
+    }
+
+    .next {
+      color: var(--blue);
+      background: var(--blue-light);
+    }
+
+    .verify {
+      color: var(--amber);
+      background: var(--amber-light);
+    }
+
+    .planned {
+      color: var(--grey);
+      background: var(--grey-light);
+    }
+
+    .tree {
+      overflow-x: auto;
+      padding: 20px;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-family: Consolas, monospace;
+      font-size: 0.9rem;
+      line-height: 1.9;
+      white-space: pre;
+    }
+
+    .tree .green {
+      color: var(--green);
+      font-weight: bold;
+    }
+
+    .tree .blue {
+      color: var(--blue);
+      font-weight: bold;
+    }
+
+    .tree .amber {
+      color: var(--amber);
+      font-weight: bold;
+    }
+
+    .tree .grey {
+      color: var(--grey);
+      font-weight: bold;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .card h3 {
+      margin-top: 0;
+    }
+
+    .step {
+      margin: 16px 0;
+      padding: 18px;
+      background: var(--blue-light);
+      border-left: 4px solid var(--blue);
+      border-radius: 8px;
+    }
+
+    .warning {
+      padding: 18px;
+      background: var(--amber-light);
+      border-left: 4px solid var(--amber);
+      border-radius: 8px;
+    }
+
+    .success {
+      padding: 18px;
+      background: var(--green-light);
+      border-left: 4px solid var(--green);
+      border-radius: 8px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+    }
+
+    th, td {
+      padding: 12px;
+      border: 1px solid var(--border);
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: var(--blue-light);
+      color: var(--navy);
+    }
+
+    code {
+      padding: 2px 5px;
+      background: var(--grey-light);
+      border-radius: 4px;
+      overflow-wrap: anywhere;
+    }
+
+    footer {
+      margin-top: 50px;
+      padding: 30px 6%;
+      background: var(--navy);
+      color: white;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 5px;
+    }
+
+    @media (max-width: 600px) {
+      section {
+        padding: 20px;
+      }
+
+      table {
+        display: block;
+        overflow-x: auto;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <p>INTERACTIVE KNOWLEDGE LEXICON</p>
+  <h1>Reusable Project Architecture</h1>
+  <p>
+    A structured blueprint for building an educational lexicon
+    using reusable concept records, educational content,
+    shared layouts, components, styling and automated validation.
+  </p>
+  <p><strong>Explore. Understand. Experiment.</strong></p>
+</header>
+
+<main class="container">
+
+  <!-- PROJECT IDENTITY -->
+
+  <section>
+    <h2>1. Project Identity</h2>
+
+    <p><strong>Project:</strong>
+      Interactive Knowledge Lexicon (IKL)
+    </p>
+
+    <p><strong>Repository:</strong>
+      ikl-reusable-architecture-poc
+    </p>
+
+    <p><strong>Purpose:</strong>
+      Prove that multiple educational concepts can be
+      created using one reusable architecture rather
+      than individually constructed pages.
+    </p>
+
+    <p><strong>Initial demonstration concepts:</strong>
+      Ping and Process.
+    </p>
+
+    <p><strong>Architecture approach:</strong>
+      Structured JSON data, Markdown learning content,
+      Jekyll layouts, Liquid components, shared CSS,
+      Python validation and GitHub Actions.
+    </p>
+
+    <div class="success">
+      This is an isolated proof of concept.
+      The existing production IKL repository is not
+      being modified or migrated.
+    </div>
+  </section>
+
+  <!-- STATUS LEGEND -->
+
+  <section>
+    <h2>2. Repository Status Legend</h2>
+
+    <div class="status-legend">
+      <span class="status done">Green — Committed</span>
+      <span class="status next">Blue — Next to create</span>
+      <span class="status verify">Amber — Planned / verify</span>
+      <span class="status planned">Grey — Future extension</span>
+    </div>
+
+    <p class="subtitle">
+      Status represents the documented project plan.
+      Files must be checked and tested before being
+      considered operational.
+    </p>
+  </section>
+
+  <!-- COMPLETE HIERARCHY -->
+
+  <section>
+    <h2>3. Complete Repository Hierarchy</h2>
+
+    <p>
+      This is the master file and folder structure.
+      Green items have been committed. Blue items are
+      the next creation tasks. Amber items are planned
+      for implementation and testing.
+    </p>
+
+    <div class="tree"><span class="green">ikl-reusable-architecture-poc/</span>
+│
+├── <span class="green">README.md</span>
+├── <span class="green">_config.yml</span>
+│
+├── <span class="green">_data/</span>
+│   └── <span class="green">concepts/</span>
+│       ├── <span class="green">.gitkeep</span>
+│       ├── <span class="green">ping.json</span>
+│       └── <span class="green">process.json</span>
+│
+├── <span class="green">_learning_content/</span>
+│   ├── <span class="green">ping/</span>
+│   │   ├── <span class="green">.gitkeep</span>
+│   │   └── <span class="green">definition.md</span>
+│   └── <span class="green">process/</span>
+│       ├── <span class="green">.gitkeep</span>
+│       └── <span class="green">definition.md</span>
+│
+├── <span class="green">_layouts/</span>
+│   ├── <span class="green">.gitkeep</span>
+│   └── <span class="green">concept.html</span>
+│
+├── <span class="green">_includes/</span>
+│   └── <span class="green">concept/</span>
+│       ├── <span class="green">.gitkeep</span>
+│       └── <span class="green">content-block.html</span>
+│
+├── <span class="green">concepts/</span>
+│   ├── <span class="green">.gitkeep</span>
+│   ├── <span class="blue">ping.md</span>
+│   └── <span class="blue">process.md</span>
+│
+├── <span class="green">css/</span>
+│   ├── <span class="green">.gitkeep</span>
+│   └── <span class="green">proof.css</span>
+│
+├── <span class="blue">index.html</span>
+│
+├── <span class="green">validation/</span>
+│   ├── <span class="green">.gitkeep</span>
+│   └── <span class="amber">validate.py</span>
+│
+├── <span class="green">tests/</span>
+│   └── <span class="green">fixtures/</span>
+│       ├── <span class="green">.gitkeep</span>
+│       ├── <span class="amber">duplicate-id.json</span>
+│       └── <span class="amber">missing-reference.json</span>
+│
+├── <span class="green">.github/</span>
+│   └── <span class="green">workflows/</span>
+│       ├── <span class="green">.gitkeep</span>
+│       └── <span class="amber">proof-build.yml</span>
+│
+└── <span class="grey">Future extensions</span>
+    ├── Shared JavaScript components
+    ├── Interactive simulations
+    ├── Flowcharts and sequence diagrams
+    ├── Assessments and knowledge checks
+    ├── Learning progress
+    └── Additional concept modules</div>
+  </section>
+
+  <!-- ARCHITECTURE RESPONSIBILITIES -->
+
+  <section>
+    <h2>4. Architecture and Responsibilities</h2>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>Structured Data</h3>
+        <code>_data/concepts/</code>
+        <p>
+          Holds concept identity, subject, description,
+          learning objectives, learning levels and
+          references to educational content.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Educational Content</h3>
+        <code>_learning_content/</code>
+        <p>
+          Stores Markdown teaching material independently
+          of page design. Content can be expanded into
+          additional learning sections and blocks.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Shared Layout</h3>
+        <code>_layouts/</code>
+        <p>
+          Defines the common structure of every concept
+          page. New concepts reuse this layout.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Reusable Components</h3>
+        <code>_includes/</code>
+        <p>
+          Contains smaller reusable page components,
+          beginning with the educational content renderer.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Concept Entry Pages</h3>
+        <code>concepts/</code>
+        <p>
+          Connect a concept slug to its shared layout.
+          They should not duplicate the full teaching content.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Shared Styling</h3>
+        <code>css/</code>
+        <p>
+          Holds the visual design system used by all
+          concept pages.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Validation</h3>
+        <code>validation/</code>
+        <p>
+          Checks structured data, unique identifiers,
+          required fields and content references.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Automated Build</h3>
+        <code>.github/workflows/</code>
+        <p>
+          Runs automated validation and the Jekyll build
+          through GitHub Actions.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- REUSABLE CONCEPT MODEL -->
+
+  <section>
+    <h2>5. Reusable Concept Model</h2>
+
+    <p>
+      Each concept follows the same general model.
+      The content and data change, while the shared
+      architecture remains consistent.
+    </p>
+
+    <div class="step">
+      <strong>Step 1 — Concept record</strong>
+      <p>
+        Create a JSON record containing the concept's
+        identity, title, subject, description,
+        learning levels and objectives.
+      </p>
+    </div>
+
+    <div class="step">
+      <strong>Step 2 — Educational content</strong>
+      <p>
+        Create Markdown content blocks with unique IDs,
+        section information and teaching material.
+      </p>
+    </div>
+
+    <div class="step">
+      <strong>Step 3 — Concept entry</strong>
+      <p>
+        Create a small Markdown entry page that identifies
+        the concept slug and selects the shared layout.
+      </p>
+    </div>
+
+    <div class="step">
+      <strong>Step 4 — Shared rendering</strong>
+      <p>
+        The shared layout retrieves the concept record
+        and renders its referenced content blocks.
+      </p>
+    </div>
+
+    <div class="step">
+      <strong>Step 5 — Shared design</strong>
+      <p>
+        The stylesheet provides a consistent visual
+        experience across all concepts.
+      </p>
+    </div>
+  </section>
+
+  <!-- RENDERING FLOW -->
+
+  <section>
+    <h2>6. How a Concept Page Is Generated</h2>
+
+    <ol>
+      <li>Visitor opens a concept URL.</li>
+      <li>The concept entry page supplies its concept slug.</li>
+      <li>The shared layout retrieves the matching JSON record.</li>
+      <li>The layout reads the content block identifiers.</li>
+      <li>The shared include renders the matching Markdown content.</li>
+      <li>The stylesheet provides the page appearance.</li>
+      <li>Jekyll produces the final static HTML page.</li>
+    </ol>
+
+    <div class="success">
+      Expected result: Ping and Process use the same
+      rendering system while displaying different
+      educational information.
+    </div>
+  </section>
+
+  <!-- LEARNING STRUCTURE -->
+
+  <section>
+    <h2>7. Educational Design Principles</h2>
+
+    <h3>Four learning levels</h3>
+
+    <ol>
+      <li>First-grader — simple language and familiar examples.</li>
+      <li>Beginner — foundational explanations and analogies.</li>
+      <li>Undergraduate — technical explanations and mechanisms.</li>
+      <li>Expert — deeper architecture, limitations and connections.</li>
+    </ol>
+
+    <h3>Three learning dimensions</h3>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Understand it</h3>
+        <p>Definitions, explanations, analogies and examples.</p>
+      </div>
+      <div class="card">
+        <h3>Learn how it works</h3>
+        <p>Components, mechanisms, architecture and diagrams.</p>
+      </div>
+      <div class="card">
+        <h3>Experience it</h3>
+        <p>Simulations, practical activities and knowledge checks.</p>
+      </div>
+    </div>
+
+    <h3>Fifteen educational sections</h3>
+
+    <ol>
+      <li>Identity and definition</li>
+      <li>First-grader explanation</li>
+      <li>Analogy</li>
+      <li>Beginner explanation</li>
+      <li>Technical explanation</li>
+      <li>Components and architecture</li>
+      <li>Working mechanism</li>
+      <li>Interactive simulation</li>
+      <li>Flowchart and sequence diagram</li>
+      <li>Practical example</li>
+      <li>Common mistakes</li>
+      <li>Limitations and troubleshooting</li>
+      <li>Connections to other concepts</li>
+      <li>Assessment</li>
+      <li>Quick revision</li>
+    </ol>
+
+    <p class="subtitle">
+      The initial proof of concept demonstrates the
+      first educational content block. It does not
+      implement all fifteen sections yet.
+    </p>
+  </section>
+
+  <!-- VALIDATION -->
+
+  <section>
+    <h2>8. Validation and Quality Assurance</h2>
+
+    <p>
+      The project will use a validation script and
+      automated build checks to reduce structural errors.
+    </p>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Check</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Required fields</td>
+          <td>Ensure every concept has essential information.</td>
+        </tr>
+        <tr>
+          <td>Unique IDs</td>
+          <td>Prevent duplicate concept and content identifiers.</td>
+        </tr>
+        <tr>
+          <td>Content references</td>
+          <td>Ensure every referenced block exists.</td>
+        </tr>
+        <tr>
+          <td>Missing references</td>
+          <td>Detect references to unavailable content.</td>
+        </tr>
+        <tr>
+          <td>Jekyll build</td>
+          <td>Confirm the project generates static pages successfully.</td>
+        </tr>
+        <tr>
+          <td>Browser inspection</td>
+          <td>Check page appearance, content and navigation in Safari.</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="warning">
+      The validator and workflow are planned files.
+      Their actual checks and successful execution
+      must be verified before the POC is considered
+      complete.
+    </div>
+  </section>
+
+  <!-- ROADMAP -->
+
+  <section>
+    <h2>9. Initial Proof-of-Concept Roadmap</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Stage</th>
+          <th>Deliverable</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>Repository and configuration</td>
+          <td><span class="status done">Complete</span></td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Ping and Process JSON records</td>
+          <td><span class="status done">Complete</span></td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Educational Markdown content</td>
+          <td><span class="status done">Complete</span></td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td>Shared layout and content component</td>
+          <td><span class="status done">Complete</span></td>
+        </tr>
+        <tr>
+          <td>5</td>
+          <td>Shared stylesheet</td>
+          <td><span class="status done">Complete</span></td>
+        </tr>
+        <tr>
+          <td>6</td>
+          <td>Ping and Process entry pages</td>
+          <td><span class="status next">Next</span></td>
+        </tr>
+        <tr>
+          <td>7</td>
+          <td>Project homepage</td>
+          <td><span class="status planned">Planned</span></td>
+        </tr>
+        <tr>
+          <td>8</td>
+          <td>Validation script and test fixtures</td>
+          <td><span class="status verify">Planned</span></td>
+        </tr>
+        <tr>
+          <td>9</td>
+          <td>GitHub Actions build workflow</td>
+          <td><span class="status verify">Planned</span></td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>Build, test and inspect generated pages</td>
+          <td><span class="status verify">Planned</span></td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>Publishing decision</td>
+          <td><span class="status planned">Approval required</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- FUTURE EXTENSIONS -->
+
+  <section>
+    <h2>10. Future Architecture Extensions</h2>
+
+    <p>
+      These capabilities are part of the longer-term
+      IKL vision. They are not required to prove the
+      initial reusable concept-page architecture.
+    </p>
+
+    <ul>
+      <li>Reusable interactive simulation components.</li>
+      <li>Shared flowchart and sequence-diagram components.</li>
+      <li>Reusable assessment and feedback systems.</li>
+      <li>Question banks and retry functionality.</li>
+      <li>Learning progress and achievement tracking.</li>
+      <li>Search and related-concept discovery.</li>
+      <li>Learning pathways and guided study.</li>
+      <li>Projects, portfolios and career-readiness resources.</li>
+      <li>Shared JavaScript functionality.</li>
+      <li>Potential user accounts and persistent learning records.</li>
+    </ul>
+
+    <p class="subtitle">
+      Each extension requires its own architectural
+      assessment before implementation.
+    </p>
+  </section>
+
+  <!-- GOVERNANCE -->
+
+  <section>
+    <h2>11. Project Governance and Safeguards</h2>
+
+    <ol>
+      <li>
+        The proof of concept remains separate from
+        the production IKL repository.
+      </li>
+      <li>
+        Existing working production functionality
+        must be preserved.
+      </li>
+      <li>
+        No repository restructuring or refactoring
+        without explicit approval.
+      </li>
+      <li>
+        New concepts should reuse approved shared
+        templates and components.
+      </li>
+      <li>
+        Test the architecture with Ping and Process
+        before scaling to additional concepts.
+      </li>
+      <li>
+        Build and validate before considering publication.
+      </li>
+      <li>
+        GitHub Pages must not be enabled for this POC
+        until the project owner approves.
+      </li>
+      <li>
+        Approved architecture does not automatically
+        authorize implementation or migration.
+      </li>
+    </ol>
+  </section>
+
+  <!-- SUCCESS CRITERIA -->
+
+  <section>
+    <h2>12. Proof-of-Concept Success Criteria</h2>
+
+    <p>
+      The POC will demonstrate its purpose when:
+    </p>
+
+    <ul>
+      <li>Ping and Process are generated from their own records.</li>
+      <li>Both pages use the same layout.</li>
+      <li>Both pages use the same content renderer.</li>
+      <li>Both pages use the same stylesheet.</li>
+      <li>Educational Markdown renders correctly.</li>
+      <li>Concept and content references are validated.</li>
+      <li>Automated Jekyll build completes successfully.</li>
+      <li>Generated pages display correctly in Safari.</li>
+      <li>No changes have been made to the production repository.</li>
+    </ul>
+
+    <div class="success">
+      The ultimate test is whether a third concept
+      can be added primarily through new data and
+      content files, without rebuilding the shared
+      page architecture.
+    </div>
+  </section>
+
+  <!-- NEXT STEP -->
+
+  <section>
+    <h2>13. Immediate Next Step</h2>
+
+    <p>
+      After this document is saved, the next implementation
+      task is to create:
+    </p>
+
+    <div class="step">
+      <strong>concepts/ping.md</strong>
+      <p>Connect the Ping record to the shared concept layout.</p>
+    </div>
+
+    <div class="step">
+      <strong>concepts/process.md</strong>
+      <p>Connect the Process record to the same shared layout.</p>
+    </div>
+
+    <p>
+      Each file will be created and checked separately.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <p><strong>Interactive Knowledge Lexicon</strong></p>
+  <p>Explore. Understand. Experiment.</p>
+  <p>Reusable Architecture — Proof of Concept</p>
+</footer>
+
+</body>
+</html>
