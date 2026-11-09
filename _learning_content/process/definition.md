@@ -1,4 +1,3 @@
-
 ---
 id: IKL-OS-002-CB-01
 concept_id: IKL-OS-002
