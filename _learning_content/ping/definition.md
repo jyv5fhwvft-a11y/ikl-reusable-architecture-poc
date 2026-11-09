@@ -1,4 +1,3 @@
-
 ---
 content_block_id: IKL-CN-001-CB-01
 concept_id: IKL-CN-001
