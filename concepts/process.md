@@ -1,4 +1,3 @@
-
 ---
 layout: concept
 concept_slug: process
