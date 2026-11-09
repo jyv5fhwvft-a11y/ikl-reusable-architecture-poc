@@ -1,0 +1,17 @@
+
+{
+  "test_name": "Duplicate concept ID",
+  "description": "Two concept records deliberately share the same ID.",
+  "records": [
+    {
+      "id": "IKL-TEST-001",
+      "slug": "test-concept-one"
+    },
+    {
+      "id": "IKL-TEST-001",
+      "slug": "test-concept-two"
+    }
+  ],
+  "expected_result": "fail",
+  "expected_error": "Duplicate ID 'IKL-TEST-001'"
+}
