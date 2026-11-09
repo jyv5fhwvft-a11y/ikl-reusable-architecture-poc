@@ -1,0 +1,42 @@
+
+{
+  "id": "IKL-OS-002",
+  "slug": "process",
+  "title": "Process",
+  "subject": "Operating Systems",
+  "topic": "Process Management",
+  "description": "A process is a program in execution, together with its current state and the resources the operating system manages for it.",
+  "learning_levels": [
+    "first-grader",
+    "beginner",
+    "undergraduate",
+    "expert"
+  ],
+  "learning_objectives": [
+    {
+      "id": "IKL-OS-002-LO-01",
+      "text": "Explain the difference between a program and a process."
+    },
+    {
+      "id": "IKL-OS-002-LO-02",
+      "text": "Identify the main components and states of a process."
+    },
+    {
+      "id": "IKL-OS-002-LO-03",
+      "text": "Explain how an operating system manages process execution."
+    }
+  ],
+  "content_blocks": [
+    "IKL-OS-002-CB-01"
+  ],
+  "related_concepts": [
+    "Operating System",
+    "Program",
+    "Process Control Block",
+    "CPU Scheduling",
+    "Process States",
+    "Context Switching",
+    "Threads",
+    "Memory Management"
+  ]
+}
