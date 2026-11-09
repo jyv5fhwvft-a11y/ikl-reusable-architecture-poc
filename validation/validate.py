@@ -1,4 +1,3 @@
-
 """
 IKL Reusable Architecture — Proof of Concept
 Data and content validator
@@ -37,7 +36,7 @@ REQUIRED_CONCEPT_FIELDS = [
 ]
 
 REQUIRED_CONTENT_FIELDS = [
-    "id",
+    "content_block_id",
     "concept_id",
     "section_id",
     "section_number",
@@ -347,7 +346,7 @@ def validate_content_file(
         return
 
     register_id(
-        metadata["id"],
+        metadata["content_block_id"],
         str(file_path.relative_to(ROOT))
     )
 
@@ -369,7 +368,7 @@ def validate_content_file(
         )
 
     for field in [
-        "id",
+        "content_block_id",
         "section_id",
         "section_title",
         "block_type",
@@ -379,7 +378,7 @@ def validate_content_file(
             f"{file_path}: {field}"
         )
 
-    content_records[metadata["id"]] = {
+    content_records[metadata["content_block_id"]] = {
         "concept_id": metadata["concept_id"],
         "file": file_path,
     }
