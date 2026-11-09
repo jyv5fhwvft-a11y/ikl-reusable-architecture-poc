@@ -1,0 +1,230 @@
+
+/* =========================================
+   IKL REUSABLE ARCHITECTURE — PROOF OF CONCEPT
+   Shared stylesheet for all concept pages
+   ========================================= */
+
+/* 1. Design foundations */
+
+:root {
+  --navy: #142b4a;
+  --blue: #2563eb;
+  --blue-light: #eff6ff;
+  --teal: #0f766e;
+  --amber: #b45309;
+
+  --text-primary: #243247;
+  --text-secondary: #64748b;
+
+  --background: #f5f8fc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+
+  --radius: 14px;
+  --content-width: 900px;
+}
+
+/* 2. Basic page setup */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--background);
+  color: var(--text-primary);
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+/* 3. Shared header */
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+
+  padding: 20px 6%;
+  background: var(--navy);
+  color: white;
+}
+
+.site-brand {
+  color: white;
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.site-header span {
+  color: #dbeafe;
+  font-size: 0.9rem;
+}
+
+/* 4. Main concept container */
+
+.concept-container {
+  width: min(92%, var(--content-width));
+  margin: 40px auto;
+}
+
+/* 5. Concept introduction */
+
+.concept-introduction {
+  padding: 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 18px rgba(20, 43, 74, 0.05);
+}
+
+.concept-subject {
+  margin-bottom: 6px;
+  color: var(--teal);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.concept-introduction h1 {
+  margin: 0 0 12px;
+  color: var(--navy);
+  font-size: clamp(2rem, 6vw, 2.8rem);
+  line-height: 1.2;
+}
+
+.concept-introduction p:last-child {
+  margin-bottom: 0;
+}
+
+/* 6. Learning objectives */
+
+.learning-objectives {
+  margin-top: 24px;
+  padding: 26px 32px;
+  background: var(--blue-light);
+  border-left: 5px solid var(--blue);
+  border-radius: var(--radius);
+}
+
+.learning-objectives h2 {
+  margin-top: 0;
+  color: var(--navy);
+}
+
+.learning-objectives ul {
+  margin-bottom: 0;
+  padding-left: 22px;
+}
+
+/* 7. Educational content */
+
+.concept-content {
+  margin-top: 32px;
+}
+
+.concept-content > h2 {
+  margin-bottom: 18px;
+  color: var(--navy);
+}
+
+.content-block {
+  margin-bottom: 22px;
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 3px 14px rgba(20, 43, 74, 0.04);
+}
+
+.content-block h1,
+.content-block h2,
+.content-block h3 {
+  color: var(--navy);
+  line-height: 1.35;
+}
+
+.content-block h2 {
+  margin-top: 0;
+}
+
+.content-block a {
+  color: var(--blue);
+}
+
+/* 8. Tables inside educational content */
+
+.content-block table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+}
+
+.content-block th,
+.content-block td {
+  padding: 12px;
+  border: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+
+.content-block th {
+  background: var(--blue-light);
+  color: var(--navy);
+}
+
+/* 9. Error message */
+
+.error-message {
+  padding: 28px;
+  background: #fff7ed;
+  border-left: 5px solid var(--amber);
+  border-radius: var(--radius);
+}
+
+/* 10. Shared footer */
+
+.site-footer {
+  margin-top: 60px;
+  padding: 28px 6%;
+  background: var(--navy);
+  color: white;
+  text-align: center;
+}
+
+.site-footer p {
+  margin: 4px 0;
+}
+
+/* 11. Smaller screens */
+
+@media (max-width: 600px) {
+  .site-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .concept-container {
+    margin-top: 22px;
+  }
+
+  .concept-introduction,
+  .learning-objectives,
+  .content-block {
+    padding: 22px;
+  }
+
+  .content-block table {
+    display: block;
+    overflow-x: auto;
+  }
+}
