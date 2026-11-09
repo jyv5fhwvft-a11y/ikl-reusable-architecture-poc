@@ -1,4 +1,3 @@
-
 name: IKL Proof of Concept — Validation and Build
 
 on:
@@ -43,3 +42,10 @@ jobs:
         with:
           source: ./
           destination: ./_site
+
+      - name: Upload generated website for inspection
+        uses: actions/upload-artifact@v4
+        with:
+          name: ikl-generated-website
+          path: ./_site/
+          retention-days: 7
