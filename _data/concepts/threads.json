@@ -1,0 +1,53 @@
+{
+“id”: “IKL-OS-003”,
+“slug”: “threads”,
+“title”: “Threads”,
+“subject”: “Operating Systems”,
+“topic”: “Process and Thread Management”,
+“description”: “A thread is a path of execution within a process. Threads share many process resources while maintaining their own execution contexts.”,
+“learning_levels”: [
+“first-grader”,
+“beginner”,
+“undergraduate”,
+“expert”
+],
+“learning_objectives”: [
+{
+“id”: “IKL-OS-003-LO-01”,
+“text”: “Explain what a thread is and distinguish a thread from a program and a process.”
+},
+{
+“id”: “IKL-OS-003-LO-02”,
+“text”: “Identify the resources shared by threads and the execution information maintained by each thread.”
+},
+{
+“id”: “IKL-OS-003-LO-03”,
+“text”: “Explain thread states, scheduling, context switching, concurrency and parallelism.”
+},
+{
+“id”: “IKL-OS-003-LO-04”,
+“text”: “Describe the advantages, limitations and synchronisation challenges of multithreading.”
+},
+{
+“id”: “IKL-OS-003-LO-05”,
+“text”: “Relate threads to other operating-system concepts and practical applications.”
+}
+],
+“content_blocks”: [
+“IKL-OS-003-CB-01”
+],
+“related_concepts”: [
+“Operating System”,
+“Program”,
+“Process”,
+“Process Control Block”,
+“Thread Control Block”,
+“CPU Scheduling”,
+“Context Switching”,
+“Memory Management”,
+“Synchronisation”,
+“Race Conditions”,
+“Deadlocks”,
+“Multicore Processing”
+]
+}
