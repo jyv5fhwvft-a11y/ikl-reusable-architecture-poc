@@ -6,15 +6,44 @@
   "title": "Ping",
   "subject": "Computer Networking",
   "topic": "Network Connectivity and Diagnostics",
-  "subtitle": "Testing Network Connectivity",
-  "guiding_question": "How can we check whether another device responds across a network?",
-  "description": "A network diagnostic utility used to test whether a destination can be reached across an IP network and to measure round-trip time.",
+  "subtitle": "Can one computer reach another?",
+  "guiding_question": "How can computers test communication across a network?",
+  "description": "Ping is a network diagnostic utility used to test whether a destination responds to messages sent across an IP network and to measure round-trip time.",
+
+  "page_class": "ping-page",
+
+  "stylesheets": [
+    "/css/ping.css"
+  ],
+
+  "scripts": [
+    "/js/ping-simulation.js",
+    "/js/ping-flowchart.js",
+    "/js/ping-sequence.js",
+    "/js/ping-quiz.js",
+    "/js/ping-quiz-retry.js",
+    "/js/ping-quiz-score.js",
+    "/js/ping-architecture.js",
+    "/js/ping-friend-analogy.js",
+    "/js/ping-analogy-translator.js",
+    "/js/ping-result-explorer.js",
+    "/js/ping-rtt-calculator.js",
+    "/js/ping-component-explorer.js",
+    "/js/ping-packet-journey.js",
+    "/js/ping-case-study.js",
+    "/js/ping-myth-challenge.js",
+    "/js/network-diagnostic-lab.js",
+    "/js/ping-concept-map.js",
+    "/js/ping-quick-revision.js"
+  ],
+
   "learning_levels": [
     "first-grader",
     "beginner",
     "undergraduate",
     "expert"
   ],
+
   "learning_objectives": [
     {
       "id": "IKL-CN-001-LO-01",
@@ -26,12 +55,17 @@
     },
     {
       "id": "IKL-CN-001-LO-03",
-      "text": "Interpret basic Ping results and round-trip time."
+      "text": "Interpret Ping results and understand round-trip time."
     }
   ],
+
   "content_blocks": [
-    "IKL-CN-001-CB-01"
+    "IKL-CN-001-CB-01",
+    "IKL-CN-001-CB-02",
+    "IKL-CN-001-CB-03",
+    "IKL-CN-001-CB-04"
   ],
+
   "related_concepts": [
     "IP Addresses",
     "DNS",
