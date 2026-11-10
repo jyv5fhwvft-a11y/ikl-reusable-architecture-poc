@@ -4,75 +4,39 @@ concept_id: IKL-CN-001
 section_id: IKL-CN-001-SEC-01
 section_number: 1
 section_title: Identity and Definition
-block_type: definition
+block_type: html-section
 order: 1
 ---
 
-# What is Ping?
+<section id="concept-identity">
 
-## Simple definition
+    <h2>1. What Is Ping?</h2>
 
-Ping is a network diagnostic utility that helps us check whether another device or destination can be reached across an IP network.
+    <h3>One-Sentence Definition</h3>
 
-It sends a message called an **ICMP Echo Request** and waits for an **ICMP Echo Reply**.
+    <p>
+        Ping is a network diagnostic utility used to test whether a destination responds to messages sent across an IP network.
+    </p>
 
-If a reply is received, Ping reports information such as the round-trip time — how long the message takes to travel to the destination and return.
+    <h3>What Problem Does Ping Solve?</h3>
 
-## First-grader explanation
+    <p>
+        Imagine sending information to another
+        computer. How can you check whether
+        that computer responds?
+    </p>
 
-Imagine you are standing in one room and your friend is standing in another room.
+    <p>
+        Ping helps answer this question.
+    </p>
 
-You call out:
+    <h3>What Will You Learn?</h3>
 
-"Can you hear me?"
+    <ul>
+        <li>What Ping means.</li>
+        <li>Why Ping is useful.</li>
+        <li>How computers use it to test connectivity.</li>
+        <li>How to interpret its results.</li>
+    </ul>
 
-Your friend replies:
-
-"Yes, I can hear you!"
-
-Now you know that your friend can hear you.
-
-Ping works in a similar way with computers.
-
-Your computer sends a small message to another computer and waits for a reply.
-
-- If a reply comes back, the destination responded.
-- If no reply comes back, your computer did not receive a response.
-- The time taken for the message to go and return helps us understand how quickly the destination responded.
-
-**In simple words:** Ping is like calling another computer to see whether it answers.
-
-## Beginner explanation
-
-Computers communicate with one another through networks.
-
-Sometimes we need to check whether a particular destination, such as another computer, a server, or a network device, is responding.
-
-Ping helps us perform this basic connectivity test.
-
-When we run a Ping command:
-
-1. Our computer prepares an ICMP Echo Request.
-2. The request travels through the IP network towards the destination.
-3. If the destination is configured to respond and the request is permitted, it sends an ICMP Echo Reply.
-4. Our computer receives the reply and calculates the round-trip time.
-
-For example, a Ping result might show:
-
-- The destination responded.
-- The round-trip time was 25 milliseconds.
-- No packet loss occurred during the test.
-
-These results provide useful information about network connectivity and responsiveness.
-
-## Important distinction
-
-A successful Ping response indicates that the destination responded to the ICMP Echo Request.
-
-However, a failed Ping does not automatically mean that the destination device is switched off or unreachable.
-
-A firewall, network configuration, or security policy may block ICMP messages even when other network services are working.
-
-## Remember
-
-**Ping is a network diagnostic utility that uses ICMP Echo Requests and Echo Replies to test whether a destination responds across an IP network and to measure round-trip time.**
+</section>
