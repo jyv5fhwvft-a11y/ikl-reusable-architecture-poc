@@ -17,6 +17,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="{{ '/css/proof.css' | relative_url }}">
+
+  {% if concept.stylesheets %}
+    {% for stylesheet in concept.stylesheets %}
+      <link rel="stylesheet" href="{{ stylesheet | relative_url }}">
+    {% endfor %}
+  {% endif %}
 </head>
 
 <body>
@@ -26,8 +32,6 @@
   </a>
 
   {% if concept %}
-
-  <!-- CONCEPT HERO — MATCHES PRODUCTION PING -->
 
   <header class="concept-hero">
 
@@ -58,9 +62,9 @@
 
   </header>
 
-  <main class="concept-container">
+  <main class="concept-container{% if concept.page_class %} {{ concept.page_class | escape }}{% endif %}">
 
-    {% if concept.learning_objectives %}
+    {% if concept.show_learning_objectives != false and concept.learning_objectives %}
     <section class="learning-objectives">
 
       <h2>What You Will Learn</h2>
@@ -76,7 +80,9 @@
 
     <div class="concept-content">
 
-      <h2 class="content-heading">Explore the Concept</h2>
+      {% if concept.show_content_heading != false %}
+        <h2 class="content-heading">Explore the Concept</h2>
+      {% endif %}
 
       {% for content_id in concept.content_blocks %}
 
@@ -126,6 +132,12 @@
     </p>
     <p class="footer-credit">Created by Amir Khan.</p>
   </footer>
+
+  {% if concept.scripts %}
+    {% for script in concept.scripts %}
+      <script src="{{ script | relative_url }}" defer></script>
+    {% endfor %}
+  {% endif %}
 
 </body>
 </html>
