@@ -1,0 +1,4255 @@
+---
+content_block_id: IKL-CN-001-CB-05
+concept_id: IKL-CN-001
+section_id: IKL-CN-001-SEC-05
+section_number: 5
+section_title: Technical Explanation through Quick Revision
+block_type: html-section
+order: 5
+---
+
+        <section id="technical-explanation">
+            <h2>5. Technical Explanation of Ping</h2>
+
+            <h3>5.1 What Is ICMP?</h3>
+
+            <p>
+                ICMP stands for Internet Control Message Protocol.
+                It is a network-layer protocol used by devices
+                to exchange control, diagnostic, and error
+                information in IP networks.
+            </p>
+            <p>
+                Ping uses ICMP Echo Request and Echo Reply
+                messages to test whether a destination responds.
+            </p>
+
+            <h3>5.2 What Is an ICMP Echo Request?</h3>
+
+            <p>
+                An ICMP Echo Request is a message sent by
+                the source computer to ask a destination
+                device to respond.
+            </p>
+            <p>
+                It is the message that begins a typical
+                Ping test.
+            </p>
+
+            <h3>5.3 What Is an ICMP Echo Reply?</h3>
+
+            <p>
+                An ICMP Echo Reply is the response that
+                a destination device may send after receiving
+                an Echo Request.
+            </p>
+            <p>
+                When the source receives this reply,
+                Ping can report that the test received
+                a response.
+            </p>
+
+            <h3>5.4 How Are IP Addresses Involved?</h3>
+
+            <p>
+                An IP address is a numerical address
+                used to identify a device or network interface
+                on an IP network.
+            </p>
+            <p>
+                When you run Ping, you specify a destination
+                using an IP address or a hostname.
+            </p>
+
+            <p>
+                If you enter a hostname, your computer
+                may use DNS to find its corresponding IP address.
+            </p>
+
+            <h3>5.5 Understanding Round-Trip Time (RTT)</h3>
+            <p>
+                Round-Trip Time (RTT) measures the time
+                between sending a request and receiving
+                its corresponding reply.
+            </p>
+
+            <p>RTT is commonly measured in milliseconds (ms).</p>
+
+            <p>For example:</p>
+
+            <ul>
+                <li>Request sent: 0 milliseconds.</li>
+                <li>Reply received: 25 milliseconds.</li>
+                <li>Measured RTT: 25 milliseconds.</li>
+            </ul>
+            <p>
+                A lower RTT generally indicates a shorter
+                response time for that particular test.
+            </p>
+
+            <!-- SECTION 5 — INTERACTIVE RTT CALCULATION LAB -->
+
+<div class="rtt-calculation-lab" id="rtt-calculation-lab">
+
+    <h3>Explore Round-Trip Time (RTT)</h3>
+
+    <p>
+        Experiment with the time at which a Ping request
+        is sent and the time at which its reply arrives.
+        Calculate the difference to discover the RTT.
+    </p>
+    <div class="rtt-input-grid">
+
+        <div class="rtt-input-group">
+            <label for="rtt-request-time">
+                Request Sent At (ms)
+            </label>
+
+            <input
+                type="number"
+                id="rtt-request-time"
+                value="0"
+                min="0"
+                step="1"
+            >
+        </div>
+
+        <div class="rtt-input-group">
+            <label for="rtt-reply-time">
+                Reply Received At (ms)
+            </label>
+            <input
+                type="number"
+                id="rtt-reply-time"
+                value="25"
+                min="0"
+                step="1"
+            >
+        </div>
+
+    </div>
+
+    <button
+        type="button"
+        id="rtt-calculate-button"
+        class="rtt-calculate-button"
+    >
+        Calculate RTT
+    </button>
+
+    <div
+        class="rtt-calculation-result"
+        id="rtt-calculation-result"
+        aria-live="polite"
+    >
+        <p id="rtt-result-label">
+            Example calculation
+        </p>
+
+        <h4 id="rtt-result-value">
+            25 ms
+        </h4>
+
+        <p id="rtt-result-explanation">
+            The reply arrived 25 milliseconds after
+            the request was sent.
+        </p>
+
+    </div>
+
+    <p
+        class="rtt-calculation-status"
+        id="rtt-calculation-status"
+        aria-live="polite"
+    >
+        Change the values and calculate again.
+    </p>
+
+</div>
+<!-- END SECTION 5 — INTERACTIVE RTT CALCULATION LAB -->
+
+            <h3>5.6 What Happens Behind the Scenes?</h3>
+            <ol>
+                <li>The user enters a destination address
+                    or hostname.</li>
+                <li>The computer determines the destination
+                    IP address if necessary.</li>
+                <li>The operating system prepares an
+                    ICMP Echo Request.</li>
+                <li>The IP layer carries the ICMP message
+                    toward the destination.</li>
+                <li>Routers may forward the packet
+                    through different networks.</li>
+                <li>If the destination accepts and processes
+                    the request, it may send an ICMP Echo Reply.</li>
+                <li>The reply travels back toward the source.</li>
+                <li>The source calculates the RTT and
+                    displays the result.</li>
+            </ol>
+            <h3>5.7 Important Technical Terms</h3>
+            <ul>
+                <li><strong>ICMP:</strong>
+                    Internet Control Message Protocol.</li>
+                <li><strong>Echo Request:</strong>
+                    The ICMP message asking for a response.</li>
+                <li><strong>Echo Reply:</strong>
+                    The ICMP response to an Echo Request.</li>
+                <li><strong>IP Address:</strong>
+                    A numerical address used to identify
+                    a device or network interface.</li>
+                <li><strong>DNS:</strong>
+                    Domain Name System, which helps translate
+                    hostnames into IP addresses.</li>
+                <li><strong>Packet:</strong>
+                    A formatted unit of data transmitted
+                    across a network.</li>
+                <li><strong>RTT:</strong>
+                    The measured time between sending
+                    a request and receiving its reply.</li>
+                <li><strong>Latency:</strong>
+                    Delay experienced while data travels
+                    through a network.</li>
+            </ul>
+            <h3>5.8 Technical Example</h3>
+
+            <p>Suppose a computer runs the following command:</p>
+
+            <p class="technical-command">
+    <strong>ping 8.8.8.8</strong>
+</p>
+
+            <p>
+                The computer sends ICMP Echo Requests
+                toward the destination IP address 8.8.8.8.
+            </p>
+
+            <p>
+                If Echo Replies return, the computer
+                reports the response times.
+            </p>
+
+            <p>Example result:</p>
+            <p>Reply from 8.8.8.8: time=25ms</p>
+
+            <p>
+                This means that the measured round-trip
+                time for that reply was 25 milliseconds.
+            </p>
+
+            <h3>Key Technical Takeaway</h3>
+
+            <p class="technical-takeaway">
+                Ping uses ICMP Echo Request and Echo Reply
+                messages carried by IP to test whether
+                a destination responds and to measure
+                the round-trip time.
+            </p>
+        </section>
+
+        <!-- ================================== -->
+        <!-- SECTION 6: COMPONENTS AND ARCHITECTURE -->
+        <!-- ================================== -->
+
+        <section id="components-architecture">
+
+            <h2>6. Components and Architecture of Ping</h2>
+
+            <h3>6.1 What Are the Main Components?</h3>
+            <p>
+                Ping involves several networking components
+                that work together to test communication
+                between a source computer and a destination.
+            </p>
+
+            <h3>Component 1: Source Computer</h3>
+
+            <p>
+                The source computer is the device that
+                starts the Ping test.
+            </p>
+            <ul>
+                <li>Runs the Ping command.</li>
+                <li>Identifies the destination address.</li>
+                <li>Prepares an ICMP Echo Request.</li>
+                <li>Waits for a possible Echo Reply.</li>
+                <li>Measures and displays the response time.</li>
+            </ul>
+
+            <h3>Component 2: Destination Computer</h3>
+            <p>
+                The destination computer is the device
+                that the source computer wants to test.
+            </p>
+
+            <ul>
+                <li>Receives the incoming IP packet.</li>
+                <li>Processes the ICMP Echo Request if permitted.</li>
+                <li>May generate an ICMP Echo Reply.</li>
+                <li>Sends the reply toward the source.</li>
+            </ul>
+
+            <h3>Component 3: IP Layer</h3>
+            <p>
+                IP stands for Internet Protocol.
+                It provides addressing and packet delivery
+                across interconnected networks.
+            </p>
+
+            <ul>
+                <li>Uses source and destination IP addresses.</li>
+                <li>Carries ICMP messages inside IP packets.</li>
+                <li>Helps packets travel toward their destinations.</li>
+                <li>Supports communication across different networks.</li>
+            </ul>
+            <h3>Component 4: ICMP</h3>
+
+            <p>
+                ICMP stands for Internet Control Message Protocol.
+                It provides control, diagnostic, and error
+                messages for IP networking.
+            </p>
+            <ul>
+                <li>Creates the Echo Request message.</li>
+                <li>Defines the Echo Reply message.</li>
+                <li>Helps Ping test network reachability.</li>
+                <li>Does not use TCP or UDP ports.</li>
+            </ul>
+
+            <h3>Component 5: Routers</h3>
+
+            <p>
+                Routers are networking devices that forward
+                IP packets between networks.
+            </p>
+            <ul>
+                <li>Examine destination IP addresses.</li>
+                <li>Use routing information to select a next hop.</li>
+                <li>Forward packets toward their destinations.</li>
+                <li>May not be involved when devices communicate
+                    on the same local network.</li>
+            </ul>
+
+            <h3>Component 6: Network Transmission</h3>
+            <p>
+                Network transmission is the movement of
+                data through wired or wireless connections.
+            </p>
+
+            <ul>
+                <li>Ethernet cables can carry network data.</li>
+                <li>Wi-Fi can carry network data wirelessly.</li>
+                <li>Network links connect devices and routers.</li>
+                <li>Transmission conditions can affect response time.</li>
+            </ul>
+            <h3>Component 7: Echo Request and Echo Reply</h3>
+
+            <p>
+                These are the two ICMP message types
+                central to a typical Ping test.
+            </p>
+
+            <ul>
+                <li>Echo Request begins the test.</li>
+                <li>Echo Reply is the possible response.</li>
+                <li>The source matches the reply with its request.</li>
+                <li>The measured time is reported as RTT.</li>
+            </ul>
+            <!-- SECTION 6.1 — INTERACTIVE COMPONENT EXPLORER -->
+
+<div class="ping-component-explorer" id="ping-component-explorer">
+
+    <h3>Explore the Components of Ping</h3>
+
+    <p>
+        Select a component to discover its responsibility
+        and how it contributes to the Ping process.
+    </p>
+
+    <div class="ping-component-options">
+        <button type="button" class="ping-component-button"
+                data-component="source" aria-pressed="false">
+            01. Source Computer
+        </button>
+
+        <button type="button" class="ping-component-button"
+                data-component="destination" aria-pressed="false">
+            02. Destination Computer
+        </button>
+        <button type="button" class="ping-component-button"
+                data-component="ip" aria-pressed="false">
+            03. IP Layer
+        </button>
+
+        <button type="button" class="ping-component-button"
+                data-component="icmp" aria-pressed="false">
+            04. ICMP
+        </button>
+
+        <button type="button" class="ping-component-button"
+                data-component="routers" aria-pressed="false">
+            05. Routers
+        </button>
+        <button type="button" class="ping-component-button"
+                data-component="transmission" aria-pressed="false">
+            06. Network Transmission
+        </button>
+
+        <button type="button" class="ping-component-button"
+                data-component="echo" aria-pressed="false">
+            07. Echo Request and Echo Reply
+        </button>
+
+    </div>
+
+    <div class="ping-component-explanation"
+         id="ping-component-explanation"
+         aria-live="polite">
+        <p id="ping-component-label">
+            Select a component above
+        </p>
+
+        <h4 id="ping-component-title">
+            Discover how Ping works
+        </h4>
+
+        <p id="ping-component-description">
+            Each component has a different responsibility
+            in the communication process.
+        </p>
+
+        <div id="ping-component-details"></div>
+
+    </div>
+    <p class="ping-component-status"
+       id="ping-component-status"
+       aria-live="polite">
+        Ready to explore.
+    </p>
+
+</div>
+
+<!-- END SECTION 6.1 — INTERACTIVE COMPONENT EXPLORER -->
+
+            <h3>6.2 How Do These Components Work Together?</h3>
+
+            <p>
+                The following sequence shows a simplified
+                Ping communication process.
+            </p>
+            <ol>
+                <li>The source computer runs a Ping command.</li>
+                <li>It identifies the destination IP address.</li>
+                <li>The operating system creates an ICMP
+                    Echo Request.</li>
+                <li>IP carries the ICMP message inside
+                    an IP packet.</li>
+                <li>The network delivers the packet.
+                    Routers forward it when necessary.</li>
+                <li>The destination processes the request
+                    and may create an Echo Reply.</li>
+                <li>The reply travels back toward the source.</li>
+                <li>The source receives the reply and
+                    calculates the RTT.</li>
+            </ol>
+            <h3>6.3 Simplified Ping Architecture Diagram</h3>
+
+            <p>
+                This diagram shows the relationship between
+                the major components.
+            </p>
+
+
+<div id="ping-architecture" class="architecture-container">
+
+    <div class="architecture-stages">
+        <div class="architecture-stage active" data-stage="0">
+            <span class="stage-number">1</span>
+            <h4>Source Computer</h4>
+            <p>Starts the Ping command.</p>
+            <span class="stage-detail">ICMP Echo Request is created.</span>
+        </div>
+
+        <div class="architecture-arrow">↓</div>
+        <div class="architecture-stage" data-stage="1">
+            <span class="stage-number">2</span>
+            <h4>IP Layer</h4>
+            <p>Prepares the IP packet.</p>
+            <span class="stage-detail">The ICMP message is carried inside the IP packet.</span>
+        </div>
+
+        <div class="architecture-arrow">↓</div>
+        <div class="architecture-stage" data-stage="2">
+            <span class="stage-number">3</span>
+            <h4>Network and Routers</h4>
+            <p>Forward the packet towards its destination.</p>
+            <span class="stage-detail">Routers forward packets when routing is required.</span>
+        </div>
+
+        <div class="architecture-arrow">↓</div>
+        <div class="architecture-stage" data-stage="3">
+            <span class="stage-number">4</span>
+            <h4>Destination Computer</h4>
+            <p>Receives and processes the request.</p>
+            <span class="stage-detail">If permitted, it generates an ICMP Echo Reply.</span>
+        </div>
+
+        <div class="architecture-arrow">↑</div>
+        <div class="architecture-stage" data-stage="4">
+            <span class="stage-number">5</span>
+            <h4>Reply Returns</h4>
+            <p>The Echo Reply travels back towards the source.</p>
+            <span class="stage-detail">The return path may differ from the outgoing path.</span>
+        </div>
+
+        <div class="architecture-arrow">↓</div>
+        <div class="architecture-stage" data-stage="5">
+            <span class="stage-number">6</span>
+            <h4>Source Calculates RTT</h4>
+            <p>Measures the elapsed round-trip time.</p>
+            <span class="stage-detail">Ping displays the result.</span>
+        </div>
+
+    </div>
+        <div class="architecture-route">
+
+        <h4>Watch the Packet Travel</h4>
+        <p class="route-direction" id="architecture-route-direction">
+            Ready to send an Echo Request
+        </p>
+
+        <div class="route-track">
+
+            <div class="route-node source-node">
+                <span class="route-node-icon">💻</span>
+                <strong>Source</strong>
+            </div>
+
+            <div class="route-node router-node">
+                <span class="route-node-icon">🌐</span>
+                <strong>Router</strong>
+            </div>
+            <div class="route-node destination-node">
+                <span class="route-node-icon">💻</span>
+                <strong>Destination</strong>
+            </div>
+
+            <div class="route-packet"
+                 id="architecture-route-packet"
+                 aria-hidden="true">
+                ●
+            </div>
+
+        </div>
+
+        <p class="route-caption">
+            The packet travels from the source to the destination
+            and the reply returns.
+        </p>
+
+    </div>
+    <div class="architecture-explanation" aria-live="polite">
+        <p id="architecture-step-count">Step 1 of 6</p>
+        <h4 id="architecture-step-title">Source Computer</h4>
+        <p id="architecture-step-description">
+            The source computer starts the Ping command
+            and creates an ICMP Echo Request.
+        </p>
+    </div>
+
+    <div class="architecture-controls">
+
+        <button type="button" id="architecture-previous">
+            ← Previous
+        </button>
+        <button type="button" id="architecture-play">
+            ▶ Play
+        </button>
+
+        <button type="button" id="architecture-next">
+            Next →
+        </button>
+
+        <button type="button" id="architecture-reset">
+            ↺ Reset
+        </button>
+
+    </div>
+
+    <p id="architecture-status" aria-live="polite">
+        Explore the six stages of Ping communication.
+    </p>
+
+    <details class="packet-inspector">
+
+        <summary>Explore What's Inside the Packet</summary>
+        <p>
+            An IP packet carries an ICMP message inside it.
+            Explore the two layers below.
+        </p>
+
+        <div class="packet-layer ip-layer">
+
+            <h4>Outer Layer — IP Header</h4>
+
+            <p>Source IP Address: 192.0.2.10</p>
+
+            <p>Destination IP Address: 203.0.113.8</p>
+
+            <p class="packet-note">
+                These are example addresses reserved for documentation.
+            </p>
+
+        </div>
+        <div class="packet-layer icmp-layer">
+
+            <h4>Inner Content — ICMP Message</h4>
+
+            <p id="architecture-icmp-type">
+                ICMP Echo Request
+            </p>
+
+            <p class="packet-note">
+                The ICMP message carries the Ping request or reply.
+            </p>
+
+        </div>
+
+    </details>
+
+
+</div>
+
+
+            <h3>6.4 Important Architectural Relationship</h3>
+            <p>
+                ICMP and IP have different responsibilities.
+                ICMP defines the diagnostic message,
+                while IP carries that message across
+                the network.
+            </p>
+
+            <p>
+                Routers forward IP packets based on
+                destination addresses. They do not need
+                to generate an Echo Reply when forwarding
+                an ordinary Ping packet.
+            </p>
+            <p>
+                The return path may be different from
+                the path taken by the original request.
+            </p>
+
+            <h3>Key Architectural Takeaway</h3>
+            <p>
+                Ping depends on several networking components
+                working together. The source creates an ICMP
+                Echo Request, IP carries it toward the
+                destination, and the destination may return
+                an ICMP Echo Reply. The source uses the
+                response to calculate the Round-Trip Time.
+            </p>
+
+        </section>
+
+                <!-- ================================== -->
+        <!-- SECTION 7: WORKING MECHANISM -->
+        <!-- ================================== -->
+
+        <section id="working-mechanism">
+
+            <h2>7. How Does Ping Work? The Complete Process</h2>
+
+            <p>
+                Now that we understand the components of Ping,
+                let's follow the complete journey of a test
+                message from one computer to another.
+            </p>
+            <h3>7.1 Step 1: The User Starts Ping</h3>
+
+            <p>
+                The process begins when a user opens a
+                command-line interface and enters a Ping command.
+            </p>
+
+            <p><strong>Example command:</strong></p>
+
+            <pre>ping 8.8.8.8</pre>
+
+            <p>
+                This command asks the computer to test
+                communication with the destination IP address
+                8.8.8.8.
+            </p>
+            <h3>7.2 Step 2: The Destination Address Is Identified</h3>
+
+            <p>
+                The computer needs to know where to send
+                the test message.
+            </p>
+
+            <ul>
+                <li>If the user enters an IP address,
+                    the computer can use that address directly.</li>
+                <li>If the user enters a hostname,
+                    DNS may be used to find its IP address.</li>
+            </ul>
+            <p>
+                The destination IP address helps IP networking
+                deliver the packet toward the intended destination.
+            </p>
+
+            <h3>7.3 Step 3: The ICMP Echo Request Is Created</h3>
+
+            <p>
+                The operating system prepares an ICMP
+                Echo Request message.
+            </p>
+
+            <p>
+                Think of this message as a digital question:
+                "Are you there? Can you respond?"
+            </p>
+            <p>
+                The Echo Request contains information that
+                helps identify and match the corresponding reply.
+            </p>
+
+            <h3>7.4 Step 4: IP Prepares the Packet</h3>
+
+            <p>
+                The IP layer carries the ICMP Echo Request
+                inside an IP packet.
+            </p>
+
+            <p>The packet includes important information such as:</p>
+            <ul>
+                <li>Source IP address.</li>
+                <li>Destination IP address.</li>
+                <li>ICMP message and its contents.</li>
+            </ul>
+
+            <p>
+                The source computer then sends the packet
+                through the appropriate network interface.
+            </p>
+
+            <h3>7.5 Step 5: The Request Travels Through the Network</h3>
+            <p>
+                The packet travels through network links
+                toward its destination.
+            </p>
+            <ul>
+                <li>Ethernet or Wi-Fi may carry the packet
+                    across a local network.</li>
+                <li>Routers forward the packet when it needs
+                    to travel between networks.</li>
+                <li>Each router uses routing information
+                    to determine where to forward the packet next.</li>
+            </ul>
+            <p>
+                The exact route depends on the network
+                configuration and routing decisions.
+            </p>
+
+            <h3>7.6 Step 6: The Destination Processes the Request</h3>
+
+            <p>
+                When the packet reaches the destination,
+                its networking system processes the incoming
+                IP packet.
+            </p>
+            <p>
+                If the ICMP Echo Request is accepted and
+                permitted, the destination may prepare
+                an ICMP Echo Reply.
+            </p>
+
+            <p>
+                The reply is the destination's response
+                to the original test message.
+            </p>
+
+            <h3>7.7 Step 7: The Echo Reply Travels Back</h3>
+            <p>
+                The destination sends an ICMP Echo Reply
+                toward the original source computer.
+            </p>
+
+            <p>
+                The reply is carried inside an IP packet
+                and travels through the network.
+            </p>
+
+            <p>
+                Important: The return route does not
+                necessarily have to be identical to
+                the route taken by the original request.
+            </p>
+            <h3>7.8 Step 8: The Source Calculates RTT</h3>
+
+            <p>
+                When the source computer receives the
+                corresponding Echo Reply, Ping can calculate
+                the Round-Trip Time (RTT).
+            </p>
+
+            <p>
+                RTT measures the time between sending
+                the request and receiving its reply.
+            </p>
+
+            <p><strong>Example:</strong></p>
+            <ul>
+                <li>Request sent at: 0 ms.</li>
+                <li>Reply received at: 25 ms.</li>
+                <li>Measured RTT: 25 ms.</li>
+            </ul>
+
+            <p>
+                The computer displays the response time
+                to the user.
+            </p>
+
+            <h3>7.9 What Happens If No Reply Arrives?</h3>
+            <p>
+                Sometimes the source computer does not
+                receive an Echo Reply within the allowed
+                waiting time.
+            </p>
+
+            <p>
+                In that situation, Ping may report
+                a timeout or another failure message.
+            </p>
+
+            <p>Possible reasons include:</p>
+            <ul>
+                <li>The destination is unavailable.</li>
+                <li>A network connection is interrupted.</li>
+                <li>A firewall blocks ICMP messages.</li>
+                <li>A router or network path has a problem.</li>
+                <li>The reply is delayed or lost.</li>
+            </ul>
+
+            <p>
+                Remember: No Ping reply does not automatically
+                prove that the destination computer is switched off.
+            </p>
+            <h3>7.10 Complete Ping Process at a Glance</h3>
+            <pre>
++---------------------------+
+|       USER STARTS PING    |
+|       ping 8.8.8.8        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|   IDENTIFY DESTINATION    |
+|       IP ADDRESS          |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|    CREATE ICMP ECHO       |
+|        REQUEST            |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|       IP PACKET           |
+|  CARRIES ICMP MESSAGE     |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|    NETWORK TRANSMISSION   |
+|     LINKS AND ROUTERS     |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|    DESTINATION PROCESSES  |
+|        REQUEST            |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|     ICMP ECHO REPLY       |
+|      IF PERMITTED         |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|      REPLY RETURNS        |
+|      TO THE SOURCE        |
++-------------+-------------+
+              |
+              v
++---------------------------+
+|       CALCULATE RTT       |
+|      DISPLAY RESULT      |
++---------------------------+
+            </pre>
+            <!-- SECTION 7 — INTERACTIVE PING PACKET JOURNEY -->
+
+<div class="ping-journey-explorer" id="ping-journey-explorer">
+
+    <h3>Explore the Complete Ping Packet Journey</h3>
+
+    <p>
+        Follow each stage to understand what happens
+        from the moment Ping starts until a result appears.
+    </p>
+
+    <div class="ping-journey-progress">
+        <p id="journey-step-number">Stage 1 of 9</p>
+        <div class="journey-progress-track">
+            <div class="journey-progress-fill"
+                 id="journey-progress-fill"></div>
+        </div>
+    </div>
+
+    <div class="ping-journey-route">
+
+        <div class="journey-node" id="journey-source">
+            <span>💻</span>
+            <strong>Source</strong>
+        </div>
+
+        <div class="journey-route-line">
+            <span class="journey-packet"
+                  id="journey-packet"></span>
+        </div>
+        <div class="journey-node" id="journey-network">
+            <span>🌐</span>
+            <strong>Network</strong>
+        </div>
+
+        <div class="journey-route-line">
+        </div>
+
+        <div class="journey-node" id="journey-destination">
+            <span>💻</span>
+            <strong>Destination</strong>
+        </div>
+
+    </div>
+
+    <div class="ping-journey-explanation"
+         aria-live="polite">
+
+        <p id="journey-stage-label">
+            STAGE 1
+        </p>
+        <h4 id="journey-stage-title">
+            User Starts Ping
+        </h4>
+
+        <p id="journey-stage-description">
+            The user enters a Ping command to begin
+            testing communication with another device.
+        </p>
+
+        <div id="journey-stage-details"></div>
+
+    </div>
+
+    <div class="ping-journey-controls">
+
+        <button type="button" id="journey-previous">
+            Previous
+        </button>
+        <button type="button" id="journey-play">
+            Play
+        </button>
+
+        <button type="button" id="journey-next">
+            Next
+        </button>
+
+        <button type="button" id="journey-reset">
+            Reset
+        </button>
+
+    </div>
+
+    <p id="journey-status"
+       class="ping-journey-status"
+       aria-live="polite">
+        Ready to begin the journey.
+    </p>
+
+</div>
+
+<!-- END SECTION 7 — INTERACTIVE PING PACKET JOURNEY -->
+            <h3>Key Working Mechanism Takeaway</h3>
+
+            <p>
+                Ping begins when a source computer creates
+                an ICMP Echo Request. IP carries the request
+                toward the destination. If the destination
+                responds, an Echo Reply returns, allowing
+                the source to calculate the Round-Trip Time.
+            </p>
+
+        </section>
+
+        <!-- ================================== -->
+        <!-- SECTION 8: INTERACTIVE SIMULATION -->
+        <!-- ================================== -->
+
+        <section id="interactive-simulation">
+
+            <h2>8. Interactive Ping Simulation</h2>
+
+            <p>
+                Now that we understand how Ping works, let's experience
+                the process through an interactive simulation.
+            </p>
+            <p>
+                In this experiment, you will send a simulated Ping request
+                from one computer to another and observe how the reply returns.
+            </p>
+
+            <p>
+                <strong>Learning Objective:</strong>
+                Understand how an ICMP Echo Request travels to a destination
+                and how an ICMP Echo Reply returns to the source.
+            </p>
+
+            <!-- SIMULATION WORKSPACE -->
+
+            <div id="ping-simulation">
+                <h3>8.1 Meet the Two Computers</h3>
+
+                <p>
+                    A Ping test begins at the source computer
+                    and travels toward the destination computer.
+                </p>
+
+                <div id="computer-network">
+
+                    <div class="computer">
+
+                        <h4>Source Computer</h4>
+
+                        <p>Computer A</p>
+
+                        <p>Sending Device</p>
+
+                    </div>
+                    <div id="network-connection">
+
+                        <p>Network Connection</p>
+
+                        <p>Request →</p>
+
+                        <p>← Reply</p>
+
+                    </div>
+
+                    <div class="computer">
+
+                        <h4>Destination Computer</h4>
+
+                        <p>Computer B</p>
+
+                        <p>Receiving Device</p>
+
+                    </div>
+
+                </div>
+                <p id="ping-status">
+                    Waiting to start the Ping simulation.
+                </p>
+
+                <!-- SECTION 8 — SIMULATION SETTINGS -->
+
+<div class="ping-simulation-settings">
+
+    <h3>8.2 Configure Your Ping Experiment</h3>
+
+    <div class="simulation-input-group">
+
+        <label for="ping-destination-input">
+            Destination IP Address
+        </label>
+        <input
+            type="text"
+            id="ping-destination-input"
+            value="8.8.8.8"
+            placeholder="Example: 8.8.8.8"
+        >
+
+    </div>
+
+    <div class="simulation-input-group">
+
+        <label for="ping-network-condition">
+            Choose a Network Condition
+        </label>
+
+        <select id="ping-network-condition">
+
+            <option value="normal">
+                Normal Network
+            </option>
+            <option value="slow">
+                Slow Network
+            </option>
+
+            <option value="packet-loss">
+                Packet Loss
+            </option>
+
+            <option value="unavailable">
+                Destination Unavailable
+            </option>
+
+        </select>
+
+    </div>
+
+</div>
+
+<!-- END SECTION 8 — SIMULATION SETTINGS -->
+
+                <!-- START PING SIMULATION -->
+                <button type="button" id="sendPingButton">
+                    SEND PING
+                </button>
+
+                <!-- SECTION 8 — SIMULATED TERMINAL -->
+
+<div class="ping-terminal" id="ping-terminal">
+
+    <h3>Ping Terminal</h3>
+
+    <pre id="ping-terminal-output">Ready to run a simulated Ping experiment...</pre>
+
+</div>
+
+<!-- END SECTION 8 — SIMULATED TERMINAL -->
+
+            </div>
+
+        </section>
+               <!--
+        ================================== -->
+        <!-- SECTION 9: INTERACTIVE FLOWCHART -->
+        <!-- ================================== -->
+
+        <section id="interactive-flowchart">
+
+            <h2>9. Interactive Flowchart and Sequence Diagram</h2>
+
+            <p>
+                Explore how Ping works by following each stage
+                of communication between two computers.
+            </p>
+
+                        <!-- INTERACTIVE FLOWCHART WORKSPACE -->
+            <div id="ping-flowchart">
+
+                <h3>9.1 Explore the Ping Process</h3>
+
+                <p id="flowchart-step-counter">
+                    Step 1 of 8
+                </p>
+
+                <!-- FLOWCHART VISUAL AREA -->
+
+                <div id="flowchart-visual">
+
+                    <div class="flowchart-node active" id="flow-step-1">
+
+                        <h4>START</h4>
+
+                        <p>User starts the Ping command.</p>
+
+                    </div>
+                </div>
+
+                <!-- STEP EXPLANATION -->
+
+                <div id="flowchart-explanation">
+
+                    <h4>What Is Happening?</h4>
+
+                    <p id="flowchart-description">
+                        The user begins by entering a Ping command
+                        to test communication with another device.
+                    </p>
+
+                </div>
+
+                <!-- FLOWCHART CONTROLS -->
+
+                <div id="flowchart-controls">
+                    <button type="button" id="previousFlowStep">
+                        Previous Step
+                    </button>
+
+                    <button type="button" id="nextFlowStep">
+                        Next Step
+                    </button>
+
+                </div>
+
+<!-- DECISION OPTIONS: SHOWN AT STAGE 6 -->
+
+<div id="flowchart-decision" hidden>
+
+    <h4>Choose the Ping Outcome</h4>
+
+    <button type="button" id="replyReceived">
+        YES — Reply Received
+    </button>
+    <button type="button" id="replyTimeout">
+        NO — Timeout
+    </button>
+
+</div>
+
+            </div>
+
+        </section>
+
+                <!-- ================================== -->
+        <!-- SECTION 9.2: SEQUENCE DIAGRAM -->
+        <!-- ================================== -->
+
+        <section id="sequence-diagram">
+
+            <h3>9.2 Explore the Ping Sequence Diagram</h3>
+            <p>
+                Follow the messages exchanged between
+                Computer A, the network, and Computer B
+                during a Ping operation.
+            </p>
+
+                        <!-- SEQUENCE DIAGRAM PARTICIPANTS -->
+
+            <div id="sequence-participants">
+
+                <div class="sequence-participant">
+                    <h4>Computer A</h4>
+                    <p>Source Computer</p>
+                    <p>Sends the Ping request</p>
+                </div>
+                <div class="sequence-participant">
+                    <h4>Network</h4>
+                    <p>Communication Path</p>
+                    <p>Carries the messages</p>
+                </div>
+
+                <div class="sequence-participant">
+                    <h4>Computer B</h4>
+                    <p>Destination Computer</p>
+                    <p>Receives the request</p>
+                </div>
+
+            </div>
+
+                        <!-- SEQUENCE DIAGRAM MESSAGE AREA -->
+            <div id="sequence-message-area">
+
+                <h4>Messages Exchanged During Ping</h4>
+
+                <div id="sequence-messages">
+
+    <!-- MESSAGE 1: ICMP ECHO REQUEST -->
+
+    <div class="sequence-message" id="sequence-message-1">
+
+        <h4>Message 1: ICMP Echo Request</h4>
+
+        <p>
+            Computer A sends an ICMP Echo Request
+            toward Computer B through the network.
+        </p>
+
+        <p>
+            Direction: Computer A → Network → Computer B
+        </p>
+    </div>
+
+                        <!-- MESSAGE 2: ICMP ECHO REPLY -->
+
+    <div class="sequence-message" id="sequence-message-2" hidden>
+
+        <h4>Message 2: ICMP Echo Reply</h4>
+
+        <p>
+            Computer B sends an ICMP Echo Reply
+            back toward Computer A through the network.
+        </p>
+
+        <p>
+            Direction: Computer B → Network → Computer A
+        </p>
+
+    </div>
+
+</div>
+                                <!-- SEQUENCE DIAGRAM NAVIGATION CONTROLS -->
+                <div id="sequence-controls">
+
+                    <p id="sequence-step-counter">
+                        Message 1 of 2
+                    </p>
+
+                    <button type="button" id="previousSequenceMessage">
+                        Previous Message
+                    </button>
+
+                    <button type="button" id="nextSequenceMessage">
+                        Next Message
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+                <!-- ================================== -->
+<!-- SECTION 10: PRACTICAL EXAMPLE -->
+<!-- ================================== -->
+
+<section id="practical-example">
+
+    <h2>10. Practical Example: Troubleshooting an Internet Connection</h2>
+
+    <h3>10.1 The Real-World Problem</h3>
+
+    <p>
+        Imagine a student named Alex who is working on an assignment.
+        Alex opens a web browser and enters a website address.
+        However, the website does not load.
+    </p>
+    <p>
+        Alex wants to understand what might be wrong.
+        Instead of guessing, Alex decides to use the Ping command
+        to investigate network communication.
+    </p>
+
+    <h4>The Situation</h4>
+
+    <ul>
+        <li>Alex's computer is connected to a network.</li>
+        <li>The browser cannot load the requested website.</li>
+        <li>Alex wants to test network communication.</li>
+        <li>Alex decides to use Ping as a troubleshooting tool.</li>
+    </ul>
+    <h4>The Main Question</h4>
+
+    <p>
+        Can Alex's computer communicate with another device
+        over the network?
+    </p>
+
+</section>
+
+        <!-- ================================== -->
+<!-- SECTION 10.2: TROUBLESHOOTING INVESTIGATION -->
+<!-- ================================== -->
+
+<section id="troubleshooting-investigation">
+
+    <h3>10.2 Investigating the Problem</h3>
+
+    <p>
+        Alex decides to perform two simple Ping tests
+        to investigate the network problem.
+    </p>
+    <h4>Test 1: Ping an IP Address</h4>
+
+    <p>
+        First, Alex opens the command-line interface
+        and enters the following command:
+    </p>
+
+    <pre>ping 8.8.8.8</pre>
+
+    <p>
+        This command attempts to send ICMP Echo Requests
+        to the IP address 8.8.8.8.
+    </p>
+
+    <p>
+        Alex checks whether Echo Replies arrive.
+        If replies arrive, the test shows that communication
+        with this IP address worked at that time.
+    </p>
+    <h4>Test 2: Ping a Website's Hostname</h4>
+
+    <p>
+        Next, Alex enters the following command:
+    </p>
+
+    <pre>ping google.com</pre>
+
+    <p>
+        This time, Alex uses a hostname instead of
+        directly entering an IP address.
+    </p>
+
+    <p>
+        The computer first needs to resolve the hostname
+        using DNS. If resolution succeeds, it attempts
+        to send ICMP Echo Requests to the resulting IP address.
+    </p>
+    <p>
+        Alex checks whether Echo Replies arrive.
+    </p>
+
+    <h4>Why Perform Two Different Tests?</h4>
+
+    <ul>
+        <li>
+            The first test uses a known IP address.
+        </li>
+        <li>
+            The second test uses a human-readable hostname.
+        </li>
+        <li>
+            The second test also involves DNS resolution.
+        </li>
+        <li>
+            Comparing the results helps investigate
+            possible network or DNS problems.
+        </li>
+    </ul>
+    <h4>Important Reminder</h4>
+
+    <p>
+        Ping tests ICMP communication, not whether
+        a website's web server or browser service
+        is functioning correctly.
+    </p>
+
+</section>
+
+        <!-- ================================== -->
+<!-- SECTION 10.3: UNDERSTANDING PING RESULTS -->
+<!-- ================================== -->
+
+<section id="ping-results">
+
+    <h3>10.3 Understanding the Possible Ping Results</h3>
+    <p>
+        After performing the two tests, Alex examines
+        the results to understand what might be happening
+        with the network connection.
+    </p>
+
+    <h4>Scenario 1: Both Tests Receive Replies</h4>
+
+    <p><strong>Test 1:</strong> ping 8.8.8.8</p>
+
+    <pre>
+Reply from 8.8.8.8: time=25ms
+Reply from 8.8.8.8: time=27ms
+    </pre>
+
+    <p><strong>Test 2:</strong> ping google.com</p>
+    <pre>
+Reply from 142.250.72.14: bytes=32 time=30ms TTL=117
+Reply from 142.250.72.14: bytes=32 time=28ms TTL=117
+    </pre>
+
+    <p><strong>What does this mean?</strong></p>
+
+    <ul>
+        <li>The IP-address test received replies.</li>
+        <li>The hostname was successfully resolved.</li>
+        <li>The hostname-based Ping test also received replies.</li>
+        <li>Both tests show successful ICMP communication
+            with their respective destinations.</li>
+    </ul>
+    <p>
+        <strong>What should Alex understand?</strong>
+        Basic network communication worked for both tests.
+        However, the website may still have a separate
+        application, server, or browser problem.
+    </p>
+
+    <h4>Scenario 2: IP Test Succeeds but Hostname Resolution Fails</h4>
+
+    <p><strong>Test 1:</strong> ping 8.8.8.8</p>
+
+    <pre>
+Reply from 8.8.8.8: time=25ms
+Reply from 8.8.8.8: time=26ms
+    </pre>
+
+    <p><strong>Test 2:</strong> ping google.com</p>
+    <pre>
+Ping request could not find host google.com.
+Please check the name and try again.
+    </pre>
+
+    <p><strong>What does this mean?</strong></p>
+
+    <ul>
+        <li>The IP-address test received replies.</li>
+        <li>The computer could not resolve the hostname.</li>
+        <li>A DNS configuration or name-resolution problem
+            may exist.</li>
+    </ul>
+    <p>
+        <strong>What should Alex investigate?</strong>
+        Alex should investigate DNS settings and
+        hostname resolution.
+    </p>
+
+    <h4>Scenario 3: Both Tests Receive No Replies</h4>
+
+    <p><strong>Test 1:</strong> ping 8.8.8.8</p>
+
+    <pre>
+Request timed out.
+Request timed out.
+    </pre>
+
+    <p><strong>Test 2:</strong> ping google.com</p>
+
+    <pre>
+Request timed out.
+Request timed out.
+    </pre>
+
+    <p><strong>What does this mean?</strong></p>
+    <p>
+    Because the result says "Request timed out"
+    rather than "could not find host", the hostname
+    appears to have been resolved. However, an
+    ICMP Echo Reply did not arrive within the
+    waiting time.
+</p>
+    <ul>
+        <li>No Echo Replies arrived within the waiting time.</li>
+        <li>The tests did not receive successful responses.</li>
+        <li>A network connection or routing problem
+            may exist.</li>
+        <li>A firewall or destination policy may block ICMP.</li>
+    </ul>
+
+    <p>
+        <strong>What should Alex investigate?</strong>
+        Alex should check the local network connection,
+        gateway, routing, and possible ICMP filtering.
+    </p>
+    <h4>Important Technical Note</h4>
+
+    <p>
+        These are illustrative examples, not guaranteed
+        outputs from every operating system.
+        Ping output can differ between Windows, Linux,
+        and macOS.
+    </p>
+
+    <p>
+        A timeout does not automatically mean that
+        a device is offline. Some devices and networks
+        block Ping requests or replies.
+    </p>
+
+    <h4>Key Takeaway</h4>
+    <p>
+        Ping results help us investigate network
+        communication, but we must interpret them
+        carefully before deciding what the actual
+        problem might be.
+    </p>
+
+        <!-- SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
+
+    <div class="ping-case-study" id="ping-case-study">
+
+        <h3>10.4 Become the Network Investigator</h3>
+        <p>
+            You are now the network investigator.
+            Choose Alex's situation, examine the evidence,
+            and decide what you should investigate next.
+        </p>
+
+        <div class="ping-case-buttons">
+
+            <button type="button" class="ping-case-button"
+                    data-case="success">
+                Case 1: Both Tests Succeed
+            </button>
+            <button type="button" class="ping-case-button"
+                    data-case="dns">
+                Case 2: DNS Resolution Fails
+            </button>
+
+            <button type="button" class="ping-case-button"
+                    data-case="timeout">
+                Case 3: Both Tests Time Out
+            </button>
+
+        </div>
+
+        <div class="ping-case-evidence">
+
+            <h4 id="ping-case-title">
+                Your Investigation Begins Here
+            </h4>
+            <p id="ping-case-description">
+                Select one of the three cases above
+                to examine Alex's network problem.
+            </p>
+
+            <div class="ping-case-terminal">
+
+                <pre id="ping-case-output">Waiting for you to select a case...</pre>
+
+            </div>
+
+            <div class="ping-case-analysis" aria-live="polite">
+
+                <h4>What Does the Evidence Tell You?</h4>
+                <p id="ping-case-meaning">
+                    Your analysis will appear here.
+                </p>
+
+                <h4>What Should You Investigate Next?</h4>
+
+                <p id="ping-case-next">
+                    Your next investigation step will appear here.
+                </p>
+
+            </div>
+
+        </div>
+
+        <p id="ping-case-status" class="ping-case-status"
+           aria-live="polite">
+            Investigation ready.
+        </p>
+
+    </div>
+    <!-- END SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
+
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 11: COMMON MISTAKES AND MISCONCEPTIONS -->
+<!-- ========================================== -->
+
+<section id="common-mistakes">
+
+    <h2>11. Common Mistakes and Misconceptions</h2>
+    <p>
+        Ping is a useful network troubleshooting tool.
+        However, beginners sometimes misunderstand what
+        its results actually tell us.
+    </p>
+
+    <p>
+        Let's examine some common mistakes and learn
+        how to interpret Ping results correctly.
+    </p>
+
+    <h3>Misconception 1: A Successful Ping Means the Website Is Working</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+    <p>
+        If Ping receives a reply from a website's server,
+        the website must be working correctly.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+
+    <p>
+        A successful Ping confirms that an ICMP Echo Reply
+        was received from the destination. It does not
+        prove that the website itself is functioning.
+    </p>
+
+    <p><strong>Example:</strong></p>
+    <p>
+        A computer may successfully Ping a server, but
+        the website could still display an error because
+        its web application or web service is unavailable.
+    </p>
+
+    <h3>Misconception 2: A Ping Timeout Means the Device Is Offline</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+
+    <p>
+        If Ping displays "Request timed out", the
+        destination device must be switched off.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+    <p>
+        A timeout means that an Echo Reply did not arrive
+        within the allowed waiting time.
+    </p>
+
+    <p>
+        The destination might be online but configured
+        to block ICMP requests or replies. A network
+        firewall or routing problem could also be involved.
+    </p>
+
+    <h3>Misconception 3: Ping Measures Internet Speed</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+    <p>
+        If Ping displays 20 milliseconds, the internet
+        connection must be fast.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+
+    <p>
+        Ping measures the Round-Trip Time (RTT) of
+        its test messages. It does not directly measure
+        download speed or upload speed.
+    </p>
+
+    <p><strong>Example:</strong></p>
+
+    <p>
+        A connection might have a low Ping time but
+        a slow download speed. These are different
+        measurements.
+    </p>
+    <h3>Misconception 4: Ping and Traceroute Do the Same Thing</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+
+    <p>
+        Ping and Traceroute are interchangeable network
+        troubleshooting commands.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+
+    <ul>
+        <li>Ping tests whether a destination responds to ICMP Echo messages.</li>
+        <li>Traceroute investigates the network path taken toward a destination.</li>
+    </ul>
+    <p>
+        They provide different kinds of information and
+        can be used together during troubleshooting.
+    </p>
+
+    <h3>Misconception 5: Ping Always Works on Every Network</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+
+    <p>
+        Every computer and network must respond to Ping.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+    <p>
+        Some networks, devices, and firewalls block
+        ICMP Echo Requests or Echo Replies for security
+        or administrative reasons.
+    </p>
+
+    <p>
+        Therefore, a destination might be reachable
+        through other services even when Ping receives
+        no reply.
+    </p>
+
+    <h3>Misconception 6: A Hostname and an IP Address Are the Same Thing</h3>
+
+    <p><strong>Incorrect understanding:</strong></p>
+    <p>
+        Entering google.com and entering an IP address
+        are exactly the same operation.
+    </p>
+
+    <p><strong>Correct understanding:</strong></p>
+
+    <p>
+        A hostname is a human-readable name, while
+        an IP address identifies a network destination.
+        DNS helps translate hostnames into IP addresses.
+    </p>
+
+    <p>
+        For example, ping google.com normally requires
+        the computer to resolve the hostname before
+        attempting the Ping operation.
+    </p>
+    <h3>Quick Comparison: Myth vs. Reality</h3>
+
+    <ul>
+        <li><strong>Myth:</strong> Successful Ping means the website works.</li>
+        <li><strong>Reality:</strong> It confirms an ICMP reply was received.</li>
+
+        <li><strong>Myth:</strong> Timeout means the device is offline.</li>
+        <li><strong>Reality:</strong> An ICMP reply did not arrive in time.</li>
+        <li><strong>Myth:</strong> Ping measures download speed.</li>
+        <li><strong>Reality:</strong> Ping measures round-trip time.</li>
+
+        <li><strong>Myth:</strong> Ping and Traceroute are identical.</li>
+        <li><strong>Reality:</strong> They investigate different aspects of networking.</li>
+
+        <li><strong>Myth:</strong> Every device must answer Ping.</li>
+        <li><strong>Reality:</strong> ICMP traffic can be blocked.</li>
+        <li><strong>Myth:</strong> Hostnames and IP addresses are identical.</li>
+        <li><strong>Reality:</strong> DNS resolves hostnames into IP addresses.</li>
+    </ul>
+
+    <!-- ========================================== -->
+<!-- SECTION 11 — INTERACTIVE MYTH VS FACT -->
+<!-- ========================================== -->
+
+<div class="ping-myth-challenge" id="ping-myth-challenge">
+
+    <h3>11.1 Test Your Understanding: Myth or Fact?</h3>
+    <p>
+        Explore six common misconceptions about Ping.
+        Select a statement to discover whether it is
+        a myth or a fact and understand the correct explanation.
+    </p>
+
+    <div class="ping-myth-buttons">
+
+        <button type="button" class="ping-myth-button"
+                data-myth="website">
+            Challenge 1: Website Availability
+        </button>
+        <button type="button" class="ping-myth-button"
+                data-myth="timeout">
+            Challenge 2: Ping Timeout
+        </button>
+
+        <button type="button" class="ping-myth-button"
+                data-myth="speed">
+            Challenge 3: Internet Speed
+        </button>
+
+        <button type="button" class="ping-myth-button"
+                data-myth="traceroute">
+            Challenge 4: Traceroute
+        </button>
+        <button type="button" class="ping-myth-button"
+                data-myth="firewall">
+            Challenge 5: ICMP Blocking
+        </button>
+
+        <button type="button" class="ping-myth-button"
+                data-myth="hostname">
+            Challenge 6: Hostname and IP
+        </button>
+
+    </div>
+
+    <div class="ping-myth-result" aria-live="polite">
+
+        <p id="ping-myth-number">Challenge 1 of 6</p>
+        <h4 id="ping-myth-title">
+            Select Your First Challenge
+        </h4>
+
+        <p id="ping-myth-statement">
+            Choose one of the six statements above
+            to begin exploring.
+        </p>
+
+        <div id="ping-myth-verdict">
+            Your answer will be explained here.
+        </div>
+
+        <h4>Why?</h4>
+
+        <p id="ping-myth-explanation">
+            The technical explanation will appear here.
+        </p>
+
+        <h4>Remember This</h4>
+        <p id="ping-myth-takeaway">
+            Your learning takeaway will appear here.
+        </p>
+
+    </div>
+
+    <p id="ping-myth-status" aria-live="polite">
+        Myth vs. Fact challenge ready.
+    </p>
+
+</div>
+
+<!-- END SECTION 11 — INTERACTIVE MYTH VS FACT -->
+
+    <h3>Key Takeaway</h3>
+    <p>
+        Ping provides useful evidence about network
+        communication, but it does not tell us everything.
+        Always interpret its results alongside other
+        troubleshooting information.
+    </p>
+
+</section>
+
+<!-- ========================================== -->
+<!-- SECTION 12: LIMITATIONS AND TROUBLESHOOTING -->
+<!-- ========================================== -->
+
+<section id="limitations-troubleshooting">
+
+    <h2>12. Limitations and Troubleshooting</h2>
+    <h3>12.1 What Can Ping Tell Us?</h3>
+
+    <p>
+        Ping helps us investigate communication between
+        devices on an IP network. By examining its results,
+        we can learn useful information about network
+        reachability and response time.
+    </p>
+
+    <h4>1. Whether a Destination Responds</h4>
+
+    <p>
+    If Ping receives an ICMP Echo Reply, we know
+    that a response came back from the destination
+    for that particular test.
+</p>
+    <h4>2. Round-Trip Time (RTT)</h4>
+
+    <p>
+        Ping can measure how long a test request takes
+        to travel to the destination and for its reply
+        to return.
+    </p>
+
+    <h4>3. Possible Packet Loss</h4>
+
+    <p>
+    If some Ping requests do not receive replies,
+    Ping may report packet loss. This can help us
+    investigate possible communication problems.
+    </p>
+
+    <h4>4. Changes in Response Time</h4>
+    <p>
+        By comparing multiple Ping results, we can
+        observe whether response times vary.
+        Large variations may indicate changing network
+        conditions, although they do not identify
+        the exact cause by themselves.
+    </p>
+
+    <h4>Key Takeaway</h4>
+
+    <p>
+        Ping provides useful clues about destination
+        responses, round-trip time, and possible packet
+        loss. These clues help us investigate network
+        communication.
+    </p>
+
+</section>
+
+<!-- SECTION 12.2: WHAT PING CANNOT TELL US -->
+
+<section id="ping-limitations">
+
+    <h3>12.2 What Can Ping NOT Tell Us?</h3>
+
+    <p>
+        Although Ping is useful, it cannot tell us
+        everything about a network or a destination device.
+        It provides limited information about ICMP communication.
+    </p>
+
+    <h4>1. Whether a Website Is Working Correctly</h4>
+
+    <p>
+        A successful Ping does not guarantee that
+        a website will open in a browser.
+    </p>
+    <p>
+        The website's web service or application
+        might still have a problem.
+    </p>
+
+    <h4>2. Whether a Device Is Definitely Offline</h4>
+
+    <p>
+        If Ping receives no reply, we cannot immediately
+        conclude that the destination device is switched off.
+    </p>
+
+    <p>
+        A firewall or network policy may be blocking
+        ICMP messages.
+    </p>
+
+    <h4>3. The Actual Download or Upload Speed</h4>
+    <p>
+    Ping measures Round-Trip Time, not download
+    or upload throughput. Throughput describes
+    how much data can be transferred in a given
+    amount of time.
+</p>
+
+    <h4>4. The Exact Cause of a Network Problem</h4>
+
+    <p>
+        A timeout or high response time may indicate
+        a communication problem, but Ping alone
+        cannot always identify its exact cause.
+    </p>
+
+    <h4>5. The Complete Quality of a Network Connection</h4>
+    <p>
+        A few successful Ping replies do not guarantee
+        that every network application, service,
+        or connection will work reliably.
+    </p>
+
+    <h4>Key Takeaway</h4>
+
+    <p>
+        Ping is a diagnostic tool that provides useful
+        clues. It is not a complete test of internet
+        speed, website functionality, or overall
+        network health.
+    </p>
+
+</section>
+
+
+<!-- SECTION 12.3: WHY MIGHT PING FAIL? -->
+
+<section id="ping-failure-reasons">
+    <h3>12.3 Why Might Ping Fail?</h3>
+
+    <p>
+        Sometimes a computer sends an ICMP Echo Request
+        but does not receive an Echo Reply.
+        This may happen for several different reasons.
+    </p>
+
+    <h4>1. The Destination Device Is Unavailable</h4>
+
+    <p>
+        The destination computer or device may be
+        switched off, disconnected, or temporarily unavailable.
+    </p>
+    <p>
+        If the destination device is unavailable or does not process the request, it may not send an Echo Reply.
+    </p>
+
+    <h4>2. A Firewall Blocks ICMP Messages</h4>
+
+    <p>
+        A firewall is a security system that controls
+        network traffic entering or leaving a device
+        or network.
+    </p>
+
+    <p>
+        Some firewalls block ICMP Echo Requests
+        or Echo Replies. As a result, Ping may fail
+        even when the destination device is online.
+    </p>
+    <h4>3. A Local Network Connection Problem</h4>
+
+    <p>
+        The source computer may have a problem
+        connecting to its local network.
+    </p>
+
+    <p>Possible examples include:</p>
+
+    <ul>
+        <li>Wi-Fi is disconnected.</li>
+        <li>An Ethernet cable is unplugged.</li>
+        <li>The network adapter is disabled.</li>
+        <li>The computer has an incorrect network configuration.</li>
+    </ul>
+
+    <h4>4. A Router or Routing Problem</h4>
+    <p>
+        Routers help forward IP packets toward
+        their destinations. If a router or routing
+        path has a problem, packets may not reach
+        the destination or their replies may not return.
+    </p>
+
+    <h4>5. Network Congestion or Packet Loss</h4>
+
+    <p>
+        When a network is busy, packets may experience
+        delays or may be lost.
+    </p>
+
+    <p>
+        This can cause Ping response times to increase
+        or some Echo Replies to fail to arrive.
+    </p>
+    <h4>6. DNS or Hostname Resolution Problems</h4>
+
+    <p>
+        When a user enters a hostname such as
+        google.com, the computer normally needs
+        to resolve that name into an IP address.
+    </p>
+
+    <p>
+        If DNS resolution fails, Ping may report
+        that it cannot find the hostname.
+        In this situation, the computer may not
+        have reached the stage of sending an
+        ICMP Echo Request to the intended destination.
+    </p>
+    <h4>7. ICMP Traffic Is Rate-Limited</h4>
+
+    <p>
+        Some devices and networks limit how many
+        ICMP messages they process within a period
+        of time.
+    </p>
+
+    <p>
+        This can cause some Ping requests or replies
+        to be delayed or ignored.
+    </p>
+
+    <h4>Important Difference: Timeout vs. Hostname Error</h4>
+
+    <p>
+        <strong>Request timed out:</strong>
+        The computer did not receive an Echo Reply
+        within the allowed waiting time.
+    </p>
+    <p>
+        <strong>Could not find host:</strong>
+        The computer could not resolve the hostname
+        into an IP address.
+    </p>
+
+    <p>
+        These messages describe different problems
+        and should not be confused.
+    </p>
+
+    <h4>Key Takeaway</h4>
+    <p>
+        A failed Ping test can have several possible
+        causes, including unavailable devices, firewalls,
+        network connection problems, routing issues,
+        congestion, and DNS failures. We must investigate
+        the situation before deciding what went wrong.
+    </p>
+
+</section>
+
+
+<section id="troubleshooting-checklist">
+
+    <h3>12.4 A Beginner's Troubleshooting Checklist</h3>
+    <p>
+        When a network problem occurs, we should not guess
+        what is wrong. Instead, we can perform a series
+        of simple checks to investigate the problem.
+    </p>
+
+    <p>
+        Follow these steps in order. Each test helps us
+        examine a different part of the communication process.
+    </p>
+
+    <h4>Step 1: Check the Destination Address</h4>
+
+    <p>
+        First, check whether the IP address or hostname
+        has been entered correctly.
+    </p>
+    <ul>
+        <li>Check for typing mistakes.</li>
+        <li>Make sure the hostname is spelled correctly.</li>
+        <li>Verify that the intended destination is correct.</li>
+    </ul>
+
+    <p>
+        <strong>Why?</strong> An incorrect address or hostname
+        can cause the test to target the wrong destination
+        or fail during name resolution.
+    </p>
+
+    <h4>Step 2: Check the Local Network Connection</h4>
+    <p>
+        Make sure the computer is connected to its local network.
+    </p>
+
+    <ul>
+        <li>Check whether Wi-Fi is enabled and connected.</li>
+        <li>Check whether the Ethernet cable is connected.</li>
+        <li>Make sure the network adapter is enabled.</li>
+    </ul>
+
+    <p>
+        <strong>Why?</strong> If the computer is not properly
+        connected to its local network, it may not be able
+        to communicate with other devices.
+    </p>
+    <h4>Step 3: Test the Local Computer</h4>
+
+    <p>
+        Enter the following command:
+    </p>
+
+    <pre>ping 127.0.0.1</pre>
+
+    <p>
+        The address 127.0.0.1 is a special IPv4 loopback
+        address. It allows a computer to test its own
+        local TCP/IP networking software.
+    </p>
+
+    <p>
+        <strong>Why?</strong> This test helps investigate
+        whether the computer's local networking software
+        is responding.
+    </p>
+    <p>
+        <strong>Important:</strong> A successful loopback
+        test does not prove that Wi-Fi, Ethernet, the router,
+        or the internet connection is working.
+    </p>
+
+    <h4>Step 4: Test the Local Router</h4>
+
+    <p>
+        Next, find the IP address of the computer's
+        default gateway, which is commonly the local router.
+    </p>
+
+    <p>
+        Enter a Ping command using that gateway address.
+        For example, if the gateway address is 192.168.1.1:
+    </p>
+    <pre>ping 192.168.1.1</pre>
+
+    <p>
+        <strong>Why?</strong> This test helps check whether
+        the computer can communicate with its local gateway.
+    </p>
+
+    <p>
+        <strong>Important:</strong> Your router may use
+        a different IP address. Also, some routers do not
+        respond to ICMP requests.
+    </p>
+
+    <h4>Step 5: Test a Known External IP Address</h4>
+
+    <p>
+        Now, try testing a known external IP address:
+    </p>
+
+    <pre>ping 8.8.8.8</pre>
+    <p>
+        This address belongs to Google's public DNS service.
+        The test checks whether an ICMP response can be
+        received from that destination.
+    </p>
+
+    <p>
+        <strong>Why?</strong> If the local gateway responds
+        but the external destination does not, we have
+        another clue to investigate the connection beyond
+        the local network.
+    </p>
+
+    <h4>Step 6: Test a Hostname</h4>
+
+    <p>
+        Enter a hostname instead of an IP address:
+    </p>
+    <pre>ping google.com</pre>
+
+    <p>
+        The computer normally uses DNS to resolve the
+        hostname into an IP address before attempting
+        the Ping test.
+    </p>
+
+    <p>
+        <strong>Why?</strong> Comparing the hostname test
+        with the external IP-address test can help us
+        investigate possible DNS or name-resolution problems.
+    </p>
+
+    <h4>Step 7: Test the Actual Website or Application</h4>
+    <p>
+        Finally, open the website in a browser or test
+        the application that was originally causing trouble.
+    </p>
+
+    <p>
+        <strong>Why?</strong> Ping tests ICMP communication.
+        It does not guarantee that the website's web service
+        or application is working correctly.
+    </p>
+
+    <p>
+        A destination may respond to Ping while its website
+        remains unavailable.
+    </p>
+
+    <h4>How to Interpret the Investigation</h4>
+
+<ul>
+    <li>
+        <strong>Loopback test fails:</strong>
+        Investigate the computer's local TCP/IP networking software.
+    </li>
+
+    <li>
+        <strong>Loopback succeeds, gateway test fails:</strong>
+        Investigate the local network connection and gateway.
+        Also consider whether the gateway blocks ICMP.
+    </li>
+    <li>
+        <strong>Gateway responds, external IP test fails:</strong>
+        Investigate routing, internet connectivity, and possible
+        ICMP filtering beyond the local network.
+    </li>
+
+    <li>
+        <strong>External IP responds, hostname produces
+        a "Could not find host" error:</strong>
+        Investigate DNS or hostname resolution.
+    </li>
+    <li>
+        <strong>Ping succeeds, website fails:</strong>
+        Investigate the website's application, web service,
+        or browser connection.
+    </li>
+</ul>
+
+
+
+    <h4>Important Troubleshooting Reminder</h4>
+
+    <p>
+        These tests provide clues, not guaranteed diagnoses.
+        Firewalls, network policies, routing rules, and
+        ICMP filtering can affect the results.
+    </p>
+    <p>
+        A failed Ping test does not automatically identify
+        the exact cause of a network problem.
+    </p>
+
+
+    <h4>Key Takeaway</h4>
+
+    <p>
+        Good troubleshooting follows a logical sequence:
+        check the address, test the local computer,
+        investigate the local gateway, test external
+        communication, examine DNS, and finally check
+        the actual application.
+    </p>
+
+</section>
+
+<!-- SECTION 12.5: UNDERSTANDING THE SIMULATION -->
+<section id="simulation-limitations">
+
+    <h3>12.5 Understanding the Limitations of Our Ping Simulation</h3>
+
+    <p>
+        In Section 8, we explored an interactive Ping
+        simulation. It allowed us to observe how a
+        simulated request travels from one computer
+        to another and how a simulated reply returns.
+    </p>
+    <p>
+        However, it is important to understand that
+        this learning simulation is not the same as
+        performing a real Ping test over a network.
+    </p>
+
+    <h4>1. What Does Our Simulation Actually Do?</h4>
+
+    <p>
+        Our simulation runs inside a web browser using
+        HTML and JavaScript.
+    </p>
+    <ul>
+        <li>It displays two example computers.</li>
+        <li>It demonstrates a simulated Ping request.</li>
+        <li>It illustrates a simulated reply.</li>
+        <li>It displays a sample response time.</li>
+        <li>It helps students understand the basic communication process.</li>
+    </ul>
+
+    <h4>2. Does It Send Real ICMP Packets?</h4>
+
+    <p>
+        No. Our current browser-based simulation does
+        not send real ICMP Echo Request packets.
+    </p>
+    <p>
+        It does not contact another computer or verify
+        whether a real network destination is reachable.
+    </p>
+
+    <p>
+        Instead, JavaScript controls what appears on
+        the screen to demonstrate the steps of a Ping test.
+    </p>
+
+    <h4>3. Is the Displayed 25 ms a Real Network Measurement?</h4>
+    <p>
+    No. The response times displayed by our simulation
+    are programmed illustrative values. For example,
+    Normal mode displays response times of 24, 25, 27,
+    and 24 milliseconds, while Slow mode displays
+    response times of 176, 192, 181, and 185 milliseconds.
+</p>
+
+<p>
+    These values are not measured from actual network
+    requests or replies. Similarly, the packet-loss
+    and unavailable modes display programmed reply
+    and timeout outcomes.
+</p>
+<p>
+    A real Ping command measures the time between
+    sending an ICMP Echo Request and receiving
+    its corresponding ICMP Echo Reply.
+</p>
+
+    <h4>4. Why Use a Simulation Instead of a Real Ping Test?</h4>
+
+    <p>
+        A simulation allows beginners to understand
+        the communication process without needing
+        to configure a network or use a command-line
+        interface.
+    </p>
+    <ul>
+        <li>It makes abstract networking concepts easier to visualize.</li>
+        <li>It allows students to explore the process interactively.</li>
+        <li>It provides a safe and controlled learning environment.</li>
+        <li>It helps students understand the request-and-reply sequence.</li>
+    </ul>
+
+    <h4>5. Simulation vs. Real Ping</h4>
+    <ul>
+        <li>
+            <strong>Browser simulation:</strong>
+            Demonstrates the Ping process using programmed
+            visual behavior.
+        </li>
+
+        <li>
+            <strong>Real Ping:</strong>
+            Uses the operating system's networking
+            capabilities to send actual ICMP messages.
+        </li>
+
+        <li>
+            <strong>Simulation response time:</strong>
+            A sample value provided for learning.
+        </li>
+        <li>
+            <strong>Real Ping response time:</strong>
+            A
+            measurement based on an actual request
+            and its corresponding reply.
+        </li>
+    </ul>
+
+    <h4>Key Takeaway</h4>
+
+    <p>
+    Our interactive Ping simulation helps us
+    understand how Ping works, but it does not perform
+    a real network test. Its displayed response times
+    and packet outcomes are programmed examples,
+    not measurements from a real network.
+</p>
+
+</section>
+        <!-- ========================================== -->
+<!-- SECTION 12.6: INTERACTIVE NETWORK DIAGNOSTIC LAB -->
+<!-- ========================================== -->
+
+<section id="network-diagnostic-lab">
+
+    <h3>12.6 Interactive Network Diagnostic Lab</h3>
+    <p>
+        Imagine that you are using your computer and
+        suddenly a website refuses to open.
+        Instead of guessing what went wrong, you will
+        investigate the problem using a series of
+        network diagnostic tests.
+    </p>
+
+    <h4>Your Investigation Scenario</h4>
+
+    <div class="diagnostic-scenario">
+        <h5>The Website Is Not Loading</h5>
+        <p>
+            Alex is connected to a network, but cannot
+            open a website in the browser.
+            Alex wants to investigate where the
+            communication problem might be occurring.
+        </p>
+
+        <p>
+            Your task is to examine the available test
+            results and identify what they suggest.
+        </p>
+    </div>
+
+    <h4>Choose a Diagnostic Test</h4>
+    <p>
+        Select a test below to examine a different
+        part of the network communication process.
+    </p>
+
+    <div class="diagnostic-test-buttons">
+
+        <button
+            type="button"
+            class="diagnostic-test-button"
+            data-diagnostic-test="loopback"
+        >
+            Test 1: Local Computer
+        </button>
+        <button
+            type="button"
+            class="diagnostic-test-button"
+            data-diagnostic-test="gateway"
+        >
+            Test 2: Local Gateway
+        </button>
+
+        <button
+            type="button"
+            class="diagnostic-test-button"
+            data-diagnostic-test="external"
+        >
+            Test 3: External IP Address
+        </button>
+        <button
+            type="button"
+            class="diagnostic-test-button"
+            data-diagnostic-test="dns"
+        >
+            Test 4: Hostname Resolution
+        </button>
+
+        <button
+            type="button"
+            class="diagnostic-test-button"
+            data-diagnostic-test="website"
+        >
+            Test 5: Website Access
+        </button>
+
+    </div>
+    <div
+        class="diagnostic-result-panel"
+        id="diagnostic-result-panel"
+        aria-live="polite"
+    >
+
+        <p id="diagnostic-test-number">
+            Diagnostic Lab Ready
+        </p>
+
+        <h4 id="diagnostic-test-title">
+            Begin Your Investigation
+        </h4>
+
+        <p id="diagnostic-test-description">
+            Select a diagnostic test above to examine
+            its example result.
+        </p>
+        <div class="diagnostic-command-output">
+            <h5>Example Test Result</h5>
+
+            <pre id="diagnostic-test-output">Your test result will appear here.</pre>
+        </div>
+
+        <h5>What Does This Result Suggest?</h5>
+
+        <p id="diagnostic-test-meaning">
+            The explanation will appear here after
+            you select a test.
+        </p>
+
+        <h5>What Should You Remember?</h5>
+        <p id="diagnostic-test-takeaway">
+            Remember: a diagnostic result provides
+            clues, not necessarily a complete diagnosis.
+        </p>
+
+    </div>
+
+    <p
+        id="diagnostic-lab-status"
+        aria-live="polite"
+    >
+        Network Diagnostic Lab ready.
+    </p>
+    <p class="diagnostic-simulation-note">
+        <strong>Learning simulation:</strong>
+        The results in this diagnostic lab are
+        illustrative examples. They do not represent
+        tests performed on a real network.
+    </p>
+
+</section>
+
+<!-- END SECTION 12.6: INTERACTIVE NETWORK DIAGNOSTIC LAB -->
+
+        <!-- ================================== -->
+<!-- SECTION 13: CONNECTIONS TO OTHER CONCEPTS -->
+<!-- ================================== -->
+
+<section id="ping-connections">
+    <h2>13. Connections to Other Concepts</h2>
+
+    <p>
+        Ping is not an isolated networking tool. It works with several
+        important networking concepts, including IP addresses, ICMP,
+        DNS, routers, packets, and network connectivity.
+    </p>
+
+    <p>
+        Understanding how these concepts connect helps us understand
+        how computers communicate and how network problems can be
+        investigated.
+    </p>
+
+        <h3>13.1 How Is Ping Connected to IP Addresses?</h3>
+    <p>
+        An IP address is a numerical address used to
+        identify a device or network interface on an
+        IP network.
+    </p>
+
+    <p>
+        Ping uses IP addressing to send its test messages
+        toward the intended destination.
+    </p>
+
+    <h4>How Do They Work Together?</h4>
+    <ol>
+        <li>The user specifies a destination using an IP address or hostname.</li>
+        <li>If a hostname is entered, DNS may resolve it into an IP address.</li>
+        <li>Ping uses the resulting destination IP address to send its ICMP Echo Request.</li>
+        <li>The destination may send an ICMP Echo Reply.</li>
+    </ol>
+
+    <h4>Practical Example</h4>
+
+    <pre>ping 8.8.8.8</pre>
+    <p>
+        In this example, 8.8.8.8 is the destination
+        IP address. The computer attempts to send
+        ICMP Echo Requests to that address.
+    </p>
+
+    <h4>Key Takeaway</h4>
+
+    <p>
+        IP addressing tells Ping where to send its
+        test messages. Without identifying the
+        destination, the computer would not know
+        where to direct the request.
+    </p>
+
+    <h3>13.2 How Is Ping Connected to DNS?</h3>
+<p>
+    DNS stands for Domain Name System. It translates
+    human-friendly domain names, such as google.com,
+    into IP addresses that computers use to communicate.
+</p>
+
+<p>
+    When a user enters a hostname instead of an IP
+    address in Ping, DNS helps the computer find the
+    corresponding IP address.
+</p>
+
+<h4>How Do They Work Together?</h4>
+<ol>
+    <li>The user enters a hostname, such as google.com.</li>
+    <li>The computer uses DNS to resolve the hostname into an IP address.</li>
+    <li>If DNS resolution succeeds, Ping obtains the destination IP address.</li>
+    <li>Ping uses that IP address to send ICMP Echo Requests.</li>
+    <li>The destination may respond with ICMP Echo Replies.</li>
+</ol>
+
+<h4>Practical Example</h4>
+
+<pre>ping google.com</pre>
+<p>
+    In this example, the computer first needs to
+    resolve google.com into an IP address. Ping then
+    uses that address to send its test messages.
+</p>
+
+<h4>What If DNS Fails?</h4>
+
+<p>
+    If the computer cannot resolve the hostname,
+    Ping may display a message such as
+    "Could not find host." In that situation,
+    Ping cannot proceed using the hostname.
+</p>
+
+<h4>Key Takeaway</h4>
+<p>
+    DNS finds the IP address associated with a
+    hostname. Ping uses that IP address to send
+    its ICMP test messages. DNS identifies the
+    destination; Ping tests its response.
+</p>
+
+
+        <h3>13.3 How Is Ping Connected to ICMP?</h3>
+
+<p>
+    ICMP stands for Internet Control Message Protocol.
+    It is a network-layer protocol used by devices to
+    exchange control, diagnostic, and error messages
+    across IP networks.
+</p>
+<p>
+    Ping uses ICMP to test whether a destination can
+    be reached and whether it responds to network
+    messages.
+</p>
+
+<h4>How Do They Work Together?</h4>
+<ol>
+    <li>The user enters a destination IP address or hostname.</li>
+    <li>If a hostname is entered, DNS may resolve it into an IP address.</li>
+    <li>Ping sends an ICMP Echo Request to the destination.</li>
+    <li>The destination may respond with an ICMP Echo Reply.</li>
+    <li>Ping measures the time taken to receive the reply.</li>
+</ol>
+
+<h4>Practical Example</h4>
+
+<pre>ping 8.8.8.8</pre>
+<p>
+    In this example, Ping sends ICMP Echo Requests
+    to the IP address 8.8.8.8. If the destination
+    responds, it sends ICMP Echo Replies back.
+</p>
+
+<h4>What If No Reply Is Received?</h4>
+
+<p>
+    If no Echo Reply arrives, Ping may display
+    a timeout message. This does not always mean
+    the destination is offline. A firewall or
+    network policy may be blocking ICMP messages.
+</p>
+
+<h4>Key Takeaway</h4>
+<p>
+    ICMP provides the message types Ping uses
+    to test network reachability. Ping sends
+    Echo Requests and waits for Echo Replies.
+    ICMP provides the communication mechanism;
+    Ping uses it as a diagnostic tool.
+</p>
+
+    <!-- 13.4 Connection to Routers -->
+<div class="concept-subsection">
+    <h3>13.4 How Is Ping Connected to Routers?</h3>
+    <h4>What Is a Router?</h4>
+    <p>
+        A router is a networking device that connects different
+        networks and forwards data between them. It helps data
+        travel from one network to another until it reaches
+        its destination.
+    </p>
+
+    <h4>How Does Ping Use Routers?</h4>
+    <p>
+        When you Ping a device outside your local network,
+        the ICMP Echo Request may travel through one or more
+        routers before reaching the destination.
+    </p>
+    <ol>
+        <li>Your computer creates an ICMP Echo Request.</li>
+        <li>The request is sent towards the destination.</li>
+        <li>Your local router forwards it towards the next network.</li>
+        <li>Other routers may forward it along the route.</li>
+        <li>The destination may send an ICMP Echo Reply.</li>
+        <li>The reply travels back towards your computer.</li>
+    </ol>
+
+    <h4>Example</h4>
+    <p>
+        Suppose you enter:
+    </p>
+    <pre><code>ping 8.8.8.8</code></pre>
+    <p>
+        If the destination is outside your local network,
+        your computer usually sends the request through its
+        default gateway, which is commonly your local router.
+        Other routers may forward the request across networks
+        towards the destination.
+    </p>
+    <h4>Important Connection: Ping and Traceroute</h4>
+    <p>
+        Ping helps test whether a destination responds to
+        ICMP Echo Requests. However, Ping does not normally
+        show every router along the path.
+    </p>
+    <p>
+        Traceroute (called tracert on Windows) is a separate
+        network diagnostic tool that helps reveal the routers
+        or network hops along a route.
+    </p>
+    <h4>Key Takeaway</h4>
+    <p>
+        Routers help forward Ping messages between networks.
+        Ping tests the destination's response, while Traceroute
+        helps investigate the path taken by network traffic.
+    </p>
+</div>
+
+    <!-- 13.5 Connection to Packets -->
+<div class="concept-subsection">
+    <h3>13.5 How Is Ping Connected to Packets?</h3>
+    <h4>What Is a Network Packet?</h4>
+    <p>
+        A network packet is a formatted unit of data
+        sent from one device to another across a network.
+        It contains information that helps the network
+        deliver the data to the correct destination.
+    </p>
+    <h4>How Is Ping Connected to Packets?</h4>
+    <p>
+        When you use Ping, your computer creates an
+        ICMP Echo Request message. This message is
+        carried inside an IP packet so it can travel
+        across an IP network.
+    </p>
+    <ol>
+        <li>Your computer creates an ICMP Echo Request message.</li>
+        <li>The message is placed inside an IP packet.</li>
+        <li>The packet travels through the network towards the destination.</li>
+        <li>The destination may return an ICMP Echo Reply message.</li>
+        <li>The reply is carried inside another IP packet.</li>
+        <li>Your computer receives the reply and calculates the round-trip time.</li>
+    </ol>
+    <h4>Example</h4>
+    <p>
+        Suppose you enter:
+    </p>
+    <pre><code>ping 8.8.8.8</code></pre>
+
+    <p>
+        Your computer sends an ICMP Echo Request
+        carried inside an IP packet towards 8.8.8.8.
+        If the destination responds, an ICMP Echo Reply
+        is sent back in an IP packet.
+    </p>
+    <h4>Why Are Packets Important?</h4>
+    <p>
+        Packets allow data to travel across interconnected
+        networks in manageable units. Routers examine
+        packet information to help forward packets
+        towards their destinations.
+    </p>
+
+    <h4>Key Takeaway</h4>
+    <p>
+        Ping uses ICMP messages carried inside IP packets.
+        The packets travel across the network, allowing
+        Ping to test whether a destination responds.
+    </p>
+</div>
+
+<!-- 13.6 Connection to Network Connectivity -->
+<div class="concept-subsection">
+    <h3>13.6 How Is Ping Connected to Network Connectivity?</h3>
+
+    <h4>What Is Network Connectivity?</h4>
+    <p>
+        Network connectivity means that devices can
+        communicate with one another through a network.
+        This communication allows devices to exchange
+        information and access network resources.
+    </p>
+    <h4>How Is Ping Connected to Network Connectivity?</h4>
+    <p>
+        Ping helps us test whether a destination responds to ICMP Echo Request messages by returning ICMP Echo Reply messages.
+    </p>
+    <ol>
+        <li>Your computer sends an ICMP Echo Request towards a destination.</li>
+        <li>The request travels across the network.</li>
+        <li>The destination may receive the request.</li>
+        <li>If it responds, it sends an ICMP Echo Reply.</li>
+        <li>Your computer receives the reply and reports the response time.</li>
+    </ol>
+    <h4>Example</h4>
+    <p>
+        Suppose your computer needs to communicate
+        with another device on a network. You enter:
+    </p>
+    <pre><code>ping 192.168.1.10</code></pre>
+
+    <p>
+        If the destination responds, Ping indicates
+        that communication was possible between
+        your computer and that destination at that time.
+    </p>
+    <h4>Important Limitation</h4>
+    <p>
+        A successful Ping does not prove that every
+        network service or application is working.
+        Similarly, a failed Ping does not always mean
+        the destination is offline. A firewall or
+        network policy may block ICMP messages.
+    </p>
+    <h4>Key Takeaway</h4>
+    <p>
+        Ping is a useful tool for testing basic
+        network reachability, but it does not
+        guarantee complete network connectivity
+        or that every application is working.
+    </p>
+</div>
+
+    <div class="concept-subsection">
+    <h3>13.7 Latency</h3>
+    <h4>What Is Latency?</h4>
+    <p>
+       Latency is the delay experienced when data travels through a network from one point to another.
+    </p>
+    <p>
+        In simple words, latency tells us how long we wait for a
+        message to reach its destination.
+    </p>
+    <h4>How Is Latency Related to Ping?</h4>
+    <p>
+        Ping measures the time taken for an ICMP Echo Request to travel
+        to a destination and for the ICMP Echo Reply to return.
+        This measurement is called Round-Trip Time (RTT).
+    </p>
+    <h4>Understanding Round-Trip Time</h4>
+    <ol>
+        <li>Your computer sends an ICMP Echo Request.</li>
+        <li>The request travels through the network.</li>
+        <li>The destination receives the request.</li>
+        <li>The destination sends an ICMP Echo Reply.</li>
+        <li>Your computer receives the reply and measures the elapsed time.</li>
+    </ol>
+    <h4>Example</h4>
+    <p>
+        Suppose you run:
+    </p>
+    <pre><code>ping google.com</code></pre>
+    <p>
+        Imagine the result shows:
+    </p>
+    <pre><code>Reply from destination: time=25ms</code></pre>
+    <p>
+        This means the measured round-trip time was approximately
+        25 milliseconds (ms).
+    </p>
+    <h4>Low Latency vs. High Latency</h4>
+    <ul>
+        <li><strong>Low latency:</strong> Messages complete their journey quickly.</li>
+        <li><strong>High latency:</strong> Messages take longer to complete their journey.</li>
+    </ul>
+    <h4>Latency vs. Bandwidth</h4>
+    <ul>
+        <li><strong>Latency:</strong> How long data takes to travel.</li>
+        <li><strong>Bandwidth:</strong> How much data a network can transfer per unit of time.</li>
+    </ul>
+    <p>
+        A network can have high bandwidth but still experience high latency.
+        These two measurements describe different aspects of network performance.
+    </p>
+    <h4>Key Takeaway</h4>
+    <p>
+        Latency describes communication delay. Ping measures round-trip
+        time (RTT), helping us understand how quickly a destination
+        responds to a network request. Lower RTT generally means a
+        faster response, but it does not automatically mean the entire
+        network is fast.
+    </p>
+</div>
+
+    <!-- Section 13.8: Bandwidth -->
+<div class="connection-subsection" id="bandwidth">
+
+    <h3>13.8 Bandwidth</h3>
+
+    <h4>What Is Bandwidth?</h4>
+    <p>
+        Bandwidth is the maximum amount of data that a network
+        connection can carry in a given amount of time.
+    </p>
+
+    <p>
+        In simple words, bandwidth tells us how much data
+a network connection can carry over a period of time.
+    </p>
+
+    <h4>How Is Bandwidth Related to Ping?</h4>
+    <p>
+        Ping measures how long it takes for a message to travel
+        to a destination and for a reply to return.
+        Bandwidth describes how much data a connection can carry
+        over time.
+    </p>
+
+    <ul>
+        <li>Ping helps us understand response delay.</li>
+        <li>Bandwidth describes data-carrying capacity.</li>
+        <li>They measure different aspects of network performance.</li>
+    </ul>
+
+    <h4>Simple Analogy: A Highway</h4>
+    <p>
+        Imagine a highway carrying cars.
+    </p>
+
+    <ul>
+        <li>Bandwidth is like the number of lanes on the highway.</li>
+        <li>More lanes can allow more cars to travel at once.</li>
+        <li>Latency is like the time a car takes to reach its destination.</li>
+    </ul>
+
+    <h4>Example</h4>
+
+    <p>
+        Imagine two internet connections:
+    </p>
+
+    <ul>
+        <li>Connection A: 50 Mbps bandwidth</li>
+        <li>Connection B: 200 Mbps bandwidth</li>
+    </ul>
+    <p>
+        Connection B has a higher stated bandwidth capacity.
+        However, this does not automatically mean it has lower latency.
+    </p>
+
+    <h4>Can Ping Measure Bandwidth?</h4>
+
+    <p>
+        No. Ping is not designed to measure bandwidth.
+        It measures round-trip time and can also report packet loss.
+        Other tools, such as internet speed tests, estimate download
+        and upload speeds.
+    </p>
+    <p>
+        <strong>Key Takeaway:</strong>
+        Bandwidth describes how much data a connection can carry
+        over time, while latency describes delay.
+        Ping measures round-trip time, not bandwidth.
+    </p>
+
+</div>
+
+    <!-- ========================================== -->
+<!-- SECTION 13.9: INTERACTIVE CONCEPT CONNECTION MAP -->
+<!-- ========================================== -->
+
+<div class="ping-concept-map" id="ping-concept-map">
+
+    <h3>13.9 Interactive Concept Connection Map</h3>
+    <p>
+        Ping works together with several important networking
+        concepts. Explore the connections below to understand
+        how these concepts contribute to network communication.
+    </p>
+
+    <h4>Explore the Concepts Connected to Ping</h4>
+    <div class="concept-map-center">
+        <div class="concept-map-ping-node">
+            <span class="concept-map-node-label">CENTRAL CONCEPT</span>
+            <strong>PING</strong>
+            <span>Network Diagnostic Tool</span>
+        </div>
+    </div>
+
+    <div class="concept-map-connections">
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="ip"
+        >
+            <strong>IP Addresses</strong>
+            <span>Where should the request go?</span>
+        </button>
+
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="dns"
+        >
+            <strong>DNS</strong>
+            <span>How is a hostname resolved?</span>
+        </button>
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="icmp"
+        >
+            <strong>ICMP</strong>
+            <span>What messages does Ping use?</span>
+        </button>
+
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="routers"
+        >
+            <strong>Routers</strong>
+            <span>How do packets travel?</span>
+        </button>
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="packets"
+        >
+            <strong>Packets</strong>
+            <span>How is information carried?</span>
+        </button>
+
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="connectivity"
+        >
+            <strong>Network Connectivity</strong>
+            <span>Can devices communicate?</span>
+        </button>
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="latency"
+        >
+            <strong>Latency</strong>
+            <span>How long does communication take?</span>
+        </button>
+
+        <button
+            type="button"
+            class="concept-map-button"
+            data-concept="bandwidth"
+        >
+            <strong>Bandwidth</strong>
+            <span>How much data can travel?</span>
+        </button>
+
+    </div>
+    <div
+        class="concept-map-explanation"
+        id="concept-map-explanation"
+        aria-live="polite"
+    >
+
+        <p id="concept-map-label">
+            CONCEPT EXPLORER
+        </p>
+
+        <h4 id="concept-map-title">
+            Select a Networking Concept
+        </h4>
+
+        <p id="concept-map-description">
+            Choose any concept above to discover
+            how it connects to Ping.
+        </p>
+
+        <h5>How Does It Connect to Ping?</h5>
+        <p id="concept-map-connection">
+            The connection will be explained here.
+        </p>
+
+        <h5>Practical Example</h5>
+
+        <p id="concept-map-example">
+            A practical example will appear here.
+        </p>
+
+        <h5>Remember This</h5>
+
+        <p id="concept-map-takeaway">
+            Each networking concept contributes
+            differently to communication.
+        </p>
+
+    </div>
+    <p
+        id="concept-map-status"
+        aria-live="polite"
+    >
+        Concept Connection Map ready.
+    </p>
+
+</div>
+
+<!-- END SECTION 13.9: INTERACTIVE CONCEPT CONNECTION MAP -->
+
+
+</section>
+
+        <!------=================================----->
+        <!-- SECTION 14: KNOWLEDGE ASSESSMENT -->
+        <!------=====≠=============================----->
+
+<section id="knowledge-assessment">
+
+    <h2>14. Knowledge Assessment</h2>
+    <p>
+        Now that we understand how Ping works, let's test
+        what we have learned.
+    </p>
+
+    <p>
+        This assessment will help us check our understanding
+        of Ping, IP addresses, DNS, ICMP, routers, packets,
+        network connectivity, latency, and bandwidth.
+    </p>
+
+    <p>
+        Read each question carefully, select your answer,
+        and learn from the explanation provided.
+    </p>
+
+
+    <!-- ASSESSMENT PROGRESS DASHBOARD -->
+    <div class="quiz-dashboard" id="ping-quiz-dashboard"
+         aria-live="polite">
+
+        <div class="quiz-progress-heading">
+            <h3>Assessment Progress</h3>
+
+            <p>
+                <span id="quiz-answered-count">0</span>
+                of 10 questions answered
+            </p>
+        </div>
+        <div class="quiz-progress-track"
+             id="quiz-progress-track"
+             role="progressbar"
+             aria-label="Assessment completion"
+             aria-valuemin="0"
+             aria-valuemax="10"
+             aria-valuenow="0">
+
+            <div class="quiz-progress-fill"
+                 id="quiz-progress-fill">
+            </div>
+
+        </div>
+
+        <div class="quiz-score-preview">
+
+            <span>Correct answers so far</span>
+            <strong id="quiz-correct-count">0</strong>
+
+        </div>
+
+    </div>
+
+    <!-- FINAL ASSESSMENT SUMMARY -->
+
+    <div class="quiz-final-summary"
+         id="quiz-final-summary"
+         hidden
+         aria-live="polite">
+
+        <h3>Assessment Complete!</h3>
+
+        <p id="quiz-final-score"></p>
+
+        <p id="quiz-performance-message"></p>
+
+        <button type="button"
+                id="quiz-restart-button">
+            Restart Assessment
+        </button>
+
+    </div>
+
+        <!-- QUESTION 1 -->
+
+    <div class="quiz-question" id="question-1">
+
+        <h3>Question 1: What Is the Primary Purpose of Ping?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. To measure download speed.
+            </button>
+            <button type="button" class="quiz-option">
+                B. To test whether a destination responds over a network.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. To translate a hostname into an IP address.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. To identify every router along a network path.
+            </button>
+
+        </div>
+
+        <div id="question-1-feedback" aria-live="polite">
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 2 -->
+
+    <div class="quiz-question" id="question-2">
+
+        <h3>Question 2: Does Successful Ping Guarantee That a Website Works?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. Yes, it guarantees that every website feature works.
+            </button>
+            <button type="button" class="quiz-option">
+                B. Yes, it guarantees that the website loads correctly.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. No, it only confirms that the destination responds to Ping.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. No, it proves that the internet connection is completely unavailable.
+            </button>
+
+        </div>
+        <div id="question-2-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 3 -->
+
+    <div class="quiz-question" id="question-3">
+
+        <h3>Question 3: What Is the Difference Between "Request Timed Out" and "Could Not Find Host"?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+            <button type="button" class="quiz-option">
+                A. Both messages mean that the destination is definitely offline.
+            </button>
+
+            <button type="button" class="quiz-option">
+                B. "Request timed out" means DNS failed, while "Could not find host" means the destination did not reply.
+            </button>
+            <button type="button" class="quiz-option">
+                C. "Request timed out" means no Ping reply arrived in time, while "Could not find host" means the hostname could not be resolved to an IP address.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. Both messages mean that the internet connection is working correctly.
+            </button>
+
+        </div>
+
+        <div id="question-3-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION 4 -->
+
+    <div class="quiz-question" id="question-4">
+
+        <h3>Question 4: What Is the Relationship Between DNS and an IP Address?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. DNS measures the time taken by network packets to reach a destination.
+            </button>
+            <button type="button" class="quiz-option">
+                B. DNS translates a hostname, such as google.com, into an IP address.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. DNS identifies every router between two computers.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. DNS measures the download and upload speed of a network.
+            </button>
+
+        </div>
+        <div id="question-4-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION 5 -->
+
+    <div class="quiz-question" id="question-5">
+
+        <h3>Question 5: What Is the Difference Between Latency and Bandwidth?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+            <button type="button" class="quiz-option">
+                A. Latency measures data-carrying capacity, while bandwidth measures response delay.
+            </button>
+
+            <button type="button" class="quiz-option">
+                B. Latency and bandwidth both measure download speed.
+            </button>
+            <button type="button" class="quiz-option">
+                C. Latency measures response delay, while bandwidth describes how much data a connection can carry over time.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. Latency identifies network devices, while bandwidth translates hostnames into IP addresses.
+            </button>
+
+        </div>
+
+        <div id="question-5-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+    <!-- QUESTION 6 -->
+
+    <div class="quiz-question" id="question-6">
+
+        <h3>Question 6: What Does a Router Do When Ping Communicates With a Destination on Another Network?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. It translates the destination hostname into an IP address.
+            </button>
+            <button type="button" class="quiz-option">
+                B. It measures the round-trip time of the Ping request.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. It converts the ICMP Echo Request into a website request.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. It forwards IP packets toward their destination across networks.
+            </button>
+
+        </div>
+        <div id="question-6-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION 7 -->
+
+    <div class="quiz-question" id="question-7">
+
+        <h3>Question 7: What Does a Successful Ping Tell Us About Network Connectivity?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+            <button type="button" class="quiz-option">
+                A. Every application and website on the destination is working correctly.
+            </button>
+
+            <button type="button" class="quiz-option">
+                B. The destination has no firewall or network restrictions.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. The destination responded to the Ping request with an ICMP Echo Reply.
+            </button>
+            <button type="button" class="quiz-option">
+                D. The network has unlimited bandwidth and zero latency.
+            </button>
+
+        </div>
+
+        <div id="question-7-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION 8 -->
+
+    <div class="quiz-question" id="question-8">
+
+        <h3>Question 8: What Does Packet Loss Mean in a Ping Test?</h3>
+
+        <p>
+            Choose the correct answer.
+        </p>
+
+        <div class="quiz-options">
+            <button type="button" class="quiz-option">
+                A. Every packet reaches its destination successfully.
+            </button>
+
+            <button type="button" class="quiz-option">
+                B. The network connection has unlimited bandwidth.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. Some Ping requests do not receive replies, indicating possible packet loss along the communication path.
+            </button>
+            <button type="button" class="quiz-option">
+                D. DNS has translated every hostname into an IP address.
+            </button>
+
+        </div>
+
+        <div id="question-8-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+    <!-- QUESTION 9 -->
+
+    <div class="quiz-question" id="question-9">
+
+        <h3>Question 9: Practical Troubleshooting — What Is the Most Likely Problem?</h3>
+        <p>
+            A computer successfully receives replies when running
+            <strong>ping 8.8.8.8</strong>. However, when the user runs
+            <strong>ping google.com</strong>, the computer displays
+            "Could not find host."
+
+            What is the most likely problem?
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. The computer cannot connect to its local router.
+            </button>
+            <button type="button" class="quiz-option">
+                B. DNS is having trouble resolving the hostname into an IP address.
+            </button>
+
+            <button type="button" class="quiz-option">
+                C. The computer has no network connectivity at all.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. The network has insufficient bandwidth to send Ping requests.
+            </button>
+
+        </div>
+        <div id="question-9-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+
+    <!-- QUESTION 10 -->
+
+    <div class="quiz-question" id="question-10">
+
+        <h3>Question 10: Practical Network Troubleshooting — What Should You Investigate Next?</h3>
+
+        <p>
+            A computer successfully receives a Ping reply from its
+            local router. However, Ping requests to
+            <strong>8.8.8.8</strong> time out.
+            What should the student investigate next?
+        </p>
+
+        <div class="quiz-options">
+
+            <button type="button" class="quiz-option">
+                A. Whether DNS has translated a hostname into an IP address.
+            </button>
+
+            <button type="button" class="quiz-option">
+                B. Whether the computer's local keyboard is working correctly.
+            </button>
+            <button type="button" class="quiz-option">
+                C. Whether the website's application is displaying correctly.
+            </button>
+
+            <button type="button" class="quiz-option">
+                D. Whether external routing, internet connectivity, or ICMP filtering is causing the timeout.
+            </button>
+
+        </div>
+
+        <div id="question-10-feedback" aria-live="polite">
+
+        </div>
+
+    </div>
+
+
+</section>
+
+<!-- ================================== -->
+<!-- SECTION 15: QUICK REVISION -->
+<!-- ================================== -->
+
+<section id="quick-revision">
+
+    <h2>15. Quick Revision</h2>
+
+    <p class="qr-introduction">
+        Let's bring together the most important concepts
+        we learned about Ping. Use these visual summaries,
+        interactive steps and revision checks to strengthen
+        your understanding of network connectivity.
+    </p>
+
+    <!-- 15.1 PING AT A GLANCE -->
+    <h3>15.1 Ping at a Glance</h3>
+
+    <p>
+        Think of these seven ideas as the building blocks
+        of everything you learned about Ping.
+    </p>
+
+    <div class="qr-concept-grid">
+
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">📡</span>
+            <h4>Meaning</h4>
+            <p>
+                A network diagnostic utility used to test
+                connectivity between devices.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">🎯</span>
+            <h4>Purpose</h4>
+            <p>
+                Checks whether a destination responds
+                to network probes.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">🌐</span>
+            <h4>Protocol</h4>
+            <p>
+                Internet Control Message Protocol (ICMP),
+                or ICMPv6 for IPv6.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">📤</span>
+            <h4>Request</h4>
+            <p>
+                ICMP Echo Request sent by the
+                source device.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">📥</span>
+            <h4>Response</h4>
+            <p>
+                ICMP Echo Reply returned when
+                the destination responds.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">⏱️</span>
+            <h4>Measurement</h4>
+            <p>
+                Round-trip time (RTT): the time
+                for a request and reply.
+            </p>
+        </article>
+        <article class="qr-concept-card">
+            <span class="qr-card-icon" aria-hidden="true">🔧</span>
+            <h4>Common Use</h4>
+            <p>
+                Basic network connectivity
+                troubleshooting.
+            </p>
+        </article>
+
+    </div>
+
+
+    <!-- 15.2 HOW PING WORKS -->
+
+    <h3>15.2 How Ping Works — Five Simple Steps</h3>
+    <p>
+        Follow the five stages to understand how a Ping
+        test travels from your computer to its destination
+        and back.
+    </p>
+
+    <div class="qr-stepper" id="qr-stepper">
+
+        <div class="qr-step-tabs"
+             role="group"
+             aria-label="Choose a Ping process step">
+            <button type="button"
+                    class="qr-step-tab is-active"
+                    data-step="0"
+                    aria-pressed="true">
+                <span>1</span>
+                Destination
+            </button>
+
+            <button type="button"
+                    class="qr-step-tab"
+                    data-step="1"
+                    aria-pressed="false">
+                <span>2</span>
+                Resolution
+            </button>
+            <button type="button"
+                    class="qr-step-tab"
+                    data-step="2"
+                    aria-pressed="false">
+                <span>3</span>
+                Request
+            </button>
+
+            <button type="button"
+                    class="qr-step-tab"
+                    data-step="3"
+                    aria-pressed="false">
+                <span>4</span>
+                Reply
+            </button>
+            <button type="button"
+                    class="qr-step-tab"
+                    data-step="4"
+                    aria-pressed="false">
+                <span>5</span>
+                RTT
+            </button>
+
+        </div>
+
+        <div class="qr-step-detail"
+             aria-live="polite"
+             aria-atomic="true">
+
+            <p id="qr-step-count">STEP 1 OF 5</p>
+
+            <h4 id="qr-step-title">
+                Identify the destination
+            </h4>
+            <p id="qr-step-description">
+                The user enters the IP address or hostname
+                of the device they want to test.
+            </p>
+
+            <p class="qr-step-example" id="qr-step-example">
+                Example: ping google.com
+            </p>
+
+        </div>
+
+        <div class="qr-step-controls">
+
+            <button type="button"
+                    id="qr-step-previous"
+                    disabled>
+                ← Previous
+            </button>
+            <button type="button"
+                    id="qr-step-next">
+                Next Step →
+            </button>
+
+        </div>
+
+    </div>
+
+    <div class="qr-important-note">
+        <strong>Remember:</strong>
+        If no reply arrives within the allowed time,
+        Ping may report a request timeout. This does not
+        automatically mean the destination is offline.
+    </div>
+
+
+    <!-- 15.3 IMPORTANT PING COMMANDS -->
+
+    <h3>15.3 Important Ping Commands</h3>
+    <p>
+        These three commands help investigate different
+        parts of network communication.
+    </p>
+
+    <div class="qr-command-grid">
+
+        <article class="qr-command-card">
+
+            <h4>1. Ping an IP Address</h4>
+
+            <p>
+                Tests whether a destination IP address
+                responds to ICMP Echo Requests.
+            </p>
+
+            <div class="qr-command-box">
+                <code id="qr-command-ip">ping 8.8.8.8</code>
+                <button type="button"
+                        class="qr-copy-button"
+                        data-copy-target="qr-command-ip">
+                    Copy command
+                </button>
+            </div>
+
+            <p class="qr-command-caption">
+                Tests communication with a specified IP address.
+            </p>
+
+        </article>
+
+        <article class="qr-command-card">
+
+            <h4>2. Ping a Hostname</h4>
+            <p>
+                Uses hostname resolution, commonly through DNS,
+                to find the destination IP address when needed.
+            </p>
+
+            <div class="qr-command-box">
+                <code id="qr-command-host">ping google.com</code>
+
+                <button type="button"
+                        class="qr-copy-button"
+                        data-copy-target="qr-command-host">
+                    Copy command
+                </button>
+            </div>
+            <p class="qr-command-caption">
+                Tests communication using a hostname.
+            </p>
+
+        </article>
+
+        <article class="qr-command-card">
+
+            <h4>3. Ping the Local Computer</h4>
+
+            <p>
+                Uses the loopback address to test the local
+                computer's networking stack.
+            </p>
+
+            <div class="qr-command-box">
+                <code id="qr-command-loopback">ping 127.0.0.1</code>
+                <button type="button"
+                        class="qr-copy-button"
+                        data-copy-target="qr-command-loopback">
+                    Copy command
+                </button>
+            </div>
+
+            <p class="qr-command-caption">
+                Does not test the physical network connection
+                or internet access.
+            </p>
+
+        </article>
+
+    </div>
+    <p class="qr-tip">
+        <strong>Tip:</strong>
+        A hostname may be resolved using DNS, a local
+        hosts file or cached information, depending on
+        the computer's configuration.
+    </p>
+
+
+    <!-- 15.4 UNDERSTANDING PING RESULTS -->
+
+    <h3>15.4 Understanding Ping Results</h3>
+
+    <p>
+        Different Ping results provide different clues
+        about what may be happening in a network.
+    </p>
+
+    <div class="qr-result-grid">
+        <article class="qr-result-card qr-result-success">
+
+            <span class="qr-result-icon" aria-hidden="true">✓</span>
+
+            <h4>1. Reply Received</h4>
+
+            <p>
+                The destination returned an ICMP Echo Reply.
+                This indicates that it responded to the
+                tested Ping exchange.
+            </p>
+            <strong>What it suggests:</strong>
+            <p>
+                The destination is reachable for this
+                particular ICMP exchange.
+            </p>
+
+        </article>
+
+        <article class="qr-result-card qr-result-warning">
+
+            <span class="qr-result-icon" aria-hidden="true">⏳</span>
+
+            <h4>2. Request Timed Out</h4>
+
+            <p>
+                No Ping reply arrived within the allowed time.
+            </p>
+            <strong>Possible reasons:</strong>
+            <p>
+                Network problems, firewall restrictions,
+                ICMP filtering or an unavailable destination.
+            </p>
+
+        </article>
+
+        <article class="qr-result-card qr-result-error">
+
+            <span class="qr-result-icon" aria-hidden="true">!</span>
+
+            <h4>3. Could Not Find Host</h4>
+            <p>
+                The computer could not resolve the hostname
+                into an IP address.
+            </p>
+
+            <strong>What to investigate:</strong>
+            <p>
+                DNS settings, hostname spelling and
+                local name-resolution configuration.
+            </p>
+
+        </article>
+
+        <article class="qr-result-card qr-result-loss">
+
+            <span class="qr-result-icon" aria-hidden="true">↗</span>
+
+            <h4>4. Packet Loss</h4>
+            <p>
+                Some Ping requests did not receive replies.
+            </p>
+
+            <strong>Possible reasons:</strong>
+            <p>
+                Network congestion, connectivity problems
+                or ICMP filtering.
+            </p>
+
+        </article>
+
+    </div>
+    <div class="qr-important-note">
+        <strong>Important distinction:</strong>
+        A successful Ping does not guarantee that a website
+        or application is working correctly. Ping tests
+        responses to ICMP messages, not the complete
+        operation of an application.
+    </div>
+
+
+    <!-- 15.5 IMPORTANT DIFFERENCES -->
+
+    <h3>15.5 Important Differences to Remember</h3>
+
+    <p>
+        These comparisons help prevent common networking
+        misunderstandings.
+    </p>
+    <div class="qr-comparison-list">
+
+        <article class="qr-comparison-card">
+
+            <h4>1. Ping vs. Traceroute</h4>
+
+            <div class="qr-comparison-columns">
+
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">PING</span>
+                    <p>
+                        Tests whether a destination responds
+                        to ICMP Echo Requests.
+                    </p>
+                </div>
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">TRACEROUTE</span>
+                    <p>
+                        Reveals responding network hops
+                        along the path toward a destination.
+                    </p>
+                </div>
+
+            </div>
+
+            <p class="qr-comparison-note">
+                Some routers may not respond to traceroute probes.
+            </p>
+
+        </article>
+
+        <article class="qr-comparison-card">
+
+            <h4>2. Latency vs. Bandwidth</h4>
+
+            <div class="qr-comparison-columns">
+
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">LATENCY</span>
+                    <p>
+                        Describes communication delay.
+                        Ping helps observe round-trip time.
+                    </p>
+                </div>
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">BANDWIDTH</span>
+                    <p>
+                        Describes how much data a connection
+                        can carry over time.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="qr-comparison-card">
+
+            <h4>3. Request Timed Out vs. Could Not Find Host</h4>
+
+            <div class="qr-comparison-columns">
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">REQUEST TIMED OUT</span>
+                    <p>
+                        No Ping reply arrived within
+                        the allowed time.
+                    </p>
+                </div>
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">COULD NOT FIND HOST</span>
+                    <p>
+                        The computer could not resolve
+                        the hostname into an IP address.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+
+        <article class="qr-comparison-card">
+
+            <h4>4. Successful Ping vs. Successful Website Access</h4>
+            <div class="qr-comparison-columns">
+
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">SUCCESSFUL PING</span>
+                    <p>
+                        The destination responded to
+                        an ICMP Echo Request.
+                    </p>
+                </div>
+                <div class="qr-comparison-side">
+                    <span class="qr-comparison-label">SUCCESSFUL WEBSITE ACCESS</span>
+                    <p>
+                        The web service and application
+                        provide the requested content.
+                    </p>
+                </div>
+
+            </div>
+
+        </article>
+
+    </div>
+    <p class="qr-tip">
+        <strong>Remember:</strong>
+        These concepts describe different aspects of
+        networking. Understanding their differences
+        helps us troubleshoot more accurately.
+    </p>
+
+
+    <!-- 15.6 FINAL KEY TAKEAWAYS -->
+
+    <h3>15.6 Final Key Takeaways</h3>
+
+    <p>
+        Check off each point as you revise it.
+        Your progress indicator will help you see
+        how much of the lesson you have reviewed.
+    </p>
+    <div class="qr-checklist" id="qr-checklist">
+
+        <div class="qr-checklist-progress">
+
+            <div class="qr-progress-heading">
+                <strong>Revision progress</strong>
+                <span id="qr-progress-count">0 of 10 completed</span>
+            </div>
+            <div class="qr-progress-track"
+                 role="progressbar"
+                 aria-label="Quick revision progress"
+                 aria-valuemin="0"
+                 aria-valuemax="10"
+                 aria-valuenow="0"
+                 id="qr-progress-bar">
+
+                <div class="qr-progress-fill"
+                     id="qr-progress-fill"></div>
+
+            </div>
+
+        </div>
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Ping is a network diagnostic utility.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Ping uses ICMP Echo Request and Echo Reply messages.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Ping helps test whether a destination responds.</span>
+        </label>
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>DNS commonly helps resolve hostnames into IP addresses.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Routers forward packets between networks.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Latency describes communication delay.</span>
+        </label>
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Bandwidth describes data-carrying capacity over time.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>Ping reports round-trip time and can reveal missing replies.</span>
+        </label>
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>A timeout does not always mean a device is offline.</span>
+        </label>
+
+        <label class="qr-check-item">
+            <input type="checkbox">
+            <span>A successful Ping does not guarantee that an application works.</span>
+        </label>
+        <p class="qr-checklist-complete"
+           id="qr-checklist-complete"
+           hidden>
+            Excellent! You have reviewed all ten key takeaways.
+        </p>
+
+    </div>
+
+    <div class="qr-final-thought">
+
+        <span class="qr-final-icon" aria-hidden="true">💡</span>
+
+        <div>
+            <strong>Final thought</strong>
+            <p>
+                Ping is a simple but valuable tool for
+                understanding network connectivity and
+                investigating communication problems.
+                Its real value comes from interpreting
+                the results correctly.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+
+
+
+
+
+
+
+
+        
+        
+        
+
+        
+
+        
