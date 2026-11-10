@@ -2,9 +2,12 @@
 {
   "id": "IKL-OS-002",
   "slug": "process",
+  "concept_number": "002",
   "title": "Process",
   "subject": "Operating Systems",
   "topic": "Process Management",
+  "subtitle": "A Program in Execution",
+  "guiding_question": "What happens when a computer actually runs a program?",
   "description": "A process is a program in execution, together with its current state and the resources the operating system manages for it.",
   "learning_levels": [
     "first-grader",
