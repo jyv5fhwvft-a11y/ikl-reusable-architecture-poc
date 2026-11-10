@@ -1,0 +1,4944 @@
+
+/* =========================================
+   INTERACTIVE KNOWLEDGE LEXICON
+   PING LESSON — DESIGN FOUNDATION
+========================================= */
+
+/* 1. Brand Design Variables */
+
+:root {
+    --color-navy: #102A43;
+    --color-blue: #2563EB;
+    --color-teal: #0D9488;
+    --color-background: #F8FAFC;
+    --color-white: #FFFFFF;
+    --color-amber: #F59E0B;
+    --color-slate: #475569;
+    --color-border: #E2E8F0;
+
+    --font-heading: 'Poppins', Arial, sans-serif;
+    --font-body: 'Inter', Arial, sans-serif;
+    --font-code: 'JetBrains Mono', monospace;
+
+    --radius-small: 8px;
+    --radius-medium: 14px;
+    --radius-large: 20px;
+
+    --shadow-card: 0 6px 20px rgba(16, 42, 67, 0.08);
+    --shadow-hover: 0 12px 28px rgba(16, 42, 67, 0.14);
+
+    --content-width: 1100px;
+}
+
+/* 2. Basic Page Foundation */
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-background);
+    color: var(--color-slate);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+/* 3. Heading Typography */
+
+h1,
+h2,
+h3,
+h4 {
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    line-height: 1.3;
+}
+
+h1 {
+    font-size: 38px;
+    font-weight: 700;
+}
+
+h2 {
+    font-size: 28px;
+    font-weight: 600;
+}
+
+h3 {
+    font-size: 21px;
+    font-weight: 600;
+}
+
+p,
+li {
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+/* 4. Links */
+
+a {
+    color: var(--color-blue);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-teal);
+}
+
+/* 5. Code and Technical Text */
+
+code,
+pre {
+    font-family: var(--font-code);
+}
+
+/* 6. Responsive Reading Layout */
+
+@media (max-width: 650px) {
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 19px;
+    }
+
+    body {
+        font-size: 15px;
+    }
+}
+
+/* =========================================
+   7. PAGE-WIDE READING LAYOUT
+========================================= */
+
+header,
+main,
+footer {
+    width: 100%;
+}
+
+header {
+    padding: 45px 24px;
+    text-align: center;
+}
+
+main {
+    width: 100%;
+    max-width: var(--content-width);
+    margin: 0 auto;
+    padding: 30px 32px;
+}
+
+main section {
+    width: 100%;
+    margin: 0 auto 35px;
+    padding: 28px;
+}
+
+footer {
+    padding: 28px 20px;
+    text-align: center;
+}
+
+/* Balanced spacing on smaller screens */
+
+@media (max-width: 650px) {
+    header {
+        padding: 35px 20px;
+    }
+
+    main {
+        padding: 20px 18px;
+    }
+
+    main section {
+        padding: 20px 16px;
+        margin-bottom: 25px;
+    }
+}
+
+
+/* =========================================
+   8. PROFESSIONAL LESSON SECTION CARDS
+========================================= */
+
+main section {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+    transition: box-shadow 0.25s ease,
+                border-color 0.25s ease;
+}
+
+main section:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-blue);
+}
+
+/* Improve spacing between section headings */
+
+main section h2 {
+    margin-top: 0;
+    margin-bottom: 22px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* Keep smaller headings visually organized */
+
+main section h3 {
+    margin-top: 26px;
+    margin-bottom: 10px;
+}
+
+main section h4 {
+    margin-top: 20px;
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   9. PROFESSIONAL PING PAGE HEADER
+========================================= */
+
+header {
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 65px 24px;
+    text-align: center;
+}
+
+/* Concept identification */
+
+header p:first-child {
+    color: #5EEAD4;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+/* Main concept title */
+
+header h1 {
+    color: var(--color-white);
+    font-family: var(--font-heading);
+    font-size: 52px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin: 18px 0 10px;
+}
+
+/* Concept question */
+
+header h2 {
+    color: #BFDBFE;
+    font-size: 23px;
+    font-weight: 500;
+    margin: 0 0 18px;
+}
+
+/* Introductory description */
+
+header p:last-child {
+    max-width: 650px;
+    margin: 0 auto;
+    color: #E2E8F0;
+    font-size: 17px;
+    line-height: 1.8;
+}
+
+/* Mobile and tablet adjustment */
+
+@media (max-width: 650px) {
+    header {
+        padding: 48px 20px;
+    }
+
+    header h1 {
+        font-size: 40px;
+    }
+
+    header h2 {
+        font-size: 19px;
+    }
+
+    header p:last-child {
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================
+   10. KNOWLEDGE ASSESSMENT NAVIGATION
+========================================= */
+
+.quiz-navigation {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto 35px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.quiz-navigation a {
+    display: inline-block;
+    padding: 13px 26px;
+    background: var(--color-blue);
+    color: var(--color-white);
+    border-radius: var(--radius-medium);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 600;
+    text-decoration: none;
+    box-shadow: var(--shadow-card);
+    transition: all 0.25s ease;
+}
+
+.quiz-navigation a:hover {
+    background: var(--color-navy);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+/* Smaller-screen adjustment */
+
+@media (max-width: 650px) {
+    .quiz-navigation a {
+        width: 100%;
+        max-width: 320px;
+        padding: 13px 18px;
+    }
+}
+
+/* =========================================
+   11. ANALOGY AND MENTAL MODEL
+========================================= */
+
+/* Everyday analogy */
+#analogy-mental-model h3:first-of-type + p,
+#analogy-mental-model h3:first-of-type + p + p {
+    background: #EFF6FF;
+    border-left: 4px solid var(--color-blue);
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: var(--radius-small);
+}
+
+/* Mapping the analogy to computer networking */
+#analogy-mental-model h3:nth-of-type(2) + ul {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#analogy-mental-model h3:nth-of-type(2) + ul li {
+    margin-bottom: 10px;
+}
+
+#analogy-mental-model h3:nth-of-type(2) + ul li:last-child {
+    margin-bottom: 0;
+}
+
+/* Limitations and important qualifications */
+#analogy-mental-model h3:nth-of-type(3) + p,
+#analogy-mental-model h3:nth-of-type(3) + p + p {
+    background: #FFFBEB;
+    border-left: 4px solid var(--color-amber);
+    padding: 16px 20px;
+    margin: 12px 0;
+    border-radius: var(--radius-small);
+}
+
+/* Key takeaway */
+#analogy-mental-model h3:nth-of-type(4) + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    padding: 20px;
+    margin-top: 12px;
+    border-radius: var(--radius-medium);
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* =========================================
+   12. TECHNICAL EXPLANATION
+========================================= */
+
+/* Technical definitions */
+#technical-explanation h3 + p {
+    background: #EFF6FF;
+    border-left: 4px solid var(--color-blue);
+    border-radius: var(--radius-small);
+    padding: 16px 20px;
+    margin: 12px 0;
+}
+
+/* Behind-the-scenes process */
+#technical-explanation h3:nth-of-type(6) + ol {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 22px 22px 22px 48px;
+}
+
+#technical-explanation h3:nth-of-type(6) + ol li {
+    padding: 5px 0;
+}
+
+/* Important technical terms */
+#technical-explanation h3:nth-of-type(7) + ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#technical-explanation h3:nth-of-type(7) + ul li {
+    margin-bottom: 12px;
+}
+
+#technical-explanation h3:nth-of-type(7) + ul strong {
+    color: var(--color-blue);
+}
+
+
+/* TECHNICAL COMMAND */
+#technical-explanation .technical-command strong {
+    display: inline-block;
+    background: var(--color-navy);
+    color: var(--color-white);
+    padding: 12px 18px;
+    border-radius: var(--radius-small);
+    font-family: var(--font-code);
+    font-weight: 500;
+}
+
+/* TECHNICAL TAKEAWAY */
+#technical-explanation .technical-takeaway {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* =========================================
+   13. SECTION 1 — CONCEPT IDENTITY
+========================================= */
+
+/* One-Sentence Definition */
+#concept-identity h3:first-of-type + p {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 22px;
+    margin: 14px 0 28px;
+    color: var(--color-navy);
+    font-size: 17px;
+    font-weight: 500;
+}
+
+/* What Problem Does Ping Solve? */
+#concept-identity h3:nth-of-type(2) + p,
+#concept-identity h3:nth-of-type(2) + p + p {
+    background: #F8FAFC;
+    border-left: 4px solid var(--color-teal);
+    border-radius: var(--radius-small);
+    padding: 15px 20px;
+    margin: 10px 0;
+}
+
+/* What Will You Learn? */
+#concept-identity h3:nth-of-type(3) + ul {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+    margin-top: 14px;
+}
+
+#concept-identity h3:nth-of-type(3) + ul li {
+    padding: 6px 0;
+    color: var(--color-navy);
+}
+
+#concept-identity h3:nth-of-type(3) + ul li::marker {
+    color: var(--color-teal);
+}
+
+/* =========================================
+   14. SECTION 2 — FIRST-GRADER EXPLANATION
+========================================= */
+
+/* Everyday friendship analogy */
+#simple-explanation h3:first-of-type + p {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 14px 0;
+}
+
+/* Friend's spoken messages */
+#simple-explanation h3:first-of-type + p + p,
+#simple-explanation h3:first-of-type + p + p + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 16px 22px;
+    margin: 12px 0;
+    color: var(--color-navy);
+}
+
+/* Emphasize the spoken words */
+#simple-explanation h3:first-of-type + p + p strong,
+#simple-explanation h3:first-of-type + p + p + p strong {
+    color: var(--color-teal);
+    font-weight: 700;
+}
+
+/* What happens after the reply */
+#simple-explanation h3:first-of-type + p + p + p + p {
+    background: #FFFBEB;
+    border-left: 4px solid var(--color-amber);
+    border-radius: var(--radius-small);
+    padding: 16px 20px;
+    margin: 14px 0 28px;
+}
+
+/* Connecting the analogy to computers */
+#simple-explanation h3:nth-of-type(2) + p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 14px 0;
+}
+
+#simple-explanation h3:nth-of-type(2) + p + p {
+    background: #F0FDFA;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 14px 0 28px;
+}
+
+/* Key learning points */
+#simple-explanation h3:nth-of-type(3) + ul {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+    margin-top: 14px;
+}
+
+#simple-explanation h3:nth-of-type(3) + ul li {
+    padding: 7px 0;
+    color: var(--color-navy);
+}
+
+#simple-explanation h3:nth-of-type(3) + ul li::marker {
+    color: var(--color-teal);
+}
+
+
+/* =========================================
+   15. SECTION 4 — BEGINNER EXPLANATION
+========================================= */
+
+/* Why we need Ping */
+#beginner-explanation h3:first-of-type + p,
+#beginner-explanation h3:first-of-type + p + p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 12px 0;
+}
+
+/* How Ping helps */
+#beginner-explanation h3:first-of-type + p + p + p {
+    background: #F0FDFA;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 12px 0 28px;
+}
+
+/* When people use Ping */
+#beginner-explanation h3:nth-of-type(2) + ul {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#beginner-explanation h3:nth-of-type(2) + ul li {
+    padding: 7px 0;
+}
+
+#beginner-explanation h3:nth-of-type(2) + ul li::marker {
+    color: var(--color-teal);
+}
+
+/* Five steps of Ping */
+#beginner-explanation h3:nth-of-type(3) + ol {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 22px 22px 22px 48px;
+}
+
+#beginner-explanation h3:nth-of-type(3) + ol li {
+    padding: 8px 0;
+    color: var(--color-navy);
+}
+
+/* Understanding Ping results */
+#beginner-explanation h3:nth-of-type(4) + p {
+    background: #F0FDFA;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 12px 0;
+}
+
+#beginner-explanation h3:nth-of-type(4) + p + p {
+    background: #FFFBEB;
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 12px 0 28px;
+}
+
+/* Beginner vocabulary */
+#beginner-explanation h3:nth-of-type(5) + ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#beginner-explanation h3:nth-of-type(5) + ul li {
+    padding: 9px 0;
+    border-bottom: 1px solid var(--color-border);
+}
+
+#beginner-explanation h3:nth-of-type(5) + ul li:last-child {
+    border-bottom: none;
+}
+
+#beginner-explanation h3:nth-of-type(5) + ul strong {
+    color: var(--color-blue);
+}
+
+/* Key takeaway */
+#beginner-explanation h3:nth-of-type(6) + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 22px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+
+/* =========================================
+   16. SECTION 6 — COMPONENTS AND ARCHITECTURE
+========================================= */
+
+/* Section introduction */
+#components-architecture h3:first-of-type + p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 12px 0 28px;
+}
+
+/* Seven component headings */
+#components-architecture h3:nth-of-type(n+2):nth-of-type(-n+8) {
+    background: #F1F5F9;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-small);
+    padding: 13px 18px;
+    margin-top: 30px;
+    margin-bottom: 12px;
+}
+
+/* Component descriptions */
+#components-architecture h3:nth-of-type(n+2):nth-of-type(-n+8) + p {
+    color: var(--color-slate);
+    padding: 8px 12px;
+    margin: 8px 0 12px;
+}
+
+/* Component responsibility lists */
+#components-architecture h3:nth-of-type(n+2):nth-of-type(-n+8) + p + ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 17px 20px 17px 42px;
+    margin-top: 10px;
+}
+
+#components-architecture h3:nth-of-type(n+2):nth-of-type(-n+8) + p + ul li {
+    padding: 6px 0;
+    color: var(--color-navy);
+}
+
+#components-architecture h3:nth-of-type(n+2):nth-of-type(-n+8) + p + ul li::marker {
+    color: var(--color-teal);
+}
+
+/* How the components work together */
+#components-architecture h3:nth-of-type(9) + p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+}
+
+#components-architecture h3:nth-of-type(9) + p + ol {
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 48px;
+}
+
+#components-architecture h3:nth-of-type(9) + p + ol li {
+    padding: 8px 0;
+    color: var(--color-navy);
+}
+
+/* Architecture diagram introduction */
+#components-architecture h3:nth-of-type(10) + p {
+    color: var(--color-slate);
+    margin-bottom: 14px;
+}
+
+/* Architecture diagram */
+#components-architecture pre {
+    background: #102A43;
+    color: #E2E8F0;
+    border: 1px solid #334E68;
+    border-radius: var(--radius-large);
+    padding: 22px;
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+/* Architectural relationships */
+#components-architecture h3:nth-of-type(11) + p,
+#components-architecture h3:nth-of-type(11) + p + p,
+#components-architecture h3:nth-of-type(11) + p + p + p {
+    background: #F0FDFA;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 16px 20px;
+    margin: 12px 0;
+}
+
+/* Key architectural takeaway */
+#components-architecture h3:nth-of-type(12) + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 22px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* Small-screen diagram readability */
+@media (max-width: 650px) {
+    #components-architecture pre {
+        font-size: 11px;
+        padding: 14px;
+    }
+}
+
+/* =========================================
+   17. SECTION 7 — HOW PING WORKS
+========================================= */
+
+/* Section introduction */
+#working-mechanism > p:first-of-type {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 14px 0 28px;
+}
+
+/* Nine process step headings */
+#working-mechanism h3:nth-of-type(n+1):nth-of-type(-n+9) {
+    background: #F1F5F9;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-small);
+    padding: 14px 18px;
+    margin-top: 32px;
+    margin-bottom: 14px;
+}
+
+/* Explanatory paragraphs within process steps */
+#working-mechanism h3:nth-of-type(n+1):nth-of-type(-n+9) + p {
+    background: #F8FAFC;
+    border-left: 3px solid var(--color-border);
+    border-radius: var(--radius-small);
+    padding: 14px 18px;
+    margin: 10px 0;
+}
+
+/* Additional paragraphs following explanations */
+#working-mechanism h3:nth-of-type(n+1):nth-of-type(-n+9) + p + p {
+    margin: 10px 0 18px;
+}
+
+/* Command example label */
+#working-mechanism h3:first-of-type + p + p strong {
+    color: var(--color-blue);
+}
+
+/* Terminal command */
+#working-mechanism h3:first-of-type + p + p + pre {
+    background: #102A43;
+    color: #5EEAD4;
+    border: 1px solid #334E68;
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    font-family: var(--font-code);
+    font-size: 15px;
+    overflow-x: auto;
+}
+
+/* Lists explaining each process step */
+#working-mechanism h3:nth-of-type(n+1):nth-of-type(-n+9) + p + ul,
+#working-mechanism h3:nth-of-type(n+1):nth-of-type(-n+9) + p + p + ul,
+#working-mechanism h3:nth-of-type(9) + p + p + p + ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 18px 20px 18px 42px;
+    margin: 12px 0 20px;
+}
+
+/* Process list items */
+#working-mechanism li {
+    padding: 6px 0;
+}
+
+#working-mechanism li::marker {
+    color: var(--color-teal);
+}
+
+/* RTT example label */
+#working-mechanism h3:nth-of-type(8) + p + p strong {
+    color: var(--color-blue);
+}
+
+/* RTT calculation example */
+#working-mechanism h3:nth-of-type(8) + p + p + ul {
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px 20px 18px 42px;
+}
+
+/* No-reply reminder */
+#working-mechanism h3:nth-of-type(9) + p + p + p + ul + p {
+    background: #FFFBEB;
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    color: var(--color-navy);
+    font-weight: 500;
+}
+
+/* Complete process diagram */
+#working-mechanism h3:nth-of-type(10) ~ pre {
+    background: #102A43;
+    color: #E2E8F0;
+    border: 1px solid #334E68;
+    border-radius: var(--radius-large);
+    padding: 22px;
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: 13px;
+    line-height: 1.6;
+    white-space: pre;
+}
+
+/* Key working mechanism takeaway */
+#working-mechanism h3:nth-of-type(11) + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 22px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* Mobile diagram readability */
+@media (max-width: 650px) {
+    #working-mechanism pre {
+        font-size: 11px;
+        padding: 14px;
+    }
+}
+
+/* =========================================
+   18. SECTION 8 — INTERACTIVE PING SIMULATION
+========================================= */
+
+/* Simulation introduction */
+#interactive-simulation > p:first-of-type,
+#interactive-simulation > p:nth-of-type(2) {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 12px 0;
+}
+
+/* Learning objective */
+#interactive-simulation > p:nth-of-type(3) {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 18px 22px;
+    margin: 18px 0 28px;
+}
+
+#interactive-simulation > p:nth-of-type(3) strong {
+    color: var(--color-teal);
+}
+
+/* Simulation workspace */
+#ping-simulation {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 28px;
+    margin-top: 25px;
+}
+
+/* Workspace heading */
+#ping-simulation h3 {
+    color: var(--color-navy);
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+/* Workspace introduction */
+#ping-simulation > p:first-of-type {
+    color: var(--color-slate);
+    margin-bottom: 26px;
+}
+
+/* Computer network layout */
+#computer-network {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin: 25px 0;
+}
+
+/* Source and destination computer cards */
+#computer-network .computer {
+    flex: 1;
+    min-width: 0;
+    background: var(--color-white);
+    border: 2px solid #BFDBFE;
+    border-radius: var(--radius-large);
+    padding: 22px 16px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+/* Computer card headings */
+#computer-network .computer h4 {
+    color: var(--color-navy);
+    font-size: 17px;
+    margin: 0 0 14px;
+}
+
+/* Computer card descriptions */
+#computer-network .computer p {
+    margin: 7px 0;
+    color: var(--color-slate);
+}
+
+/* Computer names */
+#computer-network .computer p:first-of-type {
+    color: var(--color-blue);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* Central network connection */
+#network-connection {
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    border-radius: var(--radius-medium);
+    padding: 16px 10px;
+}
+
+/* Network connection label */
+#network-connection p:first-child {
+    color: var(--color-navy);
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Request and reply directions */
+#network-connection p:nth-child(2) {
+    color: var(--color-blue);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+#network-connection p:nth-child(3) {
+    color: var(--color-teal);
+    font-weight: 700;
+    font-size: 17px;
+}
+
+/* Simulation status panel */
+#ping-status {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-medium);
+    padding: 16px 20px;
+    margin: 25px 0 18px;
+    color: var(--color-navy);
+    font-weight: 500;
+    text-align: center;
+}
+
+/* Send Ping button */
+#sendPingButton {
+    display: block;
+    width: 100%;
+    max-width: 260px;
+    margin: 20px auto 5px;
+    padding: 15px 24px;
+    background: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-medium);
+    font-family: var(--font-body);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    cursor: pointer;
+    box-shadow: var(--shadow-card);
+    transition: background .25s ease, transform .25s ease,
+                box-shadow .25s ease;
+}
+
+#sendPingButton:hover {
+    background: var(--color-navy);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+#sendPingButton:focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: 4px;
+}
+
+/* Small-screen simulation layout */
+@media (max-width: 650px) {
+    #ping-simulation {
+        padding: 18px 14px;
+    }
+
+    #computer-network {
+        flex-direction: column;
+        gap: 14px;
+    }
+
+    #computer-network .computer {
+        width: 100%;
+    }
+
+    #network-connection {
+        width: 100%;
+        min-width: 0;
+    }
+
+    #sendPingButton {
+        max-width: 100%;
+    }
+}
+
+/* =========================================
+   19. SECTION 9 — FLOWCHART AND SEQUENCE
+========================================= */
+
+/* Main introductions */
+#interactive-flowchart > p,
+#sequence-diagram > p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 17px 22px;
+    margin: 14px 0 25px;
+}
+
+/* Flowchart workspace */
+#ping-flowchart {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 26px;
+    margin-top: 22px;
+}
+
+/* Flowchart heading */
+#ping-flowchart > h3 {
+    margin-top: 0;
+    color: var(--color-navy);
+}
+
+/* Step counter */
+#flowchart-step-counter {
+    display: inline-block;
+    background: #DBEAFE;
+    color: var(--color-blue);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+/* Flowchart visual area */
+#flowchart-visual {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+    min-height: 130px;
+}
+
+/* Flowchart nodes */
+#flowchart-visual .flowchart-node {
+    background: #EFF6FF;
+    border: 2px solid #BFDBFE;
+    border-radius: var(--radius-medium);
+    padding: 18px;
+    margin: 10px auto;
+    max-width: 520px;
+    transition: background .25s ease, border-color .25s ease;
+}
+
+/* Active flowchart node */
+#flowchart-visual .flowchart-node.active {
+    background: #DBEAFE;
+    border-color: var(--color-blue);
+    box-shadow: var(--shadow-card);
+}
+
+/* Node headings */
+#flowchart-visual .flowchart-node h4 {
+    color: var(--color-navy);
+    margin: 0 0 8px;
+}
+
+/* Node descriptions */
+#flowchart-visual .flowchart-node p {
+    margin: 0;
+    color: var(--color-slate);
+}
+
+/* Flowchart explanation panel */
+#flowchart-explanation {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+#flowchart-explanation h4 {
+    color: var(--color-teal);
+    margin-top: 0;
+}
+
+#flowchart-explanation p {
+    margin-bottom: 0;
+}
+
+/* Flowchart navigation controls */
+#flowchart-controls,
+#sequence-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+/* Flowchart and sequence buttons */
+#flowchart-controls button,
+#flowchart-decision button,
+#sequence-controls button {
+    background: var(--color-blue);
+    color: var(--color-white);
+    border: none;
+    border-radius: var(--radius-medium);
+    padding: 12px 20px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background .25s ease, transform .25s ease;
+}
+
+#flowchart-controls button:hover,
+#flowchart-decision button:hover,
+#sequence-controls button:hover {
+    background: var(--color-navy);
+    transform: translateY(-2px);
+}
+
+/* Decision panel */
+#flowchart-decision {
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    margin: 22px 0;
+    text-align: center;
+}
+
+#flowchart-decision h4 {
+    color: var(--color-navy);
+    margin-top: 0;
+}
+
+/* Sequence diagram workspace */
+#sequence-diagram {
+    margin-top: 35px;
+}
+
+/* Sequence diagram heading */
+#sequence-diagram > h3 {
+    color: var(--color-navy);
+}
+
+/* Sequence participants layout */
+#sequence-participants {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 16px;
+    margin: 25px 0;
+}
+
+/* Individual participant cards */
+#sequence-participants .sequence-participant {
+    flex: 1;
+    min-width: 0;
+    background: var(--color-white);
+    border: 1px solid #BFDBFE;
+    border-top: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 20px 14px;
+    text-align: center;
+    box-shadow: var(--shadow-card);
+}
+
+/* Participant headings */
+.sequence-participant h4 {
+    color: var(--color-navy);
+    margin: 0 0 12px;
+}
+
+/* Participant descriptions */
+.sequence-participant p {
+    font-size: 14px;
+    margin: 7px 0;
+}
+
+/* Sequence message area */
+#sequence-message-area {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    padding: 24px;
+    margin-top: 25px;
+}
+
+#sequence-message-area > h4 {
+    color: var(--color-navy);
+    margin-top: 0;
+}
+
+/* Individual sequence messages */
+#sequence-messages .sequence-message {
+    background: var(--color-white);
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    margin: 14px 0;
+}
+
+#sequence-messages .sequence-message h4 {
+    color: var(--color-blue);
+    margin-top: 0;
+}
+
+#sequence-messages .sequence-message p:last-child {
+    background: #EFF6FF;
+    border-radius: var(--radius-small);
+    padding: 12px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* Sequence message counter */
+#sequence-step-counter {
+    color: var(--color-teal);
+    font-weight: 700;
+    text-align: center;
+    width: 100%;
+    margin: 5px 0;
+}
+
+/* Keyboard focus visibility */
+#ping-flowchart button:focus-visible,
+#sequence-diagram button:focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: 4px;
+}
+
+/* Small-screen layout */
+@media (max-width: 650px) {
+    #ping-flowchart,
+    #sequence-message-area {
+        padding: 17px 13px;
+    }
+
+    #sequence-participants {
+        flex-direction: column;
+    }
+
+    #sequence-participants .sequence-participant {
+        width: 100%;
+    }
+
+    #flowchart-controls,
+    #sequence-controls {
+        flex-direction: column;
+    }
+
+    #flowchart-controls button,
+    #sequence-controls button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   20. SECTION 10 — PRACTICAL EXAMPLE
+========================================= */
+
+/* Section introductions and explanatory text */
+#practical-example > p,
+#troubleshooting-investigation > p,
+#ping-results > p {
+    line-height: 1.8;
+}
+
+/* Alex's real-world problem */
+#practical-example {
+    border-top: 5px solid var(--color-blue);
+}
+
+#practical-example h3 {
+    color: var(--color-blue);
+}
+
+#practical-example h4 {
+    color: var(--color-navy);
+    margin-top: 25px;
+}
+
+/* Situation list */
+#practical-example ul {
+    background: #F1F5F9;
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#practical-example li {
+    margin: 9px 0;
+    line-height: 1.6;
+}
+
+/* Main troubleshooting question */
+#practical-example h4:last-of-type + p {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    color: var(--color-navy);
+    font-weight: 600;
+}
+
+/* Investigation workspace */
+#troubleshooting-investigation {
+    border-top: 5px solid var(--color-teal);
+}
+
+#troubleshooting-investigation h3 {
+    color: var(--color-navy);
+}
+
+#troubleshooting-investigation h4 {
+    background: #EFF6FF;
+    border-left: 4px solid var(--color-blue);
+    border-radius: var(--radius-small);
+    padding: 12px 16px;
+    color: var(--color-navy);
+    margin-top: 25px;
+}
+
+/* Command-line examples */
+#troubleshooting-investigation pre {
+    background: #102A43;
+    color: #E0F2FE;
+    border: 1px solid #334E68;
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    margin: 15px 0;
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: 15px;
+    line-height: 1.7;
+}
+
+/* Investigation lists */
+#troubleshooting-investigation ul {
+    background: #F8FAFC;
+    border-radius: var(--radius-medium);
+    padding: 18px 20px 18px 42px;
+}
+
+#troubleshooting-investigation li {
+    margin: 9px 0;
+    line-height: 1.6;
+}
+
+/* Important reminder */
+#troubleshooting-investigation h4:last-of-type + p {
+    background: #FFFBEB;
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+}
+
+/* Ping results section */
+#ping-results {
+    border-top: 5px solid var(--color-blue);
+}
+
+#ping-results h3 {
+    color: var(--color-navy);
+}
+
+/* Scenario headings */
+#ping-results h4 {
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 14px 18px;
+    margin-top: 28px;
+    color: var(--color-navy);
+}
+
+/* Scenario command labels */
+#ping-results p strong {
+    color: var(--color-blue);
+}
+
+/* Terminal output panels */
+#ping-results pre {
+    background: #102A43;
+    color: #A7F3D0;
+    border: 1px solid #334E68;
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    margin: 14px 0 22px;
+    overflow-x: auto;
+    font-family: var(--font-code);
+    font-size: 14px;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+/* Scenario interpretation lists */
+#ping-results ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+}
+
+#ping-results li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* Technical note */
+#ping-results h4:nth-of-type(4) {
+    background: #FFFBEB;
+    border-left-color: var(--color-amber);
+}
+
+/* Key takeaway */
+#ping-results h4:last-of-type {
+    background: #F0FDFA;
+    border-left-color: var(--color-teal);
+}
+
+#ping-results h4:last-of-type + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    color: #115E59;
+    font-weight: 600;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #troubleshooting-investigation pre,
+    #ping-results pre {
+        padding: 15px;
+        font-size: 13px;
+    }
+
+    #practical-example ul,
+    #troubleshooting-investigation ul,
+    #ping-results ul {
+        padding-left: 34px;
+    }
+}
+
+
+/* =========================================
+   21. SECTION 11 — COMMON MISTAKES
+========================================= */
+
+/* Introduction */
+#common-mistakes > p {
+    line-height: 1.8;
+}
+
+/* Six misconception headings */
+#common-mistakes h3 {
+    color: var(--color-navy);
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 15px 18px;
+    margin-top: 30px;
+}
+
+/* Incorrect understanding labels */
+#common-mistakes h3 + p strong {
+    color: #B91C1C;
+}
+
+/* Incorrect understanding explanations */
+#common-mistakes h3 + p + p {
+    background: #FEF2F2;
+    border-left: 5px solid #DC2626;
+    border-radius: var(--radius-medium);
+    padding: 16px 18px;
+    line-height: 1.7;
+}
+
+/* Correct understanding labels */
+#common-mistakes h3 + p + p + p strong {
+    color: var(--color-teal);
+}
+
+/* Correct understanding explanations */
+#common-mistakes h3 + p + p + p + p {
+    background: #F0FDFA;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 16px 18px;
+    line-height: 1.7;
+}
+
+/* Example labels */
+#common-mistakes h3 + p + p + p + p + p strong {
+    color: var(--color-blue);
+}
+
+/* Example explanations */
+#common-mistakes h3 + p + p + p + p + p + p {
+    background: #EFF6FF;
+    border-left: 4px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 15px 18px;
+    line-height: 1.7;
+}
+
+/* Comparison heading */
+#common-mistakes h3:has(+ ul) {
+    color: var(--color-navy);
+}
+
+/* Myth versus reality list */
+#common-mistakes ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 20px 20px 42px;
+    margin: 18px 0;
+}
+
+/* Comparison items */
+#common-mistakes li {
+    margin: 12px 0;
+    line-height: 1.7;
+}
+
+#common-mistakes li strong {
+    color: var(--color-navy);
+}
+
+/* Key takeaway heading */
+#common-mistakes h3:last-of-type {
+    background: #F0FDFA;
+    border-left-color: var(--color-teal);
+    color: #115E59;
+}
+
+/* Key takeaway panel */
+#common-mistakes h3:last-of-type + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    color: #115E59;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #common-mistakes h3 {
+        padding: 13px 14px;
+    }
+
+    #common-mistakes ul {
+        padding-left: 32px;
+    }
+}
+
+
+/* =========================================
+   22. SECTION 12 — LIMITATIONS AND TROUBLESHOOTING
+========================================= */
+
+/* Subsection headings */
+#limitations-troubleshooting h3,
+#ping-limitations h3,
+#ping-failure-reasons h3,
+#troubleshooting-checklist h3,
+#simulation-limitations h3 {
+    color: var(--color-navy);
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 15px 18px;
+    margin-top: 24px;
+    line-height: 1.5;
+}
+
+/* Numbered topic headings */
+#limitations-troubleshooting h4,
+#ping-limitations h4,
+#ping-failure-reasons h4,
+#troubleshooting-checklist h4,
+#simulation-limitations h4 {
+    color: var(--color-navy);
+    margin-top: 25px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Explanatory paragraphs */
+#limitations-troubleshooting p,
+#ping-limitations p,
+#ping-failure-reasons p,
+#troubleshooting-checklist p,
+#simulation-limitations p {
+    line-height: 1.8;
+}
+
+/* Lists and their items */
+#limitations-troubleshooting ul,
+#ping-limitations ul,
+#ping-failure-reasons ul,
+#troubleshooting-checklist ul,
+#simulation-limitations ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 18px 20px 18px 42px;
+    margin: 16px 0;
+}
+
+#limitations-troubleshooting li,
+#ping-limitations li,
+#ping-failure-reasons li,
+#troubleshooting-checklist li,
+#simulation-limitations li {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+#limitations-troubleshooting li strong,
+#ping-limitations li strong,
+#ping-failure-reasons li strong,
+#troubleshooting-checklist li strong,
+#simulation-limitations li strong {
+    color: var(--color-navy);
+}
+
+/* Key takeaway headings */
+#limitations-troubleshooting h4:last-of-type,
+#ping-limitations h4:last-of-type,
+#ping-failure-reasons h4:last-of-type,
+#troubleshooting-checklist h4:last-of-type,
+#simulation-limitations h4:last-of-type {
+    background: #F0FDFA;
+    color: #115E59;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 13px 16px;
+}
+
+/* Key takeaway explanations */
+#limitations-troubleshooting h4:last-of-type + p,
+#ping-limitations h4:last-of-type + p,
+#ping-failure-reasons h4:last-of-type + p,
+#troubleshooting-checklist h4:last-of-type + p,
+#simulation-limitations h4:last-of-type + p {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+    color: #115E59;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* Troubleshooting command examples */
+#troubleshooting-checklist pre {
+    background: #102A43;
+    color: #FFFFFF;
+    border-radius: var(--radius-medium);
+    padding: 17px 20px;
+    margin: 14px 0;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Important and why explanations */
+#troubleshooting-checklist p strong,
+#ping-failure-reasons p strong {
+    color: var(--color-blue);
+}
+
+/* Special troubleshooting reminder */
+#troubleshooting-checklist h4:last-of-type + p,
+#troubleshooting-checklist h4:last-of-type + p + p {
+    line-height: 1.8;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #limitations-troubleshooting h3,
+    #ping-limitations h3,
+    #ping-failure-reasons h3,
+    #troubleshooting-checklist h3,
+    #simulation-limitations h3 {
+        padding: 13px 14px;
+    }
+
+    #limitations-troubleshooting ul,
+    #ping-limitations ul,
+    #ping-failure-reasons ul,
+    #troubleshooting-checklist ul,
+    #simulation-limitations ul {
+        padding-left: 32px;
+    }
+
+    #troubleshooting-checklist pre {
+        font-size: 0.85rem;
+        padding: 14px;
+    }
+}
+
+
+/* =========================================
+   23. SECTION 13 — CONNECTIONS TO OTHER CONCEPTS
+========================================= */
+
+/* Introduction paragraphs */
+#ping-connections > p:nth-of-type(-n+2) {
+    line-height: 1.8;
+    padding: 15px 18px;
+    margin: 16px 0;
+}
+
+#ping-connections > p:first-of-type {
+    background: #F8FAFC;
+    border-left: 4px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+}
+
+#ping-connections > p:nth-of-type(2) {
+    color: var(--color-slate);
+}
+
+/* Existing concept connection cards */
+#ping-connections .concept-subsection,
+#ping-connections .connection-subsection {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 22px;
+    margin: 24px 0;
+    box-shadow: 0 3px 12px rgba(16, 42, 67, 0.05);
+}
+
+/* All eight concept headings */
+#ping-connections h3 {
+    color: var(--color-navy);
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 15px 18px;
+    margin-top: 28px;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* Headings inside existing cards */
+#ping-connections .concept-subsection h3,
+#ping-connections .connection-subsection h3 {
+    margin-top: 0;
+}
+
+/* Supporting headings */
+#ping-connections h4 {
+    color: var(--color-navy);
+    margin-top: 24px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+/* Paragraph readability */
+#ping-connections p {
+    line-height: 1.8;
+    margin-bottom: 14px;
+}
+
+/* Ordered and unordered lists */
+#ping-connections ol,
+#ping-connections ul {
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 18px 20px 18px 42px;
+    margin: 16px 0;
+}
+
+/* List items */
+#ping-connections li {
+    margin: 10px 0;
+    line-height: 1.7;
+}
+
+/* Important terms in lists */
+#ping-connections li strong {
+    color: var(--color-navy);
+}
+
+/* Command and example panels */
+#ping-connections pre {
+    background: #102A43;
+    color: #FFFFFF;
+    border-radius: var(--radius-medium);
+    padding: 17px 20px;
+    margin: 16px 0;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Bandwidth key takeaway */
+#bandwidth p:last-child {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+    color: #115E59;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #ping-connections .concept-subsection,
+    #ping-connections .connection-subsection {
+        padding: 15px;
+    }
+
+    #ping-connections h3 {
+        padding: 13px 14px;
+    }
+
+    #ping-connections ol,
+    #ping-connections ul {
+        padding-left: 32px;
+    }
+
+    #ping-connections pre {
+        font-size: 0.85rem;
+        padding: 14px;
+    }
+}
+
+/* =========================================
+   24. SECTION 14 — KNOWLEDGE ASSESSMENT
+========================================= */
+
+/* Quiz question cards */
+#knowledge-assessment .quiz-question {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 24px;
+    margin: 24px 0;
+    box-shadow: 0 3px 12px rgba(16, 42, 67, 0.05);
+}
+
+/* Question headings */
+#knowledge-assessment .quiz-question h3 {
+    color: var(--color-navy);
+    font-size: 1.08rem;
+    line-height: 1.6;
+    margin-bottom: 14px;
+}
+
+/* Question text */
+#knowledge-assessment .quiz-question p {
+    color: var(--color-slate);
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+/* Answer choices layout */
+#knowledge-assessment .quiz-options {
+    display: grid;
+    gap: 12px;
+    margin: 18px 0;
+}
+
+/* Individual answer buttons */
+#knowledge-assessment .quiz-option {
+    width: 100%;
+    text-align: left;
+    background: #F8FAFC;
+    color: var(--color-navy);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 15px 18px;
+    font: inherit;
+    line-height: 1.6;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease;
+}
+
+/* Hover effect */
+#knowledge-assessment .quiz-option:not(:disabled):hover {
+    background: #EFF6FF;
+    border-color: var(--color-blue);
+}
+
+/* Disabled answer choices */
+#knowledge-assessment .quiz-option:disabled {
+    cursor: default;
+    opacity: 1;
+}
+
+/* Selected correct answer */
+#knowledge-assessment .quiz-option.is-correct-option {
+    background: #DCFCE7;
+    border: 2px solid #16A34A;
+    color: #166534;
+    font-weight: 600;
+}
+
+/* Selected incorrect answer */
+#knowledge-assessment .quiz-option.is-incorrect-option {
+    background: #FEE2E2;
+    border: 2px solid #DC2626;
+    color: #991B1B;
+    font-weight: 600;
+}
+
+/* Feedback area */
+#knowledge-assessment .quiz-feedback {
+    padding: 16px;
+    margin-top: 16px;
+    border-radius: var(--radius-medium);
+    line-height: 1.8;
+}
+
+/* Correct feedback */
+#knowledge-assessment .quiz-feedback.is-correct {
+    background: #F0FDF4;
+    border-left: 5px solid #16A34A;
+    color: #166534;
+}
+
+/* Incorrect feedback */
+#knowledge-assessment .quiz-feedback.is-incorrect {
+    background: #FEF2F2;
+    border-left: 5px solid #DC2626;
+    color: #991B1B;
+}
+
+/* Try Again button */
+#knowledge-assessment .quiz-retry-button {
+    display: block;
+    margin-top: 16px;
+    padding: 11px 20px;
+    background: var(--color-blue);
+    color: #FFFFFF;
+    border: none;
+    border-radius: var(--radius-medium);
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+/* Try Again hover */
+#knowledge-assessment .quiz-retry-button:hover {
+    background: var(--color-navy);
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #knowledge-assessment .quiz-question {
+        padding: 16px;
+    }
+
+    #knowledge-assessment .quiz-option {
+        padding: 13px 14px;
+    }
+
+    #knowledge-assessment .quiz-feedback {
+        padding: 13px;
+    }
+}
+
+/* =========================================
+   25. SECTION 15 — QUICK REVISION
+========================================= */
+
+/* Introduction */
+#quick-revision > p:first-of-type {
+    background: #F8FAFC;
+    border-left: 4px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 18px;
+    line-height: 1.8;
+    color: var(--color-slate);
+}
+
+/* Six main revision headings */
+#quick-revision h3 {
+    color: var(--color-navy);
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+    padding: 16px 18px;
+    margin-top: 32px;
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+
+/* Supporting headings */
+#quick-revision h4 {
+    color: var(--color-navy);
+    font-size: 1rem;
+    margin-top: 22px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+/* Summary lists */
+#quick-revision ul,
+#quick-revision ol {
+    background: #FFFFFF;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    padding: 20px 22px 20px 44px;
+    margin: 16px 0 22px;
+    box-shadow: 0 3px 10px rgba(16, 42, 67, 0.04);
+}
+
+/* List items */
+#quick-revision li {
+    color: var(--color-slate);
+    line-height: 1.8;
+    margin: 10px 0;
+    padding-left: 4px;
+}
+
+/* Important terms */
+#quick-revision li strong,
+#quick-revision h4 {
+    color: var(--color-navy);
+}
+
+/* Paragraph readability */
+#quick-revision p {
+    line-height: 1.8;
+    margin-bottom: 16px;
+}
+
+/* Command examples */
+#quick-revision pre {
+    background: #102A43;
+    color: #FFFFFF;
+    border: 1px solid #1E3A5F;
+    border-radius: var(--radius-medium);
+    padding: 18px 20px;
+    margin: 14px 0;
+    overflow-x: auto;
+    font-family: "JetBrains Mono", monospace;
+    font-size: 0.95rem;
+    line-height: 1.7;
+}
+
+/* Command text */
+#quick-revision pre code {
+    color: #FFFFFF;
+    font-family: "JetBrains Mono", monospace;
+}
+
+/* Final key takeaway */
+#quick-revision > p:last-child {
+    background: #F0FDFA;
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+    padding: 20px;
+    color: #115E59;
+    font-weight: 500;
+    line-height: 1.8;
+    margin-top: 24px;
+}
+
+/* Mobile adjustments */
+@media (max-width: 650px) {
+    #quick-revision h3 {
+        padding: 13px 14px;
+    }
+
+    #quick-revision ul,
+    #quick-revision ol {
+        padding: 16px 14px 16px 34px;
+    }
+
+    #quick-revision pre {
+        font-size: 0.85rem;
+        padding: 14px;
+    }
+}
+/* =========================================
+   26. PROFESSIONAL PING PAGE FOOTER
+========================================= */
+
+footer {
+    background: var(--color-navy);
+    color: var(--color-white);
+    border-top: 3px solid var(--color-teal);
+    padding: 28px 15px;
+    text-align: center;
+}
+
+footer p {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.footer-brand {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.footer-credit {
+    margin-top: 8px;
+    color: #5EEAD4;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.3px;
+}
+
+
+/* =========================================
+   27. RETURN TO HOMEPAGE BUTTON
+========================================= */
+
+.home-button {
+    display: inline-block;
+    margin: 20px 24px;
+    padding: 11px 18px;
+    background: var(--color-blue);
+    color: var(--color-white);
+    border: 2px solid var(--color-blue);
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s ease,
+                color 0.2s ease,
+                transform 0.2s ease,
+                box-shadow 0.2s ease;
+}
+
+.home-button:hover {
+    background: var(--color-navy);
+    border-color: var(--color-navy);
+    color: var(--color-white);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-hover);
+}
+
+
+/* =========================================
+   SECTION 6.3 — INTERACTIVE PING ARCHITECTURE
+   ========================================= */
+
+#ping-architecture {
+    margin: 28px 0;
+    padding: 24px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+/* Architecture stages */
+
+#ping-architecture .architecture-stages {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+#ping-architecture .architecture-stage {
+    width: 100%;
+    max-width: 520px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    text-align: center;
+    opacity: 0.65;
+    transition: border-color 0.25s ease,
+                background 0.25s ease,
+                opacity 0.25s ease,
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+}
+
+#ping-architecture .architecture-stage.active {
+    background: #EFF6FF;
+    border-color: #2563EB;
+    opacity: 1;
+    transform: scale(1.02);
+    box-shadow: 0 5px 18px rgba(37, 99, 235, 0.12);
+}
+
+#ping-architecture .stage-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 8px;
+    background: #E2E8F0;
+    color: #102A43;
+    border-radius: 50%;
+    font-weight: 700;
+}
+
+#ping-architecture .architecture-stage.active .stage-number {
+    background: #2563EB;
+    color: #FFFFFF;
+}
+
+#ping-architecture .architecture-stage h4 {
+    margin: 6px 0;
+    color: #102A43;
+    font-size: 18px;
+}
+
+#ping-architecture .architecture-stage p {
+    margin: 6px 0;
+    color: #475569;
+}
+
+#ping-architecture .stage-detail {
+    display: block;
+    margin-top: 10px;
+    color: #0D9488;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Direction arrows */
+
+#ping-architecture .architecture-arrow {
+    color: #2563EB;
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+/* Explanation panel */
+
+#ping-architecture .architecture-explanation {
+    max-width: 650px;
+    margin: 28px auto 20px;
+    padding: 22px;
+    background: #FFFFFF;
+    border-left: 5px solid #2563EB;
+    border-radius: 10px;
+}
+
+#ping-architecture #architecture-step-count {
+    color: #2563EB;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+}
+
+#ping-architecture #architecture-step-title {
+    margin: 8px 0;
+    color: #102A43;
+    font-size: 21px;
+}
+
+#ping-architecture #architecture-step-description {
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* Navigation controls */
+
+#ping-architecture .architecture-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+#ping-architecture .architecture-controls button {
+    padding: 11px 18px;
+    background: #2563EB;
+    color: #FFFFFF;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+#ping-architecture .architecture-controls button:hover:not(:disabled) {
+    background: #102A43;
+    transform: translateY(-2px);
+}
+
+#ping-architecture .architecture-controls button:disabled {
+    background: #CBD5E1;
+    color: #64748B;
+    cursor: not-allowed;
+}
+
+/* Status message */
+
+#ping-architecture #architecture-status {
+    margin: 16px 0 0;
+    color: #0D9488;
+    font-size: 14px;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Small-screen layout */
+
+@media (max-width: 600px) {
+    #ping-architecture {
+        padding: 14px;
+    }
+
+    #ping-architecture .architecture-stage {
+        padding: 16px;
+    }
+
+    #ping-architecture .architecture-controls {
+        flex-direction: column;
+    }
+
+    #ping-architecture .architecture-controls button {
+        width: 100%;
+    }
+}
+
+
+/* =========================================
+   SECTION 6.3 — PACKET ROUTE VISUAL
+   ========================================= */
+
+#ping-architecture .architecture-route {
+    margin: 28px 0;
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+}
+
+#ping-architecture .architecture-route h4 {
+    margin: 0 0 12px;
+    color: #102A43;
+    text-align: center;
+    font-size: 19px;
+}
+
+#ping-architecture .route-direction {
+    color: #2563EB;
+    font-weight: 700;
+    text-align: center;
+    min-height: 24px;
+}
+
+#ping-architecture .route-track {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 120px;
+    padding: 0 4%;
+}
+
+/* Connecting line behind the route nodes */
+
+#ping-architecture .route-track::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    right: 10%;
+    height: 4px;
+    background: #CBD5E1;
+    border-radius: 4px;
+    transform: translateY(-50%);
+}
+
+/* Source, router and destination */
+
+#ping-architecture .route-node {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    width: 110px;
+    min-height: 82px;
+    padding: 8px;
+    background: #F8FAFC;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    color: #102A43;
+    text-align: center;
+    font-size: 13px;
+}
+
+#ping-architecture .route-node-icon {
+    font-size: 27px;
+    line-height: 1.2;
+}
+
+/* Packet marker */
+
+#ping-architecture .route-packet {
+    position: absolute;
+    z-index: 3;
+    top: 50%;
+    left: 10%;
+    width: 18px;
+    height: 18px;
+    background: #2563EB;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+    font-size: 0;
+    transform: translate(-50%, -50%);
+    transition: left 0.8s ease;
+}
+
+/* Explanation beneath the route */
+
+#ping-architecture .route-caption {
+    margin: 12px 0 0;
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+/* Smaller screens */
+
+@media (max-width: 600px) {
+    #ping-architecture .architecture-route {
+        padding: 14px 8px;
+    }
+
+    #ping-architecture .route-track {
+        min-height: 105px;
+        padding: 0 2%;
+    }
+
+    #ping-architecture .route-node {
+        width: 88px;
+        min-height: 76px;
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    #ping-architecture .route-node-icon {
+        font-size: 23px;
+    }
+
+    #ping-architecture .route-packet {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+
+/* =========================================
+   SECTION 6.3 — REQUEST AND REPLY HIGHLIGHTS
+   ========================================= */
+
+/* Outgoing ICMP Echo Request */
+
+#ping-architecture .route-packet.request-packet {
+    background: #2563EB;
+    box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
+}
+
+/* Returning ICMP Echo Reply */
+
+#ping-architecture .route-packet.reply-packet {
+    background: #0D9488;
+    box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.2);
+}
+
+/* Highlight the active network component */
+
+#ping-architecture .route-node.route-active {
+    border-color: #2563EB;
+    background: #EFF6FF;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+    transform: translateY(-3px);
+}
+
+/* Active component during the reply journey */
+
+#ping-architecture .route-node.reply-active {
+    border-color: #0D9488;
+    background: #F0FDFA;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.12);
+}
+
+
+/* =========================================
+   SECTION 6.3 — EXPANDABLE PACKET INSPECTOR
+   ========================================= */
+
+#ping-architecture .packet-inspector {
+    margin: 28px 0;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(16, 42, 67, 0.05);
+}
+
+#ping-architecture .packet-inspector summary {
+    color: #102A43;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    padding: 4px;
+}
+
+#ping-architecture .packet-inspector summary:hover {
+    color: #2563EB;
+}
+
+#ping-architecture .packet-inspector summary:focus-visible {
+    outline: 3px solid #2563EB;
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+#ping-architecture .packet-inspector > p {
+    color: #475569;
+    line-height: 1.7;
+    margin: 14px 0 18px;
+}
+
+#ping-architecture .packet-layer {
+    padding: 18px;
+    margin-top: 14px;
+    border-radius: 12px;
+    border: 1px solid;
+}
+
+#ping-architecture .ip-layer {
+    background: #EFF6FF;
+    border-color: #BFDBFE;
+}
+
+#ping-architecture .icmp-layer {
+    background: #F0FDFA;
+    border-color: #99F6E4;
+}
+
+#ping-architecture .packet-layer h4 {
+    margin: 0 0 12px;
+    color: #102A43;
+    font-size: 16px;
+}
+
+#ping-architecture .packet-layer p {
+    color: #334155;
+    line-height: 1.6;
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+#ping-architecture .packet-layer .packet-note {
+    color: #64748B;
+    font-size: 13px;
+    font-style: italic;
+    margin-top: 12px;
+}
+
+@media (max-width: 600px) {
+    #ping-architecture .packet-inspector {
+        padding: 15px;
+    }
+
+    #ping-architecture .packet-layer {
+        padding: 14px;
+    }
+}
+
+/* =========================================
+   SECTION 6.3 — ICMP REPLY HIGHLIGHT
+   ========================================= */
+
+#ping-architecture #architecture-icmp-type.icmp-reply-active {
+    display: inline-block;
+    padding: 10px 14px;
+    color: #166534;
+    background: #DCFCE7;
+    border: 2px solid #22C55E;
+    border-radius: 10px;
+    font-weight: 800;
+    transition: all 0.25s ease;
+}
+
+/* =========================================
+   SECTION 6.3 — ICMP REQUEST HIGHLIGHT
+   ========================================= */
+
+#ping-architecture #architecture-icmp-type {
+    display: inline-block;
+    padding: 10px 14px;
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border: 2px solid #3B82F6;
+    border-radius: 10px;
+    font-weight: 800;
+    transition: all 0.25s ease;
+}
+
+/* =========================================
+   SECTION 2 — INTERACTIVE FRIEND ANALOGY
+   ========================================= */
+
+#friend-analogy {
+    margin: 30px 0;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(16, 42, 67, 0.06);
+}
+
+#friend-analogy > h3 {
+    color: #102A43;
+    margin-top: 0;
+}
+
+#friend-analogy > p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+#friend-analogy .friend-analogy-scene {
+    display: grid;
+    grid-template-columns: 1fr 1.4fr 1fr;
+    align-items: center;
+    gap: 18px;
+    margin: 26px 0;
+}
+
+#friend-analogy .friend-home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 18px 10px;
+    text-align: center;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+}
+
+#friend-analogy .friend-home-icon {
+    font-size: 38px;
+}
+
+#friend-analogy .friend-home strong {
+    color: #102A43;
+    font-size: 16px;
+}
+
+#friend-analogy .friend-home span {
+    color: #64748B;
+    font-size: 12px;
+}
+
+#friend-analogy .friend-message-route {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    min-width: 0;
+}
+
+#friend-analogy .friend-message,
+#friend-analogy .friend-reply {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: 700;
+    overflow-wrap: anywhere;
+}
+
+#friend-analogy .friend-message {
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border: 1px solid #93C5FD;
+}
+
+#friend-analogy .friend-reply {
+    color: #166534;
+    background: #DCFCE7;
+    border: 1px solid #86EFAC;
+}
+
+#friend-analogy .friend-route-line {
+    position: relative;
+    width: 100%;
+    height: 5px;
+    background: #CBD5E1;
+    border-radius: 10px;
+}
+
+#friend-analogy .friend-message-dot {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #2563EB;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px #2563EB;
+    transform: translate(-50%, -50%);
+}
+
+#friend-analogy .friend-analogy-explanation {
+    margin-top: 24px;
+    padding: 18px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+#friend-analogy #friend-step-number {
+    color: #2563EB;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+#friend-analogy #friend-step-title {
+    color: #102A43;
+    margin: 8px 0;
+}
+
+#friend-analogy #friend-step-description {
+    color: #475569;
+    line-height: 1.7;
+}
+
+#friend-analogy .friend-analogy-controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#friend-analogy .friend-analogy-controls button {
+    padding: 10px 16px;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#friend-analogy .friend-analogy-controls button:hover {
+    background: #1D4ED8;
+}
+
+#friend-analogy .friend-analogy-controls button:focus-visible {
+    outline: 3px solid #0D9488;
+    outline-offset: 3px;
+}
+
+#friend-analogy .friend-analogy-status {
+    margin-top: 14px;
+    text-align: center;
+    color: #64748B;
+    font-size: 13px;
+}
+
+/* Smaller screens */
+
+@media (max-width: 600px) {
+    #friend-analogy {
+        padding: 16px;
+    }
+
+    #friend-analogy .friend-analogy-scene {
+        grid-template-columns: 1fr;
+        gap: 14px;
+    }
+
+    #friend-analogy .friend-message-route {
+        width: 100%;
+    }
+
+    #friend-analogy .friend-analogy-controls button {
+        flex: 1 1 40%;
+    }
+}
+
+/* =========================================
+   SECTION 2 — FRIEND ANALOGY ANIMATION STATES
+   ========================================= */
+
+/* Smooth transitions for messages */
+#friend-analogy .friend-message,
+#friend-analogy .friend-reply {
+    transition:
+        opacity 0.3s ease,
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Dim the message that is not currently active */
+#friend-analogy .friend-message.is-inactive,
+#friend-analogy .friend-reply.is-inactive {
+    opacity: 0.35;
+    transform: scale(0.96);
+}
+
+/* Highlight the active request */
+#friend-analogy .friend-message.is-active {
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.18);
+}
+
+/* Highlight the active reply */
+#friend-analogy .friend-reply.is-active {
+    opacity: 1;
+    box-shadow: 0 0 0 2px rgba(22, 163, 74, 0.18);
+}
+
+/* Smoothly highlight the active house */
+#friend-analogy .friend-home {
+    transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+#friend-analogy .friend-home.is-active {
+    border-color: #2563EB;
+    background: #EFF6FF;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+/* Smooth movement of the message dot */
+#friend-analogy .friend-message-dot {
+    transition:
+        left 0.6s ease,
+        background-color 0.3s ease,
+        box-shadow 0.3s ease;
+}
+
+/* Show when a control is unavailable */
+#friend-analogy .friend-analogy-controls button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+/* =========================================
+   SECTION 3 — ANALOGY-TO-NETWORK TRANSLATOR
+   ========================================= */
+
+#analogy-translator {
+    margin: 30px 0;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+    box-shadow: 0 5px 18px rgba(16, 42, 67, 0.06);
+}
+
+#analogy-translator > h3 {
+    margin-top: 0;
+    color: #102A43;
+}
+
+#analogy-translator > p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* Mapping buttons */
+
+#analogy-translator .analogy-translator-mappings {
+    display: grid;
+    gap: 12px;
+    margin: 24px 0;
+}
+
+#analogy-translator .analogy-map-button {
+    display: grid;
+    grid-template-columns: 38px 1fr 24px 1fr;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    padding: 15px;
+    text-align: left;
+    color: #102A43;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+    cursor: pointer;
+    transition:
+        background-color 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+#analogy-translator .analogy-map-button:hover {
+    background: #EFF6FF;
+    border-color: #93C5FD;
+    transform: translateY(-2px);
+}
+
+#analogy-translator .analogy-map-button:focus-visible {
+    outline: 3px solid #0D9488;
+    outline-offset: 3px;
+}
+
+#analogy-translator .analogy-map-number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    color: #FFFFFF;
+    background: #2563EB;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 800;
+}
+
+#analogy-translator .analogy-map-label {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#analogy-translator .analogy-map-arrow {
+    color: #64748B;
+    font-size: 20px;
+    text-align: center;
+}
+
+#analogy-translator .analogy-map-technical {
+    padding: 9px 10px;
+    color: #166534;
+    background: #DCFCE7;
+    border: 1px solid #BBF7D0;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+/* Selected mapping */
+
+#analogy-translator .analogy-map-button.is-selected {
+    background: #EFF6FF;
+    border: 2px solid #2563EB;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+}
+
+#analogy-translator .analogy-map-button.is-selected .analogy-map-number {
+    background: #0D9488;
+}
+
+/* Explanation panel */
+
+#analogy-translator .analogy-translator-explanation {
+    margin-top: 24px;
+    padding: 20px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+#analogy-translator #analogy-map-step {
+    color: #2563EB;
+    font-size: 13px;
+    font-weight: 800;
+}
+
+#analogy-translator #analogy-map-title {
+    margin: 8px 0;
+    color: #102A43;
+}
+
+#analogy-translator #analogy-map-description {
+    color: #475569;
+    line-height: 1.7;
+}
+
+/* Status message */
+
+#analogy-translator .analogy-translator-status {
+    margin-top: 14px;
+    color: #64748B;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* iPad and mobile layout */
+
+@media (max-width: 600px) {
+    #analogy-translator {
+        padding: 16px;
+    }
+
+    #analogy-translator .analogy-map-button {
+        grid-template-columns: 34px 1fr;
+        gap: 10px;
+    }
+
+    #analogy-translator .analogy-map-arrow {
+        display: none;
+    }
+
+    #analogy-translator .analogy-map-technical {
+        grid-column: 2;
+    }
+}
+
+/* =========================================
+   SECTION 4 — INTERACTIVE PING RESULT EXPLORER
+   ========================================= */
+
+#ping-result-explorer {
+    margin: 28px 0;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(16, 42, 67, 0.07);
+}
+
+#ping-result-explorer > h3 {
+    margin-top: 0;
+    color: #102A43;
+}
+
+#ping-result-explorer > p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+.ping-result-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 22px 0;
+}
+
+.ping-result-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-height: 70px;
+    padding: 16px;
+    color: #102A43;
+    background: #F8FAFC;
+    border: 2px solid #E2E8F0;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ping-result-button:hover {
+    border-color: #2563EB;
+    background: #EFF6FF;
+}
+
+.ping-result-button:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 3px;
+}
+
+.ping-result-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    color: #475569;
+    background: #E2E8F0;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+.ping-result-button[data-result="success"].is-selected {
+    background: #F0FDF4;
+    border-color: #22C55E;
+}
+
+.ping-result-button[data-result="success"].is-selected .ping-result-icon {
+    color: #166534;
+    background: #DCFCE7;
+}
+
+.ping-result-button[data-result="failure"].is-selected {
+    background: #FFF7ED;
+    border-color: #F59E0B;
+}
+
+.ping-result-button[data-result="failure"].is-selected .ping-result-icon {
+    color: #92400E;
+    background: #FEF3C7;
+}
+
+.ping-result-explanation {
+    margin-top: 20px;
+    padding: 20px;
+    background: #F8FAFC;
+    border-left: 5px solid #2563EB;
+    border-radius: 10px;
+}
+
+.ping-result-explanation > p:first-child {
+    color: #2563EB;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.ping-result-explanation h4 {
+    margin: 8px 0;
+    color: #102A43;
+    font-size: 1.15rem;
+}
+
+.ping-result-explanation p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+.ping-result-status {
+    margin-bottom: 0;
+    color: #64748B;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+/* SECTION 4 — RESULT EXPLORER MOBILE LAYOUT */
+
+@media (max-width: 600px) {
+    #ping-result-explorer {
+        padding: 16px;
+    }
+
+    .ping-result-options {
+        grid-template-columns: 1fr;
+    }
+
+    .ping-result-button {
+        min-height: 62px;
+    }
+
+    .ping-result-explanation {
+        padding: 16px;
+    }
+}
+
+/* =========================================
+   SECTION 5 — INTERACTIVE RTT CALCULATION LAB
+   ========================================= */
+
+#rtt-calculation-lab {
+    margin: 28px 0;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+    box-shadow: 0 5px 18px rgba(16, 42, 67, 0.07);
+}
+
+#rtt-calculation-lab > h3 {
+    margin-top: 0;
+    color: #102A43;
+}
+
+#rtt-calculation-lab > p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+.rtt-input-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin: 22px 0;
+}
+
+.rtt-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.rtt-input-group label {
+    color: #102A43;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.rtt-input-group input {
+    width: 100%;
+    min-height: 48px;
+    padding: 12px;
+    color: #102A43;
+    background: #F8FAFC;
+    border: 2px solid #CBD5E1;
+    border-radius: 10px;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+.rtt-input-group input:focus {
+    outline: 3px solid #BFDBFE;
+    border-color: #2563EB;
+}
+
+.rtt-calculate-button {
+    display: inline-block;
+    min-height: 48px;
+    padding: 12px 22px;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.rtt-calculate-button:hover {
+    background: #1D4ED8;
+}
+
+.rtt-calculate-button:focus-visible {
+    outline: 3px solid #93C5FD;
+    outline-offset: 3px;
+}
+
+.rtt-calculation-result {
+    margin-top: 22px;
+    padding: 20px;
+    background: #EFF6FF;
+    border-left: 5px solid #2563EB;
+    border-radius: 10px;
+}
+
+.rtt-calculation-result > p:first-child {
+    margin-top: 0;
+    color: #1D4ED8;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.rtt-calculation-result h4 {
+    margin: 8px 0;
+    color: #102A43;
+    font-size: 2rem;
+}
+
+.rtt-calculation-result p {
+    color: #475569;
+    line-height: 1.7;
+}
+
+.rtt-calculation-status {
+    margin-bottom: 0;
+    color: #64748B;
+    font-size: 0.9rem;
+}
+
+/* SECTION 5 — MOBILE LAYOUT */
+
+@media (max-width: 600px) {
+    #rtt-calculation-lab {
+        padding: 16px;
+    }
+
+    .rtt-input-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .rtt-calculate-button {
+        width: 100%;
+    }
+
+    .rtt-calculation-result {
+        padding: 16px;
+    }
+}
+
+/* ========================================= */
+/* SECTION 6.1 — INTERACTIVE COMPONENT EXPLORER */
+/* ========================================= */
+
+.ping-component-explorer {
+    margin: 30px 0;
+    padding: 24px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+.ping-component-explorer > h3 {
+    color: #102A43;
+    margin-top: 0;
+}
+
+.ping-component-options {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.ping-component-button {
+    padding: 15px;
+    text-align: left;
+    color: #1E3A8A;
+    background: #FFFFFF;
+    border: 1px solid #BFDBFE;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.ping-component-button:hover {
+    background: #EFF6FF;
+    border-color: #2563EB;
+}
+
+.ping-component-button.is-selected {
+    color: #FFFFFF;
+    background: #2563EB;
+    border-color: #2563EB;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
+}
+
+.ping-component-button:focus-visible {
+    outline: 3px solid #0D9488;
+    outline-offset: 3px;
+}
+
+.ping-component-explanation {
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-left: 5px solid #2563EB;
+    border-radius: 12px;
+}
+
+.ping-component-explanation > p:first-child {
+    color: #0D9488;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+}
+
+.ping-component-explanation h4 {
+    color: #102A43;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+#ping-component-details {
+    margin-top: 16px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+#ping-component-details ul {
+    padding-left: 22px;
+}
+
+.ping-component-status {
+    margin-top: 14px;
+    color: #64748B;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .ping-component-options {
+        grid-template-columns: 1fr;
+    }
+
+    .ping-component-explorer {
+        padding: 16px;
+    }
+}
+
+/* END SECTION 6.1 — INTERACTIVE COMPONENT EXPLORER */
+
+/* ========================================= */
+/* SECTION 7 — INTERACTIVE PING PACKET JOURNEY */
+/* ========================================= */
+
+.ping-journey-explorer {
+    margin: 32px 0;
+    padding: 24px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+.ping-journey-explorer > h3 {
+    color: #102A43;
+    margin-top: 0;
+}
+
+.ping-journey-progress {
+    margin: 24px 0;
+}
+
+#journey-step-number {
+    color: #1D4ED8;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.journey-progress-track {
+    height: 9px;
+    overflow: hidden;
+    background: #E2E8F0;
+    border-radius: 20px;
+}
+
+.journey-progress-fill {
+    width: 11.11%;
+    height: 100%;
+    background: #2563EB;
+    border-radius: 20px;
+    transition: width 0.35s ease;
+}
+
+.ping-journey-route {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    gap: 8px;
+    margin: 30px 0;
+}
+
+.journey-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 105px;
+    padding: 12px 6px;
+    color: #475569;
+    background: #FFFFFF;
+    border: 2px solid #CBD5E1;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.journey-node span {
+    font-size: 28px;
+}
+
+.journey-node strong {
+    font-size: 13px;
+}
+
+.journey-node.is-active {
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border-color: #2563EB;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.15);
+}
+
+#journey-destination.is-reply-active {
+    color: #166534;
+    background: #DCFCE7;
+    border-color: #22C55E;
+}
+
+.journey-route-line {
+    position: relative;
+    height: 4px;
+    background: #CBD5E1;
+    border-radius: 10px;
+}
+
+.journey-packet {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    background: #2563EB;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    opacity: 0;
+    transform: translate(-50%, -50%);
+    transition: left 0.5s ease,
+                background 0.3s ease,
+                opacity 0.3s ease;
+}
+
+.journey-packet.is-visible {
+    opacity: 1;
+}
+
+.journey-packet.is-reply {
+    background: #16A34A;
+    box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.15);
+}
+
+.ping-journey-explanation {
+    padding: 22px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-left: 5px solid #2563EB;
+    border-radius: 12px;
+}
+
+.ping-journey-explanation > p:first-child {
+    color: #0D9488;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.6px;
+}
+
+.ping-journey-explanation h4 {
+    color: #102A43;
+    margin: 10px 0;
+    font-size: 20px;
+}
+
+#journey-stage-details {
+    margin-top: 16px;
+    color: #475569;
+    line-height: 1.7;
+}
+
+#journey-stage-details ul {
+    padding-left: 22px;
+}
+
+.ping-journey-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.ping-journey-controls button {
+    padding: 11px 18px;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: none;
+    border-radius: 9px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.ping-journey-controls button:hover {
+    background: #1D4ED8;
+}
+
+.ping-journey-controls button:focus-visible {
+    outline: 3px solid #0D9488;
+    outline-offset: 3px;
+}
+
+.ping-journey-controls button:disabled {
+    background: #CBD5E1;
+    color: #64748B;
+    cursor: not-allowed;
+}
+
+.ping-journey-status {
+    margin-top: 14px;
+    color: #64748B;
+    font-size: 13px;
+}
+
+@media (max-width: 600px) {
+    .ping-journey-explorer {
+        padding: 16px;
+    }
+
+    .ping-journey-route {
+        gap: 4px;
+    }
+
+    .journey-node {
+        min-height: 90px;
+        padding: 8px 3px;
+    }
+
+    .journey-node span {
+        font-size: 22px;
+    }
+
+    .journey-node strong {
+        font-size: 11px;
+    }
+
+    .ping-journey-controls button {
+        flex: 1 1 40%;
+    }
+}
+
+/* END SECTION 7 — INTERACTIVE PING PACKET JOURNEY */
+
+/* SECTION 7 — PING TIMEOUT OUTCOME */
+
+.ping-journey-explorer.journey-timeout
+.ping-journey-explanation {
+    background: #FFFBEB;
+    border-color: #F59E0B;
+}
+
+.ping-journey-explorer.journey-timeout
+.ping-journey-explanation h4 {
+    color: #92400E;
+}
+
+.ping-journey-explorer.journey-timeout
+#journey-stage-label {
+    color: #B45309;
+}
+
+/* END SECTION 7 — PING TIMEOUT OUTCOME */
+
+/* ========================================= */
+/* SECTION 8 — INTERACTIVE SIMULATOR SETTINGS */
+/* ========================================= */
+
+.ping-simulation-settings {
+    margin: 25px 0;
+    padding: 22px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+}
+
+.ping-simulation-settings h3 {
+    color: #102A43;
+    margin-top: 0;
+}
+
+.simulation-input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 18px 0;
+}
+
+.simulation-input-group label {
+    color: #334155;
+    font-weight: 700;
+}
+
+.simulation-input-group input,
+.simulation-input-group select {
+    width: 100%;
+    min-height: 46px;
+    padding: 11px 13px;
+    color: #102A43;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 9px;
+    font-size: 15px;
+}
+
+.simulation-input-group input:focus,
+.simulation-input-group select:focus {
+    outline: 3px solid rgba(37, 99, 235, 0.2);
+    border-color: #2563EB;
+}
+
+/* SIMULATED TERMINAL */
+
+.ping-terminal {
+    margin-top: 24px;
+    padding: 20px;
+    color: #E2E8F0;
+    background: #0F172A;
+    border: 1px solid #334155;
+    border-radius: 12px;
+}
+
+.ping-terminal h3 {
+    margin-top: 0;
+    color: #93C5FD;
+}
+
+.ping-terminal pre {
+    min-height: 65px;
+    margin: 0;
+    padding: 14px;
+    overflow-x: auto;
+    color: #86EFAC;
+    background: #020617;
+    border-radius: 8px;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+/* END SECTION 8 — INTERACTIVE SIMULATOR SETTINGS */
+
+/* ========================================= */
+/* SECTION 10 — INTERACTIVE CASE STUDY */
+/* ========================================= */
+
+.ping-case-study {
+    margin: 30px 0;
+    padding: 24px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+.ping-case-study h3 {
+    margin-top: 0;
+    color: #102A43;
+}
+
+.ping-case-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.ping-case-button {
+    min-height: 52px;
+    padding: 12px;
+    color: #1D4ED8;
+    background: #FFFFFF;
+    border: 2px solid #BFDBFE;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ping-case-button:hover {
+    background: #EFF6FF;
+    border-color: #2563EB;
+}
+
+.ping-case-button.active {
+    color: #FFFFFF;
+    background: #2563EB;
+    border-color: #2563EB;
+}
+
+.ping-case-evidence {
+    margin-top: 22px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+.ping-case-evidence h4 {
+    color: #102A43;
+}
+
+.ping-case-terminal {
+    margin: 16px 0;
+    padding: 16px;
+    background: #0F172A;
+    border-radius: 10px;
+}
+
+.ping-case-terminal pre {
+    margin: 0;
+    color: #86EFAC;
+    font-family: "Courier New", monospace;
+    font-size: 13px;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    overflow-x: auto;
+}
+
+.ping-case-analysis {
+    margin-top: 18px;
+    padding: 18px;
+    background: #EFF6FF;
+    border-left: 4px solid #2563EB;
+    border-radius: 8px;
+}
+
+.ping-case-status {
+    margin-top: 18px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 650px) {
+    .ping-case-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .ping-case-study {
+        padding: 16px;
+    }
+}
+
+/* END SECTION 10 — INTERACTIVE CASE STUDY */
+
+/* ========================================= */
+/* SECTION 11 — INTERACTIVE MYTH VS FACT */
+/* ========================================= */
+
+.ping-myth-challenge {
+    margin: 30px 0;
+    padding: 24px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 16px;
+}
+
+.ping-myth-challenge h3 {
+    margin-top: 0;
+    color: #102A43;
+}
+
+.ping-myth-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 22px 0;
+}
+
+.ping-myth-button {
+    min-height: 52px;
+    padding: 12px;
+    color: #1D4ED8;
+    background: #FFFFFF;
+    border: 2px solid #BFDBFE;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ping-myth-button:hover {
+    background: #EFF6FF;
+    border-color: #2563EB;
+}
+
+.ping-myth-button.active {
+    color: #FFFFFF;
+    background: #2563EB;
+    border-color: #2563EB;
+}
+
+.ping-myth-result {
+    margin-top: 22px;
+    padding: 20px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 12px;
+}
+
+.ping-myth-result h4 {
+    color: #102A43;
+}
+
+#ping-myth-number {
+    color: #64748B;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+#ping-myth-verdict {
+    display: inline-block;
+    margin: 12px 0;
+    padding: 10px 15px;
+    color: #92400E;
+    background: #FEF3C7;
+    border: 1px solid #F59E0B;
+    border-radius: 9px;
+    font-weight: 800;
+}
+
+#ping-myth-verdict.myth-correct {
+    color: #166534;
+    background: #DCFCE7;
+    border-color: #22C55E;
+}
+
+#ping-myth-verdict.fact-correct {
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border-color: #3B82F6;
+}
+
+#ping-myth-explanation {
+    line-height: 1.7;
+}
+
+#ping-myth-takeaway {
+    margin-bottom: 0;
+    padding: 15px;
+    color: #134E4A;
+    background: #F0FDFA;
+    border-left: 4px solid #0D9488;
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+#ping-myth-status {
+    margin-top: 18px;
+    color: #475569;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+@media (max-width: 600px) {
+    .ping-myth-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    .ping-myth-challenge {
+        padding: 16px;
+    }
+}
+
+/* END SECTION 11 — INTERACTIVE MYTH VS FACT */
+
+/* ========================================== */
+/* SECTION 12.6 — NETWORK DIAGNOSTIC LAB */
+/* ========================================== */
+
+#network-diagnostic-lab {
+    margin-top: 35px;
+}
+
+#network-diagnostic-lab .diagnostic-scenario {
+    padding: 20px;
+    margin: 20px 0;
+    background: #EFF6FF;
+    border-left: 5px solid #2563EB;
+    border-radius: 12px;
+}
+
+#network-diagnostic-lab .diagnostic-scenario h5 {
+    margin-top: 0;
+    color: #1D4ED8;
+    font-size: 1.1rem;
+}
+
+#network-diagnostic-lab .diagnostic-test-buttons {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+}
+
+#network-diagnostic-lab .diagnostic-test-button {
+    padding: 14px 16px;
+    color: #FFFFFF;
+    background: #2563EB;
+    border: 2px solid #2563EB;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease, transform 0.2s ease;
+}
+
+#network-diagnostic-lab .diagnostic-test-button:hover {
+    background: #1D4ED8;
+    transform: translateY(-2px);
+}
+
+#network-diagnostic-lab .diagnostic-test-button.active {
+    color: #1E3A8A;
+    background: #DBEAFE;
+    border-color: #1D4ED8;
+}
+
+#network-diagnostic-lab .diagnostic-test-button:focus-visible {
+    outline: 3px solid #F59E0B;
+    outline-offset: 3px;
+}
+
+#network-diagnostic-lab .diagnostic-result-panel {
+    padding: 24px;
+    margin-top: 24px;
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.06);
+}
+
+#network-diagnostic-lab #diagnostic-test-number {
+    color: #2563EB;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+#network-diagnostic-lab .diagnostic-command-output {
+    padding: 16px;
+    margin: 20px 0;
+    background: #0F172A;
+    border-radius: 10px;
+}
+
+#network-diagnostic-lab .diagnostic-command-output h5 {
+    margin-top: 0;
+    color: #93C5FD;
+}
+
+#network-diagnostic-lab #diagnostic-test-output {
+    overflow-x: auto;
+    color: #86EFAC;
+    font-family: monospace;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+}
+
+#network-diagnostic-lab #diagnostic-test-meaning {
+    padding: 14px;
+    background: #F1F5F9;
+    border-radius: 9px;
+    line-height: 1.7;
+}
+
+#network-diagnostic-lab #diagnostic-test-takeaway {
+    padding: 14px;
+    color: #115E59;
+    background: #F0FDFA;
+    border-left: 4px solid #0D9488;
+    border-radius: 8px;
+    line-height: 1.7;
+}
+
+#network-diagnostic-lab #diagnostic-lab-status {
+    margin-top: 14px;
+    color: #475569;
+    font-size: 0.9rem;
+}
+
+#network-diagnostic-lab .diagnostic-simulation-note {
+    padding: 14px;
+    margin-top: 20px;
+    color: #92400E;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    border-radius: 9px;
+    line-height: 1.6;
+}
+
+/* Mobile layout */
+
+@media (max-width: 600px) {
+    #network-diagnostic-lab .diagnostic-test-buttons {
+        grid-template-columns: 1fr;
+    }
+
+    #network-diagnostic-lab .diagnostic-result-panel {
+        padding: 16px;
+    }
+
+    #network-diagnostic-lab .diagnostic-test-button {
+        width: 100%;
+    }
+}
+
+/* END SECTION 12.6 — NETWORK DIAGNOSTIC LAB */
+
+/* ========================================== */
+/* SECTION 13.9 — INTERACTIVE CONCEPT MAP */
+/* ========================================== */
+
+#ping-concept-map {
+    margin: 35px 0;
+    padding: 28px;
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-radius: 18px;
+}
+
+#ping-concept-map > h3 {
+    color: #102A43;
+    margin-bottom: 14px;
+}
+
+#ping-concept-map > h4 {
+    color: #1E3A8A;
+    margin: 26px 0 18px;
+}
+
+/* CENTRAL PING NODE */
+
+#ping-concept-map .concept-map-center {
+    display: flex;
+    justify-content: center;
+    margin: 24px 0;
+}
+
+#ping-concept-map .concept-map-ping-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 7px;
+    min-width: 210px;
+    padding: 22px 30px;
+    color: #FFFFFF;
+    background: #102A43;
+    border: 3px solid #2563EB;
+    border-radius: 16px;
+    box-shadow: 0 8px 20px rgba(16, 42, 67, 0.15);
+    text-align: center;
+}
+
+#ping-concept-map .concept-map-node-label {
+    color: #BFDBFE;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+#ping-concept-map .concept-map-ping-node strong {
+    color: #FFFFFF;
+    font-size: 28px;
+    letter-spacing: 2px;
+}
+
+#ping-concept-map .concept-map-ping-node span:last-child {
+    color: #DBEAFE;
+    font-size: 13px;
+}
+
+/* EIGHT CONCEPT BUTTONS */
+
+#ping-concept-map .concept-map-connections {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+    margin: 25px 0;
+}
+
+#ping-concept-map .concept-map-button {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 7px;
+    width: 100%;
+    min-height: 88px;
+    padding: 17px;
+    color: #102A43;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-left: 4px solid #2563EB;
+    border-radius: 12px;
+    text-align: left;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+#ping-concept-map .concept-map-button strong {
+    color: #1D4ED8;
+    font-size: 16px;
+}
+
+#ping-concept-map .concept-map-button span {
+    color: #475569;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+#ping-concept-map .concept-map-button:hover {
+    background: #EFF6FF;
+    border-color: #60A5FA;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 12px rgba(37, 99, 235, 0.10);
+}
+
+#ping-concept-map .concept-map-button.active {
+    background: #DBEAFE;
+    border-color: #2563EB;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.12);
+}
+
+#ping-concept-map .concept-map-button:focus-visible {
+    outline: 3px solid #F59E0B;
+    outline-offset: 3px;
+}
+
+/* CONCEPT EXPLANATION PANEL */
+
+#ping-concept-map .concept-map-explanation {
+    margin-top: 26px;
+    padding: 24px;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.05);
+}
+
+#ping-concept-map #concept-map-label {
+    color: #0D9488;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+#ping-concept-map #concept-map-title {
+    margin: 8px 0 14px;
+    color: #102A43;
+    font-size: 22px;
+}
+
+#ping-concept-map .concept-map-explanation h5 {
+    margin: 22px 0 7px;
+    color: #1D4ED8;
+    font-size: 15px;
+}
+
+#ping-concept-map .concept-map-explanation p {
+    line-height: 1.7;
+}
+
+/* STATUS MESSAGE */
+
+#ping-concept-map #concept-map-status {
+    margin-top: 16px;
+    color: #64748B;
+    font-size: 13px;
+    text-align: center;
+}
+
+/* MOBILE RESPONSIVENESS */
+
+@media (max-width: 600px) {
+
+    #ping-concept-map {
+        padding: 18px;
+    }
+
+    #ping-concept-map .concept-map-connections {
+        grid-template-columns: 1fr;
+    }
+
+    #ping-concept-map .concept-map-ping-node {
+        min-width: 0;
+        width: 100%;
+    }
+
+    #ping-concept-map .concept-map-explanation {
+        padding: 18px;
+    }
+}
+
+/* END SECTION 13.9 CSS */
+
+/* ==========================================
+   SECTION 15 — ENHANCED QUICK REVISION
+   ========================================== */
+
+/* Introduction */
+#quick-revision .qr-introduction {
+    max-width: 760px;
+    margin: 0 auto 30px;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--color-slate);
+}
+
+/* 15.1 — Concept cards */
+#quick-revision .qr-concept-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0 36px;
+}
+
+#quick-revision .qr-concept-card {
+    padding: 22px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-card);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#quick-revision .qr-concept-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-hover);
+}
+
+#quick-revision .qr-card-icon {
+    display: block;
+    margin-bottom: 12px;
+    font-size: 30px;
+}
+
+#quick-revision .qr-concept-card h4 {
+    margin: 0 0 10px;
+    color: var(--color-navy);
+}
+
+#quick-revision .qr-concept-card p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* 15.2 — Interactive stepper */
+#quick-revision .qr-stepper {
+    margin: 24px 0;
+    padding: 24px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+}
+
+#quick-revision .qr-step-tabs {
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+#quick-revision .qr-step-tab {
+    min-height: 72px;
+    padding: 10px 6px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-small);
+    background: var(--color-background);
+    color: var(--color-navy);
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#quick-revision .qr-step-tab span {
+    display: block;
+    margin: 0 auto 6px;
+    font-weight: 700;
+}
+
+#quick-revision .qr-step-tab.is-active {
+    background: var(--color-blue);
+    border-color: var(--color-blue);
+    color: white;
+}
+
+#quick-revision .qr-step-tab:focus-visible,
+#quick-revision .qr-step-controls button:focus-visible,
+#quick-revision .qr-copy-button:focus-visible {
+    outline: 3px solid var(--color-amber);
+    outline-offset: 3px;
+}
+
+#quick-revision .qr-step-detail {
+    min-height: 180px;
+    padding: 24px;
+    border-radius: var(--radius-medium);
+    background: var(--color-background);
+}
+
+#quick-revision #qr-step-count {
+    color: var(--color-blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+#quick-revision .qr-step-detail h4 {
+    color: var(--color-navy);
+    font-size: 20px;
+}
+
+#quick-revision .qr-step-example {
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: var(--radius-small);
+    background: #EAF2FF;
+    color: var(--color-navy);
+    font-family: var(--font-code);
+}
+
+#quick-revision .qr-step-controls {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 18px;
+}
+
+#quick-revision .qr-step-controls button {
+    padding: 11px 18px;
+    border: 0;
+    border-radius: var(--radius-small);
+    background: var(--color-blue);
+    color: white;
+    font: inherit;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#quick-revision .qr-step-controls button:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+/* Notes and tips */
+#quick-revision .qr-important-note,
+#quick-revision .qr-tip {
+    margin: 20px 0 30px;
+    padding: 18px 20px;
+    border-radius: var(--radius-medium);
+    line-height: 1.7;
+}
+
+#quick-revision .qr-important-note {
+    border-left: 5px solid var(--color-amber);
+    background: #FFF8E8;
+}
+
+#quick-revision .qr-tip {
+    border-left: 5px solid var(--color-teal);
+    background: #EAF8F6;
+}
+
+/* 15.3 — Command cards */
+#quick-revision .qr-command-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+#quick-revision .qr-command-card {
+    padding: 22px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    box-shadow: var(--shadow-card);
+}
+
+#quick-revision .qr-command-card h4 {
+    color: var(--color-navy);
+}
+
+#quick-revision .qr-command-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 16px 0;
+    padding: 14px;
+    border-radius: var(--radius-small);
+    background: #102A43;
+}
+
+#quick-revision .qr-command-box code {
+    color: #FFFFFF;
+    overflow-wrap: anywhere;
+}
+
+#quick-revision .qr-copy-button {
+    padding: 9px 12px;
+    border: 0;
+    border-radius: 7px;
+    background: var(--color-blue);
+    color: white;
+    font: inherit;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+#quick-revision .qr-command-caption {
+    color: var(--color-slate);
+    font-size: 14px;
+}
+
+/* 15.4 — Result cards */
+#quick-revision .qr-result-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin: 24px 0;
+}
+
+#quick-revision .qr-result-card {
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+#quick-revision .qr-result-icon {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    font-size: 21px;
+    font-weight: 700;
+}
+
+#quick-revision .qr-result-success {
+    border-top: 4px solid var(--color-teal);
+}
+
+#quick-revision .qr-result-success .qr-result-icon {
+    background: #E4F6F1;
+    color: #087C69;
+}
+
+#quick-revision .qr-result-warning {
+    border-top: 4px solid var(--color-amber);
+}
+
+#quick-revision .qr-result-warning .qr-result-icon {
+    background: #FFF4D9;
+    color: #9A6500;
+}
+
+#quick-revision .qr-result-error {
+    border-top: 4px solid #DC6262;
+}
+
+#quick-revision .qr-result-error .qr-result-icon {
+    background: #FCEAEA;
+    color: #B42323;
+}
+
+#quick-revision .qr-result-loss {
+    border-top: 4px solid var(--color-blue);
+}
+
+#quick-revision .qr-result-loss .qr-result-icon {
+    background: #EAF2FF;
+    color: var(--color-blue);
+}
+
+#quick-revision .qr-result-card strong {
+    display: block;
+    margin-top: 14px;
+    color: var(--color-navy);
+}
+
+/* 15.5 — Comparison panels */
+#quick-revision .qr-comparison-list {
+    display: grid;
+    gap: 18px;
+    margin: 24px 0;
+}
+
+#quick-revision .qr-comparison-card {
+    padding: 22px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+#quick-revision .qr-comparison-columns {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+#quick-revision .qr-comparison-side {
+    padding: 16px;
+    border-radius: var(--radius-small);
+    background: var(--color-background);
+}
+
+#quick-revision .qr-comparison-label {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--color-blue);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+}
+
+#quick-revision .qr-comparison-side p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+#quick-revision .qr-comparison-note {
+    margin-bottom: 0;
+    color: var(--color-slate);
+    font-size: 14px;
+}
+
+/* 15.6 — Revision checklist */
+#quick-revision .qr-checklist {
+    margin: 24px 0;
+    padding: 24px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    background: var(--color-white);
+    box-shadow: var(--shadow-card);
+}
+
+#quick-revision .qr-checklist-progress {
+    margin-bottom: 22px;
+}
+
+#quick-revision .qr-progress-heading {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    color: var(--color-navy);
+}
+
+#quick-revision .qr-progress-track {
+    height: 12px;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--color-border);
+}
+
+#quick-revision .qr-progress-fill {
+    width: 0%;
+    height: 100%;
+    border-radius: 20px;
+    background: var(--color-teal);
+    transition: width 0.3s ease;
+}
+
+#quick-revision .qr-check-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 13px 4px;
+    border-bottom: 1px solid var(--color-border);
+    cursor: pointer;
+    line-height: 1.6;
+}
+
+#quick-revision .qr-check-item input {
+    width: 19px;
+    height: 19px;
+    flex: 0 0 auto;
+    margin-top: 3px;
+    accent-color: var(--color-teal);
+}
+
+#quick-revision .qr-check-item:has(input:checked) span {
+    color: var(--color-slate);
+    text-decoration: line-through;
+    opacity: 0.7;
+}
+
+#quick-revision .qr-checklist-complete {
+    margin: 20px 0 0;
+    padding: 16px;
+    border-radius: var(--radius-small);
+    background: #E4F6F1;
+    color: #087C69;
+    font-weight: 700;
+    text-align: center;
+}
+
+/* Final thought */
+#quick-revision .qr-final-thought {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: var(--radius-large);
+    background: #EAF2FF;
+    border: 1px solid #C9DCFF;
+}
+
+#quick-revision .qr-final-icon {
+    font-size: 30px;
+}
+
+#quick-revision .qr-final-thought strong {
+    color: var(--color-navy);
+}
+
+#quick-revision .qr-final-thought p {
+    margin-bottom: 0;
+    line-height: 1.8;
+}
+
+/* Tablet and iPad layout */
+@media (max-width: 850px) {
+    #quick-revision .qr-concept-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    #quick-revision .qr-step-tabs {
+        gap: 6px;
+    }
+
+    #quick-revision .qr-step-tab {
+        font-size: 12px;
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 600px) {
+    #quick-revision .qr-concept-grid,
+    #quick-revision .qr-command-grid,
+    #quick-revision .qr-result-grid {
+        grid-template-columns: 1fr;
+    }
+
+    #quick-revision .qr-stepper,
+    #quick-revision .qr-checklist {
+        padding: 16px;
+    }
+
+    #quick-revision .qr-step-tabs {
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+    }
+
+    #quick-revision .qr-step-tab {
+        min-height: 64px;
+        padding: 8px 3px;
+        font-size: 10px;
+    }
+
+    #quick-revision .qr-step-tab span {
+        font-size: 13px;
+    }
+
+    #quick-revision .qr-comparison-columns {
+        grid-template-columns: 1fr;
+    }
+
+    #quick-revision .qr-command-box {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    #quick-revision .qr-final-thought {
+        padding: 18px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    #quick-revision .qr-concept-card,
+    #quick-revision .qr-progress-fill {
+        transition: none;
+    }
+
+    #quick-revision .qr-concept-card:hover {
+        transform: none;
+    }
+}
+
+
+
+
+
+
+
+
