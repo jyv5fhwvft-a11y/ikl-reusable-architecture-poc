@@ -1,6 +1,15 @@
-<article class="content-block"
-         id="{{ include.content_block.content_block_id | escape }}">
+
+{% if include.content_block.block_type == "html-section" %}
 
   {{ include.content_block.output }}
 
-</article>
+{% else %}
+
+  <article class="content-block"
+           id="{{ include.content_block.content_block_id | escape }}">
+
+    {{ include.content_block.output }}
+
+  </article>
+
+{% endif %}
