@@ -24,9 +24,34 @@
     {% if concept %}
 
       <section class="concept-introduction">
-        <p class="concept-subject">{{ concept.subject }}</p>
+
+        {% if concept.concept_number %}
+          <p class="concept-subject">
+            {{ concept.subject | upcase | escape }}
+            | CONCEPT {{ concept.concept_number | escape }}
+          </p>
+        {% else %}
+          <p class="concept-subject">
+            {{ concept.subject | escape }}
+          </p>
+        {% endif %}
+
         <h1>{{ concept.title | escape }}</h1>
+
+        {% if concept.subtitle %}
+          <p class="concept-subtitle">
+            {{ concept.subtitle | escape }}
+          </p>
+        {% endif %}
+
+        {% if concept.guiding_question %}
+          <p class="concept-guiding-question">
+            {{ concept.guiding_question | escape }}
+          </p>
+        {% endif %}
+
         <p>{{ concept.description | escape }}</p>
+
       </section>
 
       <section class="learning-objectives">
@@ -65,8 +90,8 @@
   </main>
 
   <footer class="site-footer">
-    <p>Interactive Knowledge Lexicon</p>
-    <p>Explore. Understand. Experiment.</p>
+    <p>Interactive Knowledge Lexicon | Explore. Understand. Experiment.</p>
+    <p>Created by Amir Khan.</p>
   </footer>
 
 </body>
