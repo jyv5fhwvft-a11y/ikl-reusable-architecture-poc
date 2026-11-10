@@ -2,9 +2,12 @@
 {
   "id": "IKL-CN-001",
   "slug": "ping",
+  "concept_number": "001",
   "title": "Ping",
   "subject": "Computer Networking",
   "topic": "Network Connectivity and Diagnostics",
+  "subtitle": "Testing Network Connectivity",
+  "guiding_question": "How can we check whether another device responds across a network?",
   "description": "A network diagnostic utility used to test whether a destination can be reached across an IP network and to measure round-trip time.",
   "learning_levels": [
     "first-grader",
