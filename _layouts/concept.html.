@@ -9,180 +9,122 @@
 
   <title>{{ concept.title | escape }} | Interactive Knowledge Lexicon</title>
 
-  <meta
-    name="description"
-    content="{{ concept.description | escape }}"
-  >
-
+  <meta name="description" content="{{ concept.description | escape }}">
   <meta name="theme-color" content="#102A43">
 
-  <link
-    rel="stylesheet"
-    href="{{ '/css/proof.css' | relative_url }}"
-  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="{{ '/css/proof.css' | relative_url }}">
 </head>
 
 <body>
 
-  <!-- =====================================
-       IKL SHARED HEADER
-       ===================================== -->
+  <a href="{{ '/' | relative_url }}" class="home-button">
+    ← Return to Homepage
+  </a>
 
-  <header class="site-header">
-    <a
-      href="{{ '/' | relative_url }}"
-      class="site-brand"
-      aria-label="Interactive Knowledge Lexicon home"
-    >
-      Interactive Knowledge Lexicon
-    </a>
+  {% if concept %}
 
-    <span>Explore. Understand. Experiment.</span>
+  <!-- CONCEPT HERO — MATCHES PRODUCTION PING -->
+
+  <header class="concept-hero">
+
+    <p class="concept-subject">
+      {{ concept.subject | upcase | escape }}
+      {% if concept.concept_number %}
+        | CONCEPT {{ concept.concept_number | escape }}
+      {% endif %}
+    </p>
+
+    <h1>{{ concept.title | escape }}</h1>
+
+    {% if concept.guiding_question %}
+      <h2>{{ concept.guiding_question | escape }}</h2>
+    {% endif %}
+
+    {% if concept.subtitle %}
+      <p class="concept-subtitle">
+        {{ concept.subtitle | escape }}
+      </p>
+    {% endif %}
+
+    {% if concept.description %}
+      <p class="concept-description">
+        {{ concept.description | escape }}
+      </p>
+    {% endif %}
+
   </header>
-
-
-  <!-- =====================================
-       MAIN CONCEPT PAGE
-       ===================================== -->
 
   <main class="concept-container">
 
-    {% if concept %}
+    {% if concept.learning_objectives %}
+    <section class="learning-objectives">
 
-      <!-- CONCEPT INTRODUCTION -->
+      <h2>What You Will Learn</h2>
 
-      <section
-        class="concept-introduction"
-        aria-labelledby="concept-title"
-      >
+      <ul>
+        {% for objective in concept.learning_objectives %}
+          <li>{{ objective.text | escape }}</li>
+        {% endfor %}
+      </ul>
 
-        {% if concept.concept_number %}
-          <p class="concept-subject">
-            {{ concept.subject | upcase | escape }}
-            | CONCEPT {{ concept.concept_number | escape }}
-          </p>
-        {% else %}
-          <p class="concept-subject">
-            {{ concept.subject | escape }}
-          </p>
-        {% endif %}
+    </section>
+    {% endif %}
 
-        <h1 id="concept-title">
-          {{ concept.title | escape }}
-        </h1>
+    <div class="concept-content">
 
-        {% if concept.subtitle %}
-          <p class="concept-subtitle">
-            {{ concept.subtitle | escape }}
-          </p>
-        {% endif %}
+      <h2 class="content-heading">Explore the Concept</h2>
 
-        {% if concept.guiding_question %}
-          <p class="concept-guiding-question">
-            {{ concept.guiding_question | escape }}
-          </p>
-        {% endif %}
+      {% for content_id in concept.content_blocks %}
 
-        {% if concept.description %}
-          <p class="concept-description">
-            {{ concept.description | escape }}
-          </p>
-        {% endif %}
+        {% assign content_block = site.learning_content
+          | where: "content_block_id", content_id
+          | first
+        %}
 
-      </section>
+        {% if content_block %}
 
-
-      <!-- LEARNING OBJECTIVES -->
-
-      {% if concept.learning_objectives %}
-        <section
-          class="learning-objectives"
-          aria-labelledby="learning-objectives-title"
-        >
-
-          <h2 id="learning-objectives-title">
-            What you will learn
-          </h2>
-
-          <ul>
-            {% for objective in concept.learning_objectives %}
-              <li>
-                {{ objective.text | escape }}
-              </li>
-            {% endfor %}
-          </ul>
-
-        </section>
-      {% endif %}
-
-
-      <!-- REUSABLE EDUCATIONAL CONTENT -->
-
-      <section
-        class="concept-content"
-        aria-labelledby="concept-content-title"
-      >
-
-        <h2 id="concept-content-title">
-          Explore the concept
-        </h2>
-
-        {% for content_id in concept.content_blocks %}
-
-          {% assign content_block = site.learning_content
-            | where: "content_block_id", content_id
-            | first
+          {% include concept/content-block.html
+            content_block=content_block
           %}
 
-          {% if content_block %}
+        {% else %}
 
-            {% include concept/content-block.html
-              content_block=content_block
-            %}
-
-          {% else %}
-
-            <p class="error-message">
+          <section class="error-message">
+            <p>
               Content block not found:
               {{ content_id | escape }}
             </p>
+          </section>
 
-          {% endif %}
+        {% endif %}
 
-        {% endfor %}
+      {% endfor %}
 
-      </section>
-
-    {% else %}
-
-      <!-- CONCEPT NOT FOUND -->
-
-      <section class="error-message">
-        <h1>Concept not found</h1>
-
-        <p>
-          The requested concept record could not be located.
-        </p>
-      </section>
-
-    {% endif %}
+    </div>
 
   </main>
 
+  {% else %}
 
-  <!-- =====================================
-       IKL SHARED FOOTER
-       ===================================== -->
+  <main class="concept-container">
+    <section class="error-message">
+      <h1>Concept not found</h1>
+      <p>The requested concept record could not be located.</p>
+    </section>
+  </main>
+
+  {% endif %}
 
   <footer class="site-footer">
-
-    <p>
+    <p class="footer-brand">
       Interactive Knowledge Lexicon |
       Explore. Understand. Experiment.
     </p>
-
-    <p>Created by Amir Khan.</p>
-
+    <p class="footer-credit">Created by Amir Khan.</p>
   </footer>
 
 </body>
