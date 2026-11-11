@@ -782,4 +782,44 @@ order: 3
 
     </div>
 
+
+    <!-- BLOCK 3.11: SECTION LEARNING OUTCOME -->
+
+    <h3>3.7 What You Should Understand</h3>
+
+    <p>
+        You should now understand that:
+    </p>
+
+    <ul>
+
+        <li>
+            A process is an executing instance
+            of a program managed by the operating system.
+        </li>
+
+        <li>
+            The operating system coordinates processes
+            and their access to computer resources.
+        </li>
+
+        <li>
+            A process may have threads that execute
+            instructions on the CPU.
+        </li>
+
+        <li>
+            Ready and Waiting / Blocked describe
+            different reasons why execution may pause.
+        </li>
+
+        <li>
+            Saved execution context helps a thread
+            continue after a context switch.
+        </li>
+
+    </ul>
+
+    
+
 </section>
