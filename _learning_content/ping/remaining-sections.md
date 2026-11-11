@@ -1627,7 +1627,7 @@ Request timed out.
         </p>
 
     </div>
-    <!-- END SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
+ <!-- END SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
 
 </section>
 
@@ -1798,7 +1798,7 @@ Request timed out.
         <li><strong>Reality:</strong> DNS resolves hostnames into IP addresses.</li>
     </ul>
 
-    <!-- ========================================== -->
+<!-- ========================================== -->
 <!-- SECTION 11 — INTERACTIVE MYTH VS FACT -->
 <!-- ========================================== -->
 
@@ -2477,7 +2477,7 @@ Request timed out.
 </p>
 
 </section>
-        <!-- ========================================== -->
+ <!-- ========================================== -->
 <!-- SECTION 12.6: INTERACTIVE NETWORK DIAGNOSTIC LAB -->
 <!-- ========================================== -->
 
@@ -2612,7 +2612,7 @@ Request timed out.
 
 <!-- END SECTION 12.6: INTERACTIVE NETWORK DIAGNOSTIC LAB -->
 
-        <!-- ================================== -->
+ <!-- ================================== -->
 <!-- SECTION 13: CONNECTIONS TO OTHER CONCEPTS -->
 <!-- ================================== -->
 
@@ -2825,7 +2825,7 @@ Request timed out.
     </p>
 </div>
 
-    <!-- 13.5 Connection to Packets -->
+<!-- 13.5 Connection to Packets -->
 <div class="concept-subsection">
     <h3>13.5 How Is Ping Connected to Packets?</h3>
     <h4>What Is a Network Packet?</h4>
@@ -2990,7 +2990,7 @@ Request timed out.
     </p>
 </div>
 
-    <!-- Section 13.8: Bandwidth -->
+<!-- Section 13.8: Bandwidth -->
 <div class="connection-subsection" id="bandwidth">
 
     <h3>13.8 Bandwidth</h3>
@@ -3063,7 +3063,7 @@ a network connection can carry over a period of time.
 
 </div>
 
-    <!-- ========================================== -->
+<!-- ========================================== -->
 <!-- SECTION 13.9: INTERACTIVE CONCEPT CONNECTION MAP -->
 <!-- ========================================== -->
 
@@ -3208,9 +3208,9 @@ a network connection can carry over a period of time.
 
 </section>
 
-        <!------=================================----->
-        <!-- SECTION 14: KNOWLEDGE ASSESSMENT -->
-        <!------=====≠=============================----->
+<!------=================================----->
+<!-- SECTION 14: KNOWLEDGE ASSESSMENT -->
+<!------=====≠=============================----->
 
 <section id="knowledge-assessment">
 
@@ -3287,7 +3287,7 @@ a network connection can carry over a period of time.
 
     </div>
 
-        <!-- QUESTION 1 -->
+<!-- QUESTION 1 -->
 
     <div class="quiz-question" id="question-1">
 
@@ -3725,7 +3725,7 @@ a network connection can carry over a period of time.
     </div>
 
 
-    <!-- 15.2 HOW PING WORKS -->
+<!-- 15.2 HOW PING WORKS -->
 
     <h3>15.2 How Ping Works — Five Simple Steps</h3>
     <p>
@@ -3823,7 +3823,7 @@ a network connection can carry over a period of time.
     </div>
 
 
-    <!-- 15.3 IMPORTANT PING COMMANDS -->
+<!-- 15.3 IMPORTANT PING COMMANDS -->
 
     <h3>15.3 Important Ping Commands</h3>
     <p>
@@ -3914,7 +3914,7 @@ a network connection can carry over a period of time.
     </p>
 
 
-    <!-- 15.4 UNDERSTANDING PING RESULTS -->
+<!-- 15.4 UNDERSTANDING PING RESULTS -->
 
     <h3>15.4 Understanding Ping Results</h3>
 
@@ -4005,7 +4005,7 @@ a network connection can carry over a period of time.
     </div>
 
 
-    <!-- 15.5 IMPORTANT DIFFERENCES -->
+<!-- 15.5 IMPORTANT DIFFERENCES -->
 
     <h3>15.5 Important Differences to Remember</h3>
 
@@ -4128,7 +4128,7 @@ a network connection can carry over a period of time.
     </p>
 
 
-    <!-- 15.6 FINAL KEY TAKEAWAYS -->
+<!-- 15.6 FINAL KEY TAKEAWAYS -->
 
     <h3>15.6 Final Key Takeaways</h3>
 
