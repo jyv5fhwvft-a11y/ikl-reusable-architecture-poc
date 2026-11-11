@@ -245,9 +245,9 @@ order: 5
             </p>
         </section>
 
-        <!-- ================================== -->
-        <!-- SECTION 6: COMPONENTS AND ARCHITECTURE -->
-        <!-- ================================== -->
+<!-- ================================== -->
+<!-- SECTION 6: COMPONENTS AND ARCHITECTURE -->
+<!-- ================================== -->
 <section id="components-architecture">
 
             <h2>6. Components and Architecture of Ping</h2>
