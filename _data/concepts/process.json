@@ -8,13 +8,10 @@
   "subtitle": "A Program in Execution",
   "guiding_question": "What happens when a computer actually runs a program?",
   "description": "A process is a program in execution, together with its current state and the resources the operating system manages for it.",
-
   "page_class": "process-page",
-
   "stylesheets": [
     "/css/process.css"
   ],
-
   "scripts": [
     "/js/component-explorer-engine.js",
     "/js/process-component-explorer.js",
@@ -24,14 +21,12 @@
     "/js/process-memory-explorer.js",
     "/js/process-working-mechanism.js"
   ],
-
   "learning_levels": [
     "first-grader",
     "beginner",
     "undergraduate",
     "expert"
   ],
-
   "learning_objectives": [
     {
       "id": "IKL-OS-002-LO-01",
@@ -46,20 +41,13 @@
       "text": "Explain how an operating system manages process execution."
     }
   ],
-
   "content_blocks": [
     "IKL-OS-002-CB-01",
     "IKL-OS-002-CB-02",
     "IKL-OS-002-CB-03",
     "IKL-OS-002-CB-04",
-    "IKL-OS-002-CB-05",
-    "IKL-OS-002-CB-06",
-    "IKL-OS-002-CB-07",
-    "IKL-OS-002-CB-08",
-    "IKL-OS-002-CB-09",
-    "IKL-OS-002-CB-10"
+    "IKL-OS-002-CB-05"
   ],
-
   "related_concepts": [
     "Operating System",
     "Program",
