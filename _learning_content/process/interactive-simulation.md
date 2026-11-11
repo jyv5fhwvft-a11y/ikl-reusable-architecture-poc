@@ -61,15 +61,7 @@ order: 8
         </div>
 
         <h4>Event History</h4>
-        <ul id="processSimHistory"></ul>
-    </div>
-
-    <div class="concept-note">
-        <p>
-            <strong>Learning goal:</strong> Experience the process lifecycle
-            from the operating system's point of view — creation, scheduling,
-            running, waiting for I/O, and termination.
-        </p>
+        <ul class="process-sim-history" id="processSimHistory"></ul>
     </div>
 
 </section>
