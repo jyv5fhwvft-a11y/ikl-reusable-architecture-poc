@@ -991,9 +991,9 @@ order: 5
 
         </section>
 
-        <!-- ================================== -->
-        <!-- SECTION 8: INTERACTIVE SIMULATION -->
-        <!-- ================================== -->
+<!-- ================================== -->
+<!-- SECTION 8: INTERACTIVE SIMULATION -->
+<!-- ================================== -->
 <section id="interactive-simulation">
 
             <h2>8. Interactive Ping Simulation</h2>
