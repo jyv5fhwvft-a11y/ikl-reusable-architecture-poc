@@ -4000,6 +4000,474 @@ order: 5
 
 <!-- END SECTION 9 -->
 
+<section id="practical-example" class="concept-section"
+         aria-labelledby="practical-example-heading">
+
+    <h2 id="practical-example-heading">10. Practical Example</h2>
+
+    <!-- BLOCK 10.1: INTRODUCING THE SCENARIO -->
+
+    <h3>10.1 A Real-Life Scenario: Opening a Text Editor</h3>
+
+    <p>
+        Imagine Alex opens a text editor to write a document.
+        The application may look like one simple window, but
+        behind it the operating system is managing processes,
+        threads, memory, CPU time, and access to storage.
+    </p>
+
+    <p>
+        We will follow one representative process from the
+        moment the text editor starts until that process exits.
+        This example uses the classic five-state process model
+        to explain what happens.
+    </p>
+
+    <div class="concept-note">
+        <strong>Our scenario assumptions:</strong>
+        <ul>
+            <li>We follow one representative process.</li>
+            <li>The text editor performs a blocking file-read operation.</li>
+            <li>The application eventually exits and the process terminates.</li>
+        </ul>
+        These assumptions let us clearly observe all five process states.
+    </div>
+
+
+    <!-- BLOCK 10.2: FOLLOWING THE PROCESS LIFECYCLE -->
+
+    <h3>10.2 Follow the Process Through Its Lifetime</h3>
+
+    <ol>
+
+        <li>
+            <strong>Alex opens the text editor — New.</strong>
+
+            <p>
+                The operating system begins creating a process
+                for the application. In the classic model, the
+                process enters the New state while the operating
+                system creates its management information and
+                prepares the resources needed for execution.
+            </p>
+        </li>
+
+        <li>
+            <strong>The process becomes Ready.</strong>
+
+            <p>
+                The process has been admitted for execution and
+                is prepared to run. It enters the Ready state,
+                where it waits for the CPU scheduler to select
+                its execution work.
+            </p>
+        </li>
+
+        <li>
+            <strong>The process starts Running.</strong>
+
+            <p>
+                The scheduler selects the work that should execute.
+                The dispatcher performs the necessary context-switching
+                work and transfers CPU control to it. The text editor
+                begins executing instructions.
+            </p>
+        </li>
+
+        <li>
+            <strong>Alex opens an existing document — Waiting.</strong>
+
+            <p>
+                In this example, the text editor requests document
+                data through a blocking I/O operation. Its execution
+                cannot continue until the requested operation completes.
+                The process therefore enters the Waiting state.
+            </p>
+        </li>
+
+        <li>
+            <strong>The operating system schedules other work.</strong>
+
+            <p>
+                While the text editor waits, its waiting execution
+                does not need to occupy the CPU. The scheduler can
+                select another Ready process or thread, allowing
+                the CPU to continue doing useful work.
+            </p>
+        </li>
+
+        <li>
+            <strong>The I/O operation completes — Ready.</strong>
+
+            <p>
+                The storage operation completes and the device
+                reports the completion event. The operating-system
+                kernel handles the event and makes the waiting
+                execution eligible to run again. In the classic
+                model, the process returns to the Ready state.
+            </p>
+        </li>
+
+        <li>
+            <strong>The process runs again — Running.</strong>
+
+            <p>
+                Completing I/O does not immediately give the process
+                the CPU. It must first be selected by the scheduler.
+                The dispatcher then restores the required execution
+                context and transfers CPU control so the text editor
+                can continue.
+            </p>
+        </li>
+
+        <li>
+            <strong>Alex closes the application — Terminated.</strong>
+
+            <p>
+                When the application exits and the process has
+                finished executing, it enters the Terminated state.
+                The operating system performs the remaining cleanup
+                and reclaims resources associated with that process
+                as appropriate.
+            </p>
+        </li>
+
+    </ol>
+
+
+    <!-- BLOCK 10.3: PROCESS JOURNEY SUMMARY -->
+
+    <h3>10.3 Visualising the Process Journey</h3>
+
+    <p>
+        Follow the sequence below. Notice that Ready and Running
+        appear twice because the process waits for I/O and then
+        becomes eligible to execute again.
+    </p>
+
+    <figure class="process-concept-visual">
+
+        <svg viewBox="0 0 1120 210"
+             role="img"
+             aria-labelledby="text-editor-journey-title text-editor-journey-desc"
+             xmlns="http://www.w3.org/2000/svg">
+
+            <title id="text-editor-journey-title">
+                Text editor process lifecycle journey
+            </title>
+
+            <desc id="text-editor-journey-desc">
+                The process moves from New to Ready, Running,
+                Waiting, Ready again, Running again, and finally
+                Terminated.
+            </desc>
+
+            <defs>
+                <marker id="textEditorJourneyArrow"
+                        markerWidth="10"
+                        markerHeight="10"
+                        refX="8"
+                        refY="5"
+                        orient="auto">
+                    <path d="M0 0 L10 5 L0 10 Z"
+                          fill="#64748B"/>
+                </marker>
+            </defs>
+
+            <!-- CONNECTING ARROWS -->
+
+            <g fill="none"
+               stroke="#64748B"
+               stroke-width="3"
+               marker-end="url(#textEditorJourneyArrow)">
+
+                <path d="M145 85 H165"/>
+                <path d="M300 85 H320"/>
+                <path d="M455 85 H475"/>
+                <path d="M610 85 H630"/>
+                <path d="M765 85 H785"/>
+                <path d="M920 85 H940"/>
+
+            </g>
+
+            <!-- NEW -->
+
+            <rect x="10" y="45" width="135" height="80"
+                  rx="12" fill="#EFF6FF"
+                  stroke="#2563EB" stroke-width="2"/>
+
+            <text x="77" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">NEW</text>
+
+            <text x="77" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">Created</text>
+
+            <!-- READY -->
+
+            <rect x="165" y="45" width="135" height="80"
+                  rx="12" fill="#DBEAFE"
+                  stroke="#2563EB" stroke-width="2"/>
+
+            <text x="232" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">READY</text>
+
+            <text x="232" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">First turn</text>
+
+            <!-- RUNNING -->
+
+            <rect x="320" y="45" width="135" height="80"
+                  rx="12" fill="#CCFBF1"
+                  stroke="#0D9488" stroke-width="2"/>
+
+            <text x="387" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">RUNNING</text>
+
+            <text x="387" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">Executes</text>
+
+            <!-- WAITING -->
+
+            <rect x="475" y="45" width="135" height="80"
+                  rx="12" fill="#FEF3C7"
+                  stroke="#D97706" stroke-width="2"/>
+
+            <text x="542" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">WAITING</text>
+
+            <text x="542" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">File I/O</text>
+
+            <!-- READY AGAIN -->
+
+            <rect x="630" y="45" width="135" height="80"
+                  rx="12" fill="#DBEAFE"
+                  stroke="#2563EB" stroke-width="2"/>
+
+            <text x="697" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">READY</text>
+
+            <text x="697" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">I/O complete</text>
+
+            <!-- RUNNING AGAIN -->
+
+            <rect x="785" y="45" width="135" height="80"
+                  rx="12" fill="#CCFBF1"
+                  stroke="#0D9488" stroke-width="2"/>
+
+            <text x="852" y="91"
+                  text-anchor="middle"
+                  font-size="19" font-weight="700"
+                  fill="#102A43">RUNNING</text>
+
+            <text x="852" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">Resumes</text>
+
+            <!-- TERMINATED -->
+
+            <rect x="940" y="45" width="170" height="80"
+                  rx="12" fill="#F1F5F9"
+                  stroke="#64748B" stroke-width="2"/>
+
+            <text x="1025" y="91"
+                  text-anchor="middle"
+                  font-size="18" font-weight="700"
+                  fill="#102A43">TERMINATED</text>
+
+            <text x="1025" y="150"
+                  text-anchor="middle"
+                  font-size="13" fill="#475569">Exits</text>
+
+            <text x="560" y="195"
+                  text-anchor="middle"
+                  font-size="13" fill="#64748B">
+                Simplified teaching model — one representative process
+            </text>
+
+        </svg>
+
+        <figcaption>
+            One possible journey through the five-state process
+            model, including a blocking file I/O operation.
+        </figcaption>
+
+    </figure>
+
+    <div class="concept-note">
+
+        <strong>Important observation:</strong>
+
+        When the I/O operation completes, the process returns
+        to Ready, not directly to Running. It must wait until
+        the scheduler selects it again.
+
+    </div>
+
+
+    <!-- BLOCK 10.4: RESOURCES USED BY THE PROCESS -->
+
+    <h3>10.4 What Does the Operating System Manage?</h3>
+
+    <p>
+        Several operating-system components and hardware resources
+        contribute to the text editor's execution. Each has a
+        different responsibility.
+    </p>
+
+    <div class="concept-comparison">
+
+        <div class="comparison-item">
+            <h4>CPU</h4>
+            <p>
+                Executes instructions from the currently running
+                thread. The CPU is the hardware that performs
+                the actual computation.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h4>Memory</h4>
+            <p>
+                Holds the program's code, working data, and
+                other information needed while the application
+                is executing.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h4>CPU Scheduler</h4>
+            <p>
+                Chooses which eligible Ready execution should
+                receive CPU time. Modern operating systems
+                generally make this decision at the thread level.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h4>Dispatcher</h4>
+            <p>
+                Carries out the handover to the selected execution,
+                including the necessary context-switching work
+                and transfer of CPU control.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h4>Storage Device</h4>
+            <p>
+                Supplies requested document data when the
+                application performs file input/output.
+            </p>
+        </div>
+
+        <div class="comparison-item">
+            <h4>Operating-System Kernel</h4>
+            <p>
+                Manages process and thread information, handles
+                important events such as I/O completion, and
+                coordinates changes in execution state.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- BLOCK 10.5: WHAT WE LEARN FROM THE EXAMPLE -->
+
+    <h3>10.5 What Does This Example Teach Us?</h3>
+
+    <ul>
+
+        <li>
+            Starting an application causes the operating system
+            to create and manage one or more processes.
+        </li>
+
+        <li>
+            The classic process model describes five states:
+            New, Ready, Running, Waiting, and Terminated.
+        </li>
+
+        <li>
+            A Ready process is eligible to execute but has
+            not necessarily received CPU time.
+        </li>
+
+        <li>
+            A process waiting for blocking I/O does not need
+            to occupy the CPU while that operation is pending.
+        </li>
+
+        <li>
+            After I/O completes, the process becomes Ready
+            and must be selected before it can execute again.
+        </li>
+
+        <li>
+            The scheduler selects work, while the dispatcher
+            transfers CPU control to that work.
+        </li>
+
+        <li>
+            When a process exits, the operating system handles
+            its remaining cleanup and resource reclamation.
+        </li>
+
+    </ul>
+
+
+    <!-- BLOCK 10.6: IMPORTANT TECHNICAL QUALIFICATION -->
+
+    <div class="concept-note">
+
+        <h4>Important: This Is a Simplified Teaching Example</h4>
+
+        <p>
+            Real operating systems use techniques such as caching,
+            buffering, asynchronous I/O, and other mechanisms
+            to handle file operations.
+        </p>
+
+        <p>
+            Not every file operation causes a process to enter
+            the Waiting state. If the requested data is already
+            available, or an operation is handled asynchronously,
+            the execution may continue without the blocking
+            transition shown here.
+        </p>
+
+        <p>
+            Also remember that the five-state model is a teaching
+            abstraction. Modern operating systems generally
+            schedule threads, which execute within processes.
+            This example uses process-level states to make the
+            basic lifecycle easier to understand.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- END SECTION 10: PRACTICAL EXAMPLE -->
+
+
 
 
 
