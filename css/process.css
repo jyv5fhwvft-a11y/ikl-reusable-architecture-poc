@@ -3435,6 +3435,57 @@ h4 {
 
 /* END SECTION 7 — WORKING MECHANISM ANIMATION CONTROLS */
 
+/* =========================================================
+   PROCESS HEADER — FINAL VISUAL ALIGNMENT
+   Align the Process header with the Ping presentation.
+   Process page only; no shared layout changes.
+   ========================================================= */
+
+.concept-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.concept-hero > .concept-subject {
+    order: 1;
+    width: 100%;
+    margin-bottom: 14px;
+}
+
+.concept-hero > h1 {
+    order: 2;
+    width: 100%;
+}
+
+.concept-hero > .concept-subtitle {
+    order: 3;
+    width: 100%;
+    max-width: 650px;
+    margin: 0 auto 12px;
+    text-align: center;
+}
+
+.concept-hero > h2 {
+    order: 4;
+    width: 100%;
+    max-width: 720px;
+    margin: 0 auto 18px;
+    text-align: center;
+}
+
+.concept-hero > .concept-description {
+    order: 5;
+    width: 100%;
+    max-width: 750px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+/* END PROCESS HEADER ALIGNMENT */
+
+
 
 
 
