@@ -1,45 +1,12 @@
 ---
-content_block_id: IKL-OS-002-CB-05
+content_block_id: IKL-OS-002-CB-10
 concept_id: IKL-OS-002
-section_id: IKL-OS-002-SEC-05
-section_number: 5
-section_title: Technical Explanation through Quick Revision
+section_id: IKL-OS-002-SEC-10
+section_number: 10
+section_title: Practical Example through Quick Revision
 block_type: html-section
-order: 5
+order: 10
 ---
-<section id="technical-explanation" class="concept-section">
-    <h2>5. Technical Explanation</h2>
-
-    <h3>What Is a Process, Technically?</h3>
-    <p>
-        A process is an active instance of a program. It has an execution
-        context and associated operating-system-managed resources.
-    </p>
-
-    <h3>Key Technical Elements</h3>
-    <ul>
-        <li><strong>Process ID (PID)</strong> — unique identifier</li>
-        <li><strong>Process state</strong> — New, Ready, Running, Waiting, Terminated</li>
-        <li><strong>Program counter</strong> — next instruction address</li>
-        <li><strong>CPU registers</strong> — saved execution context</li>
-        <li><strong>Address space</strong> — virtual memory regions</li>
-        <li><strong>Process Control Block (PCB)</strong> — OS management record</li>
-    </ul>
-
-    <h3>Program versus Process</h3>
-    <table>
-        <thead>
-            <tr><th>Program</th><th>Process</th></tr>
-        </thead>
-        <tbody>
-            <tr><td>Passive set of instructions</td><td>Active execution</td></tr>
-            <tr><td>Stored as a file</td><td>Managed execution instance</td></tr>
-            <tr><td>Does not need CPU time by itself</td><td>Requires CPU scheduling</td></tr>
-            <tr><td>Can create multiple processes</td><td>Has its own execution state</td></tr>
-        </tbody>
-    </table>
-</section>
-
 <section id="practical-example" class="concept-section">
     <h2>10. Practical Example</h2>
     <p>
@@ -47,6 +14,11 @@ order: 5
         for it. That process receives memory, CPU time, and file handles.
         If the browser needs to download a file, it may enter a Waiting state
         until the network operation completes, then return to Ready and later Running.
+    </p>
+    <p>
+        Multiple browser tabs may share one process or use separate processes,
+        depending on the browser design. Either way, each process is managed
+        by the operating system with its own state and resources.
     </p>
 </section>
 
@@ -57,6 +29,7 @@ order: 5
         <li>Thinking one application always equals one process.</li>
         <li>Assuming a process that is not visible has stopped existing.</li>
         <li>Believing the CPU runs only one process forever without switching.</li>
+        <li>Thinking Ready means the process is currently using the CPU (Ready means waiting for CPU time).</li>
     </ul>
 </section>
 
@@ -67,6 +40,7 @@ order: 5
         <li>Isolation between programs</li>
         <li>Support for multitasking</li>
         <li>Clear resource management</li>
+        <li>Memory protection between processes</li>
     </ul>
     <h3>Limitations</h3>
     <ul>
