@@ -7,8 +7,7 @@ section_title: Technical Explanation through Quick Revision
 block_type: html-section
 order: 5
 ---
-
-        <section id="technical-explanation">
+<section id="technical-explanation">
             <h2>5. Technical Explanation of Ping</h2>
 
             <h3>5.1 What Is ICMP?</h3>
@@ -249,8 +248,7 @@ order: 5
         <!-- ================================== -->
         <!-- SECTION 6: COMPONENTS AND ARCHITECTURE -->
         <!-- ================================== -->
-
-        <section id="components-architecture">
+<section id="components-architecture">
 
             <h2>6. Components and Architecture of Ping</h2>
 
@@ -654,8 +652,7 @@ order: 5
                 <!-- ================================== -->
         <!-- SECTION 7: WORKING MECHANISM -->
         <!-- ================================== -->
-
-        <section id="working-mechanism">
+<section id="working-mechanism">
 
             <h2>7. How Does Ping Work? The Complete Process</h2>
 
@@ -997,8 +994,7 @@ order: 5
         <!-- ================================== -->
         <!-- SECTION 8: INTERACTIVE SIMULATION -->
         <!-- ================================== -->
-
-        <section id="interactive-simulation">
+<section id="interactive-simulation">
 
             <h2>8. Interactive Ping Simulation</h2>
 
@@ -1138,8 +1134,7 @@ order: 5
         ================================== -->
         <!-- SECTION 9: INTERACTIVE FLOWCHART -->
         <!-- ================================== -->
-
-        <section id="interactive-flowchart">
+<section id="interactive-flowchart">
 
             <h2>9. Interactive Flowchart and Sequence Diagram</h2>
 
@@ -1218,8 +1213,7 @@ order: 5
                 <!-- ================================== -->
         <!-- SECTION 9.2: SEQUENCE DIAGRAM -->
         <!-- ================================== -->
-
-        <section id="sequence-diagram">
+<section id="sequence-diagram">
 
             <h3>9.2 Explore the Ping Sequence Diagram</h3>
             <p>
