@@ -4,83 +4,108 @@ concept_id: IKL-OS-002
 section_id: IKL-OS-002-SEC-01
 section_number: 1
 section_title: Identity and Definition
-block_type: definition
+block_type: html-section
 order: 1
 ---
+<section id="concept-identity" class="concept-section" aria-labelledby="process-section-1-heading">
 
-# What is a Process?
+    <h2 id="process-section-1-heading">
+        1. Concept Identity and Definition
+    </h2>
 
-## Simple definition
+    <div class="concept-identity-card">
+        <p><strong>Concept ID:</strong> IKL-OS-002</p>
+        <p><strong>Concept:</strong> Process</p>
+        <p><strong>Subject:</strong> Operating Systems</p>
+        <p><strong>Topic:</strong> Process Management</p>
+    </div>
 
-A process is a program that is currently executing.
+    <h3>What Is a Process?</h3>
 
-It includes the program's instructions, its current execution state, and the resources the operating system manages for it.
+    <p>
+        A <strong>process</strong> is an instance of a program that has
+        been started and is being managed by an operating system.
+        It has its own execution context, address space, one or more
+        threads, and associated resources and management information.
+    </p>
 
-## First-grader explanation
+    <div class="concept-note">
+        <h4>In Simple Words</h4>
+        <p>
+            A program contains instructions. A process is an instance
+            of that program being managed while it executes or waits
+            to continue execution.
+        </p>
+    </div>
 
-Imagine a recipe book.
+    <h3>Program vs Process: What Is the Difference?</h3>
 
-The recipe is like a program: it contains instructions for preparing food.
+    <div class="concept-comparison">
 
-When someone starts following that recipe, the activity of preparing the food is like a process.
+        <div class="comparison-item">
+            <h4>Program</h4>
+            <p>
+                A program is a passive set of instructions stored
+                in a file.
+            </p>
+            <ul>
+                <li>Exists as stored code</li>
+                <li>Does not execute by itself</li>
+                <li>Waits to be started</li>
+            </ul>
+        </div>
 
-The recipe itself is not doing anything. The process is the work actually happening.
+        <div class="comparison-item">
+            <h4>Process</h4>
+            <p>
+                A process is an active instance of a program
+                managed by the operating system.
+            </p>
+            <ul>
+                <li>Has an execution context</li>
+                <li>Uses memory and other resources</li>
+                <li>Can execute or wait</li>
+            </ul>
+        </div>
 
-## Analogy
+    </div>
 
-Think of a program as a musical score and a process as a live performance.
+    <h3>How Does a Program Become a Process?</h3>
 
-- Musical score: Program.
-- Musician performing it: Executing process.
-- Current position in the music: Execution state.
-- Instruments and equipment: Resources used during execution.
+    <p>
+        When you start a program, the operating system creates a process.
+        It allocates resources, sets up an address space, and prepares
+        the program for execution.
+    </p>
 
-The same musical score can be performed multiple times. Similarly, the same program can have multiple processes running simultaneously.
+    <p>
+        Important process information includes:
+    </p>
 
-## Beginner explanation
+    <ul>
+        <li>Process identifier (PID)</li>
+        <li>Process state</li>
+        <li>Program counter</li>
+        <li>CPU register context</li>
+        <li>Address space</li>
+        <li>Open files and other resources</li>
+        <li>Scheduling information</li>
+    </ul>
 
-When you open an application, the operating system creates and manages a process for its execution.
+    <p>
+        The operating system maintains this information, commonly
+        represented through a Process Control Block (PCB).
+    </p>
 
-A process needs resources such as:
+    <div class="concept-note">
+        <h4>Important Distinction</h4>
+        <p>
+            A process is not simply an application window.
+            An application may create multiple processes, and a process
+            may continue running without a visible window.
+            A process is an operating-system concept describing a
+            program in execution.
+        </p>
+    </div>
 
-- CPU execution time
-- Memory
-- Access to files
-- Input and output resources
-
-The operating system manages these resources and coordinates process execution.
-
-## Technical explanation
-
-A process is an active instance of a program.
-
-It has an execution context and associated operating-system-managed resources.
-
-Important process information includes:
-
-- Process identifier (PID)
-- Process state
-- Program counter
-- CPU register context
-- Address space
-- Open files and other resources
-- Scheduling information
-
-The operating system maintains process management information, commonly represented through a Process Control Block (PCB).
-
-## Program versus Process
-
-| Program | Process |
-|---|---|
-| Passive set of instructions | Active execution |
-| Stored as a file | Managed execution instance |
-| Does not need CPU time by itself | Requires CPU scheduling |
-| Can create multiple processes | Has its own execution state |
-
-## Important distinction
-
-A process is not simply an application window.
-
-An application may create multiple processes, and a process may continue running without a visible window.
-
-A process is an operating-system concept describing a program in execution.
+</section>
