@@ -649,9 +649,9 @@ order: 5
 
         </section>
 
-                <!-- ================================== -->
-        <!-- SECTION 7: WORKING MECHANISM -->
-        <!-- ================================== -->
+ <!-- ================================== -->
+<!-- SECTION 7: WORKING MECHANISM -->
+ <!-- ================================== -->
 <section id="working-mechanism">
 
             <h2>7. How Does Ping Work? The Complete Process</h2>
