@@ -244,7 +244,7 @@ order: 2
         <li>You can now enter numbers and perform calculations.</li>
     </ol>
 
-    <!-- BLOCK 2.5: CPU CLARIFICATION -->
+    <!-- SUPPORTING NOTE: CPU CLARIFICATION -->
 
     <div class="concept-note">
         <h4>Does a Process Use the CPU Every Moment?</h4>
@@ -268,7 +268,7 @@ order: 2
         </p>
     </div>
 
-    <!-- BLOCK 2.6: PROGRAM VS PROCESS -->
+    <!-- SUPPORTING NOTE: PROGRAM VS PROCESS -->
 
     <div class="concept-note">
         <h4>Remember This Simple Difference</h4>
@@ -292,7 +292,7 @@ order: 2
         </p>
     </div>
 
-    <!-- BLOCK 2.7: UNDERSTANDING CHECK -->
+    <!-- BLOCK 2.5: UNDERSTANDING CHECK -->
 
     <h3>2.5 Can You Understand the Difference?</h3>
 
@@ -320,7 +320,7 @@ order: 2
         </p>
     </details>
 
-    <!-- BLOCK 2.8: LEARNING OUTCOME -->
+    <!-- BLOCK 2.6: LEARNING OUTCOME -->
 
     <h3>2.6 What You Should Understand</h3>
 
