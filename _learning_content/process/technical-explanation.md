@@ -4467,6 +4467,514 @@ order: 5
 
 <!-- END SECTION 10: PRACTICAL EXAMPLE -->
 
+<section id="common-mistakes" class="concept-section"
+         aria-labelledby="common-mistakes-heading">
+
+    <h2 id="common-mistakes-heading">
+        11. Common Mistakes and Misconceptions
+    </h2>
+
+    <p>
+        When learning about processes, it is easy to confuse
+        related concepts or make incorrect assumptions about
+        how an operating system works.
+    </p>
+
+    <p>
+        Let's examine ten common misconceptions and understand
+        what actually happens inside an operating system.
+    </p>
+
+
+    <!-- BLOCK 11.1: TEN COMMON MISCONCEPTIONS -->
+
+    <h3>11.1 Ten Common Process Misconceptions</h3>
+
+    <p>
+        Each example separates a common misunderstanding
+        from the technically correct explanation.
+    </p>
+
+    <div class="concept-comparison">
+
+
+        <!-- MISCONCEPTION 1 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.1 Program and Process Are the Same</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                A program and a process are exactly the same thing.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                A program is a set of instructions stored as
+                a file. A process is an instance of a program
+                being executed, together with its execution
+                state and associated resources.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                A text editor stored on your device is a program.
+                When you launch it, the operating system creates
+                a process to manage its execution.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Program = instructions. Process = executing instance.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 2 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.2 Every Process Is Always Running</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                Every process is constantly using the CPU.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                In the classic five-state model, a process can
+                be New, Ready, Running, Waiting, or Terminated.
+                Running means its execution is currently taking
+                place on a CPU.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                A music application waiting for data from storage
+                may be blocked rather than executing application
+                instructions on the CPU.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Existing on a computer does not mean continuously
+                using the CPU.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 3 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.3 Ready and Waiting Mean the Same Thing</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                Ready and Waiting both mean that a process
+                is waiting, so they are identical.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                Ready means the execution is prepared to run
+                but needs CPU time. Waiting means it cannot
+                continue until a particular event or operation
+                is completed.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                A Ready process needs the scheduler to select it.
+                A process waiting for a file-reading operation
+                needs that operation to complete.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Ready = waiting for CPU. Waiting = waiting for
+                an event.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 4 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.4 A Ready Process Immediately Gets the CPU</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                As soon as a process enters Ready, it starts executing.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                A Ready process must wait until the CPU scheduler
+                selects its execution work. The dispatcher then
+                transfers CPU control to the selected work.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                Several processes may have Ready threads at the
+                same time. On a single CPU core, only one thread
+                can execute on that core at a time.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Ready means eligible to run, not currently running.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 5 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.5 Scheduler and Dispatcher Are the Same</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                The CPU scheduler and dispatcher perform
+                exactly the same job.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                The scheduler selects which eligible execution
+                should run next. The dispatcher carries out the
+                handover, including the necessary context-switching
+                work and transfer of CPU control.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                Think of the scheduler as choosing the next
+                passenger and the dispatcher as helping that
+                passenger take their seat.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Scheduler = selects. Dispatcher = hands over.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 6 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.6 Context Switching Is Simply Executing Another Process</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                A context switch is simply the execution
+                of another process.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                A context switch involves saving the necessary
+                CPU execution context of one thread and restoring
+                the context of another. This allows execution
+                to resume from the appropriate point.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                The operating system saves information such as
+                the program counter and relevant CPU registers
+                before switching execution to another thread.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Context switching changes which execution
+                context is using the CPU; it does not copy
+                the entire process memory.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 7 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.7 A Waiting Process Continues Using the CPU</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                A process waiting for I/O continues consuming
+                CPU time while it waits.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                In a blocking I/O operation, the blocked thread
+                does not execute its application instructions
+                while waiting for the required event. The CPU
+                can execute another Ready thread.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                While a text editor waits for a storage operation,
+                another Ready thread can use the CPU.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Waiting for I/O does not mean continuously
+                executing on the CPU.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 8 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.8 Every Application Has Only One Process</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                One application always corresponds to exactly
+                one process.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                An application may use multiple processes,
+                and a single process may contain multiple threads.
+                The relationship depends on the application's
+                design and the operating system.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                A modern web browser may use separate processes
+                for page rendering, browser services, or other
+                tasks. Its exact architecture varies.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                One application does not necessarily mean
+                one process.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 9 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.9 A Terminated Process Is Temporarily Inactive</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                A terminated process is simply a process that
+                is temporarily inactive.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                A terminated process has finished execution
+                or has been stopped. The same process instance
+                does not return to Ready or Running. The operating
+                system handles its remaining cleanup.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                When a text editor process exits, it no longer
+                continues executing as that process. Some
+                operating systems may temporarily retain exit
+                information until another process collects it.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                Terminated means execution has ended, not paused.
+            </p>
+
+        </div>
+
+
+        <!-- MISCONCEPTION 10 -->
+
+        <div class="comparison-item">
+
+            <h4>11.1.10 Every Process Follows One Fixed Lifecycle</h4>
+
+            <p>
+                <strong>MYTH — Common misconception:</strong>
+                Every process must follow exactly the same
+                sequence of state transitions.
+            </p>
+
+            <p>
+                <strong>REALITY — Correct understanding:</strong>
+                A process can move repeatedly between Ready,
+                Running, and Waiting. Its actual journey depends
+                on scheduling decisions, I/O requests, events,
+                and how execution ends.
+            </p>
+
+            <p>
+                <strong>EXAMPLE:</strong>
+                A process may run, wait for I/O, return to Ready,
+                run again, and repeat this cycle many times
+                before termination.
+            </p>
+
+            <p>
+                <strong>Remember:</strong>
+                A process lifecycle can contain repeated
+                state transitions.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- BLOCK 11.2: QUICK COMPARISON -->
+
+    <h3>11.2 Quick Comparison — Remember the Differences</h3>
+
+    <p>
+        These related concepts are easy to confuse.
+        Use this table as a quick revision reference.
+    </p>
+
+    <table>
+
+        <thead>
+            <tr>
+                <th>Concepts</th>
+                <th>Remember the Difference</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            <tr>
+                <td>Program vs. Process</td>
+                <td>Stored instructions vs. executing instance.</td>
+            </tr>
+
+            <tr>
+                <td>Ready vs. Waiting</td>
+                <td>Waiting for CPU selection vs. waiting for an event.</td>
+            </tr>
+
+            <tr>
+                <td>Scheduler vs. Dispatcher</td>
+                <td>Selects the execution vs. transfers CPU control.</td>
+            </tr>
+
+            <tr>
+                <td>Running vs. Terminated</td>
+                <td>Currently executing vs. execution has ended.</td>
+            </tr>
+
+            <tr>
+                <td>Process vs. Thread</td>
+                <td>Resource-owning environment vs. execution unit.</td>
+            </tr>
+
+            <tr>
+                <td>Blocking vs. Running</td>
+                <td>Waiting for an event vs. executing on the CPU.</td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+
+    <!-- BLOCK 11.3: MEMORY GUIDE -->
+
+    <h3>11.3 A Simple Memory Guide</h3>
+
+    <div class="concept-note">
+
+        <p><strong>PROGRAM</strong> — Instructions stored on a device.</p>
+
+        <p><strong>PROCESS</strong> — An executing program instance and its resources.</p>
+
+        <p><strong>THREAD</strong> — An execution unit within a process.</p>
+
+        <p><strong>READY</strong> — Prepared to execute; waiting for CPU selection.</p>
+
+        <p><strong>WAITING</strong> — Blocked until an event or operation completes.</p>
+
+        <p><strong>RUNNING</strong> — Currently executing on a CPU.</p>
+
+        <p><strong>SCHEDULER</strong> — Selects which execution runs next.</p>
+
+        <p><strong>DISPATCHER</strong> — Transfers CPU control to the selected execution.</p>
+
+        <p><strong>CONTEXT SWITCH</strong> — Saves and restores execution context.</p>
+
+        <p><strong>TERMINATED</strong> — Execution has ended.</p>
+
+    </div>
+
+
+    <!-- BLOCK 11.4: KEY TAKEAWAY -->
+
+    <h3>11.4 Key Takeaway</h3>
+
+    <div class="concept-note">
+
+        <p>
+            A process is not simply a program that is open
+            on the screen. It is an executing entity managed
+            by the operating system.
+        </p>
+
+        <p>
+            Understanding process states, scheduling,
+            context switching, resource usage, and the
+            relationship between processes and threads
+            helps explain how an operating system coordinates
+            multiple activities on a computer.
+        </p>
+
+        <p>
+            When you encounter a process-related problem,
+            ask yourself three questions:
+        </p>
+
+        <ul>
+            <li>What state is the execution currently in?</li>
+            <li>What event or decision caused that state?</li>
+            <li>Which operating-system component is responsible?</li>
+        </ul>
+
+    </div>
+
+</section>
+
+<!-- END SECTION 11: COMMON MISTAKES AND MISCONCEPTIONS -->
+
+
 
 
 
