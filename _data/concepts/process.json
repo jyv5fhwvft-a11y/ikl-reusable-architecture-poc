@@ -48,7 +48,11 @@
   ],
 
   "content_blocks": [
-    "IKL-OS-002-CB-01"
+    "IKL-OS-002-CB-01",
+    "IKL-OS-002-CB-02",
+    "IKL-OS-002-CB-03",
+    "IKL-OS-002-CB-04",
+    "IKL-OS-002-CB-05"
   ],
 
   "related_concepts": [
