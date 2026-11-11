@@ -1130,10 +1130,10 @@ order: 5
             </div>
 
         </section>
-               <!--
-        ================================== -->
-        <!-- SECTION 9: INTERACTIVE FLOWCHART -->
-        <!-- ================================== -->
+               
+<!-- ================================== -->
+<!-- SECTION 9: INTERACTIVE FLOWCHART -->
+<!-- ================================== -->
 <section id="interactive-flowchart">
 
             <h2>9. Interactive Flowchart and Sequence Diagram</h2>
@@ -1210,9 +1210,9 @@ order: 5
 
         </section>
 
-                <!-- ================================== -->
-        <!-- SECTION 9.2: SEQUENCE DIAGRAM -->
-        <!-- ================================== -->
+ <!-- ================================== -->
+ <!-- SECTION 9.2: SEQUENCE DIAGRAM -->
+ <!-- ================================== -->
 <section id="sequence-diagram">
 
             <h3>9.2 Explore the Ping Sequence Diagram</h3>
@@ -1558,7 +1558,8 @@ Request timed out.
         problem might be.
     </p>
 
-        <!-- SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
+        
+<!-- SECTION 10 — INTERACTIVE TROUBLESHOOTING INVESTIGATION -->
 
     <div class="ping-case-study" id="ping-case-study">
 
