@@ -5410,6 +5410,516 @@ order: 5
 
 <!-- END SECTION 12: ADVANTAGES AND LIMITATIONS OF PROCESSES -->
 
+<section id="concept-connections" class="concept-section" aria-labelledby="concept-connections-heading">
+
+    <h2 id="concept-connections-heading">13. Connections to Other Operating-System Concepts</h2>
+
+    <div class="concept-note">
+        <h3>Understanding the Connections</h3>
+
+        <p>
+            A process does not operate in isolation. It depends on
+            several operating-system mechanisms that cooperate to
+            execute programs, manage resources, and respond to events.
+        </p>
+
+        <p>
+            Think of process management as one part of a much larger
+            system. The operating system coordinates the CPU, memory,
+            threads, files, devices, and communication between processes.
+        </p>
+
+        <p>
+            In this section, we will connect the process concept to
+            the other major ideas that make an operating system work.
+        </p>
+    </div>
+
+
+    <!-- 13.1 PROCESS AND PROGRAM -->
+
+    <h3>13.1 Process and Program</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>A program is a passive set of instructions stored on a device.</li>
+                <li>A process is an instance of a program in execution.</li>
+                <li>One program can have multiple process instances.</li>
+                <li>Each process has its own process identity and execution state.</li>
+                <li>The operating system manages the resources associated with each process.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> A recipe is like a program.
+                Someone actively following the recipe is like a process.
+                The written instructions do not perform the cooking;
+                the person carrying them out does.
+            </p>
+
+            <p>
+                <strong>Example:</strong> Opening two independent
+                instances of an application can create two separate
+                processes. The exact behaviour depends on how the
+                application is designed.
+            </p>
+
+            <p>
+                <strong>Remember:</strong> A program describes what
+                instructions can be executed. A process represents
+                an executing instance managed by the operating system.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.2 PROCESS AND THREAD -->
+
+    <h3>13.2 Process and Thread</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>A process provides resources and an environment for execution.</li>
+                <li>A thread is an individual path of execution within a process.</li>
+                <li>A process can contain one or multiple threads.</li>
+                <li>Threads in the same process normally share its address space and many process resources.</li>
+                <li>Each thread maintains its own execution context, including its registers, program counter, and stack.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> A process is a workshop.
+                Threads are workers operating inside that workshop.
+                They share facilities but perform their own tasks.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A browser may use multiple
+                threads for interface operations, networking,
+                rendering, and other activities.
+            </p>
+
+            <p>
+                <strong>Important distinction:</strong> Threads share
+                many resources, but each thread has its own execution
+                context. A problem in one thread can still affect
+                other threads in the same process because they share
+                resources.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.3 PROCESS AND PCB -->
+
+    <h3>13.3 Process and Process Control Block (PCB)</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>The operating system maintains information about each process.</li>
+                <li>This information is organised in a Process Control Block (PCB), or an equivalent process-management structure.</li>
+                <li>It includes information such as process ID, process state, scheduling information, and memory-management references.</li>
+                <li>The operating system uses this information to manage and track the process.</li>
+                <li>Thread-specific execution information is generally maintained in separate thread-management structures.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> A PCB is like an employee's
+                official administrative record. It contains important
+                information needed to manage that employee's work.
+            </p>
+
+            <p>
+                <strong>Example:</strong> When the operating system
+                performs a context switch, it saves and restores
+                the relevant execution information for the
+                thread being switched.
+            </p>
+
+            <p>
+                <strong>Remember:</strong> The PCB helps the operating
+                system keep track of a process. It is not the process
+                itself, nor does it contain every byte of the
+                process's memory.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.4 PROCESS AND CPU SCHEDULING -->
+
+    <h3>13.4 Process and CPU Scheduling</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>Multiple runnable threads may compete for CPU time.</li>
+                <li>The scheduler selects an eligible thread for execution.</li>
+                <li>The dispatcher carries out the handover of CPU control.</li>
+                <li>Scheduling policies help determine how CPU time is distributed.</li>
+                <li>When a thread waits for an event, another eligible thread may be selected.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> Imagine several workers
+                waiting to use one shared machine. A manager decides
+                who should use it next, and the machine operator
+                carries out the handover.
+            </p>
+
+            <p>
+                <strong>Example:</strong> While one thread waits
+                for a file-reading operation to complete, the
+                scheduler may select another ready thread.
+            </p>
+
+            <p>
+                <strong>Technical note:</strong> Introductory process
+                diagrams often describe scheduling in terms of
+                processes. In many modern operating systems, the
+                actual scheduling unit is a thread.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.5 PROCESS AND MEMORY MANAGEMENT -->
+
+    <h3>13.5 Process and Memory Management</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>Each process generally has its own virtual address space.</li>
+                <li>A program uses virtual addresses when accessing memory.</li>
+                <li>Page tables help define how virtual addresses map to physical memory.</li>
+                <li>The Memory Management Unit (MMU) performs hardware-assisted address translation.</li>
+                <li>Memory protection helps prevent one process from accessing memory it is not permitted to access.</li>
+                <li>Physical memory is managed and allocated as processes execute.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> Imagine that each process
+                has its own numbered map of a building. The numbers
+                on one map do not have to refer to the same physical
+                rooms as the numbers on another map. The memory
+                management system helps translate those virtual
+                numbers into actual memory locations.
+            </p>
+
+            <p>
+                <strong>Example:</strong> Two processes can use
+                the same virtual address without necessarily
+                accessing the same physical memory location.
+            </p>
+
+            <p>
+                <strong>Connection:</strong> Virtual memory gives
+                processes a structured view of memory, while
+                address translation and protection mechanisms
+                help the operating system manage access safely.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.6 PROCESS AND INTERRUPTS -->
+
+    <h3>13.6 Process and Interrupts</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>An interrupt notifies the CPU that an event requires attention.</li>
+                <li>Hardware devices can generate interrupts to signal events such as I/O completion.</li>
+                <li>The processor transfers control to an appropriate interrupt-handling mechanism.</li>
+                <li>The operating system handles the event and updates relevant information.</li>
+                <li>The OS may change a process or thread's state if the event satisfies a condition it was waiting for.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> An interrupt is like a
+                doorbell. It notifies someone that an event requires
+                attention. The doorbell itself does not decide
+                what happens next.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A device signals that
+                an I/O operation has completed. The operating
+                system handles the event and may move the
+                waiting thread to the Ready state.
+            </p>
+
+            <p>
+                <strong>Important distinction:</strong> An interrupt
+                does not automatically make a process Ready.
+                The operating system must determine what the event
+                means and whether the waiting condition has been met.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.7 PROCESS AND IPC -->
+
+    <h3>13.7 Process and Inter-Process Communication (IPC)</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>Separate processes sometimes need to exchange information.</li>
+                <li>Inter-Process Communication (IPC) provides mechanisms for this exchange.</li>
+                <li>Common mechanisms include pipes, sockets, message queues, and shared memory.</li>
+                <li>Some IPC mechanisms transfer messages; others allow processes to access shared memory.</li>
+                <li>Synchronization may be needed when processes access shared information.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> Imagine two separate
+                offices communicating through a telephone,
+                a message service, or a shared noticeboard.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A client application
+                communicates with a separate server process
+                through a network socket.
+            </p>
+
+            <p>
+                <strong>Important distinction:</strong> Communication
+                is about exchanging information. Synchronization
+                is about coordinating access and timing so that
+                shared resources are used correctly.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.8 PROCESS AND FILE SYSTEM -->
+
+    <h3>13.8 Process and File System</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>Processes often need to create, open, read, write, and close files.</li>
+                <li>The operating system provides interfaces for file operations.</li>
+                <li>Programs normally request file services through system calls or operating-system APIs.</li>
+                <li>The operating system and file-system components handle the requested operations.</li>
+                <li>Applicable permissions and access controls determine whether an operation is allowed.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> A process is like an
+                employee requesting documents from a records
+                department. The department checks the request
+                and provides access when authorised.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A text editor requests
+                that the operating system open and read a document.
+                Later, it may request that changes be written
+                back to the file.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.9 PROCESS AND SYSTEM CALLS -->
+
+    <h3>13.9 Process and System Calls</h3>
+
+    <div class="concept-comparison">
+        <div class="comparison-item">
+            <h4>The Relationship</h4>
+
+            <ul>
+                <li>A program sometimes needs services that only the operating system can provide.</li>
+                <li>A system call provides a controlled interface for requesting kernel services.</li>
+                <li>Requests may involve file operations, process creation, memory management, and device I/O.</li>
+                <li>The system call mechanism transfers control to the operating system's service-handling code.</li>
+                <li>The kernel handles the request according to operating-system rules and permissions.</li>
+            </ul>
+
+            <p>
+                <strong>Analogy:</strong> A system call is like
+                submitting an official service request to an
+                organisation's central administration. The
+                administration handles the request according
+                to its rules.
+            </p>
+
+            <p>
+                <strong>Example:</strong> A program requests
+                the operating system to create another process
+                or open a file.
+            </p>
+
+            <p>
+                <strong>Remember:</strong> A system call is not
+                simply an ordinary function call. It provides
+                a controlled way for a program to request
+                operating-system services.
+            </p>
+        </div>
+    </div>
+
+
+    <!-- 13.10 BRINGING EVERYTHING TOGETHER -->
+
+    <h3>13.10 Bringing Everything Together — The Big Picture</h3>
+
+    <p>
+        We have examined the individual relationships. Now let's
+        see how they fit into the larger operating-system picture.
+    </p>
+
+    <div class="concept-note">
+
+        <h4>From Program to Process</h4>
+
+        <div class="concept-comparison">
+
+            <div class="comparison-item">
+                <h4>PROGRAM</h4>
+
+                <p>
+                    A set of instructions stored on a device.
+                </p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>PROCESS</h4>
+
+                <p>
+                    An executing instance of a program,
+                    managed by the operating system.
+                </p>
+            </div>
+
+        </div>
+
+        <p class="text-center">
+            <strong>The process connects to several operating-system mechanisms:</strong>
+        </p>
+
+        <div class="concept-comparison">
+
+            <div class="comparison-item">
+                <h4>PCB</h4>
+                <p>Maintains process-management information.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>THREADS</h4>
+                <p>Provide individual paths of execution.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>CPU SCHEDULING</h4>
+                <p>Selects eligible threads for CPU execution.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>MEMORY MANAGEMENT</h4>
+                <p>Manages virtual address spaces and memory protection.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>INTERRUPTS</h4>
+                <p>Notify the CPU of events requiring attention.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>IPC</h4>
+                <p>Enables information exchange between processes.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>FILE SYSTEM</h4>
+                <p>Provides services for file operations.</p>
+            </div>
+
+            <div class="comparison-item">
+                <h4>SYSTEM CALLS</h4>
+                <p>Provide controlled access to kernel services.</p>
+            </div>
+
+        </div>
+
+        <p>
+            <strong>How to interpret this picture:</strong>
+            These concepts are connected, but they do not form
+            one fixed sequence of execution steps. Each mechanism
+            performs a different role and cooperates with the others
+            when needed.
+        </p>
+
+        <p>
+            For example, a process may contain multiple threads,
+            use memory managed through virtual address translation,
+            request file operations through system calls, and
+            communicate with another process through IPC.
+        </p>
+
+    </div>
+
+
+    <!-- 13.11 IMPORTANT TAKEAWAY -->
+
+    <h3>13.11 Important Takeaway</h3>
+
+    <div class="concept-note">
+
+        <p>
+            A process is not an isolated operating-system object.
+            It is connected to CPU scheduling, memory management,
+            threads, interrupts, system calls, file operations,
+            and communication mechanisms.
+        </p>
+
+        <p>
+            Each concept contributes a different capability:
+            threads provide paths of execution, scheduling
+            distributes CPU time, memory management controls
+            address spaces, and IPC allows processes to exchange
+            information.
+        </p>
+
+        <p>
+            <strong>The central lesson:</strong> Understanding
+            processes becomes much easier when we understand
+            how they interact with the other components of
+            an operating system.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- END SECTION 13: CONNECTIONS TO OTHER OPERATING-SYSTEM CONCEPTS -->
+
+
 
 
 
