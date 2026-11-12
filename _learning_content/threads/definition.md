@@ -1,4 +1,4 @@
-⸻
+---
 content_block_id: IKL-OS-003-CB-01
 concept_id: IKL-OS-003
 section_id: IKL-OS-003-SEC-01
@@ -6,6 +6,7 @@ section_number: 1
 section_title: Identity and Definition
 block_type: html-section
 order: 1
+---
 
 1. Concept Identity and Definition
 
