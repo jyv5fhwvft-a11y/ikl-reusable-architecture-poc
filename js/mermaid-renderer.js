@@ -32,7 +32,7 @@
     }
 
     const fencePattern =
-      /```mermaid[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
+      /```mermaid(?:[ \t]+[^\r\n]*)?[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
 
     textNodes.forEach(function (textNode) {
       const originalText = textNode.nodeValue;
