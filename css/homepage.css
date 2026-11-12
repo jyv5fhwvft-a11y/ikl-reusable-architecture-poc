@@ -1472,3 +1472,45 @@ h3 {
         transition-duration: .01ms !important;
     }
 }
+/* =========================================================
+   19. HOMEPAGE — CONCEPT LEARNING-DIMENSION QUICK LINKS
+   ========================================================= */
+
+.concept-card__dimensions {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 6px;
+    margin-top: 12px;
+}
+
+.concept-card__dimensions a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 52px;
+    padding: 7px 5px;
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    background: #F7FAFF;
+    color: var(--blue);
+    font-size: 9px;
+    font-weight: 800;
+    line-height: 1.35;
+    text-align: center;
+    text-decoration: none;
+    transition: background 0.2s ease,
+                border-color 0.2s ease,
+                transform 0.2s ease;
+}
+
+.concept-card__dimensions a:hover {
+    background: #EAF2FF;
+    border-color: var(--blue);
+    transform: translateY(-2px);
+}
+
+.concept-card__dimensions a:focus-visible {
+    outline: 3px solid #0D9488;
+    outline-offset: 3px;
+}
+
