@@ -7,289 +7,373 @@ section_title: Interactive Thread Experiences
 block_type: html-section
 order: 8
 ---
-8. Interactive Thread Experiences
 
-8.1 Experience How Threads Work
+<section id="threads-interactive-experiences" class="concept-section" aria-labelledby="threads-section-8-heading">
 
-Reading about threads helps us understand the theory. Interacting with simulations helps us see what happens when threads execute, share resources and compete for CPU time.
+  <h2 id="threads-section-8-heading">8. Interactive Thread Experiences</h2>
 
-This section introduces three educational simulations:
+  <h3>8.1 Experience How Threads Work</h3>
 
-1. Thread Lifecycle and Scheduling.
-2. One CPU Core versus Multiple CPU Cores.
-3. Race Conditions and Synchronisation.
+  <p>Reading about threads helps us understand the theory. Interacting with simulations helps us see what happens when threads execute, share resources and compete for CPU time.</p>
 
-Each simulation focuses on a different part of thread management.
+  <p>This section introduces three educational simulations:</p>
 
-Learning objectives
+  <ol>
+    <li>Thread Lifecycle and Scheduling.</li>
+    <li>One CPU Core versus Multiple CPU Cores.</li>
+    <li>Race Conditions and Synchronisation.</li>
+  </ol>
 
-By the end of these experiences, you should be able to:
+  <p>Each simulation focuses on a different part of thread management.</p>
 
-* Recognise the main states in a thread lifecycle.
-* Understand how the scheduler gives threads CPU time.
-* Distinguish concurrency from parallelism.
-* Explain why shared data can produce race conditions.
-* Understand how a mutex can protect a critical section.
+  <h4>Learning objectives</h4>
 
-⸻
+  <p>By the end of these experiences, you should be able to:</p>
 
-8.2 Simulation 1 — Thread Lifecycle and Scheduling
+  <ul>
+    <li>Recognise the main states in a thread lifecycle.</li>
+    <li>Understand how the scheduler gives threads CPU time.</li>
+    <li>Distinguish concurrency from parallelism.</li>
+    <li>Explain why shared data can produce race conditions.</li>
+    <li>Understand how a mutex can protect a critical section.</li>
+  </ul>
 
-What will you explore?
+  <h3>8.2 Simulation 1 — Thread Lifecycle and Scheduling</h3>
 
-Follow a thread as it moves through its lifecycle.
+  <h4>What will you explore?</h4>
 
-You will see how a thread is created, becomes ready, receives CPU time, waits for an event, resumes execution and eventually terminates.
+  <p>Follow a thread as it moves through its lifecycle.</p>
 
-Simulation setup
+  <p>You will see how a thread is created, becomes ready, receives CPU time, waits for an event, resumes execution and eventually terminates.</p>
 
-The simulation should display one thread and its current state.
+  <h4>Simulation setup</h4>
 
-It should provide these controls:
+  <p>The simulation should display one thread and its current state.</p>
 
-* Start: Begin the thread lifecycle.
-* Pause: Temporarily stop the simulation.
-* Next Step: Advance to the next lifecycle event.
-* Reset: Return to the beginning.
+  <p>It should provide these controls:</p>
 
-Expected lifecycle
+  <ul>
+    <li><strong>Start:</strong> Begin the thread lifecycle.</li>
+    <li><strong>Pause:</strong> Temporarily stop the simulation.</li>
+    <li><strong>Next Step:</strong> Advance to the next lifecycle event.</li>
+    <li><strong>Reset:</strong> Return to the beginning.</li>
+  </ul>
 
-The simulation should demonstrate this simplified sequence:
+  <h4>Expected lifecycle</h4>
 
-1. New: A thread is created.
-2. Ready: The thread is prepared to execute and waits for CPU time.
-3. Running: The scheduler selects the thread and it executes.
-4. Blocked/Waiting: The thread waits for an event or required condition.
-5. Ready: The event occurs, so the thread becomes eligible to run again.
-6. Running: The scheduler selects the thread again.
-7. Terminated: The thread completes its task.
+  <p>The simulation should demonstrate this simplified sequence:</p>
 
-The simulation should visually highlight the current state and show a short explanation whenever the thread changes state.
+  <ol>
+    <li><strong>New:</strong> A thread is created.</li>
+    <li><strong>Ready:</strong> The thread is prepared to execute and waits for CPU time.</li>
+    <li><strong>Running:</strong> The scheduler selects the thread and it executes.</li>
+    <li><strong>Blocked/Waiting:</strong> The thread waits for an event or required condition.</li>
+    <li><strong>Ready:</strong> The event occurs, so the thread becomes eligible to run again.</li>
+    <li><strong>Running:</strong> The scheduler selects the thread again.</li>
+    <li><strong>Terminated:</strong> The thread completes its task.</li>
+  </ol>
 
-Important learning point
+  <p>The simulation should visually highlight the current state and show a short explanation whenever the thread changes state.</p>
 
-A thread that becomes Ready does not automatically become Running.
+  <div class="concept-note">
+    <h4>Important learning point</h4>
+    <p>A thread that becomes Ready does not automatically become Running.</p>
+    <p>It must still be selected by the scheduler.</p>
+  </div>
 
-It must still be selected by the scheduler.
+  <h4>Questions to consider</h4>
 
-Questions to consider
+  <ol>
+    <li>What is the difference between Ready and Running?</li>
+    <li>Why might a thread enter Blocked/Waiting?</li>
+    <li>Does a thread immediately run when it becomes Ready?</li>
+    <li>What happens when a thread terminates?</li>
+  </ol>
 
-1. What is the difference between Ready and Running?
-2. Why might a thread enter Blocked/Waiting?
-3. Does a thread immediately run when it becomes Ready?
-4. What happens when a thread terminates?
+  <h3>8.3 Simulation 2 — One CPU Core versus Multiple CPU Cores</h3>
 
-⸻
+  <h4>What will you explore?</h4>
 
-8.3 Simulation 2 — One CPU Core versus Multiple CPU Cores
+  <p>Discover how a computer can manage several threads using one CPU core or multiple CPU cores.</p>
 
-What will you explore?
+  <p>This simulation demonstrates the difference between concurrency and parallelism.</p>
 
-Discover how a computer can manage several threads using one CPU core or multiple CPU cores.
+  <h4>Simulation setup</h4>
 
-This simulation demonstrates the difference between concurrency and parallelism.
+  <p>The simulation should display three threads:</p>
 
-Simulation setup
+  <ul>
+    <li>Thread A</li>
+    <li>Thread B</li>
+    <li>Thread C</li>
+  </ul>
 
-The simulation should display three threads:
+  <p>Provide a CPU-core selector with three options:</p>
 
-* Thread A
-* Thread B
-* Thread C
+  <ul>
+    <li>1 Core</li>
+    <li>2 Cores</li>
+    <li>4 Cores</li>
+  </ul>
 
-Provide a CPU-core selector with three options:
+  <p>The learner should be able to start, pause and reset the simulation.</p>
 
-* 1 Core
-* 2 Cores
-* 4 Cores
+  <h4>Experience with one CPU core</h4>
 
-The learner should be able to start, pause and reset the simulation.
+  <p>With one CPU core, only one thread can execute on that core at a time.</p>
 
-Experience with one CPU core
+  <p>The scheduler can rapidly switch between Thread A, Thread B and Thread C.</p>
 
-With one CPU core, only one thread can execute on that core at a time.
+  <p>The learner should see the threads making progress through interleaved execution.</p>
 
-The scheduler can rapidly switch between Thread A, Thread B and Thread C.
+  <p>This demonstrates concurrency.</p>
 
-The learner should see the threads making progress through interleaved execution.
+  <h4>Experience with two CPU cores</h4>
 
-This demonstrates concurrency.
+  <p>With two CPU cores, two threads can execute at the same time, while the third waits for an available core.</p>
 
-Experience with two CPU cores
+  <p>The simulation should show how the scheduler distributes work across the available cores.</p>
 
-With two CPU cores, two threads can execute at the same time, while the third waits for an available core.
+  <h4>Experience with four CPU cores</h4>
 
-The simulation should show how the scheduler distributes work across the available cores.
+  <p>With four CPU cores, all three threads can potentially execute at the same time, assuming they are eligible and there are no other constraints.</p>
 
-Experience with four CPU cores
+  <p>The fourth core may remain unused in this simplified three-thread example.</p>
 
-With four CPU cores, all three threads can potentially execute at the same time, assuming they are eligible and there are no other constraints.
+  <p>This demonstrates parallelism.</p>
 
-The fourth core may remain unused in this simplified three-thread example.
+  <h4>Visual comparison</h4>
 
-This demonstrates parallelism.
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Configuration</th>
+        <th scope="col">What happens?</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1 CPU core</td>
+        <td>Threads take turns executing on one core</td>
+      </tr>
+      <tr>
+        <td>2 CPU cores</td>
+        <td>Up to two threads can execute simultaneously</td>
+      </tr>
+      <tr>
+        <td>4 CPU cores</td>
+        <td>Three eligible threads can potentially execute simultaneously</td>
+      </tr>
+    </tbody>
+  </table>
 
-Visual comparison
+  <div class="concept-note">
+    <h4>Important learning point</h4>
+    <ul>
+      <li><strong>Concurrency:</strong> Multiple tasks make progress during overlapping periods.</li>
+      <li><strong>Parallelism:</strong> Multiple tasks execute at the same time on different processing resources.</li>
+    </ul>
+    <p>Concurrency does not require multiple CPU cores. Parallel execution requires suitable processing resources and conditions.</p>
+  </div>
 
-Configuration	What happens?
-1 CPU core	Threads take turns executing on one core
-2 CPU cores	Up to two threads can execute simultaneously
-4 CPU cores	Three eligible threads can potentially execute simultaneously
+  <p>The simulation is a simplified teaching model. Real scheduling also depends on thread priority, workload, operating-system policy, processor availability and other factors.</p>
 
-Important learning point
+  <h4>Questions to consider</h4>
 
-* Concurrency: Multiple tasks make progress during overlapping periods.
-* Parallelism: Multiple tasks execute at the same time on different processing resources.
+  <ol>
+    <li>Can three threads make progress on one CPU core?</li>
+    <li>Can two threads execute simultaneously on two CPU cores?</li>
+    <li>Does concurrency always mean parallel execution?</li>
+    <li>Why might adding CPU cores improve performance for some workloads but not others?</li>
+  </ol>
 
-Concurrency does not require multiple CPU cores. Parallel execution requires suitable processing resources and conditions.
+  <h3>8.4 Simulation 3 — Race Conditions and Synchronisation</h3>
 
-The simulation is a simplified teaching model. Real scheduling also depends on thread priority, workload, operating-system policy, processor availability and other factors.
+  <h4>What will you explore?</h4>
 
-Questions to consider
+  <p>Discover what happens when two threads attempt to update the same shared data without proper coordination.</p>
 
-1. Can three threads make progress on one CPU core?
-2. Can two threads execute simultaneously on two CPU cores?
-3. Does concurrency always mean parallel execution?
-4. Why might adding CPU cores improve performance for some workloads but not others?
+  <p>This simulation uses a shared bank account to demonstrate a race condition.</p>
 
-⸻
+  <h4>Simulation setup</h4>
 
-8.4 Simulation 3 — Race Conditions and Synchronisation
+  <p>The starting account balance is:</p>
 
-What will you explore?
+  <p><strong>$100</strong></p>
 
-Discover what happens when two threads attempt to update the same shared data without proper coordination.
+  <p>Two threads attempt to deposit $10 each:</p>
 
-This simulation uses a shared bank account to demonstrate a race condition.
+  <ul>
+    <li>Thread A deposits $10.</li>
+    <li>Thread B deposits $10.</li>
+  </ul>
 
-Simulation setup
+  <p>The correct final balance should be:</p>
 
-The starting account balance is:
+  <p><strong>$120</strong></p>
 
-$100
+  <p>The learner should be able to compare two scenarios:</p>
 
-Two threads attempt to deposit $10 each:
+  <ol>
+    <li>Without a mutex.</li>
+    <li>With a mutex.</li>
+  </ol>
 
-* Thread A deposits $10.
-* Thread B deposits $10.
+  <h4>Scenario A — Without a Mutex</h4>
 
-The correct final balance should be:
+  <p>Both threads access the same shared account balance.</p>
 
-$120
+  <p>For this demonstration, assume each deposit is implemented as a non-atomic read-modify-write operation.</p>
 
-The learner should be able to compare two scenarios:
+  <p>The simulation should allow this sequence:</p>
 
-1. Without a mutex.
-2. With a mutex.
+  <ol>
+    <li>Thread A reads the balance: $100.</li>
+    <li>Thread B reads the balance: $100.</li>
+    <li>Thread A calculates $110.</li>
+    <li>Thread B calculates $110.</li>
+    <li>Thread A writes $110.</li>
+    <li>Thread B writes $110.</li>
+  </ol>
 
-Scenario A — Without a Mutex
+  <p>The final balance becomes:</p>
 
-Both threads access the same shared account balance.
+  <p><strong>$110</strong></p>
 
-For this demonstration, assume each deposit is implemented as a non-atomic read-modify-write operation.
+  <p>But both deposits were intended to happen.</p>
 
-The simulation should allow this sequence:
+  <p>One update has been lost.</p>
 
-1. Thread A reads the balance: $100.
-2. Thread B reads the balance: $100.
-3. Thread A calculates $110.
-4. Thread B calculates $110.
-5. Thread A writes $110.
-6. Thread B writes $110.
+  <p>This is an example of a race condition.</p>
 
-The final balance becomes:
+  <h4>Scenario B — With a Mutex</h4>
 
-$110
+  <p>Now introduce a mutex, which is a mutual-exclusion lock.</p>
 
-But both deposits were intended to happen.
+  <p>A mutex ensures that only one thread at a time can enter the protected critical section when all relevant accesses follow the same locking discipline.</p>
 
-One update has been lost.
+  <p>The simulation should demonstrate:</p>
 
-This is an example of a race condition.
+  <ol>
+    <li>Thread A acquires the mutex.</li>
+    <li>Thread A reads $100 and calculates $110.</li>
+    <li>Thread A writes $110.</li>
+    <li>Thread A releases the mutex.</li>
+    <li>Thread B acquires the mutex.</li>
+    <li>Thread B reads $110 and calculates $120.</li>
+    <li>Thread B writes $120.</li>
+    <li>Thread B releases the mutex.</li>
+  </ol>
 
-Scenario B — With a Mutex
+  <p>The final balance becomes:</p>
 
-Now introduce a mutex, which is a mutual-exclusion lock.
+  <p><strong>$120</strong></p>
 
-A mutex ensures that only one thread at a time can enter the protected critical section when all relevant accesses follow the same locking discipline.
+  <p>Both deposits are correctly included.</p>
 
-The simulation should demonstrate:
+  <h4>Visual comparison</h4>
 
-1. Thread A acquires the mutex.
-2. Thread A reads $100 and calculates $110.
-3. Thread A writes $110.
-4. Thread A releases the mutex.
-5. Thread B acquires the mutex.
-6. Thread B reads $110 and calculates $120.
-7. Thread B writes $120.
-8. Thread B releases the mutex.
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Scenario</th>
+        <th scope="col">Final balance</th>
+        <th scope="col">Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Without mutex</td>
+        <td>$110</td>
+        <td>One update is lost</td>
+      </tr>
+      <tr>
+        <td>With mutex</td>
+        <td>$120</td>
+        <td>Both updates are included</td>
+      </tr>
+    </tbody>
+  </table>
 
-The final balance becomes:
+  <div class="concept-note">
+    <h4>Important learning point</h4>
+    <p>A race condition occurs when the result depends on the timing or ordering of concurrent operations accessing shared data.</p>
+    <p>A mutex can protect a critical section by controlling access to shared data.</p>
+    <p>However, a mutex must be used correctly. All relevant accesses must follow the same protection rules. Incorrect locking can introduce other problems, including deadlocks.</p>
+  </div>
 
-$120
+  <h4>Questions to consider</h4>
 
-Both deposits are correctly included.
+  <ol>
+    <li>Why did the balance become $110 without a mutex?</li>
+    <li>What is a race condition?</li>
+    <li>What is a critical section?</li>
+    <li>How does a mutex protect shared data?</li>
+    <li>Why must threads coordinate when accessing shared resources?</li>
+  </ol>
 
-Visual comparison
+  <h3>8.5 Connect the Simulations to Real Applications</h3>
 
-Scenario	Final balance	Result
-Without mutex	$110	One update is lost
-With mutex	$120	Both updates are included
+  <p>These three experiences represent common challenges in real software.</p>
 
-Important learning point
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Simulation</th>
+        <th scope="col">Practical connection</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Thread Lifecycle and Scheduling</td>
+        <td>Operating-system thread management</td>
+      </tr>
+      <tr>
+        <td>CPU Core Comparison</td>
+        <td>Multicore processors and concurrent applications</td>
+      </tr>
+      <tr>
+        <td>Race Conditions and Synchronisation</td>
+        <td>Banking systems, shared counters, databases and other shared-data applications</td>
+      </tr>
+    </tbody>
+  </table>
 
-A race condition occurs when the result depends on the timing or ordering of concurrent operations accessing shared data.
+  <p>Real applications may use additional techniques, including semaphores, condition variables, atomic operations and other synchronisation mechanisms.</p>
 
-A mutex can protect a critical section by controlling access to shared data.
+  <p>The simulations introduce the core ideas without attempting to reproduce every detail of a real operating system.</p>
 
-However, a mutex must be used correctly. All relevant accesses must follow the same protection rules. Incorrect locking can introduce other problems, including deadlocks.
+  <h3>8.6 What You Should Understand After These Experiences</h3>
 
-Questions to consider
+  <p>You should now be able to explain:</p>
 
-1. Why did the balance become $110 without a mutex?
-2. What is a race condition?
-3. What is a critical section?
-4. How does a mutex protect shared data?
-5. Why must threads coordinate when accessing shared resources?
+  <ul>
+    <li>How a thread moves through its lifecycle.</li>
+    <li>Why a Ready thread may have to wait for CPU time.</li>
+    <li>How a scheduler manages CPU execution.</li>
+    <li>How one CPU core can support concurrent progress.</li>
+    <li>How multiple CPU cores can support parallel execution.</li>
+    <li>Why shared data can produce race conditions.</li>
+    <li>How a mutex can protect a critical section.</li>
+  </ul>
 
-⸻
+  <h3>8.7 Simulation Design and Accuracy Notes</h3>
 
-8.5 Connect the Simulations to Real Applications
+  <p>The following principles should guide the eventual implementation:</p>
 
-These three experiences represent common challenges in real software.
+  <ol>
+    <li>The simulations must be educational models, not claims that they reproduce a complete operating-system implementation.</li>
+    <li>The lifecycle simulation must distinguish Ready, Running and Blocked/Waiting.</li>
+    <li>The CPU simulation must distinguish concurrent progress from simultaneous execution.</li>
+    <li>The race-condition simulation must show the individual read and write operations so the lost update is understandable.</li>
+    <li>The mutex simulation must show lock acquisition and release.</li>
+    <li>Each simulation should provide clear explanations, controls and a reset option.</li>
+    <li>The simulations should work on mobile and tablet screens as well as larger screens.</li>
+    <li>The learner should be able to explore at their own pace.</li>
+  </ol>
 
-Simulation	Practical connection
-Thread Lifecycle and Scheduling	Operating-system thread management
-CPU Core Comparison	Multicore processors and concurrent applications
-Race Conditions and Synchronisation	Banking systems, shared counters, databases and other shared-data applications
+  <div class="concept-note">
+    <p><strong>Remember:</strong> Threads make applications capable of performing multiple tasks, but effective thread management requires scheduling, coordination and safe access to shared resources.</p>
+  </div>
 
-Real applications may use additional techniques, including semaphores, condition variables, atomic operations and other synchronisation mechanisms.
-
-The simulations introduce the core ideas without attempting to reproduce every detail of a real operating system.
-
-8.6 What You Should Understand After These Experiences
-
-You should now be able to explain:
-
-* How a thread moves through its lifecycle.
-* Why a Ready thread may have to wait for CPU time.
-* How a scheduler manages CPU execution.
-* How one CPU core can support concurrent progress.
-* How multiple CPU cores can support parallel execution.
-* Why shared data can produce race conditions.
-* How a mutex can protect a critical section.
-
-8.7 Simulation Design and Accuracy Notes
-
-The following principles should guide the eventual implementation:
-
-1. The simulations must be educational models, not claims that they reproduce a complete operating-system implementation.
-2. The lifecycle simulation must distinguish Ready, Running and Blocked/Waiting.
-3. The CPU simulation must distinguish concurrent progress from simultaneous execution.
-4. The race-condition simulation must show the individual read and write operations so the lost update is understandable.
-5. The mutex simulation must show lock acquisition and release.
-6. Each simulation should provide clear explanations, controls and a reset option.
-7. The simulations should work on mobile and tablet screens as well as larger screens.
-8. The learner should be able to explore at their own pace.
-
-Remember: Threads make applications capable of performing multiple tasks, but effective thread management requires scheduling, coordination and safe access to shared resources.
+</section>
