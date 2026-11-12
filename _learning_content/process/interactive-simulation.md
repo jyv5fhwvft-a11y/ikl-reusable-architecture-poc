@@ -8,6 +8,9 @@ block_type: html-section
 order: 8
 ---
 <section id="interactive-simulation" class="concept-section" aria-labelledby="process-section-8-heading">
+    <span id="ikl-experience-it"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
 
     <h2 id="process-section-8-heading">
         8. Interactive Simulation: Control a Process
