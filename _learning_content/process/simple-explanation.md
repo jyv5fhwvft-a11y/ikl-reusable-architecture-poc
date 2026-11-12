@@ -8,6 +8,9 @@ block_type: html-section
 order: 2
 ---
 <section id="first-grader-explanation" class="concept-section" aria-labelledby="process-section-2-heading">
+    <span id="ikl-understand-it"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
 
     <h2 id="process-section-2-heading">
         2. Process Explained Like You're Five
