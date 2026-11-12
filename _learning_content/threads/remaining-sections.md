@@ -7,396 +7,478 @@ section_title: Practical Applications, Common Mistakes, Troubleshooting, Connect
 block_type: html-section
 order: 10
 ---
-10. Practical Applications, Common Mistakes, Troubleshooting, Connections, Assessment and Quick Revision
 
-10.1 Threads in Real-World Applications
+<section id="threads-practical-applications-and-revision" class="concept-section" aria-labelledby="threads-section-10-heading">
 
-Threads are used in many applications to help perform multiple tasks and keep software responsive.
+  <h2 id="threads-section-10-heading">10. Practical Applications, Common Mistakes, Troubleshooting, Connections, Assessment and Quick Revision</h2>
 
-Here are some practical examples.
+  <h3>10.1 Threads in Real-World Applications</h3>
 
-10.1.1 Web Browsers
+  <p>Threads are used in many applications to help perform multiple tasks and keep software responsive.</p>
 
-A modern web browser may use multiple processes and threads to manage different activities.
+  <p>Here are some practical examples.</p>
 
-Threads can help with:
+  <h4>10.1.1 Web Browsers</h4>
 
-* Responding to user interactions.
-* Processing background tasks.
-* Handling network-related work.
-* Updating parts of the interface.
-* Performing other application activities.
+  <p>A modern web browser may use multiple processes and threads to manage different activities.</p>
 
-Why are threads useful?
+  <p>Threads can help with:</p>
 
-They help prevent a lengthy background task from unnecessarily stopping all other application activity.
+  <ul>
+    <li>Responding to user interactions.</li>
+    <li>Processing background tasks.</li>
+    <li>Handling network-related work.</li>
+    <li>Updating parts of the interface.</li>
+    <li>Performing other application activities.</li>
+  </ul>
 
-The exact browser architecture varies. Modern browsers often use several processes as well as multiple threads within those processes.
+  <p><strong>Why are threads useful?</strong></p>
 
-10.1.2 Video Editing Applications
+  <p>They help prevent a lengthy background task from unnecessarily stopping all other application activity.</p>
 
-A video editing application may use threads for:
+  <p>The exact browser architecture varies. Modern browsers often use several processes as well as multiple threads within those processes.</p>
 
-* Processing video frames.
-* Applying visual effects.
-* Processing audio.
-* Rendering previews.
-* Exporting video.
+  <h4>10.1.2 Video Editing Applications</h4>
 
-Why are threads useful?
+  <p>A video editing application may use threads for:</p>
 
-Different parts of a video-processing workload may be handled concurrently. Suitable workloads can also benefit from parallel execution across multiple CPU cores.
+  <ul>
+    <li>Processing video frames.</li>
+    <li>Applying visual effects.</li>
+    <li>Processing audio.</li>
+    <li>Rendering previews.</li>
+    <li>Exporting video.</li>
+  </ul>
 
-10.1.3 Music Applications
+  <p><strong>Why are threads useful?</strong></p>
 
-A music application may use threads to help manage:
+  <p>Different parts of a video-processing workload may be handled concurrently. Suitable workloads can also benefit from parallel execution across multiple CPU cores.</p>
 
-* Audio playback.
-* User-interface interactions.
-* Music downloads.
-* Background processing.
-* Audio decoding.
+  <h4>10.1.3 Music Applications</h4>
 
-Why are threads useful?
+  <p>A music application may use threads to help manage:</p>
 
-The application can continue responding to the user while other tasks take place.
+  <ul>
+    <li>Audio playback.</li>
+    <li>User-interface interactions.</li>
+    <li>Music downloads.</li>
+    <li>Background processing.</li>
+    <li>Audio decoding.</li>
+  </ul>
 
-Real-time audio work also has timing requirements, so thread scheduling and delays must be carefully managed.
+  <p><strong>Why are threads useful?</strong></p>
 
-10.1.4 Web Servers
+  <p>The application can continue responding to the user while other tasks take place.</p>
 
-A web server may use multiple threads to handle incoming requests.
+  <p>Real-time audio work also has timing requirements, so thread scheduling and delays must be carefully managed.</p>
 
-For example:
+  <h4>10.1.4 Web Servers</h4>
 
-1. A request arrives from a user.
-2. The server assigns work to an available thread or worker.
-3. The thread processes the request.
-4. It accesses required data or services.
-5. It prepares and sends a response.
+  <p>A web server may use multiple threads to handle incoming requests.</p>
 
-Some servers use thread pools, where a group of worker threads is reused to handle multiple tasks.
+  <p>For example:</p>
 
-Why are threads useful?
+  <ol>
+    <li>A request arrives from a user.</li>
+    <li>The server assigns work to an available thread or worker.</li>
+    <li>The thread processes the request.</li>
+    <li>It accesses required data or services.</li>
+    <li>It prepares and sends a response.</li>
+  </ol>
 
-They can help a server handle multiple requests without creating a completely separate process for every task.
+  <p>Some servers use thread pools, where a group of worker threads is reused to handle multiple tasks.</p>
 
-10.1.5 Computer Games
+  <p><strong>Why are threads useful?</strong></p>
 
-A game may use threads for different activities, such as:
+  <p>They can help a server handle multiple requests without creating a completely separate process for every task.</p>
 
-* Game logic.
-* Physics calculations.
-* Audio processing.
-* Asset loading.
-* Background tasks.
+  <h4>10.1.5 Computer Games</h4>
 
-Why are threads useful?
+  <p>A game may use threads for different activities, such as:</p>
 
-They can help distribute work and maintain a responsive gaming experience.
+  <ul>
+    <li>Game logic.</li>
+    <li>Physics calculations.</li>
+    <li>Audio processing.</li>
+    <li>Asset loading.</li>
+    <li>Background tasks.</li>
+  </ul>
 
-However, game engines must coordinate these activities carefully because some tasks depend on the results of others.
+  <p><strong>Why are threads useful?</strong></p>
 
-Practical application summary
+  <p>They can help distribute work and maintain a responsive gaming experience.</p>
 
-Application	Possible thread activities
-Web browser	Interface, networking and background work
-Video editor	Video, audio and rendering tasks
-Music application	Playback, downloads and interface
-Web server	Processing incoming requests
-Computer game	Game logic, physics and audio
+  <p>However, game engines must coordinate these activities carefully because some tasks depend on the results of others.</p>
 
-These are illustrative examples. Real applications may combine threads, processes, asynchronous operations and other execution models.
+  <h4>Practical application summary</h4>
 
-⸻
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Application</th>
+        <th scope="col">Possible thread activities</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Web browser</td>
+        <td>Interface, networking and background work</td>
+      </tr>
+      <tr>
+        <td>Video editor</td>
+        <td>Video, audio and rendering tasks</td>
+      </tr>
+      <tr>
+        <td>Music application</td>
+        <td>Playback, downloads and interface</td>
+      </tr>
+      <tr>
+        <td>Web server</td>
+        <td>Processing incoming requests</td>
+      </tr>
+      <tr>
+        <td>Computer game</td>
+        <td>Game logic, physics and audio</td>
+      </tr>
+    </tbody>
+  </table>
 
-10.2 Common Mistakes and Misunderstandings
+  <p>These are illustrative examples. Real applications may combine threads, processes, asynchronous operations and other execution models.</p>
 
-Understanding what threads are is important. Understanding what they are not is equally important.
+  <h3>10.2 Common Mistakes and Misunderstandings</h3>
 
-Mistake 1 — A Program and a Process Are the Same Thing
+  <p>Understanding what threads are is important. Understanding what they are not is equally important.</p>
 
-Incorrect: A program and a process are identical.
+  <h4>Mistake 1 — A Program and a Process Are the Same Thing</h4>
 
-Correct: A program is a set of instructions. A process is an executing instance of a program, with its own process environment and resources.
+  <p><strong>Incorrect:</strong> A program and a process are identical.</p>
 
-Mistake 2 — A Thread Is a Separate Process
+  <p><strong>Correct:</strong> A program is a set of instructions. A process is an executing instance of a program, with its own process environment and resources.</p>
 
-Incorrect: Every thread is an independent process.
+  <h4>Mistake 2 — A Thread Is a Separate Process</h4>
 
-Correct: A thread is an execution path within a process. Threads in the same process commonly share process resources.
+  <p><strong>Incorrect:</strong> Every thread is an independent process.</p>
 
-Mistake 3 — Threads Have Their Own Completely Separate Memory
+  <p><strong>Correct:</strong> A thread is an execution path within a process. Threads in the same process commonly share process resources.</p>
 
-Incorrect: Every thread has its own independent copy of all process memory.
+  <h4>Mistake 3 — Threads Have Their Own Completely Separate Memory</h4>
 
-Correct: Threads share many process resources, including code, global data and heap memory. Each thread has its own execution context, including its stack and CPU registers.
+  <p><strong>Incorrect:</strong> Every thread has its own independent copy of all process memory.</p>
 
-Mistake 4 — Concurrency Always Means Parallelism
+  <p><strong>Correct:</strong> Threads share many process resources, including code, global data and heap memory. Each thread has its own execution context, including its stack and CPU registers.</p>
 
-Incorrect: If two tasks are concurrent, they must be executing simultaneously.
+  <h4>Mistake 4 — Concurrency Always Means Parallelism</h4>
 
-Correct: Concurrent tasks can make progress during overlapping periods. They may take turns on one CPU core. Parallel tasks execute simultaneously on separate processing resources.
+  <p><strong>Incorrect:</strong> If two tasks are concurrent, they must be executing simultaneously.</p>
 
-Mistake 5 — A Ready Thread Is Running
+  <p><strong>Correct:</strong> Concurrent tasks can make progress during overlapping periods. They may take turns on one CPU core. Parallel tasks execute simultaneously on separate processing resources.</p>
 
-Incorrect: A thread in the Ready state is already executing.
+  <h4>Mistake 5 — A Ready Thread Is Running</h4>
 
-Correct: It is eligible to run but is waiting for CPU time.
+  <p><strong>Incorrect:</strong> A thread in the Ready state is already executing.</p>
 
-Mistake 6 — More Threads Always Make a Program Faster
+  <p><strong>Correct:</strong> It is eligible to run but is waiting for CPU time.</p>
 
-Incorrect: Adding more threads always improves performance.
+  <h4>Mistake 6 — More Threads Always Make a Program Faster</h4>
 
-Correct: Too many threads can increase scheduling overhead, memory use and contention. Some workloads cannot be divided efficiently.
+  <p><strong>Incorrect:</strong> Adding more threads always improves performance.</p>
 
-Mistake 7 — Shared Data Is Automatically Safe
+  <p><strong>Correct:</strong> Too many threads can increase scheduling overhead, memory use and contention. Some workloads cannot be divided efficiently.</p>
 
-Incorrect: Threads can safely modify shared data simply because they belong to the same process.
+  <h4>Mistake 7 — Shared Data Is Automatically Safe</h4>
 
-Correct: Shared data requires appropriate coordination. Unsynchronised access can produce race conditions.
+  <p><strong>Incorrect:</strong> Threads can safely modify shared data simply because they belong to the same process.</p>
 
-Mistake 8 — A Mutex Solves Every Synchronisation Problem
+  <p><strong>Correct:</strong> Shared data requires appropriate coordination. Unsynchronised access can produce race conditions.</p>
 
-Incorrect: Using a mutex automatically makes an entire application thread-safe.
+  <h4>Mistake 8 — A Mutex Solves Every Synchronisation Problem</h4>
 
-Correct: A mutex protects a particular critical section when used correctly. Poor locking design can still cause deadlocks, starvation or other problems.
+  <p><strong>Incorrect:</strong> Using a mutex automatically makes an entire application thread-safe.</p>
 
-⸻
+  <p><strong>Correct:</strong> A mutex protects a particular critical section when used correctly. Poor locking design can still cause deadlocks, starvation or other problems.</p>
 
-10.3 Limitations, Synchronisation and Troubleshooting
+  <h3>10.3 Limitations, Synchronisation and Troubleshooting</h3>
 
-Threads offer important benefits, but they also introduce challenges.
+  <p>Threads offer important benefits, but they also introduce challenges.</p>
 
-10.3.1 Race Conditions
+  <h4>10.3.1 Race Conditions</h4>
 
-A race condition occurs when the result of concurrent operations depends on their timing or ordering.
+  <p>A race condition occurs when the result of concurrent operations depends on their timing or ordering.</p>
 
-Example:
+  <p><strong>Example:</strong> Two threads attempt to update the same bank account balance.</p>
 
-Two threads attempt to update the same bank account balance.
+  <p>If both read the same old value before either writes its update, one update may be lost.</p>
 
-If both read the same old value before either writes its update, one update may be lost.
+  <p><strong>Possible solution:</strong> Use appropriate synchronisation, such as a mutex or an atomic operation, depending on the data and operation involved.</p>
 
-Possible solution:
+  <h4>10.3.2 Critical Sections</h4>
 
-Use appropriate synchronisation, such as a mutex or an atomic operation, depending on the data and operation involved.
+  <p>A critical section is a part of a program that accesses shared data or resources requiring coordinated access.</p>
 
-10.3.2 Critical Sections
+  <p>If multiple threads modify the same shared data without suitable protection, the results may become incorrect.</p>
 
-A critical section is a part of a program that accesses shared data or resources requiring coordinated access.
+  <p><strong>Possible solution:</strong> Protect the critical section using an appropriate synchronisation mechanism.</p>
 
-If multiple threads modify the same shared data without suitable protection, the results may become incorrect.
+  <h4>10.3.3 Mutexes</h4>
 
-Possible solution:
+  <p>A mutex, or mutual-exclusion lock, allows one thread at a time to enter a protected critical section.</p>
 
-Protect the critical section using an appropriate synchronisation mechanism.
+  <p>A simplified pattern is:</p>
 
-10.3.3 Mutexes
+  <ol>
+    <li>Acquire the mutex.</li>
+    <li>Access or update the protected shared resource.</li>
+    <li>Release the mutex.</li>
+  </ol>
 
-A mutex, or mutual-exclusion lock, allows one thread at a time to enter a protected critical section.
+  <div class="concept-note">
+    <p><strong>Important:</strong> All relevant accesses must follow the same locking discipline. A mutex does not protect data from code that accesses it without acquiring the lock.</p>
+  </div>
 
-A simplified pattern is:
+  <h4>10.3.4 Semaphores</h4>
 
-1. Acquire the mutex.
-2. Access or update the protected shared resource.
-3. Release the mutex.
+  <p>A semaphore is a synchronisation mechanism that uses a counter to control access to resources or coordinate activities.</p>
 
-Important: All relevant accesses must follow the same locking discipline. A mutex does not protect data from code that accesses it without acquiring the lock.
+  <p>Two common forms are:</p>
 
-10.3.4 Semaphores
+  <ul>
+    <li><strong>Binary semaphore:</strong> Uses a value representing two states, commonly 0 and 1.</li>
+    <li><strong>Counting semaphore:</strong> Tracks a number of available resource permits or signals.</li>
+  </ul>
 
-A semaphore is a synchronisation mechanism that uses a counter to control access to resources or coordinate activities.
+  <p>A semaphore can be useful when a program needs to control access to a limited number of resources.</p>
 
-Two common forms are:
+  <p>A semaphore and a mutex are related synchronisation tools, but they are not interchangeable in every situation. A mutex generally has ownership semantics: the thread that acquires it is expected to release it.</p>
 
-* Binary semaphore: Uses a value representing two states, commonly 0 and 1.
-* Counting semaphore: Tracks a number of available resource permits or signals.
+  <h4>10.3.5 Condition Variables</h4>
 
-A semaphore can be useful when a program needs to control access to a limited number of resources.
+  <p>A condition variable allows threads to wait until a particular condition becomes true.</p>
 
-A semaphore and a mutex are related synchronisation tools, but they are not interchangeable in every situation. A mutex generally has ownership semantics: the thread that acquires it is expected to release it.
+  <p>It is commonly used together with a mutex.</p>
 
-10.3.5 Condition Variables
+  <p>For example, a worker thread may wait until a queue contains work. When another thread adds an item, it can notify the waiting thread.</p>
 
-A condition variable allows threads to wait until a particular condition becomes true.
+  <p>The waiting thread wakes and checks the condition again while following the required locking protocol.</p>
 
-It is commonly used together with a mutex.
+  <h4>10.3.6 Atomic Operations</h4>
 
-For example, a worker thread may wait until a queue contains work. When another thread adds an item, it can notify the waiting thread.
+  <p>An atomic operation is performed as an indivisible operation from the perspective of other threads.</p>
 
-The waiting thread wakes and checks the condition again while following the required locking protocol.
+  <p>For example, an atomic counter increment can prevent the lost-update problem associated with an unsafe read-modify-write sequence.</p>
 
-10.3.6 Atomic Operations
+  <p>Atomic operations are useful for certain shared-data problems, but they do not automatically make every multi-step operation safe.</p>
 
-An atomic operation is performed as an indivisible operation from the perspective of other threads.
+  <h4>10.3.7 Deadlocks</h4>
 
-For example, an atomic counter increment can prevent the lost-update problem associated with an unsafe read-modify-write sequence.
+  <p>A deadlock occurs when two or more threads become permanently blocked because each is waiting for a resource held by another.</p>
 
-Atomic operations are useful for certain shared-data problems, but they do not automatically make every multi-step operation safe.
+  <p>The four classic Coffman conditions are:</p>
 
-10.3.7 Deadlocks
+  <ol>
+    <li><strong>Mutual Exclusion:</strong> At least one resource cannot be shared simultaneously.</li>
+    <li><strong>Hold and Wait:</strong> A thread holds one resource while waiting for another.</li>
+    <li><strong>No Pre-emption:</strong> Resources cannot simply be taken away; they must be released voluntarily.</li>
+    <li><strong>Circular Wait:</strong> A circular chain of threads exists, with each waiting for a resource held by the next.</li>
+  </ol>
 
-A deadlock occurs when two or more threads become permanently blocked because each is waiting for a resource held by another.
+  <p>All four conditions must hold for a deadlock to occur under this classic model.</p>
 
-The four classic Coffman conditions are:
+  <p><strong>Possible prevention approaches:</strong></p>
 
-1. Mutual Exclusion: At least one resource cannot be shared simultaneously.
-2. Hold and Wait: A thread holds one resource while waiting for another.
-3. No Pre-emption: Resources cannot simply be taken away; they must be released voluntarily.
-4. Circular Wait: A circular chain of threads exists, with each waiting for a resource held by the next.
+  <ul>
+    <li>Establish a consistent lock-acquisition order.</li>
+    <li>Avoid holding locks longer than necessary.</li>
+    <li>Design resource allocation carefully.</li>
+    <li>Use suitable timeout or recovery strategies where appropriate.</li>
+  </ul>
 
-All four conditions must hold for a deadlock to occur under this classic model.
+  <h4>10.3.8 Starvation</h4>
 
-Possible prevention approaches:
+  <p>Starvation occurs when a thread waits for a very long time, or indefinitely, because it repeatedly fails to obtain the resources or CPU time it needs.</p>
 
-* Establish a consistent lock-acquisition order.
-* Avoid holding locks longer than necessary.
-* Design resource allocation carefully.
-* Use suitable timeout or recovery strategies where appropriate.
+  <p>For example, a low-priority thread may continually be overlooked when higher-priority threads keep becoming eligible to run.</p>
 
-10.3.8 Starvation
+  <p><strong>Possible approaches:</strong></p>
 
-Starvation occurs when a thread waits for a very long time, or indefinitely, because it repeatedly fails to obtain the resources or CPU time it needs.
+  <ul>
+    <li>Fair scheduling policies.</li>
+    <li>Priority adjustment or priority aging.</li>
+    <li>Fair resource-access mechanisms.</li>
+  </ul>
 
-For example, a low-priority thread may continually be overlooked when higher-priority threads keep becoming eligible to run.
+  <p>The effectiveness of these approaches depends on the operating system and application design.</p>
 
-Possible approaches:
+  <h4>10.3.9 Thread Safety</h4>
 
-* Fair scheduling policies.
-* Priority adjustment or priority aging.
-* Fair resource-access mechanisms.
+  <p>Thread safety means that a component behaves correctly when accessed by multiple threads according to its intended usage rules.</p>
 
-The effectiveness of these approaches depends on the operating system and application design.
+  <p>A thread-safe component may use:</p>
 
-10.3.9 Thread Safety
+  <ul>
+    <li>Mutexes.</li>
+    <li>Atomic operations.</li>
+    <li>Immutable data.</li>
+    <li>Carefully designed concurrent data structures.</li>
+    <li>Other synchronisation techniques.</li>
+  </ul>
 
-Thread safety means that a component behaves correctly when accessed by multiple threads according to its intended usage rules.
+  <p>Thread safety is a property of the implementation and its usage, not simply a result of using multiple threads.</p>
 
-A thread-safe component may use:
+  <h4>10.3.10 Overhead and Resource Contention</h4>
 
-* Mutexes.
-* Atomic operations.
-* Immutable data.
-* Carefully designed concurrent data structures.
-* Other synchronisation techniques.
+  <p>Threads are not free.</p>
 
-Thread safety is a property of the implementation and its usage, not simply a result of using multiple threads.
+  <p>They may require:</p>
 
-10.3.10 Overhead and Resource Contention
+  <ul>
+    <li>Memory for stacks and management information.</li>
+    <li>Scheduling and context-switching work.</li>
+    <li>Synchronisation operations.</li>
+    <li>Coordination between CPU cores.</li>
+  </ul>
 
-Threads are not free.
+  <p>Too many threads competing for the same CPU, memory or locks can reduce performance.</p>
 
-They may require:
+  <h4>10.3.11 Troubleshooting Guide</h4>
 
-* Memory for stacks and management information.
-* Scheduling and context-switching work.
-* Synchronisation operations.
-* Coordination between CPU cores.
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Problem</th>
+        <th scope="col">Possible reason</th>
+        <th scope="col">What to investigate</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Incorrect shared-data results</td>
+        <td>Race condition</td>
+        <td>Check concurrent reads and writes</td>
+      </tr>
+      <tr>
+        <td>Application becomes unresponsive</td>
+        <td>Blocked thread or long-running work</td>
+        <td>Identify what the thread is waiting for</td>
+      </tr>
+      <tr>
+        <td>Threads remain waiting indefinitely</td>
+        <td>Deadlock</td>
+        <td>Examine lock ownership and acquisition order</td>
+      </tr>
+      <tr>
+        <td>One thread rarely makes progress</td>
+        <td>Starvation</td>
+        <td>Examine scheduling and resource fairness</td>
+      </tr>
+      <tr>
+        <td>Performance becomes slower</td>
+        <td>Too many threads or contention</td>
+        <td>Review workload and thread count</td>
+      </tr>
+      <tr>
+        <td>Unexpected data changes</td>
+        <td>Missing synchronisation</td>
+        <td>Check all accesses to shared data</td>
+      </tr>
+      <tr>
+        <td>High CPU usage</td>
+        <td>Busy waiting or excessive work</td>
+        <td>Examine loops, scheduling and workload</td>
+      </tr>
+    </tbody>
+  </table>
 
-Too many threads competing for the same CPU, memory or locks can reduce performance.
+  <div class="concept-note">
+    <p><strong>Remember:</strong> Adding threads introduces coordination responsibilities. Correct synchronisation and careful design are essential.</p>
+  </div>
 
-10.3.11 Troubleshooting Guide
+  <h3>10.4 Connections to Other Operating-System Concepts</h3>
 
-Problem	Possible reason	What to investigate
-Incorrect shared-data results	Race condition	Check concurrent reads and writes
-Application becomes unresponsive	Blocked thread or long-running work	Identify what the thread is waiting for
-Threads remain waiting indefinitely	Deadlock	Examine lock ownership and acquisition order
-One thread rarely makes progress	Starvation	Examine scheduling and resource fairness
-Performance becomes slower	Too many threads or contention	Review workload and thread count
-Unexpected data changes	Missing synchronisation	Check all accesses to shared data
-High CPU usage	Busy waiting or excessive work	Examine loops, scheduling and workload
+  <p>Threads are closely connected to several other operating-system topics.</p>
 
-Remember: Adding threads introduces coordination responsibilities. Correct synchronisation and careful design are essential.
+  <p>Understanding these relationships helps build a complete picture of how an operating system manages execution.</p>
 
-⸻
+  <h4>10.4.1 Operating Systems</h4>
 
-10.4 Connections to Other Operating-System Concepts
+  <p>The operating system manages processes, threads, memory, devices and other resources.</p>
 
-Threads are closely connected to several other operating-system topics.
+  <p>Threads are one of the mechanisms through which programs perform work.</p>
 
-Understanding these relationships helps build a complete picture of how an operating system manages execution.
+  <h4>10.4.2 Programs</h4>
 
-10.4.1 Operating Systems
+  <p>A program contains instructions.</p>
 
-The operating system manages processes, threads, memory, devices and other resources.
+  <p>When a program is executed, the operating system creates or manages an execution environment in which processes and threads can operate.</p>
 
-Threads are one of the mechanisms through which programs perform work.
+  <h4>10.4.3 Processes</h4>
 
-10.4.2 Programs
+  <p>A process is an executing program instance with its own resource environment.</p>
 
-A program contains instructions.
+  <p>A process can contain one or more threads.</p>
 
-When a program is executed, the operating system creates or manages an execution environment in which processes and threads can operate.
+  <p>Threads within the same process commonly share many resources.</p>
 
-10.4.3 Processes
+  <h4>10.4.4 Process Control Block (PCB)</h4>
 
-A process is an executing program instance with its own resource environment.
+  <p>A Process Control Block is a conceptual operating-system data structure containing information used to manage a process.</p>
 
-A process can contain one or more threads.
+  <p>Depending on the operating system, this may include process identification, state, resource and memory-management information.</p>
 
-Threads within the same process commonly share many resources.
+  <h4>10.4.5 Thread Control Block (TCB)</h4>
 
-10.4.4 Process Control Block (PCB)
+  <p>A Thread Control Block is a conceptual term for information maintained to manage an individual thread.</p>
 
-A Process Control Block is a conceptual operating-system data structure containing information used to manage a process.
+  <p>It may represent information such as thread state, scheduling information and execution context.</p>
 
-Depending on the operating system, this may include process identification, state, resource and memory-management information.
+  <p>The exact names and structures vary between operating systems.</p>
 
-10.4.5 Thread Control Block (TCB)
+  <h4>10.4.6 CPU Scheduling</h4>
 
-A Thread Control Block is a conceptual term for information maintained to manage an individual thread.
+  <p>CPU scheduling determines which eligible thread or execution entity should receive CPU time.</p>
 
-It may represent information such as thread state, scheduling information and execution context.
+  <p>The scheduler helps share processing resources among competing work.</p>
 
-The exact names and structures vary between operating systems.
+  <h4>10.4.7 Context Switching</h4>
 
-10.4.6 CPU Scheduling
+  <p>Context switching allows CPU execution to move from one thread to another.</p>
 
-CPU scheduling determines which eligible thread or execution entity should receive CPU time.
+  <p>The necessary execution context is saved and restored so that threads can resume their work.</p>
 
-The scheduler helps share processing resources among competing work.
+  <h4>10.4.8 Memory Management</h4>
 
-10.4.7 Context Switching
+  <p>Threads share many parts of their process’s virtual address space.</p>
 
-Context switching allows CPU execution to move from one thread to another.
+  <p>Each thread also requires its own stack and execution context.</p>
 
-The necessary execution context is saved and restored so that threads can resume their work.
+  <p>Memory management therefore plays an important role in supporting multithreaded processes.</p>
 
-10.4.8 Memory Management
+  <h4>10.4.9 Synchronisation</h4>
 
-Threads share many parts of their process’s virtual address space.
+  <p>Synchronisation coordinates access to shared resources and helps ensure that concurrent operations produce correct results.</p>
 
-Each thread also requires its own stack and execution context.
+  <p>Mutexes, semaphores, condition variables and atomic operations are examples of related mechanisms.</p>
 
-Memory management therefore plays an important role in supporting multithreaded processes.
+  <h4>10.4.10 Race Conditions</h4>
 
-10.4.9 Synchronisation
+  <p>Race conditions demonstrate why shared-data access must be designed carefully.</p>
 
-Synchronisation coordinates access to shared resources and helps ensure that concurrent operations produce correct results.
+  <p>They connect thread management with synchronisation, critical sections and thread safety.</p>
 
-Mutexes, semaphores, condition variables and atomic operations are examples of related mechanisms.
+  <h4>10.4.11 Deadlocks</h4>
 
-10.4.10 Race Conditions
+  <p>Deadlocks can arise when threads wait for resources held by one another.</p>
 
-Race conditions demonstrate why shared-data access must be designed carefully.
+  <p>They connect thread synchronisation with resource allocation and operating-system resource management.</p>
 
-They connect thread management with synchronisation, critical sections and thread safety.
+  <h4>10.4.12 Multicore Processing</h4>
 
-10.4.11 Deadlocks
+  <p>A multicore processor contains multiple CPU cores.</p>
 
-Deadlocks can arise when threads wait for resources held by one another.
+  <p>Suitable threads may execute simultaneously on different cores, allowing parallel processing.</p>
 
-They connect thread synchronisation with resource allocation and operating-system resource management.
+  <h4>Related concept map</h4>
 
-10.4.12 Multicore Processing
-
-A multicore processor contains multiple CPU cores.
-
-Suitable threads may execute simultaneously on different cores, allowing parallel processing.
-
-Related concept map
-
+```mermaid id="0z1yq4"
 flowchart TD
     OS["Operating System"]
     OS --> P["Processes"]
@@ -413,283 +495,262 @@ flowchart TD
     MM --> VA["Virtual Address Space"]
     VA --> ST["Thread Stacks"]
     S --> CS
+```
 
-Concept connection summary
+  <h4>Concept connection summary</h4>
 
-Threads connect multiple important areas of operating systems:
+  <p>Threads connect multiple important areas of operating systems:</p>
 
-* Process management explains where threads belong.
-* Scheduling explains how they receive CPU time.
-* Context switching explains how execution moves between them.
-* Memory management explains shared address spaces and individual stacks.
-* Synchronisation explains how threads coordinate.
-* Deadlock and race-condition concepts explain what can go wrong.
-* Multicore processing explains how parallel execution can occur.
+  <ul>
+    <li>Process management explains where threads belong.</li>
+    <li>Scheduling explains how they receive CPU time.</li>
+    <li>Context switching explains how execution moves between them.</li>
+    <li>Memory management explains shared address spaces and individual stacks.</li>
+    <li>Synchronisation explains how threads coordinate.</li>
+    <li>Deadlock and race-condition concepts explain what can go wrong.</li>
+    <li>Multicore processing explains how parallel execution can occur.</li>
+  </ul>
 
-⸻
+  <h3>10.5 Assessment — Test Your Understanding</h3>
 
-10.5 Assessment — Test Your Understanding
+  <p>Answer the following twelve questions to check your understanding of threads.</p>
 
-Answer the following twelve questions to check your understanding of threads.
+  <h4>Question 1 — What is a thread?</h4>
 
-Question 1 — What is a thread?
+  <ol type="A">
+    <li>A complete computer program stored on disk.</li>
+    <li>A path of execution within a process.</li>
+    <li>A separate physical CPU.</li>
+    <li>A type of storage device.</li>
+  </ol>
 
-A. A complete computer program stored on disk.
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> A thread is an execution path within a process. It has its own execution context and uses the resources of its process.</p>
 
-B. A path of execution within a process.
+  <h4>Question 2 — What is commonly shared by threads in the same process?</h4>
 
-C. A separate physical CPU.
+  <ol type="A">
+    <li>Their individual program counters.</li>
+    <li>Their individual CPU registers.</li>
+    <li>Their process’s heap memory.</li>
+    <li>Their individual stacks.</li>
+  </ol>
 
-D. A type of storage device.
+  <p><strong>Correct answer: C</strong></p>
+  <p><strong>Explanation:</strong> Threads in the same process commonly share heap memory, code, global data and other process resources. Their execution contexts remain individual.</p>
 
-Correct answer: B
+  <h4>Question 3 — Which component is individual to each thread?</h4>
 
-Explanation: A thread is an execution path within a process. It has its own execution context and uses the resources of its process.
+  <ol type="A">
+    <li>Program code.</li>
+    <li>Global variables.</li>
+    <li>Heap memory.</li>
+    <li>Program counter.</li>
+  </ol>
 
-Question 2 — What is commonly shared by threads in the same process?
+  <p><strong>Correct answer: D</strong></p>
+  <p><strong>Explanation:</strong> Each thread maintains its own program counter so it can keep track of its own execution position.</p>
 
-A. Their individual program counters.
+  <h4>Question 4 — What does the Ready state mean?</h4>
 
-B. Their individual CPU registers.
+  <ol type="A">
+    <li>The thread has terminated.</li>
+    <li>The thread is waiting for CPU time and is eligible to run.</li>
+    <li>The thread is currently executing.</li>
+    <li>The thread is permanently blocked.</li>
+  </ol>
 
-C. Their process’s heap memory.
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> A Ready thread is prepared to execute but has not yet been selected to run on a CPU.</p>
 
-D. Their individual stacks.
+  <h4>Question 5 — What is concurrency?</h4>
 
-Correct answer: C
+  <ol type="A">
+    <li>Multiple tasks making progress during overlapping periods.</li>
+    <li>Every task executing on a separate computer.</li>
+    <li>A process permanently stopping.</li>
+    <li>A single instruction running without interruption.</li>
+  </ol>
 
-Explanation: Threads in the same process commonly share heap memory, code, global data and other process resources. Their execution contexts remain individual.
+  <p><strong>Correct answer: A</strong></p>
+  <p><strong>Explanation:</strong> Concurrency allows multiple tasks to make progress over overlapping periods. They may take turns on one CPU core.</p>
 
-Question 3 — Which component is individual to each thread?
+  <h4>Question 6 — What is parallelism?</h4>
 
-A. Program code.
+  <ol type="A">
+    <li>Tasks waiting for the same resource.</li>
+    <li>Tasks executing simultaneously on separate processing resources.</li>
+    <li>A thread entering the Blocked state.</li>
+    <li>A process being terminated.</li>
+  </ol>
 
-B. Global variables.
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> Parallelism means work is actually being performed at the same time using separate processing resources, such as different CPU cores.</p>
 
-C. Heap memory.
+  <h4>Question 7 — What is a race condition?</h4>
 
-D. Program counter.
+  <ol type="A">
+    <li>A thread completing before another thread.</li>
+    <li>A CPU core becoming too hot.</li>
+    <li>A result depending on the timing or ordering of concurrent operations.</li>
+    <li>A program being stored in memory.</li>
+  </ol>
 
-Correct answer: D
+  <p><strong>Correct answer: C</strong></p>
+  <p><strong>Explanation:</strong> A race condition occurs when concurrent operations interact in a way that makes the result depend on their timing or ordering.</p>
 
-Explanation: Each thread maintains its own program counter so it can keep track of its own execution position.
+  <h4>Question 8 — What is the main purpose of a mutex?</h4>
 
-Question 4 — What does the Ready state mean?
+  <ol type="A">
+    <li>To create a new process.</li>
+    <li>To increase the number of CPU cores.</li>
+    <li>To protect a critical section through mutual exclusion.</li>
+    <li>To terminate blocked threads.</li>
+  </ol>
 
-A. The thread has terminated.
+  <p><strong>Correct answer: C</strong></p>
+  <p><strong>Explanation:</strong> A mutex allows one thread at a time to enter a protected critical section, provided relevant accesses follow the same locking discipline.</p>
 
-B. The thread is waiting for CPU time and is eligible to run.
+  <h4>Question 9 — What is a context switch?</h4>
 
-C. The thread is currently executing.
+  <ol type="A">
+    <li>Deleting a program.</li>
+    <li>Saving and restoring execution context when CPU execution moves between threads.</li>
+    <li>Increasing the amount of heap memory.</li>
+    <li>Changing a process into a file.</li>
+  </ol>
 
-D. The thread is permanently blocked.
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> Context switching allows a thread to pause and another thread to execute. The necessary execution information is preserved so work can resume.</p>
 
-Correct answer: B
+  <h4>Question 10 — What is a deadlock?</h4>
 
-Explanation: A Ready thread is prepared to execute but has not yet been selected to run on a CPU.
+  <ol type="A">
+    <li>A thread completing successfully.</li>
+    <li>A CPU executing multiple instructions.</li>
+    <li>Threads becoming blocked while waiting for resources held by one another.</li>
+    <li>A program opening a file.</li>
+  </ol>
 
-Question 5 — What is concurrency?
+  <p><strong>Correct answer: C</strong></p>
+  <p><strong>Explanation:</strong> Deadlock occurs when threads cannot proceed because of a circular dependency involving resources they hold and resources they are waiting for.</p>
 
-A. Multiple tasks making progress during overlapping periods.
+  <h4>Question 11 — Why does each thread need its own stack?</h4>
 
-B. Every task executing on a separate computer.
+  <ol type="A">
+    <li>To store a separate copy of the entire operating system.</li>
+    <li>To maintain its own function calls, local variables and return addresses.</li>
+    <li>To create additional CPU cores.</li>
+    <li>To store all process-wide global variables.</li>
+  </ol>
 
-C. A process permanently stopping.
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> Each thread may execute different functions and therefore needs its own stack to maintain its individual execution information.</p>
 
-D. A single instruction running without interruption.
+  <h4>Question 12 — Does adding more threads always improve performance?</h4>
 
-Correct answer: A
+  <ol type="A">
+    <li>Yes, more threads always make programs faster.</li>
+    <li>Yes, because every thread receives a separate CPU core.</li>
+    <li>No, because scheduling overhead, resource contention and synchronisation can reduce performance.</li>
+    <li>No, because an operating system can only support one thread.</li>
+  </ol>
 
-Explanation: Concurrency allows multiple tasks to make progress over overlapping periods. They may take turns on one CPU core.
+  <p><strong>Correct answer: C</strong></p>
+  <p><strong>Explanation:</strong> Threads can improve performance and responsiveness, but excessive threads or poorly coordinated work can create overhead and contention.</p>
 
-Question 6 — What is parallelism?
+  <h3>10.6 Quick Revision — Threads at a Glance</h3>
 
-A. Tasks waiting for the same resource.
+  <h4>What is a thread?</h4>
 
-B. Tasks executing simultaneously on separate processing resources.
+  <p>A thread is a path of execution within a process.</p>
 
-C. A thread entering the Blocked state.
+  <h4>What does a process provide?</h4>
 
-D. A process being terminated.
+  <p>A process provides a resource environment in which its threads operate.</p>
 
-Correct answer: B
+  <h4>What do threads share?</h4>
 
-Explanation: Parallelism means work is actually being performed at the same time using separate processing resources, such as different CPU cores.
+  <p>Commonly shared resources include:</p>
 
-Question 7 — What is a race condition?
+  <ul>
+    <li>Program code.</li>
+    <li>Global and static data.</li>
+    <li>Heap memory.</li>
+    <li>Open files and other process-associated resources.</li>
+  </ul>
 
-A. A thread completing before another thread.
+  <h4>What does each thread maintain?</h4>
 
-B. A CPU core becoming too hot.
+  <ul>
+    <li>Thread ID.</li>
+    <li>Program Counter.</li>
+    <li>CPU Registers.</li>
+    <li>Stack.</li>
+    <li>Thread State.</li>
+    <li>Thread-Local Storage.</li>
+  </ul>
 
-C. A result depending on the timing or ordering of concurrent operations.
+  <h4>What are the main lifecycle states?</h4>
 
-D. A program being stored in memory.
+  <ul>
+    <li>New.</li>
+    <li>Ready.</li>
+    <li>Running.</li>
+    <li>Blocked/Waiting.</li>
+    <li>Terminated.</li>
+  </ul>
 
-Correct answer: C
+  <h4>What is scheduling?</h4>
 
-Explanation: A race condition occurs when concurrent operations interact in a way that makes the result depend on their timing or ordering.
+  <p>Selecting an eligible thread to receive CPU time.</p>
 
-Question 8 — What is the main purpose of a mutex?
+  <h4>What is context switching?</h4>
 
-A. To create a new process.
+  <p>Saving and restoring execution context when CPU execution moves between threads.</p>
 
-B. To increase the number of CPU cores.
+  <h4>What is concurrency?</h4>
 
-C. To protect a critical section through mutual exclusion.
+  <p>Multiple tasks making progress during overlapping periods.</p>
 
-D. To terminate blocked threads.
+  <h4>What is parallelism?</h4>
 
-Correct answer: C
+  <p>Multiple tasks executing simultaneously on separate processing resources.</p>
 
-Explanation: A mutex allows one thread at a time to enter a protected critical section, provided relevant accesses follow the same locking discipline.
+  <h4>What is a race condition?</h4>
 
-Question 9 — What is a context switch?
+  <p>A problem where the result depends on the timing or ordering of concurrent operations.</p>
 
-A. Deleting a program.
+  <h4>What is synchronisation?</h4>
 
-B. Saving and restoring execution context when CPU execution moves between threads.
+  <p>Coordinating threads to manage access to shared resources safely.</p>
 
-C. Increasing the amount of heap memory.
+  <h4>What is a mutex?</h4>
 
-D. Changing a process into a file.
+  <p>A mutual-exclusion lock used to protect a critical section.</p>
 
-Correct answer: B
+  <h4>What is a deadlock?</h4>
 
-Explanation: Context switching allows a thread to pause and another thread to execute. The necessary execution information is preserved so work can resume.
+  <p>A situation in which threads cannot proceed because they are waiting for resources held by one another.</p>
 
-Question 10 — What is a deadlock?
+  <h4>Final Memory Model</h4>
 
-A. A thread completing successfully.
+  <ul>
+    <li>One process can contain multiple threads.</li>
+    <li>Threads share many process resources but maintain their own execution contexts.</li>
+    <li>The scheduler manages CPU time.</li>
+    <li>Synchronisation helps threads access shared resources safely.</li>
+  </ul>
 
-B. A CPU executing multiple instructions.
+  <h3>10.7 Final Learning Reflection</h3>
 
-C. Threads becoming blocked while waiting for resources held by one another.
+  <p>You have now explored threads from simple explanations through technical architecture, lifecycle, scheduling, concurrency, parallelism and synchronisation.</p>
 
-D. A program opening a file.
+  <p>You have also examined practical applications, common mistakes, limitations and connections to other operating-system concepts.</p>
 
-Correct answer: C
+  <div class="concept-note">
+    <p><strong>The most important idea to remember:</strong></p>
+    <p>Threads allow a process to contain multiple paths of execution. They can share resources and cooperate, but their execution must be managed carefully to maintain correct and reliable behaviour.</p>
+  </div>
 
-Explanation: Deadlock occurs when threads cannot proceed because of a circular dependency involving resources they hold and resources they are waiting for.
-
-Question 11 — Why does each thread need its own stack?
-
-A. To store a separate copy of the entire operating system.
-
-B. To maintain its own function calls, local variables and return addresses.
-
-C. To create additional CPU cores.
-
-D. To store all process-wide global variables.
-
-Correct answer: B
-
-Explanation: Each thread may execute different functions and therefore needs its own stack to maintain its individual execution information.
-
-Question 12 — Does adding more threads always improve performance?
-
-A. Yes, more threads always make programs faster.
-
-B. Yes, because every thread receives a separate CPU core.
-
-C. No, because scheduling overhead, resource contention and synchronisation can reduce performance.
-
-D. No, because an operating system can only support one thread.
-
-Correct answer: C
-
-Explanation: Threads can improve performance and responsiveness, but excessive threads or poorly coordinated work can create overhead and contention.
-
-⸻
-
-10.6 Quick Revision — Threads at a Glance
-
-What is a thread?
-
-A thread is a path of execution within a process.
-
-What does a process provide?
-
-A process provides a resource environment in which its threads operate.
-
-What do threads share?
-
-Commonly shared resources include:
-
-* Program code.
-* Global and static data.
-* Heap memory.
-* Open files and other process-associated resources.
-
-What does each thread maintain?
-
-* Thread ID.
-* Program Counter.
-* CPU Registers.
-* Stack.
-* Thread State.
-* Thread-Local Storage.
-
-What are the main lifecycle states?
-
-* New.
-* Ready.
-* Running.
-* Blocked/Waiting.
-* Terminated.
-
-What is scheduling?
-
-Selecting an eligible thread to receive CPU time.
-
-What is context switching?
-
-Saving and restoring execution context when CPU execution moves between threads.
-
-What is concurrency?
-
-Multiple tasks making progress during overlapping periods.
-
-What is parallelism?
-
-Multiple tasks executing simultaneously on separate processing resources.
-
-What is a race condition?
-
-A problem where the result depends on the timing or ordering of concurrent operations.
-
-What is synchronisation?
-
-Coordinating threads to manage access to shared resources safely.
-
-What is a mutex?
-
-A mutual-exclusion lock used to protect a critical section.
-
-What is a deadlock?
-
-A situation in which threads cannot proceed because they are waiting for resources held by one another.
-
-Final Memory Model
-
-One process can contain multiple threads.
-
-Threads share many process resources but maintain their own execution contexts.
-
-The scheduler manages CPU time.
-
-Synchronisation helps threads access shared resources safely.
-
-⸻
-
-10.7 Final Learning Reflection
-
-You have now explored threads from simple explanations through technical architecture, lifecycle, scheduling, concurrency, parallelism and synchronisation.
-
-You have also examined practical applications, common mistakes, limitations and connections to other operating-system concepts.
-
-The most important idea to remember is:
-
-Threads allow a process to contain multiple paths of execution. They can share resources and cooperate, but their execution must be managed carefully to maintain correct and reliable behaviour.
-
-This completes the educational content for Concept 003 — Threads.
+</section>
