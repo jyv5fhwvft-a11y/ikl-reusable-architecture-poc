@@ -9,6 +9,9 @@ order: 2
 ---
 
 <section id="simple-explanation">
+        <span id="ikl-understand-it"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
     <h2>2. Ping Explained Like You're Five</h2>
 
     <h3>Imagine Two Friends</h3>
