@@ -998,6 +998,9 @@ order: 5
 <!-- SECTION 8: INTERACTIVE SIMULATION -->
 <!-- ================================== -->
 <section id="interactive-simulation">
+    <span id="ikl-experience-it"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
 
             <h2>8. Interactive Ping Simulation</h2>
 
