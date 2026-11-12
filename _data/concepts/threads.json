@@ -7,7 +7,10 @@
   "topic": "Process and Thread Management",
   "subtitle": "Paths of Execution Within a Process",
   "guiding_question": "How can a program perform multiple tasks at the same time?",
-  "description": "A thread is a path of execution within a process. Threads share many process resources while maintaining their own execution contexts.",
+    "description": "A thread is a path of execution within a process. Threads share many process resources while maintaining their own execution contexts.",
+  "scripts": [
+    "/js/mermaid-renderer.js"
+  ],
   "learning_levels": [
     "first-grader",
     "beginner",
