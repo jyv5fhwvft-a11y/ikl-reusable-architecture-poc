@@ -4935,6 +4935,34 @@ footer p {
     }
 }
 
+/* =========================================
+   IKL — CONCEPT IDENTITY CARD
+   Consistent styling for all concepts
+========================================= */
+
+#concept-identity .concept-identity-card {
+    margin: 20px 0;
+    padding: 20px 24px;
+
+    background-color: #EFF6FF;
+
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid #2563EB;
+
+    border-radius: 12px;
+}
+
+#concept-identity .concept-identity-card p {
+    margin: 6px 0;
+    color: #102A43;
+}
+
+#concept-identity .concept-identity-card p:last-child {
+    margin-bottom: 0;
+}
+
+
+
 
 
 
