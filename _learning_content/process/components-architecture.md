@@ -8,6 +8,9 @@ block_type: html-section
 order: 6
 ---
 <section id="components-architecture" class="concept-section" aria-labelledby="components-architecture-heading">
+    <span id="ikl-learn-how-it-works"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
 
     <h2 id="components-architecture-heading">
         6. Components and Architecture
