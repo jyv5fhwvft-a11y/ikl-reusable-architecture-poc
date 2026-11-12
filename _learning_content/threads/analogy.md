@@ -7,159 +7,378 @@ section_title: Analogy and Mental Model
 block_type: html-section
 order: 3
 ---
-3. Analogy and Mental Model
 
-Understanding Threads Through a Restaurant Kitchen
+<section id="threads-analogy" class="concept-section" aria-labelledby="threads-section-3-heading">
 
-Imagine a busy restaurant kitchen.
+    <h2 id="threads-section-3-heading">
+        3. Analogy and Mental Model
+    </h2>
 
-Several cooks are preparing different parts of meals at the same time. One cook prepares vegetables, another cooks rice, and another prepares the main dishes.
+    <h3>Understanding Threads Through a Restaurant Kitchen</h3>
 
-They work on different tasks, but they share the same kitchen.
+    <p>
+        Imagine a busy restaurant kitchen.
+    </p>
 
-This gives us a useful way to understand how threads work inside a process.
+    <p>
+        Several cooks are preparing different parts of meals at the
+        same time. One cook prepares vegetables, another cooks rice,
+        and another prepares the main dishes.
+    </p>
 
-The Restaurant Analogy
+    <p>
+        They work on different tasks, but they share the same kitchen.
+    </p>
 
-Restaurant kitchen	Operating system concept
-Restaurant kitchen	Process
-Kitchen equipment and ingredients	Shared process resources
-Individual cook	Thread
-Each cook’s current task	Thread’s execution
-Each cook’s own working notes	Thread-specific execution information
-Kitchen manager coordinating work	Operating system and scheduling mechanisms (simplified analogy)
+    <p>
+        This gives us a useful way to understand how threads work
+        inside a process.
+    </p>
 
-The restaurant represents the shared environment. Each cook represents an individual path of work.
+    <h3>The Restaurant Analogy</h3>
 
-Similarly, threads within one process share many resources but maintain their own execution contexts.
+    <div class="concept-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Restaurant kitchen</th>
+                    <th>Operating system concept</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Restaurant kitchen</td>
+                    <td>Process</td>
+                </tr>
+                <tr>
+                    <td>Kitchen equipment and ingredients</td>
+                    <td>Shared process resources</td>
+                </tr>
+                <tr>
+                    <td>Individual cook</td>
+                    <td>Thread</td>
+                </tr>
+                <tr>
+                    <td>Each cook’s current task</td>
+                    <td>Thread’s execution</td>
+                </tr>
+                <tr>
+                    <td>Each cook’s own working notes</td>
+                    <td>Thread-specific execution information</td>
+                </tr>
+                <tr>
+                    <td>Kitchen manager coordinating work</td>
+                    <td>Operating system and scheduling mechanisms (simplified analogy)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-What Do Threads Share?
+    <p>
+        The restaurant represents the shared environment. Each cook
+        represents an individual path of work.
+    </p>
 
-Imagine three cooks working in the same kitchen.
+    <p>
+        Similarly, threads within one process share many resources
+        but maintain their own execution contexts.
+    </p>
 
-They can use shared resources such as:
+    <h3>What Do Threads Share?</h3>
 
-* The kitchen workspace.
-* Cooking equipment.
-* Ingredients.
-* Shared preparation areas.
+    <p>
+        Imagine three cooks working in the same kitchen.
+    </p>
 
-In a process, threads can share:
+    <p>They can use shared resources such as:</p>
 
-* Program code.
-* Global and static data.
-* Heap memory.
-* Open files and other process resources.
+    <ul>
+        <li>The kitchen workspace.</li>
+        <li>Cooking equipment.</li>
+        <li>Ingredients.</li>
+        <li>Shared preparation areas.</li>
+    </ul>
 
-These shared resources allow threads to work within the same process environment.
+    <p>In a process, threads can share:</p>
 
-What Does Each Thread Keep Separately?
+    <ul>
+        <li>Program code.</li>
+        <li>Global and static data.</li>
+        <li>Heap memory.</li>
+        <li>Open files and other process resources.</li>
+    </ul>
 
-Although the cooks share the kitchen, each cook has individual responsibilities and keeps track of their own work.
+    <p>
+        These shared resources allow threads to work within the
+        same process environment.
+    </p>
 
-Similarly, each thread maintains its own execution context, including:
+    <h3>What Does Each Thread Keep Separately?</h3>
 
-* Program counter (PC): Identifies the next instruction to execute.
-* CPU registers: Hold information needed during execution.
-* Stack: Holds information associated with function calls and local variables.
-* Thread state: Indicates whether the thread is ready, running, waiting or terminated.
+    <p>
+        Although the cooks share the kitchen, each cook has
+        individual responsibilities and keeps track of their own work.
+    </p>
 
-Each thread needs its own stack because different threads can be executing different functions and maintaining different local execution information.
+    <p>
+        Similarly, each thread maintains its own execution context,
+        including:
+    </p>
 
-The stacks occupy separate regions within the process’s virtual address space.
+    <ul>
+        <li>
+            <strong>Program counter (PC):</strong>
+            Identifies the next instruction to execute.
+        </li>
+        <li>
+            <strong>CPU registers:</strong>
+            Hold information needed during execution.
+        </li>
+        <li>
+            <strong>Stack:</strong>
+            Holds information associated with function calls
+            and local variables.
+        </li>
+        <li>
+            <strong>Thread state:</strong>
+            Indicates whether the thread is ready, running,
+            waiting or terminated.
+        </li>
+    </ul>
 
-Why Coordination Matters
+    <p>
+        Each thread needs its own stack because different threads
+        can be executing different functions and maintaining
+        different local execution information.
+    </p>
 
-Now imagine two cooks trying to update the same order at exactly the same time.
+    <p>
+        The stacks occupy separate regions within the process’s
+        virtual address space.
+    </p>
 
-One cook changes the order while the other is still working with an older version.
+    <h3>Why Coordination Matters</h3>
 
-The final result could be incorrect.
+    <p>
+        Now imagine two cooks trying to update the same order at
+        exactly the same time.
+    </p>
 
-A similar problem can occur when two or more threads access and modify shared data without appropriate coordination.
+    <p>
+        One cook changes the order while the other is still
+        working with an older version.
+    </p>
 
-This is called a race condition.
+    <p>
+        The final result could be incorrect.
+    </p>
 
-A race condition occurs when the result of a program depends on the unpredictable timing or order of concurrent operations.
+    <p>
+        A similar problem can occur when two or more threads
+        access and modify shared data without appropriate coordination.
+    </p>
 
-A Simple Bank Account Example
+    <div class="concept-note">
+        <h4>What Is a Race Condition?</h4>
 
-Imagine a shared bank account containing $100.
+        <p>
+            A <strong>race condition</strong> occurs when the result
+            of a program depends on the unpredictable timing or
+            order of concurrent operations.
+        </p>
+    </div>
 
-Two threads each attempt to add $10.
+    <h3>A Simple Bank Account Example</h3>
 
-Both threads might read the original balance of $100 before either update is completed.
+    <p>
+        Imagine a shared bank account containing $100.
+    </p>
 
-If both then calculate and write a new balance of $110, one update may be lost.
+    <p>
+        Two threads each attempt to add $10.
+    </p>
 
-The correct balance should be $120, but the result could incorrectly become $110.
+    <p>
+        Both threads might read the original balance of $100
+        before either update is completed.
+    </p>
 
-This illustrates why shared data sometimes needs protection.
+    <p>
+        If both then calculate and write a new balance of $110,
+        one update may be lost.
+    </p>
 
-How Do Threads Coordinate?
+    <p>
+        The correct balance should be $120, but the result
+        could incorrectly become $110.
+    </p>
 
-Operating systems and programming environments provide synchronisation mechanisms to coordinate access to shared resources.
+    <p>
+        This illustrates why shared data sometimes needs protection.
+    </p>
 
-Common examples include:
+    <h3>How Do Threads Coordinate?</h3>
 
-* Mutex: A mutual-exclusion lock that allows one thread at a time to enter a protected critical section.
-* Semaphore: A synchronisation mechanism that controls access using a counter and permits.
-* Condition variable: Allows threads to wait until a particular condition becomes true, normally working together with a mutex.
+    <p>
+        Operating systems and programming environments provide
+        synchronisation mechanisms to coordinate access to
+        shared resources.
+    </p>
 
-These mechanisms help prevent conflicting operations when used correctly.
+    <p>Common examples include:</p>
 
-Concurrency vs Parallelism
+    <ul>
+        <li>
+            <strong>Mutex:</strong>
+            A mutual-exclusion lock that allows one thread at a
+            time to enter a protected critical section.
+        </li>
+        <li>
+            <strong>Semaphore:</strong>
+            A synchronisation mechanism that controls access
+            using a counter and permits.
+        </li>
+        <li>
+            <strong>Condition variable:</strong>
+            Allows threads to wait until a particular condition
+            becomes true, normally working together with a mutex.
+        </li>
+    </ul>
 
-These two terms are related, but they do not mean the same thing.
+    <p>
+        These mechanisms help prevent conflicting operations
+        when used correctly.
+    </p>
 
-Concurrency
+    <h3>Concurrency vs Parallelism</h3>
 
-Concurrency means multiple tasks make progress during overlapping periods.
+    <p>
+        These two terms are related, but they do not mean the same thing.
+    </p>
 
-On a single CPU core, the operating system can switch between threads, giving the impression that several tasks are progressing together.
+    <h4>Concurrency</h4>
 
-Parallelism
+    <p>
+        Concurrency means multiple tasks make progress during
+        overlapping periods.
+    </p>
 
-Parallelism means multiple tasks are actually executing at the same time, typically on different CPU cores.
+    <p>
+        On a single CPU core, the operating system can switch
+        between threads, giving the impression that several
+        tasks are progressing together.
+    </p>
 
-For example:
+    <h4>Parallelism</h4>
 
-* One CPU core can take turns executing several threads.
-* Multiple CPU cores can execute different threads simultaneously.
+    <p>
+        Parallelism means multiple tasks are actually executing
+        at the same time, typically on different CPU cores.
+    </p>
 
-Comparison
+    <p>For example:</p>
 
-Concurrency	Parallelism
-Tasks make progress over overlapping periods	Tasks execute at the same time
-Can occur on one CPU core	Requires multiple execution resources for simultaneous CPU execution
-May involve switching between threads	Can involve threads running on different CPU cores
+    <ul>
+        <li>One CPU core can take turns executing several threads.</li>
+        <li>Multiple CPU cores can execute different threads simultaneously.</li>
+    </ul>
 
-Remember: Concurrency is about managing multiple tasks in overlapping periods. Parallelism is about executing multiple tasks simultaneously.
+    <h4>Comparison</h4>
 
-Where the Restaurant Analogy Has Limitations
+    <div class="concept-table-wrapper">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concurrency</th>
+                    <th>Parallelism</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Tasks make progress over overlapping periods</td>
+                    <td>Tasks execute at the same time</td>
+                </tr>
+                <tr>
+                    <td>Can occur on one CPU core</td>
+                    <td>Requires multiple execution resources for simultaneous CPU execution</td>
+                </tr>
+                <tr>
+                    <td>May involve switching between threads</td>
+                    <td>Can involve threads running on different CPU cores</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-Analogies help us understand technical ideas, but they are not exact representations.
+    <div class="concept-note">
+        <p>
+            <strong>Remember:</strong>
+            Concurrency is about managing multiple tasks in
+            overlapping periods. Parallelism is about executing
+            multiple tasks simultaneously.
+        </p>
+    </div>
 
-The restaurant analogy has some limitations:
+    <h3>Where the Restaurant Analogy Has Limitations</h3>
 
-1. Threads are not independent workers with complete physical independence. They operate within a shared process.
-2. Threads share memory and other resources in ways that human cooks do not.
-3. The operating system’s scheduler is more complex than a kitchen manager assigning jobs.
-4. CPU execution depends on hardware, scheduling policies and synchronisation mechanisms.
-5. Threads can experience race conditions and deadlocks, which the restaurant analogy only simplifies.
+    <p>
+        Analogies help us understand technical ideas, but they
+        are not exact representations.
+    </p>
 
-Use the analogy to understand the relationship between shared resources and individual execution, not as a literal description of computer architecture.
+    <p>The restaurant analogy has some limitations:</p>
 
-Mental Model Recap
+    <ol>
+        <li>
+            Threads are not independent workers with complete
+            physical independence. They operate within a shared process.
+        </li>
+        <li>
+            Threads share memory and other resources in ways
+            that human cooks do not.
+        </li>
+        <li>
+            The operating system’s scheduler is more complex
+            than a kitchen manager assigning jobs.
+        </li>
+        <li>
+            CPU execution depends on hardware, scheduling
+            policies and synchronisation mechanisms.
+        </li>
+        <li>
+            Threads can experience race conditions and deadlocks,
+            which the restaurant analogy only simplifies.
+        </li>
+    </ol>
 
-Keep these five ideas in mind:
+    <p>
+        Use the analogy to understand the relationship between
+        shared resources and individual execution, not as a
+        literal description of computer architecture.
+    </p>
 
-1. A process provides the shared execution environment.
-2. Threads are individual paths of execution inside that process.
-3. Threads share many process resources.
-4. Each thread maintains its own execution context.
-5. Coordination is important when threads access shared data.
+    <h3>Mental Model Recap</h3>
 
-The central mental model:
+    <p>Keep these five ideas in mind:</p>
 
-A process is the shared workspace; threads are individual paths of work operating within it. They can make progress concurrently, execute in parallel on suitable hardware, and must coordinate when accessing shared resources.
+    <ol>
+        <li>A process provides the shared execution environment.</li>
+        <li>Threads are individual paths of execution inside that process.</li>
+        <li>Threads share many process resources.</li>
+        <li>Each thread maintains its own execution context.</li>
+        <li>Coordination is important when threads access shared data.</li>
+    </ol>
+
+    <div class="concept-note">
+        <h4>The Central Mental Model</h4>
+
+        <p>
+            A process is the shared workspace; threads are
+            individual paths of work operating within it.
+            They can make progress concurrently, execute in
+            parallel on suitable hardware, and must coordinate
+            when accessing shared resources.
+        </p>
+    </div>
+
+</section>
