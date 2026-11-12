@@ -535,3 +535,157 @@ a:hover {
         margin: 14px 18px;
     }
 }
+
+
+/* =========================================================
+   19. REUSABLE THREE-DIMENSION LEARNING NAVIGATION
+   ========================================================= */
+
+.ikl-learning-dimensions {
+    margin: 0 auto 35px;
+    padding: 28px;
+
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+
+    box-shadow: var(--shadow-card);
+}
+
+.ikl-learning-dimensions__heading {
+    max-width: 720px;
+    margin: 0 auto 22px;
+    text-align: center;
+}
+
+.ikl-learning-dimensions__eyebrow {
+    margin: 0 0 8px;
+
+    color: var(--color-teal);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+}
+
+.ikl-learning-dimensions__heading h2 {
+    margin: 0 0 10px;
+    font-size: 24px;
+}
+
+.ikl-learning-dimensions__heading > p:last-child {
+    margin: 0;
+    color: var(--color-slate);
+    font-size: 14px;
+}
+
+.ikl-learning-dimensions__list {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.ikl-learning-dimensions__link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    min-height: 100px;
+    padding: 16px;
+
+    background: #F8FAFC;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    color: var(--color-navy);
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.ikl-learning-dimensions__link:hover {
+    transform: translateY(-3px);
+    border-color: var(--color-blue);
+    box-shadow: var(--shadow-card);
+    color: var(--color-navy);
+}
+
+.ikl-learning-dimensions__link:focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: 4px;
+}
+
+.ikl-learning-dimensions__number {
+    display: grid;
+    flex: 0 0 36px;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+
+    background: #DBEAFE;
+    border-radius: 10px;
+
+    color: var(--color-blue);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.ikl-learning-dimensions__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.ikl-learning-dimensions__content strong {
+    color: var(--color-navy);
+    font-size: 14px;
+    line-height: 1.35;
+}
+
+.ikl-learning-dimensions__content small {
+    color: var(--color-slate);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.ikl-learning-dimensions__arrow {
+    color: var(--color-blue);
+    font-size: 19px;
+    font-weight: 700;
+}
+
+.ikl-learning-anchor {
+    display: block;
+    height: 0;
+    scroll-margin-top: 24px;
+}
+
+/* Tablet and mobile navigation */
+
+@media (max-width: 760px) {
+
+    .ikl-learning-dimensions {
+        padding: 22px 18px;
+    }
+
+    .ikl-learning-dimensions__list {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .ikl-learning-dimensions__link {
+        min-height: 82px;
+    }
+
+    .ikl-learning-dimensions__heading h2 {
+        font-size: 21px;
+    }
+}
+
