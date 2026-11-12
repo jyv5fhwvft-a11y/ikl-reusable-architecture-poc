@@ -8,14 +8,32 @@ block_type: html-section
 order: 1
 ---
 
-<section id="concept-identity">
+<section id="concept-identity" aria-labelledby="ping-section-1-heading">
 
-    <h2>1. What Is Ping?</h2>
+    <h2 id="ping-section-1-heading">
+        1. Concept Identity and Definition
+    </h2>
 
-    <h3>One-Sentence Definition</h3>
+    <div class="concept-identity-card">
+        <p><strong>Concept ID:</strong> IKL-CN-001</p>
+        <p><strong>Concept:</strong> Ping</p>
+        <p><strong>Subject:</strong> Computer Networking</p>
+        <p><strong>Topic:</strong> Network Connectivity and Diagnostics</p>
+    </div>
+
+    <h3>What Is Ping?</h3>
 
     <p>
-        Ping is a network diagnostic utility used to test whether a destination responds to messages sent across an IP network.
+        <strong>Ping</strong> is a network diagnostic utility used
+        to test whether a destination responds to messages sent
+        across an IP network and to measure round-trip time.
+    </p>
+
+    <h4>In Simple Words</h4>
+
+    <p>
+        Ping is a way to check whether another computer or network
+        device responds when your computer sends it a message.
     </p>
 
     <h3>What Problem Does Ping Solve?</h3>
@@ -29,14 +47,5 @@ order: 1
     <p>
         Ping helps answer this question.
     </p>
-
-    <h3>What Will You Learn?</h3>
-
-    <ul>
-        <li>What Ping means.</li>
-        <li>Why Ping is useful.</li>
-        <li>How computers use it to test connectivity.</li>
-        <li>How to interpret its results.</li>
-    </ul>
 
 </section>
