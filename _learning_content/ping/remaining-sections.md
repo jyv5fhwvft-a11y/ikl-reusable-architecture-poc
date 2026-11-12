@@ -8,6 +8,9 @@ block_type: html-section
 order: 5
 ---
 <section id="technical-explanation">
+                <span id="ikl-learn-how-it-works"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
             <h2>5. Technical Explanation of Ping</h2>
 
             <h3>5.1 What Is ICMP?</h3>
