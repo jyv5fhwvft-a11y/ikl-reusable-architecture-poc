@@ -3,8 +3,8 @@
  * Concept: Threads (IKL-OS-003)
  *
  * Purpose:
- * Convert Mermaid code blocks into visual diagrams.
- * This script only runs on pages that explicitly load it.
+ * Detect literal Mermaid Markdown fences in generated HTML,
+ * convert them into code blocks, and render visual diagrams.
  */
 
 (function () {
@@ -15,11 +15,77 @@
 
   const FALLBACK_MESSAGE =
     "The diagram could not be rendered. " +
-    "The original Mermaid source remains available below.";
+    "The original Mermaid source is available above.";
+
+  function convertMermaidFences() {
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT
+    );
+
+    const textNodes = [];
+
+    while (walker.nextNode()) {
+      if (walker.currentNode.nodeValue.includes("```mermaid")) {
+        textNodes.push(walker.currentNode);
+      }
+    }
+
+    const fencePattern =
+      /```mermaid[ \t]*\r?\n([\s\S]*?)\r?\n```/g;
+
+    textNodes.forEach(function (textNode) {
+      const originalText = textNode.nodeValue;
+      const fragment = document.createDocumentFragment();
+
+      let lastIndex = 0;
+      let match;
+      let found = false;
+
+      fencePattern.lastIndex = 0;
+
+      while ((match = fencePattern.exec(originalText)) !== null) {
+        found = true;
+
+        if (match.index > lastIndex) {
+          fragment.appendChild(
+            document.createTextNode(
+              originalText.slice(lastIndex, match.index)
+            )
+          );
+        }
+
+        const pre = document.createElement("pre");
+        const code = document.createElement("code");
+
+        code.className = "language-mermaid";
+        code.textContent = match[1].trim();
+
+        pre.appendChild(code);
+        fragment.appendChild(pre);
+
+        lastIndex = fencePattern.lastIndex;
+      }
+
+      if (!found) {
+        return;
+      }
+
+      if (lastIndex < originalText.length) {
+        fragment.appendChild(
+          document.createTextNode(
+            originalText.slice(lastIndex)
+          )
+        );
+      }
+
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  }
 
   function findMermaidBlocks() {
     return Array.from(
-      document.querySelectorAll(".language-mermaid")
+      document.querySelectorAll("code.language-mermaid")
     );
   }
 
@@ -75,7 +141,6 @@
     for (let index = 0; index < blocks.length; index += 1) {
       const block = blocks[index];
 
-      // Ignore nested matches already removed from the page.
       if (!document.body.contains(block)) {
         continue;
       }
@@ -120,9 +185,12 @@
   }
 
   async function initialiseMermaidRenderer() {
+    convertMermaidFences();
+
     const blocks = findMermaidBlocks();
 
     if (blocks.length === 0) {
+      console.warn("IKL: No Mermaid diagrams were found.");
       return;
     }
 
