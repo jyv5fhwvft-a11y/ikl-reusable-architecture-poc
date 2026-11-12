@@ -1,0 +1,322 @@
+IKL — MASTER PROJECT CHECKPOINT
+
+Checkpoint date: 12 November 2026
+Project: Interactive Knowledge Lexicon
+Current workspace: jyv5fhwvft-a11y/ikl-reusable-architecture-poc
+
+1. Project position
+
+IKL is an interactive educational platform designed to teach technical concepts progressively:
+
+* First-grader
+* Beginner
+* Undergraduate
+* Expert
+
+Its three learning dimensions are:
+
+1. Understand It — definitions, simple explanations, analogies and examples.
+2. Learn How It Works — components, architecture, mechanisms, flowcharts and sequence diagrams.
+3. Experience It — simulations, practical examples, activities and knowledge checks.
+
+The project follows:
+
+Learn → Build → Understand → Document → Showcase → Monetise → Teach
+
+Tagline: Explore. Understand. Experiment.
+
+Creator credit: Created by Amir Khan.
+
+2. Repositories and their purposes
+
+Production repository
+
+interactive-knowledge-lexicon
+
+https://github.com/jyv5fhwvft-a11y/interactive-knowledge-lexicon
+
+This is the protected production repository. It must not be modified without explicit project-owner authorisation.
+
+Ultimate reusable-architecture POC
+
+ikl-reusable-architecture-poc
+
+https://github.com/jyv5fhwvft-a11y/ikl-reusable-architecture-poc
+
+This is the main development and verification workspace for the reusable concept-page architecture and migrated IKL homepage.
+
+GitHub Pages is deliberately disabled. Do not enable it without explicit approval.
+
+Homepage Design Lab
+
+ikl-homepage-design-lab
+
+https://github.com/jyv5fhwvft-a11y/ikl-homepage-design-lab
+
+This is a homepage design and interaction test bed. It is not the ultimate POC or the main destination for final homepage verification.
+
+3. Completed Job 1 — Standardise numbering and concept records
+
+Status: COMPLETE
+
+Concept numbering and record conventions have been standardised.
+
+Concept sequence:
+
+Number	Concept	ID	Subject
+001	Ping	IKL-CN-001	Computer Networking
+002	Process	IKL-OS-002	Operating Systems
+003	Threads	IKL-OS-003	Operating Systems
+
+4. Completed Job 2 — Homepage migration
+
+Status: COMPLETE for migration and automated build verification.
+
+The homepage was migrated from the Design Lab into the ultimate POC.
+
+Committed files:
+
+* index.html
+* css/homepage.css
+* js/homepage.js
+
+The migrated homepage includes:
+
+* Navigation and hero.
+* Concept search.
+* Subject categories.
+* Three learning dimensions.
+* Learning pathways.
+* Progressive learning levels.
+* Featured concept cards.
+* About IKL and footer.
+
+The homepage identifies Ping and Process as available concepts and Threads as in development.
+
+The migrated homepage’s actual browser interactions still require runtime testing.
+
+5. Completed Job 2 — Three-dimension navigation
+
+Status: COMPLETE for source integration and generated-build verification.
+
+The project owner approved the universal anchor convention:
+
+* ikl-understand-it
+* ikl-learn-how-it-works
+* ikl-experience-it
+
+The shared navigation include is:
+
+_includes/concept/learning-dimensions.html
+
+It is included through:
+
+_layouts/concept.html
+
+The shared styling is in:
+
+css/proof.css
+
+The universal anchors have been added to the correct Ping and Process content sections.
+
+The homepage cards provide direct links to all three learning dimensions for both concepts.
+
+Threads remains marked In development without active concept links.
+
+6. Process content-block mapping correction
+
+Status: COMPLETE and verified.
+
+The Process JSON originally listed only five content blocks although ten Markdown content blocks existed.
+
+The project owner approved and committed the correction to include all ten blocks.
+
+Commit:
+
+280cfa6eefed0f70f96bf752cfde3472abdb7c52
+
+GitHub Actions Run #116 succeeded.
+
+7. Latest ultimate POC homepage and link verification
+
+Status: GENERATED ARTIFACT CHECK PASSED; LIVE BROWSER TEST OUTSTANDING.
+
+The latest integration was built in GitHub Actions Run #127.
+
+Run:
+
+https://github.com/jyv5fhwvft-a11y/ikl-reusable-architecture-poc/actions/runs/43273553048
+
+The run passed:
+
+* Concept-data validation.
+* Automated validator tests.
+* Jekyll website build.
+* Generated website artifact upload.
+
+The generated artifact was downloaded and inspected.
+
+It contains:
+
+* index.html
+* concepts/ping.html
+* concepts/process.html
+
+The homepage links were checked against the generated files.
+
+Ping links
+
+* Open concept.
+* Understand It.
+* Learn How It Works.
+* Experience It.
+
+All four destinations resolve correctly.
+
+Process links
+
+* Open concept.
+* Understand It.
+* Learn How It Works.
+* Experience It.
+
+All four destinations resolve correctly.
+
+The six learning-dimension links resolve to their intended universal anchors.
+
+Each universal anchor appears exactly once in the generated Ping page and exactly once in the generated Process page.
+
+The homepage CSS and JavaScript, and the referenced concept-page assets, are present in the generated artifact.
+
+Outstanding verification
+
+The following remain unverified:
+
+* Live visual appearance of the ultimate POC homepage.
+* Actual browser interaction testing of homepage navigation and search.
+* Actual browser clicking and visual inspection of Ping and Process pages.
+* Runtime behaviour of the concept-page interactive features.
+
+The POC Pages deployment remains disabled. No deployment setting should be changed without approval.
+
+Additional observation
+
+The generated Process HTML contains pre-existing duplicate IDs in other sections.
+
+The three universal learning-dimension anchors are unique. The duplicate-ID issue should be recorded for a separate content-integrity review; it is not an approved change in this checkpoint.
+
+8. Current position — Concept 003: Threads
+
+Status: Existing draft discovered; detailed educational audit is next.
+
+Existing files:
+
+* _data/concepts/threads.json
+* _learning_content/threads/definition.md
+
+The JSON identifies Threads as:
+
+* Concept ID: IKL-OS-003
+* Concept number: 003
+* Subject: Operating Systems
+* Topic: Process and Thread Management
+
+It contains five learning objectives and currently references one content block.
+
+The Markdown file is a substantial educational draft containing fifteen sections:
+
+1. Concept Identity and Definition.
+2. Threads Explained Like You’re Five.
+3. Analogy and Mental Model.
+4. Beginner Explanation.
+5. Technical Explanation.
+6. Thread Components and Architecture.
+7. How a Thread Works.
+8. Interactive Simulation Blueprint.
+9. Thread Lifecycle — Flowchart and Sequence Diagram.
+10. Practical Example — Threads in a Web Browser.
+11. Common Mistakes About Threads.
+12. Advantages and Limitations of Threads.
+13. Connections to Other Operating-System Concepts.
+14. Knowledge Assessment.
+15. Quick Revision.
+
+The draft must be audited before implementation. Accurate and useful existing material should be preserved.
+
+9. Agreed next task — Threads educational audit
+
+The project owner agreed to the following approach:
+
+Detailed educational audit of the existing Threads draft, followed by a refined educational blueprint for approval.
+
+The audit will examine:
+
+* Technical accuracy.
+* Teaching progression from simple to expert.
+* Program, process and thread distinctions.
+* Shared resources and individual execution context.
+* Thread states and scheduling.
+* Kernel-managed and user-level threads.
+* Concurrency and parallelism.
+* Synchronisation mechanisms.
+* Race conditions and deadlocks.
+* Thread architecture and mapping models.
+* Simulation and diagram requirements.
+* Practical examples.
+* Knowledge assessment and feedback.
+* Alignment between learning objectives and content.
+* Content-block organisation within the existing reusable architecture.
+
+The existing material should be retained wherever accurate and useful.
+
+The refined blueprint must be reviewed and approved before implementation.
+
+No Threads files should be changed until the relevant implementation work is explicitly authorised.
+
+10. Project roadmap
+
+Order	Job	Status
+1	Standardise numbering and concept records	Complete
+2	Migrate homepage into ultimate POC	Complete
+3	Integrate reusable three-dimension navigation	Complete
+4	Verify generated homepage and concept links	Generated artifact checks passed; browser testing outstanding
+5	Threads educational audit	Next
+6	Refined Threads blueprint	After audit
+7	Organise Threads content and data files	After blueprint approval
+8	Implement Threads using reusable architecture	After explicit authorisation
+9	Build and verify generated Threads page	After implementation
+10	Prepare IKL continuation and concept queue document	Planned
+11	Start practical GitHub Learning Laboratory	Planned
+12	Develop interactive GitHub HTML manual	Planned
+13	Develop comprehensive IKL Build and Technical Instruction Manual	Planned
+
+11. Governance and working rules
+
+* The project owner makes all GitHub edits and commits.
+* The assistant reads and inspects GitHub, prepares complete files and instructions, and verifies changes.
+* No assistant-created GitHub commits, branches, file changes or repository-setting changes.
+* Production repository remains protected.
+* POC Pages remains disabled unless explicitly authorised.
+* Preserve the established reusable architecture.
+* Do not redesign working functionality without a genuine reason and approval.
+* Give beginner-friendly, precise iPad/Safari instructions.
+* Clearly distinguish completed, approved, planned, in-progress and unverified work.
+
+12. Exact restart point
+
+Resume at:
+
+Job 3 — Concept 003: Threads
+
+Task 1 — Detailed educational audit of the existing Threads draft.
+
+After the audit, prepare the refined educational blueprint for project-owner review and approval.
+
+Do not begin implementation or modify GitHub files without explicit authorisation.
+
+⸻
+
+Checkpoint: 12 November 2026
+Current stage: Homepage migrated and generated-link checks passed; beginning Threads educational review.
+
+Explore. Understand. Experiment.
