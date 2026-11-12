@@ -7,187 +7,225 @@ section_title: How a Thread Works
 block_type: html-section
 order: 7
 ---
-7. How a Thread Works
 
-7.1 Understanding the Thread Lifecycle
+<section id="threads-working-mechanism" class="concept-section" aria-labelledby="threads-section-7-heading">
 
-A thread does not simply start running and continue forever. During its lifetime, it moves through different states depending on whether it is ready to use the CPU, currently executing, waiting for something, or finished.
+  <h2 id="threads-section-7-heading">7. How a Thread Works</h2>
 
-The operating system manages these transitions using its thread-management and scheduling mechanisms.
+  <div class="concept-identity-card">
+    <h3>Understanding the Thread Lifecycle</h3>
+    <p>A thread does not simply start running and continue forever. During its lifetime, it moves through different states depending on whether it is ready to use the CPU, currently executing, waiting for something, or finished.</p>
+  </div>
 
-A simplified thread lifecycle includes:
+  <h3>7.1 Understanding the Thread Lifecycle</h3>
 
-* New: The thread is being created.
-* Ready: The thread is prepared to run but is waiting for CPU time.
-* Running: The thread is currently executing on a CPU core.
-* Blocked/Waiting: The thread cannot continue until an event or required condition occurs.
-* Terminated: The thread has finished or has been stopped.
+  <p>The operating system manages these transitions using its thread-management and scheduling mechanisms.</p>
 
-Different operating systems may use different state names and more detailed state models. This is a teaching model of the main ideas.
+  <p>A simplified thread lifecycle includes:</p>
 
-7.2 Step 1 — Thread Creation
+  <ul>
+    <li><strong>New:</strong> The thread is being created.</li>
+    <li><strong>Ready:</strong> The thread is prepared to run but is waiting for CPU time.</li>
+    <li><strong>Running:</strong> The thread is currently executing on a CPU core.</li>
+    <li><strong>Blocked/Waiting:</strong> The thread cannot continue until an event or required condition occurs.</li>
+    <li><strong>Terminated:</strong> The thread has finished or has been stopped.</li>
+  </ul>
 
-A program or runtime requests that a new thread be created.
+  <p>Different operating systems may use different state names and more detailed state models. This is a teaching model of the main ideas.</p>
 
-The operating system or threading runtime establishes the information and resources needed to manage the thread.
+  <h3>7.2 Step 1 — Thread Creation</h3>
 
-For example, when a browser starts a background task, it may create or use a thread to perform that work.
+  <p>A program or runtime requests that a new thread be created.</p>
 
-The new thread begins in a creation stage before becoming eligible to run.
+  <p>The operating system or threading runtime establishes the information and resources needed to manage the thread.</p>
 
-7.3 Step 2 — Ready State
+  <p>For example, when a browser starts a background task, it may create or use a thread to perform that work.</p>
 
-Once a thread is prepared to execute, it can enter the Ready state.
+  <p>The new thread begins in a creation stage before becoming eligible to run.</p>
 
-This means:
+  <h3>7.3 Step 2 — Ready State</h3>
 
-* The thread is able to run.
-* It is not currently executing.
-* It is waiting for the scheduler to select it for CPU execution.
+  <p>Once a thread is prepared to execute, it can enter the Ready state.</p>
 
-A ready thread is not necessarily waiting because it has a problem. It may simply be waiting for its turn.
+  <p>This means:</p>
 
-7.4 Step 3 — Scheduling and Dispatch
+  <ul>
+    <li>The thread is able to run.</li>
+    <li>It is not currently executing.</li>
+    <li>It is waiting for the scheduler to select it for CPU execution.</li>
+  </ul>
 
-The CPU scheduler determines which eligible thread should receive CPU time.
+  <p>A ready thread is not necessarily waiting because it has a problem. It may simply be waiting for its turn.</p>
 
-When a thread is selected and given a CPU core, it is dispatched for execution.
+  <h3>7.4 Step 3 — Scheduling and Dispatch</h3>
 
-Scheduling is the decision about which thread should run.
+  <p>The CPU scheduler determines which eligible thread should receive CPU time.</p>
 
-Dispatching is the action of starting or resuming the selected thread on a CPU.
+  <p>When a thread is selected and given a CPU core, it is dispatched for execution.</p>
 
-These are related but different operations.
+  <div class="concept-note">
+    <p><strong>Scheduling:</strong> The decision about which thread should run.</p>
+    <p><strong>Dispatching:</strong> The action of starting or resuming the selected thread on a CPU.</p>
+    <p>These are related but different operations.</p>
+  </div>
 
-7.5 Step 4 — Running State
+  <h3>7.5 Step 4 — Running State</h3>
 
-When a thread is executing instructions on a CPU core, it is in the Running state.
+  <p>When a thread is executing instructions on a CPU core, it is in the Running state.</p>
 
-It uses its own execution context, including:
+  <p>It uses its own execution context, including:</p>
 
-* Program Counter.
-* CPU Registers.
-* Stack.
-* Thread-specific information.
+  <ul>
+    <li>Program Counter.</li>
+    <li>CPU Registers.</li>
+    <li>Stack.</li>
+    <li>Thread-specific information.</li>
+  </ul>
 
-It can also access shared process resources, subject to the program’s synchronisation and access rules.
+  <p>It can also access shared process resources, subject to the program’s synchronisation and access rules.</p>
 
-A running thread may continue until it finishes, waits for something, or is interrupted or pre-empted so another eligible thread can run.
+  <p>A running thread may continue until it finishes, waits for something, or is interrupted or pre-empted so another eligible thread can run.</p>
 
-7.6 Step 5 — Blocked or Waiting State
+  <h3>7.6 Step 5 — Blocked or Waiting State</h3>
 
-Sometimes a running thread cannot continue immediately.
+  <p>Sometimes a running thread cannot continue immediately.</p>
 
-For example, it may need to:
+  <p>For example, it may need to:</p>
 
-* Wait for data from a file.
-* Receive information from a network.
-* Wait for user input.
-* Wait for a lock or another synchronisation condition.
-* Wait for an event to occur.
+  <ul>
+    <li>Wait for data from a file.</li>
+    <li>Receive information from a network.</li>
+    <li>Wait for user input.</li>
+    <li>Wait for a lock or another synchronisation condition.</li>
+    <li>Wait for an event to occur.</li>
+  </ul>
 
-The thread enters a Blocked or Waiting state.
+  <p>The thread enters a Blocked or Waiting state.</p>
 
-It is not currently using the CPU to execute its task.
+  <p>It is not currently using the CPU to execute its task.</p>
 
-When the event or condition it needs is satisfied, the thread can become ready to run again.
+  <p>When the event or condition it needs is satisfied, the thread can become ready to run again.</p>
 
-7.7 Step 6 — Returning to Ready
+  <h3>7.7 Step 6 — Returning to Ready</h3>
 
-Suppose a thread was waiting for information from a file.
+  <p>Suppose a thread was waiting for information from a file.</p>
 
-Once the required information becomes available, the thread can move from Blocked/Waiting to Ready.
+  <p>Once the required information becomes available, the thread can move from Blocked/Waiting to Ready.</p>
 
-It does not automatically start running at that moment.
+  <p>It does not automatically start running at that moment.</p>
 
-It must still be selected by the scheduler before it can execute again.
+  <p>It must still be selected by the scheduler before it can execute again.</p>
 
-This distinction is important:
+  <div class="concept-note">
+    <strong>Important distinction:</strong> Becoming ready does not mean immediately receiving the CPU.
+  </div>
 
-Becoming ready does not mean immediately receiving the CPU.
+  <h3>7.8 Step 7 — Pre-emption and Context Switching</h3>
 
-7.8 Step 7 — Pre-emption and Context Switching
+  <p>A running thread may lose the CPU even though it has not finished its task.</p>
 
-A running thread may lose the CPU even though it has not finished its task.
+  <p>For example, the scheduler may allow another ready thread to run.</p>
 
-For example, the scheduler may allow another ready thread to run.
+  <p>This is called pre-emption when the running thread is interrupted or displaced by the scheduling mechanism.</p>
 
-This is called pre-emption when the running thread is interrupted or displaced by the scheduling mechanism.
+  <p>The operating system may perform a context switch to move CPU execution from one thread to another.</p>
 
-The operating system may perform a context switch to move CPU execution from one thread to another.
+  <p>During a context switch, the system preserves the execution information needed to resume the previous thread and restores the information needed by the next thread.</p>
 
-During a context switch, the system preserves the execution information needed to resume the previous thread and restores the information needed by the next thread.
+  <p>This allows a thread to continue later from the appropriate point.</p>
 
-This allows a thread to continue later from the appropriate point.
+  <h4>Important Distinction</h4>
 
-Important distinction:
+  <ul>
+    <li><strong>Scheduling:</strong> Deciding which thread should run.</li>
+    <li><strong>Pre-emption:</strong> Taking the CPU away from a running thread before it finishes.</li>
+    <li><strong>Context switching:</strong> Saving and restoring execution context when CPU execution changes.</li>
+  </ul>
 
-* Scheduling: Deciding which thread should run.
-* Pre-emption: Taking the CPU away from a running thread before it finishes.
-* Context switching: Saving and restoring execution context when CPU execution changes.
+  <p>A context switch has overhead because the system must perform this management work.</p>
 
-A context switch has overhead because the system must perform this management work.
+  <h3>7.9 Step 8 — Thread Termination</h3>
 
-7.9 Step 8 — Thread Termination
+  <p>A thread reaches the Terminated state when it finishes its work or is stopped.</p>
 
-A thread reaches the Terminated state when it finishes its work or is stopped.
+  <p>Its remaining resources and management information are handled according to the operating system and threading API.</p>
 
-Its remaining resources and management information are handled according to the operating system and threading API.
+  <p>A thread’s termination does not always mean the entire process terminates. Other threads in the same process may continue running.</p>
 
-A thread’s termination does not always mean the entire process terminates. Other threads in the same process may continue running.
+  <p>However, process termination can affect all threads belonging to that process. The precise behavior depends on the operating system and runtime.</p>
 
-However, process termination can affect all threads belonging to that process. The precise behavior depends on the operating system and runtime.
+  <h3>7.10 Practical Example: A Web Browser</h3>
 
-7.10 Practical Example: A Web Browser
+  <p>Imagine a browser loading a website while you interact with its interface.</p>
 
-Imagine a browser loading a website while you interact with its interface.
+  <p>Different threads may help perform different tasks:</p>
 
-Different threads may help perform different tasks:
+  <ol>
+    <li>A thread handles part of the user-interface work.</li>
+    <li>Another thread performs background processing.</li>
+    <li>A thread waits for network data.</li>
+    <li>When the network data arrives, the waiting thread becomes ready.</li>
+    <li>The scheduler selects it when CPU time is available.</li>
+    <li>It resumes execution and helps process the received data.</li>
+  </ol>
 
-1. A thread handles part of the user-interface work.
-2. Another thread performs background processing.
-3. A thread waits for network data.
-4. When the network data arrives, the waiting thread becomes ready.
-5. The scheduler selects it when CPU time is available.
-6. It resumes execution and helps process the received data.
+  <p>This helps explain how a browser can remain responsive while background tasks are taking place.</p>
 
-This helps explain how a browser can remain responsive while background tasks are taking place.
+  <p>This is a simplified example. Real browsers use more complex process and thread architectures.</p>
 
-This is a simplified example. Real browsers use more complex process and thread architectures.
+  <h3>7.11 Common Misunderstandings</h3>
 
-7.11 Common Misunderstandings
+  <div class="concept-note">
+    <h4>Misunderstanding 1: A Ready thread is already running.</h4>
+    <p><strong>Correction:</strong> A Ready thread is eligible to run but is waiting for CPU time.</p>
+  </div>
 
-Misunderstanding 1: A Ready thread is already running.
+  <div class="concept-note">
+    <h4>Misunderstanding 2: A Blocked thread is simply waiting for its turn on the CPU.</h4>
+    <p><strong>Correction:</strong> A Blocked thread is waiting for an event or condition. A Ready thread is waiting for CPU allocation.</p>
+  </div>
 
-Correction: A Ready thread is eligible to run but is waiting for CPU time.
+  <div class="concept-note">
+    <h4>Misunderstanding 3: Every context switch means a thread has finished.</h4>
+    <p><strong>Correction:</strong> A context switch often allows a thread to pause and resume later.</p>
+  </div>
 
-Misunderstanding 2: A Blocked thread is simply waiting for its turn on the CPU.
+  <div class="concept-note">
+    <h4>Misunderstanding 4: A thread always runs continuously once it starts.</h4>
+    <p><strong>Correction:</strong> It may be pre-empted, blocked, resumed or terminated.</p>
+  </div>
 
-Correction: A Blocked thread is waiting for an event or condition. A Ready thread is waiting for CPU allocation.
+  <div class="concept-note">
+    <h4>Misunderstanding 5: When one thread terminates, the whole process must terminate.</h4>
+    <p><strong>Correction:</strong> Other threads in the same process may continue running.</p>
+  </div>
 
-Misunderstanding 3: Every context switch means a thread has finished.
+  <h3>7.12 Quick Revision</h3>
 
-Correction: A context switch often allows a thread to pause and resume later.
+  <div class="concept-table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th scope="col">State or mechanism</th>
+          <th scope="col">Meaning</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>New</td><td>Thread is being created</td></tr>
+        <tr><td>Ready</td><td>Prepared to run, waiting for CPU time</td></tr>
+        <tr><td>Running</td><td>Currently executing on a CPU core</td></tr>
+        <tr><td>Blocked/Waiting</td><td>Waiting for an event or condition</td></tr>
+        <tr><td>Terminated</td><td>Thread has finished or been stopped</td></tr>
+        <tr><td>Scheduling</td><td>Selecting a thread to run</td></tr>
+        <tr><td>Dispatching</td><td>Starting or resuming the selected thread</td></tr>
+        <tr><td>Pre-emption</td><td>Interrupting a running thread so another can run</td></tr>
+        <tr><td>Context switching</td><td>Saving and restoring execution context when CPU execution changes</td></tr>
+      </tbody>
+    </table>
+  </div>
 
-Misunderstanding 4: A thread always runs continuously once it starts.
+  <div class="concept-note">
+    <strong>Key principle:</strong> A thread moves through states during its lifetime. The scheduler determines which ready thread receives CPU time, while context switching allows execution to move between threads.
+  </div>
 
-Correction: It may be pre-empted, blocked, resumed or terminated.
-
-Misunderstanding 5: When one thread terminates, the whole process must terminate.
-
-Correction: Other threads in the same process may continue running.
-
-7.12 Quick Revision
-
-State or mechanism	Meaning
-New	Thread is being created
-Ready	Prepared to run, waiting for CPU time
-Running	Currently executing on a CPU core
-Blocked/Waiting	Waiting for an event or condition
-Terminated	Thread has finished or been stopped
-Scheduling	Selecting a thread to run
-Dispatching	Starting or resuming the selected thread
-Pre-emption	Interrupting a running thread so another can run
-Context switching	Saving and restoring execution context when CPU execution changes
-
-Remember: A thread moves through states during its lifetime. The scheduler determines which ready thread receives CPU time, while context switching allows execution to move between threads.
+</section>
