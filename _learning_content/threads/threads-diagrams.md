@@ -7,34 +7,40 @@ section_title: Thread Lifecycle, Flowcharts and Sequence Diagrams
 block_type: html-section
 order: 9
 ---
-9. Thread Lifecycle, Flowcharts and Sequence Diagrams
 
-9.1 Why Use Diagrams to Understand Threads?
+<section id="threads-diagrams" class="concept-section" aria-labelledby="threads-section-9-heading">
 
-Threads involve several components and activities working together.
+  <h2 id="threads-section-9-heading">9. Thread Lifecycle, Flowcharts and Sequence Diagrams</h2>
 
-Text explains what happens, but diagrams help us visualise:
+  <h3>9.1 Why Use Diagrams to Understand Threads?</h3>
 
-* How threads relate to their parent process.
-* How a thread moves between lifecycle states.
-* How the scheduler and CPU cooperate.
-* How race conditions occur when threads access shared data.
-* How synchronisation helps protect shared resources.
+  <p>Threads involve several components and activities working together.</p>
 
-This section introduces four diagrams.
+  <p>Text explains what happens, but diagrams help us visualise:</p>
 
-9.2 Diagram 1 — Process and Thread Architecture
+  <ul>
+    <li>How threads relate to their parent process.</li>
+    <li>How a thread moves between lifecycle states.</li>
+    <li>How the scheduler and CPU cooperate.</li>
+    <li>How race conditions occur when threads access shared data.</li>
+    <li>How synchronisation helps protect shared resources.</li>
+  </ul>
 
-Understanding the relationship
+  <p>This section introduces four diagrams.</p>
 
-A process provides a shared environment for its threads.
+  <h3>9.2 Diagram 1 — Process and Thread Architecture</h3>
 
-Threads belonging to the same process commonly share program code, global and static data, heap memory and process-associated resources.
+  <h4>Understanding the relationship</h4>
 
-Each thread maintains its own execution context.
+  <p>A process provides a shared environment for its threads.</p>
 
-Conceptual architecture diagram
+  <p>Threads belonging to the same process commonly share program code, global and static data, heap memory and process-associated resources.</p>
 
+  <p>Each thread maintains its own execution context.</p>
+
+  <h4>Conceptual architecture diagram</h4>
+
+```mermaid
 flowchart TB
     P["PROCESS"]
     P --> S["Shared Process Resources"]
@@ -48,32 +54,34 @@ flowchart TB
     T1 --> E1["PC · Registers · Stack · State · TLS"]
     T2 --> E2["PC · Registers · Stack · State · TLS"]
     T3 --> E3["PC · Registers · Stack · State · TLS"]
+```
 
-How to understand the diagram
+  <h4>How to understand the diagram</h4>
 
-1. The process is the overall resource environment.
-2. The shared resources are available to threads belonging to that process, subject to access and synchronisation rules.
-3. Each thread has its own program counter, CPU registers, stack, state and thread-local storage.
-4. The threads are separate execution paths operating within the same process.
+  <ol>
+    <li>The process is the overall resource environment.</li>
+    <li>The shared resources are available to threads belonging to that process, subject to access and synchronisation rules.</li>
+    <li>Each thread has its own program counter, CPU registers, stack, state and thread-local storage.</li>
+    <li>The threads are separate execution paths operating within the same process.</li>
+  </ol>
 
-Important distinction
+  <div class="concept-note">
+    <h4>Important distinction</h4>
+    <p>Sharing a process does not mean that threads share everything.</p>
+    <p>They share many process resources, but they maintain separate execution contexts.</p>
+  </div>
 
-Sharing a process does not mean that threads share everything.
+  <h3>9.3 Diagram 2 — Thread Lifecycle Flowchart</h3>
 
-They share many process resources, but they maintain separate execution contexts.
+  <h4>Understanding the lifecycle</h4>
 
-⸻
+  <p>A thread moves through different states during its lifetime.</p>
 
-9.3 Diagram 2 — Thread Lifecycle Flowchart
+  <p>The following flowchart illustrates a simplified lifecycle, including creation, execution, waiting, resuming and termination.</p>
 
-Understanding the lifecycle
+  <h4>Thread lifecycle flowchart</h4>
 
-A thread moves through different states during its lifetime.
-
-The following flowchart illustrates a simplified lifecycle, including creation, execution, waiting, resuming and termination.
-
-Thread lifecycle flowchart
-
+```mermaid
 flowchart TD
     A([Start]) --> B["New: Thread Created"]
     B --> C["Ready: Waiting for CPU"]
@@ -85,47 +93,51 @@ flowchart TD
     E -->|"Pre-empted"| C
     E -->|"Work Completed"| H["Terminated"]
     H --> I([End])
+```
 
-Step-by-step explanation
+  <h4>Step-by-step explanation</h4>
 
-1. New: A thread is created.
-2. Ready: It is eligible to run but is waiting for CPU time.
-3. Running: The scheduler selects it and it executes.
-4. Blocked/Waiting: It cannot continue until a required event or condition occurs.
-5. Ready again: Once the event occurs, it becomes eligible for CPU time.
-6. Terminated: It completes its work or is stopped.
+  <ol>
+    <li><strong>New:</strong> A thread is created.</li>
+    <li><strong>Ready:</strong> It is eligible to run but is waiting for CPU time.</li>
+    <li><strong>Running:</strong> The scheduler selects it and it executes.</li>
+    <li><strong>Blocked/Waiting:</strong> It cannot continue until a required event or condition occurs.</li>
+    <li><strong>Ready again:</strong> Once the event occurs, it becomes eligible for CPU time.</li>
+    <li><strong>Terminated:</strong> It completes its work or is stopped.</li>
+  </ol>
 
-Understanding pre-emption
+  <h4>Understanding pre-emption</h4>
 
-A running thread may be pre-empted before it finishes.
+  <p>A running thread may be pre-empted before it finishes.</p>
 
-It returns to the Ready state so that another eligible thread can receive CPU time.
+  <p>It returns to the Ready state so that another eligible thread can receive CPU time.</p>
 
-A context switch may occur when execution moves to another thread.
+  <p>A context switch may occur when execution moves to another thread.</p>
 
-Important distinction
+  <div class="concept-note">
+    <h4>Important distinction</h4>
+    <p>A thread becoming Ready does not mean it immediately starts Running.</p>
+    <p>The scheduler must select it.</p>
+  </div>
 
-A thread becoming Ready does not mean it immediately starts Running.
+  <h3>9.4 Diagram 3 — Thread Scheduling Sequence Diagram</h3>
 
-The scheduler must select it.
+  <h4>Understanding scheduling</h4>
 
-⸻
+  <p>A sequence diagram shows how different parts of a system interact over time.</p>
 
-9.4 Diagram 3 — Thread Scheduling Sequence Diagram
+  <p>Here we examine a simplified example involving:</p>
 
-Understanding scheduling
+  <ul>
+    <li>Thread 1.</li>
+    <li>Thread 2.</li>
+    <li>The operating-system scheduler.</li>
+    <li>The CPU.</li>
+  </ul>
 
-A sequence diagram shows how different parts of a system interact over time.
+  <h4>Thread scheduling sequence</h4>
 
-Here we examine a simplified example involving:
-
-* Thread 1.
-* Thread 2.
-* The operating-system scheduler.
-* The CPU.
-
-Thread scheduling sequence
-
+```mermaid
 sequenceDiagram
     participant T1 as Thread 1
     participant S as Scheduler
@@ -146,54 +158,58 @@ sequenceDiagram
     S->>S: Select Thread 1 if Ready
     S->>CPU: Restore Thread 1 context
     CPU->>T1: Resume execution
+```
 
-How to read the sequence
+  <h4>How to read the sequence</h4>
 
-1. Thread 1 becomes Ready.
-2. The scheduler selects Thread 1.
-3. The CPU begins executing Thread 1.
-4. A scheduling event causes execution to move away from Thread 1.
-5. The scheduler selects Thread 2.
-6. The required execution context is saved and restored.
-7. Thread 2 begins executing.
-8. When another scheduling event occurs, Thread 1 may resume if it is Ready and selected.
+  <ol>
+    <li>Thread 1 becomes Ready.</li>
+    <li>The scheduler selects Thread 1.</li>
+    <li>The CPU begins executing Thread 1.</li>
+    <li>A scheduling event causes execution to move away from Thread 1.</li>
+    <li>The scheduler selects Thread 2.</li>
+    <li>The required execution context is saved and restored.</li>
+    <li>Thread 2 begins executing.</li>
+    <li>When another scheduling event occurs, Thread 1 may resume if it is Ready and selected.</li>
+  </ol>
 
-What is a context switch?
+  <h4>What is a context switch?</h4>
 
-A context switch is the process of preserving the execution context of one thread and restoring the context of another when CPU execution changes.
+  <p>A context switch is the process of preserving the execution context of one thread and restoring the context of another when CPU execution changes.</p>
 
-The saved information allows a thread to resume its work later.
+  <p>The saved information allows a thread to resume its work later.</p>
 
-Important distinction
+  <div class="concept-note">
+    <h4>Important distinction</h4>
+    <p><strong>Scheduling</strong> is the decision about which thread should run.</p>
+    <p><strong>Context switching</strong> is the mechanism that allows CPU execution to move between threads.</p>
+  </div>
 
-Scheduling is the decision about which thread should run.
+  <p>The diagram is a simplified teaching sequence. Actual operating systems may involve additional components and more complex scheduling events.</p>
 
-Context switching is the mechanism that allows CPU execution to move between threads.
+  <h3>9.5 Diagram 4 — Race Condition and Synchronisation Sequence</h3>
 
-The diagram is a simplified teaching sequence. Actual operating systems may involve additional components and more complex scheduling events.
+  <h4>Understanding the problem</h4>
 
-⸻
+  <p>Threads may share data inside a process.</p>
 
-9.5 Diagram 4 — Race Condition and Synchronisation Sequence
+  <p>If two threads access and modify the same data without suitable coordination, their operations can interfere with one another.</p>
 
-Understanding the problem
+  <p>This can produce a race condition.</p>
 
-Threads may share data inside a process.
+  <p>We will use a shared bank account to demonstrate the problem.</p>
 
-If two threads access and modify the same data without suitable coordination, their operations can interfere with one another.
+  <p><strong>Starting balance: $100</strong></p>
 
-This can produce a race condition.
+  <p>Two threads each attempt to deposit $10.</p>
 
-We will use a shared bank account to demonstrate the problem.
+  <h4>Scenario A — Without a Mutex</h4>
 
-Starting balance: $100
+  <p>The deposit is assumed to use separate read, calculate and write operations.</p>
 
-Two threads each attempt to deposit $10.
+  <h4>Race condition sequence</h4>
 
-Scenario A — Without a Mutex
-
-The deposit is assumed to use separate read, calculate and write operations.
-
+```mermaid
 sequenceDiagram
     participant A as Thread A
     participant B as Thread B
@@ -205,26 +221,32 @@ sequenceDiagram
     B->>M: Write $110
     Note over M: Final balance is $110
     Note over A,B: One update is lost
+```
 
-What happened?
+  <h4>What happened?</h4>
 
-1. Thread A reads $100.
-2. Thread B also reads $100.
-3. Both calculate a new balance of $110.
-4. Thread A writes $110.
-5. Thread B writes $110.
-6. The final balance remains $110.
+  <ol>
+    <li>Thread A reads $100.</li>
+    <li>Thread B also reads $100.</li>
+    <li>Both calculate a new balance of $110.</li>
+    <li>Thread A writes $110.</li>
+    <li>Thread B writes $110.</li>
+    <li>The final balance remains $110.</li>
+  </ol>
 
-The intended final balance was $120.
+  <p>The intended final balance was $120.</p>
 
-One deposit was lost because the operations interfered with one another.
+  <p>One deposit was lost because the operations interfered with one another.</p>
 
-This is a race condition caused by an unsafe read-modify-write sequence.
+  <p>This is a race condition caused by an unsafe read-modify-write sequence.</p>
 
-Scenario B — With a Mutex
+  <h4>Scenario B — With a Mutex</h4>
 
-A mutex protects the critical section so that only one thread at a time can perform the protected update.
+  <p>A mutex protects the critical section so that only one thread at a time can perform the protected update.</p>
 
+  <h4>Synchronisation sequence</h4>
+
+```mermaid
 sequenceDiagram
     participant A as Thread A
     participant B as Thread B
@@ -241,49 +263,76 @@ sequenceDiagram
     B->>M: Write balance ($120)
     B->>L: Release mutex
     Note over M: Final balance is $120
+```
 
-What changed?
+  <h4>What changed?</h4>
 
-1. Thread A acquires the mutex.
-2. Thread A performs the protected update.
-3. Thread A releases the mutex.
-4. Thread B acquires the mutex.
-5. Thread B reads the updated balance.
-6. Thread B performs its update.
-7. Thread B releases the mutex.
-8. The final balance is $120.
+  <ol>
+    <li>Thread A acquires the mutex.</li>
+    <li>Thread A performs the protected update.</li>
+    <li>Thread A releases the mutex.</li>
+    <li>Thread B acquires the mutex.</li>
+    <li>Thread B reads the updated balance.</li>
+    <li>Thread B performs its update.</li>
+    <li>Thread B releases the mutex.</li>
+    <li>The final balance is $120.</li>
+  </ol>
 
-Both deposits are included.
+  <p>Both deposits are included.</p>
 
-Important learning point
+  <div class="concept-note">
+    <h4>Important learning point</h4>
+    <p>A mutex provides mutual exclusion for a protected critical section.</p>
+    <p>It works correctly only when all relevant accesses follow the same locking discipline.</p>
+    <p>A mutex does not automatically make every part of an application thread-safe.</p>
+  </div>
 
-A mutex provides mutual exclusion for a protected critical section.
+  <h3>9.6 Compare the Four Diagrams</h3>
 
-It works correctly only when all relevant accesses follow the same locking discipline.
+  <table>
+    <thead>
+      <tr>
+        <th scope="col">Diagram</th>
+        <th scope="col">What it teaches</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Process and Thread Architecture</td>
+        <td>What threads share and what remains individual</td>
+      </tr>
+      <tr>
+        <td>Thread Lifecycle Flowchart</td>
+        <td>How a thread changes state</td>
+      </tr>
+      <tr>
+        <td>Scheduling Sequence Diagram</td>
+        <td>How scheduling and context switching work</td>
+      </tr>
+      <tr>
+        <td>Race Condition Sequence</td>
+        <td>Why synchronisation is needed for shared data</td>
+      </tr>
+    </tbody>
+  </table>
 
-A mutex does not automatically make every part of an application thread-safe.
+  <p>Each diagram explains a different aspect of multithreading.</p>
 
-⸻
+  <p>Together, they provide a broader understanding of how threads are organised, executed and coordinated.</p>
 
-9.6 Compare the Four Diagrams
+  <h3>9.7 Quick Revision</h3>
 
-Diagram	What it teaches
-Process and Thread Architecture	What threads share and what remains individual
-Thread Lifecycle Flowchart	How a thread changes state
-Scheduling Sequence Diagram	How scheduling and context switching work
-Race Condition Sequence	Why synchronisation is needed for shared data
+  <p>Remember these four ideas:</p>
 
-Each diagram explains a different aspect of multithreading.
+  <ol>
+    <li><strong>Architecture:</strong> Threads share many process resources but have individual execution contexts.</li>
+    <li><strong>Lifecycle:</strong> Threads move between states such as Ready, Running and Blocked/Waiting.</li>
+    <li><strong>Scheduling:</strong> The scheduler selects eligible threads, while context switching allows execution to move between them.</li>
+    <li><strong>Synchronisation:</strong> Mutexes can protect critical sections and help prevent unsafe concurrent updates.</li>
+  </ol>
 
-Together, they provide a broader understanding of how threads are organised, executed and coordinated.
+  <div class="concept-note">
+    <p><strong>Final takeaway:</strong> Understanding threads requires understanding both their individual execution paths and the shared environment in which they operate.</p>
+  </div>
 
-9.7 Quick Revision
-
-Remember these four ideas:
-
-1. Architecture: Threads share many process resources but have individual execution contexts.
-2. Lifecycle: Threads move between states such as Ready, Running and Blocked/Waiting.
-3. Scheduling: The scheduler selects eligible threads, while context switching allows execution to move between them.
-4. Synchronisation: Mutexes can protect critical sections and help prevent unsafe concurrent updates.
-
-Final takeaway: Understanding threads requires understanding both their individual execution paths and the shared environment in which they operate.
+</section>
