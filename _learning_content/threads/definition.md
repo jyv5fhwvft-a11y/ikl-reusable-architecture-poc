@@ -8,24 +8,66 @@ block_type: html-section
 order: 1
 ---
 
-1. Concept Identity and Definition
+<section id="concept-identity" class="concept-section" aria-labelledby="threads-section-1-heading">
 
-What is a Thread?
+    <h2 id="threads-section-1-heading">
+        1. Concept Identity and Definition
+    </h2>
 
-A thread is a path of execution within a process. It is the unit of work that the operating system schedules to run on a CPU.
+    <div class="concept-identity-card">
+        <p><strong>Concept ID:</strong> IKL-OS-003</p>
+        <p><strong>Concept:</strong> Threads</p>
+        <p><strong>Subject:</strong> Operating Systems</p>
+        <p><strong>Topic:</strong> Process and Thread Management</p>
+    </div>
 
-A process provides the execution environment and resources. One or more threads execute within that environment.
+    <h3>What Is a Thread?</h3>
 
-A process can contain a single thread or multiple threads.
+    <p>
+        A <strong>thread</strong> is a path of execution within a process.
+        It is the unit of work that the operating system schedules
+        to run on a CPU.
+    </p>
 
-The central principle
+    <p>
+        A process provides the execution environment and resources.
+        One or more threads execute within that environment.
+    </p>
 
-* Process: Provides the environment and resources.
-* Thread: Provides an individual path of execution.
-* Operating system: Manages thread execution and CPU scheduling.
+    <p>
+        A process can contain a single thread or multiple threads.
+    </p>
 
-Threads belonging to the same process share many process resources, but each thread maintains its own execution context.
+    <div class="concept-note">
+        <h4>The Central Principle</h4>
 
-Why do threads exist?
+        <ul>
+            <li>
+                <strong>Process:</strong>
+                Provides the environment and resources.
+            </li>
+            <li>
+                <strong>Thread:</strong>
+                Provides an individual path of execution.
+            </li>
+            <li>
+                <strong>Operating system:</strong>
+                Manages thread execution and CPU scheduling.
+            </li>
+        </ul>
 
-Threads allow a program to organise work into separate activities. This can improve responsiveness and, on suitable hardware, allow multiple activities to execute in parallel.
+        <p>
+            Threads belonging to the same process share many process
+            resources, but each thread maintains its own execution context.
+        </p>
+    </div>
+
+    <h3>Why Do Threads Exist?</h3>
+
+    <p>
+        Threads allow a program to organise work into separate activities.
+        This can improve responsiveness and, on suitable hardware,
+        allow multiple activities to execute in parallel.
+    </p>
+
+</section>
