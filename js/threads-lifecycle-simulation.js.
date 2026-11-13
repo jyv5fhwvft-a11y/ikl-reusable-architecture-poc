@@ -1,0 +1,253 @@
+/* =========================================================
+   IKL THREADS — THREAD LIFECYCLE AND SCHEDULING
+   File: js/threads-lifecycle-simulation.js
+   Concept: IKL-OS-003 — Threads
+   Simplified educational model.
+   ========================================================= */
+
+(function () {
+  "use strict";
+
+  const mount = document.getElementById("threads-lifecycle-simulation");
+
+  if (!mount) return;
+
+  const steps = [
+    {
+      state: "New",
+      title: "A thread is created",
+      explanation: "The operating system has created the thread. It has not yet joined the ready queue.",
+      detail: "Creation establishes the thread and its initial execution information."
+    },
+    {
+      state: "Ready",
+      title: "The thread is ready to run",
+      explanation: "The thread is eligible to execute, but it is waiting for the scheduler to select it.",
+      detail: "Ready means it needs CPU time. It is not currently executing."
+    },
+    {
+      state: "Running",
+      title: "The scheduler gives it CPU time",
+      explanation: "The thread is now executing on a CPU core.",
+      detail: "Only a thread in the Running state is currently executing instructions on that core."
+    },
+    {
+      state: "Blocked / Waiting",
+      title: "The thread must wait",
+      explanation: "The thread cannot continue until an event or required condition occurs.",
+      detail: "For example, it may be waiting for input or for an operation to complete."
+    },
+    {
+      state: "Ready",
+      title: "The event has occurred",
+      explanation: "The condition it was waiting for is now satisfied, so the thread can compete for CPU time again.",
+      detail: "Becoming Ready does not mean it immediately starts executing."
+    },
+    {
+      state: "Running",
+      title: "The scheduler selects the thread again",
+      explanation: "The scheduler gives the thread CPU time, allowing it to continue its work.",
+      detail: "The thread resumes when it is selected; it does not simply run because it became Ready."
+    },
+    {
+      state: "Terminated",
+      title: "The thread has finished",
+      explanation: "The thread has completed its task and is no longer eligible for execution.",
+      detail: "A terminated thread does not return to the Ready or Running state."
+    }
+  ];
+
+  let currentStep = 0;
+  let timer = null;
+
+  mount.innerHTML = `
+    <section class="threads-lifecycle-panel"
+             aria-label="Interactive thread lifecycle simulation">
+
+      <div class="threads-lifecycle-heading">
+        <p class="threads-sim-eyebrow">INTERACTIVE SIMULATION 1</p>
+        <h4>Follow a thread through its lifecycle</h4>
+        <p>Advance one event at a time, or let the simulation play automatically.</p>
+      </div>
+
+      <div class="threads-lifecycle-track"
+           aria-label="Thread lifecycle states">
+        ${steps.map((step, index) => `
+          <div class="threads-lifecycle-state" data-step="${index}">
+            <span class="threads-lifecycle-number">${index + 1}</span>
+            <strong>${step.state}</strong>
+          </div>
+        `).join("")}
+      </div>
+
+      <div class="threads-lifecycle-current"
+           aria-live="polite" aria-atomic="true">
+
+        <div class="threads-lifecycle-current-top">
+          <span class="threads-sim-eyebrow">CURRENT THREAD STATE</span>
+          <span class="threads-lifecycle-counter"
+                id="threads-lifecycle-counter">Step 1 of 7</span>
+        </div>
+
+        <h5 id="threads-lifecycle-state-name">New</h5>
+        <h6 id="threads-lifecycle-title">A thread is created</h6>
+        <p id="threads-lifecycle-explanation"></p>
+        <p class="threads-lifecycle-detail"
+           id="threads-lifecycle-detail"></p>
+      </div>
+
+      <div class="threads-lifecycle-progress"
+           role="progressbar"
+           aria-label="Lifecycle progress"
+           aria-valuemin="1"
+           aria-valuemax="7"
+           aria-valuenow="1"
+           id="threads-lifecycle-progress">
+        <span id="threads-lifecycle-progress-fill"></span>
+      </div>
+
+      <div class="threads-lifecycle-controls">
+        <button type="button"
+                class="threads-sim-button threads-sim-primary"
+                id="threads-lifecycle-start">Start</button>
+
+        <button type="button"
+                class="threads-sim-button"
+                id="threads-lifecycle-pause" disabled>Pause</button>
+
+        <button type="button"
+                class="threads-sim-button"
+                id="threads-lifecycle-next">Next Step</button>
+
+        <button type="button"
+                class="threads-sim-button"
+                id="threads-lifecycle-reset">Reset</button>
+      </div>
+
+      <p class="threads-lifecycle-status"
+         id="threads-lifecycle-status" role="status">
+        Ready to begin. Select Start or Next Step.
+      </p>
+
+    </section>
+  `;
+
+  const elements = {
+    states: Array.from(
+      mount.querySelectorAll(".threads-lifecycle-state")
+    ),
+    counter: mount.querySelector("#threads-lifecycle-counter"),
+    stateName: mount.querySelector("#threads-lifecycle-state-name"),
+    title: mount.querySelector("#threads-lifecycle-title"),
+    explanation: mount.querySelector("#threads-lifecycle-explanation"),
+    detail: mount.querySelector("#threads-lifecycle-detail"),
+    progress: mount.querySelector("#threads-lifecycle-progress"),
+    progressFill: mount.querySelector("#threads-lifecycle-progress-fill"),
+    status: mount.querySelector("#threads-lifecycle-status"),
+    start: mount.querySelector("#threads-lifecycle-start"),
+    pause: mount.querySelector("#threads-lifecycle-pause"),
+    next: mount.querySelector("#threads-lifecycle-next"),
+    reset: mount.querySelector("#threads-lifecycle-reset")
+  };
+
+  function stopPlayback() {
+    if (timer !== null) {
+      window.clearInterval(timer);
+      timer = null;
+    }
+  }
+
+  function render() {
+    const step = steps[currentStep];
+    const progress = ((currentStep + 1) / steps.length) * 100;
+
+    elements.states.forEach((item, index) => {
+      item.classList.toggle("is-current", index === currentStep);
+      item.classList.toggle("is-complete", index < currentStep);
+
+      if (index === currentStep) {
+        item.setAttribute("aria-current", "step");
+      } else {
+        item.removeAttribute("aria-current");
+      }
+    });
+
+    elements.counter.textContent =
+      `Step ${currentStep + 1} of ${steps.length}`;
+
+    elements.stateName.textContent = step.state;
+    elements.title.textContent = step.title;
+    elements.explanation.textContent = step.explanation;
+    elements.detail.textContent = step.detail;
+
+    elements.progress.setAttribute(
+      "aria-valuenow",
+      String(currentStep + 1)
+    );
+
+    elements.progressFill.style.width = `${progress}%`;
+
+    const finished = currentStep === steps.length - 1;
+
+    elements.start.disabled = timer !== null || finished;
+    elements.pause.disabled = timer === null;
+    elements.next.disabled = finished || timer !== null;
+  }
+
+  function advance() {
+    if (currentStep < steps.length - 1) {
+      currentStep += 1;
+      render();
+
+      if (currentStep === steps.length - 1) {
+        stopPlayback();
+        render();
+
+        elements.status.textContent =
+          "Lifecycle complete. Select Reset to explore it again.";
+      } else {
+        elements.status.textContent =
+          `Moved to ${steps[currentStep].state}.`;
+      }
+    }
+  }
+
+  function startPlayback() {
+    if (timer !== null || currentStep === steps.length - 1) return;
+
+    elements.status.textContent =
+      "Playing. The thread will advance through the simplified lifecycle.";
+
+    elements.start.disabled = true;
+    elements.pause.disabled = false;
+    elements.next.disabled = true;
+
+    timer = window.setInterval(advance, 1800);
+  }
+
+  function pausePlayback() {
+    if (timer === null) return;
+
+    stopPlayback();
+    render();
+
+    elements.status.textContent =
+      "Paused. Use Next Step or Start to continue.";
+  }
+
+  function resetSimulation() {
+    stopPlayback();
+    currentStep = 0;
+    render();
+
+    elements.status.textContent =
+      "Reset complete. The thread is New.";
+  }
+
+  elements.start.addEventListener("click", startPlayback);
+  elements.pause.addEventListener("click", pausePlayback);
+  elements.next.addEventListener("click", advance);
+  elements.reset.addEventListener("click", resetSimulation);
+
+  render();
+})();
