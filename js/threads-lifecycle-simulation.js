@@ -1,342 +1,374 @@
-/* ===================================================== */
-/* IKL SHARED COMPONENT EXPLORER ENGINE                  */
-/* File: component-explorer-engine.js                    */
-/* Purpose: Provides reusable component explorer logic  */
-/* ===================================================== */
 
+/* =========================================================
+   IKL — THREADS LIFECYCLE SIMULATION
+   File: threads-lifecycle-simulation.js
 
-/* ===================================================== */
-/* SECTION 1 — CREATE THE SHARED ENGINE                  */
-/* Purpose: Keep the reusable engine in its own scope    */
-/* ===================================================== */
+   Purpose:
+   Demonstrate the main stages in a thread's lifecycle.
+
+   Educational model:
+   New → Ready → Running → Blocked/Waiting
+   → Ready → Running → Terminated
+   ========================================================= */
 
 (function () {
+  "use strict";
 
-    "use strict";
+  const mount = document.getElementById(
+    "threads-lifecycle-simulation"
+  );
 
+  // Stop safely if the simulation area is not on the page.
+  if (!mount) {
+    return;
+  }
 
-    /* ================================================= */
-    /* SECTION 2 — INITIALISE THE COMPONENT EXPLORER     */
-    /* Purpose: Accept concept-specific configuration    */
-    /* ================================================= */
+  const steps = [
+    {
+      state: "New",
+      title: "A thread is created",
+      explanation:
+        "A new thread has been created inside a process. " +
+        "The operating system prepares the information it needs " +
+        "to manage the thread.",
+      detail:
+        "The thread exists, but it has not yet been placed in the Ready state."
+    },
+    {
+      state: "Ready",
+      title: "The thread is ready to run",
+      explanation:
+        "The thread is ready to execute and is waiting for the " +
+        "CPU scheduler to select it.",
+      detail:
+        "Ready does not mean the thread is currently executing. " +
+        "It is waiting for CPU time."
+    },
+    {
+      state: "Running",
+      title: "The thread gets CPU time",
+      explanation:
+        "The scheduler selects the thread, and the CPU begins " +
+        "executing its instructions.",
+      detail:
+        "On a single CPU core, only one thread can execute on that " +
+        "core at a time."
+    },
+    {
+      state: "Blocked / Waiting",
+      title: "The thread must wait",
+      explanation:
+        "The thread cannot continue yet because it is waiting " +
+        "for an event, resource or operation to finish.",
+      detail:
+        "For example, it might be waiting for data from a file or " +
+        "for another event to occur."
+    },
+    {
+      state: "Ready",
+      title: "The thread becomes ready again",
+      explanation:
+        "The event the thread was waiting for has occurred. " +
+        "The thread can now compete for CPU time again.",
+      detail:
+        "It returns to the Ready state. It does not automatically " +
+        "start executing."
+    },
+    {
+      state: "Running",
+      title: "The thread runs again",
+      explanation:
+        "The scheduler selects the thread again, allowing it to " +
+        "continue executing its instructions.",
+      detail:
+        "The thread resumes its work using its saved execution context."
+    },
+    {
+      state: "Terminated",
+      title: "The thread has finished",
+      explanation:
+        "The thread has completed its work and is no longer " +
+        "eligible for execution.",
+      detail:
+        "The operating system can release resources associated " +
+        "with the finished thread."
+    }
+  ];
 
-    function initializeExplorer(configuration) {
+  let currentStep = 0;
+  let timer = null;
+  let isRunning = false;
 
-        /* --------------------------------------------- */
-        /* SECTION 2.1 — VALIDATE CONFIGURATION           */
-        /* Purpose: Check the supplied data               */
-        /* --------------------------------------------- */
+  // Build the simulation interface.
+  mount.innerHTML = `
+    <section class="threads-simulation"
+             aria-label="Thread lifecycle simulation">
 
-        if (!configuration || typeof configuration !== "object") {
-            console.warn("IKL Explorer: Invalid configuration.");
-            return false;
-        }
+      <div class="threads-simulation-progress">
+        <div class="threads-simulation-progress-label">
+          <span id="threads-lifecycle-step-count">
+            Step 1 of 7
+          </span>
+          <span id="threads-lifecycle-progress-text">
+            14%
+          </span>
+        </div>
 
-        if (
-            typeof configuration.rootId !== "string" ||
-            !Array.isArray(configuration.items) ||
-            configuration.items.length === 0
-        ) {
-            console.warn("IKL Explorer: Required configuration is missing.");
-            return false;
-        }
+        <div class="threads-simulation-progress-track"
+             role="progressbar"
+             aria-label="Lifecycle progress"
+             aria-valuemin="1"
+             aria-valuemax="7"
+             aria-valuenow="1"
+             id="threads-lifecycle-progress">
+          <div class="threads-simulation-progress-fill"
+               id="threads-lifecycle-progress-fill">
+          </div>
+        </div>
+      </div>
 
+      <div class="threads-lifecycle-state"
+           aria-live="polite"
+           aria-atomic="true">
 
-        /* --------------------------------------------- */
-        /* SECTION 2.2 — WAIT FOR THE PAGE TO BE READY   */
-        /* Purpose: Prevent premature DOM access          */
-        /* --------------------------------------------- */
+        <p class="threads-simulation-label">
+          CURRENT THREAD STATE
+        </p>
 
-        if (document.readyState === "loading") {
+        <h3 id="threads-lifecycle-state">
+          New
+        </h3>
 
-            document.addEventListener(
-                "DOMContentLoaded",
-                function () {
-                    initializeExplorerNow(configuration);
-                },
-                { once: true }
-            );
+        <h4 id="threads-lifecycle-title">
+          A thread is created
+        </h4>
 
-            return true;
-        }
+        <p id="threads-lifecycle-explanation">
+          A new thread has been created inside a process.
+        </p>
 
-        return initializeExplorerNow(configuration);
+        <div class="threads-lifecycle-detail">
+          <strong>What does this mean?</strong>
+          <p id="threads-lifecycle-detail">
+            The thread exists, but it has not yet been placed
+            in the Ready state.
+          </p>
+        </div>
+      </div>
 
+      <div class="threads-simulation-controls">
+        <button type="button"
+                id="threads-lifecycle-start">
+          Start
+        </button>
+
+        <button type="button"
+                id="threads-lifecycle-pause"
+                disabled>
+          Pause
+        </button>
+
+        <button type="button"
+                id="threads-lifecycle-next">
+          Next Step
+        </button>
+
+        <button type="button"
+                id="threads-lifecycle-reset">
+          Reset
+        </button>
+      </div>
+
+      <p id="threads-lifecycle-status"
+         class="threads-simulation-status"
+         role="status"
+         aria-live="polite">
+        Ready to begin. Select Start or Next Step.
+      </p>
+
+    </section>
+  `;
+
+  // Find the interface elements.
+  const stateElement = document.getElementById(
+    "threads-lifecycle-state"
+  );
+
+  const titleElement = document.getElementById(
+    "threads-lifecycle-title"
+  );
+
+  const explanationElement = document.getElementById(
+    "threads-lifecycle-explanation"
+  );
+
+  const detailElement = document.getElementById(
+    "threads-lifecycle-detail"
+  );
+
+  const stepCountElement = document.getElementById(
+    "threads-lifecycle-step-count"
+  );
+
+  const progressTextElement = document.getElementById(
+    "threads-lifecycle-progress-text"
+  );
+
+  const progressElement = document.getElementById(
+    "threads-lifecycle-progress"
+  );
+
+  const progressFillElement = document.getElementById(
+    "threads-lifecycle-progress-fill"
+  );
+
+  const statusElement = document.getElementById(
+    "threads-lifecycle-status"
+  );
+
+  const startButton = document.getElementById(
+    "threads-lifecycle-start"
+  );
+
+  const pauseButton = document.getElementById(
+    "threads-lifecycle-pause"
+  );
+
+  const nextButton = document.getElementById(
+    "threads-lifecycle-next"
+  );
+
+  const resetButton = document.getElementById(
+    "threads-lifecycle-reset"
+  );
+
+  // Stop automatic playback.
+  function stopTimer() {
+    if (timer !== null) {
+      clearInterval(timer);
+      timer = null;
     }
 
+    isRunning = false;
+  }
 
-    /* ================================================= */
-    /* SECTION 3 — CONNECT THE ENGINE TO THE HTML        */
-    /* Purpose: Find the correct explorer and its parts  */
-    /* ================================================= */
+  // Display the current lifecycle stage.
+  function render() {
+    const step = steps[currentStep];
 
-    function initializeExplorerNow(configuration) {
+    const progress = Math.round(
+      ((currentStep + 1) / steps.length) * 100
+    );
 
-        /* --------------------------------------------- */
-        /* SECTION 3.1 — FIND THE EXPLORER CONTAINER      */
-        /* Purpose: Isolate this individual explorer      */
-        /* --------------------------------------------- */
+    stateElement.textContent = step.state;
+    titleElement.textContent = step.title;
+    explanationElement.textContent = step.explanation;
+    detailElement.textContent = step.detail;
 
-        const explorer = document.getElementById(configuration.rootId);
+    stepCountElement.textContent =
+      `Step ${currentStep + 1} of ${steps.length}`;
 
-        if (!explorer) {
-            console.warn(
-                "IKL Explorer: Container not found:",
-                configuration.rootId
-            );
+    progressTextElement.textContent = `${progress}%`;
 
-            return false;
-        }
+    progressElement.setAttribute(
+      "aria-valuenow",
+      String(currentStep + 1)
+    );
 
-        /* Prevent accidental double initialisation. */
+    progressFillElement.style.width = `${progress}%`;
 
-        if (explorer.dataset.iklExplorerInitialized === "true") {
-            console.warn("IKL Explorer: Already initialised.");
-            return false;
-        }
+    startButton.disabled =
+      isRunning || currentStep === steps.length - 1;
 
+    pauseButton.disabled = !isRunning;
 
-        /* --------------------------------------------- */
-        /* SECTION 3.2 — FIND THE DISPLAY ELEMENTS        */
-        /* Purpose: Locate the areas that show content   */
-        /* --------------------------------------------- */
+    nextButton.disabled =
+      isRunning || currentStep === steps.length - 1;
+  }
 
-        const label = explorer.querySelector("[data-explorer-label]");
-        const title = explorer.querySelector("[data-explorer-title]");
-        const description = explorer.querySelector("[data-explorer-description]");
-        const details = explorer.querySelector("[data-explorer-details]");
-        const status = explorer.querySelector("[data-explorer-status]");
+  // Move to the next lifecycle stage.
+  function nextStep() {
+    if (currentStep < steps.length - 1) {
+      currentStep += 1;
+      render();
 
-        const buttons = explorer.querySelectorAll(
-            "button[data-component-key]"
-        );
-
-
-        /* --------------------------------------------- */
-        /* SECTION 3.3 — CHECK REQUIRED HTML ELEMENTS     */
-        /* Purpose: Avoid errors caused by missing markup */
-        /* --------------------------------------------- */
-
-        if (
-            !label ||
-            !title ||
-            !description ||
-            !details ||
-            !status ||
-            buttons.length === 0
-        ) {
-            console.warn(
-                "IKL Explorer: One or more required HTML elements are missing."
-            );
-
-            return false;
-        }
-
-
-        /* ================================================= */
-        /* SECTION 4 — VALIDATE CONCEPT-SPECIFIC DATA        */
-        /* Purpose: Check component entries before display  */
-        /* ================================================= */
-
-        const components = new Map();
-
-        configuration.items.forEach(function (item) {
-
-            if (
-                !item ||
-                typeof item.id !== "string" ||
-                typeof item.label !== "string" ||
-                typeof item.title !== "string" ||
-                typeof item.description !== "string" ||
-                !Array.isArray(item.details)
-            ) {
-                console.warn("IKL Explorer: Invalid component entry.", item);
-                return;
-            }
-
-            if (components.has(item.id)) {
-                console.warn(
-                    "IKL Explorer: Duplicate component ID:",
-                    item.id
-                );
-
-                return;
-            }
-
-            components.set(item.id, item);
-
-        });
-
-
-        if (components.size === 0) {
-            console.warn("IKL Explorer: No valid components were supplied.");
-            return false;
-        }
-
-
-        /* ================================================= */
-        /* SECTION 5 — DISPLAY THE SELECTED COMPONENT        */
-        /* Purpose: Update the explorer with selected data  */
-        /* ================================================= */
-
-        function displayComponent(componentKey, selectedButton) {
-
-            const component = components.get(componentKey);
-
-            if (!component) {
-                console.warn(
-                    "IKL Explorer: Unknown component:",
-                    componentKey
-                );
-
-                return;
-            }
-
-
-            /* --------------------------------------------- */
-            /* SECTION 5.1 — UPDATE BUTTON SELECTION         */
-            /* Purpose: Show which component is selected    */
-            /* --------------------------------------------- */
-
-            buttons.forEach(function (button) {
-
-                const isSelected = button === selectedButton;
-
-                button.classList.toggle("is-selected", isSelected);
-
-                button.setAttribute(
-                    "aria-pressed",
-                    String(isSelected)
-                );
-
-            });
-
-
-            /* --------------------------------------------- */
-            /* SECTION 5.2 — UPDATE COMPONENT EXPLANATION    */
-            /* Purpose: Display the selected component      */
-            /* --------------------------------------------- */
-
-            label.textContent = component.label;
-            title.textContent = component.title;
-            description.textContent = component.description;
-
-
-            /* --------------------------------------------- */
-            /* SECTION 5.3 — DISPLAY COMPONENT DETAILS       */
-            /* Purpose: Build a safe educational detail list */
-            /* --------------------------------------------- */
-
-            const list = document.createElement("ul");
-
-            component.details.forEach(function (detail) {
-
-                if (typeof detail !== "string") {
-                    return;
-                }
-
-                const listItem = document.createElement("li");
-
-                listItem.textContent = detail;
-
-                list.appendChild(listItem);
-
-            });
-
-            details.replaceChildren(list);
-
-
-            /* --------------------------------------------- */
-            /* SECTION 5.4 — UPDATE STATUS MESSAGE           */
-            /* Purpose: Inform the learner of their choice  */
-            /* --------------------------------------------- */
-
-            status.textContent = component.title + " selected.";
-
-        }
-
-
-        /* ================================================= */
-        /* SECTION 6 — CONNECT THE BUTTON INTERACTIONS       */
-        /* Purpose: Respond to learner selections           */
-        /* ================================================= */
-
-        buttons.forEach(function (button) {
-
-            button.addEventListener("click", function () {
-
-                const componentKey = button.dataset.componentKey;
-
-                displayComponent(componentKey, button);
-
-            });
-
-        });
-
-
-        /* ================================================= */
-        /* SECTION 7 — DISPLAY THE INITIAL COMPONENT        */
-        /* Purpose: Show useful content when page opens     */
-        /* ================================================= */
-
-        const requestedInitialKey = configuration.initialKey;
-
-        const initialKey = components.has(requestedInitialKey)
-            ? requestedInitialKey
-            : components.keys().next().value;
-
-        const initialButton = Array.from(buttons).find(function (button) {
-            return button.dataset.componentKey === initialKey;
-        });
-
-        if (initialButton) {
-
-            displayComponent(initialKey, initialButton);
-
-        } else {
-
-            console.warn(
-                "IKL Explorer: No button matches the initial component.",
-                initialKey
-            );
-
-            return false;
-
-        }
-
-
-        /* ================================================= */
-        /* SECTION 8 — MARK THE EXPLORER AS INITIALISED      */
-        /* Purpose: Prevent accidental duplicate setup     */
-        /* ================================================= */
-
-        explorer.dataset.iklExplorerInitialized = "true";
-
-        return true;
-
+      statusElement.textContent =
+        `Step ${currentStep + 1}: ${steps[currentStep].state}.`;
     }
 
+    if (currentStep === steps.length - 1) {
+      stopTimer();
+      render();
 
-    /* ================================================= */
-    /* SECTION 9 — EXPOSE THE SHARED ENGINE              */
-    /* Purpose: Allow concept-specific files to use it   */
-    /* ================================================= */
+      statusElement.textContent =
+        "Simulation complete. The thread has terminated.";
+    }
+  }
 
-    if (window.IKLComponentExplorer) {
-
-        console.warn("IKL Explorer: Shared engine already exists.");
-
-        return;
-
+  // Start automatic playback.
+  function startSimulation() {
+    if (isRunning || currentStep === steps.length - 1) {
+      return;
     }
 
-    window.IKLComponentExplorer = Object.freeze({
-        init: initializeExplorer
-    });
+    isRunning = true;
+    render();
 
+    statusElement.textContent =
+      "Simulation running. Watch the thread move through its states.";
 
-/* ===================================================== */
-/* END OF IKL SHARED COMPONENT EXPLORER ENGINE           */
-/* ===================================================== */
+    timer = setInterval(function () {
+      nextStep();
+    }, 1800);
+  }
+
+  // Pause automatic playback.
+  function pauseSimulation() {
+    if (!isRunning) {
+      return;
+    }
+
+    stopTimer();
+    render();
+
+    statusElement.textContent =
+      "Simulation paused. Select Start to continue or Next Step to advance.";
+  }
+
+  // Return the simulation to its beginning.
+  function resetSimulation() {
+    stopTimer();
+
+    currentStep = 0;
+
+    render();
+
+    statusElement.textContent =
+      "Simulation reset. Ready to begin.";
+  }
+
+  // Connect the controls to their actions.
+  startButton.addEventListener(
+    "click",
+    startSimulation
+  );
+
+  pauseButton.addEventListener(
+    "click",
+    pauseSimulation
+  );
+
+  nextButton.addEventListener(
+    "click",
+    nextStep
+  );
+
+  resetButton.addEventListener(
+    "click",
+    resetSimulation
+  );
+
+  // Show the initial state.
+  render();
 
 })();
