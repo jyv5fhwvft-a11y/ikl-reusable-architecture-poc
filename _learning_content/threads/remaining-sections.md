@@ -391,25 +391,25 @@ order: 10
     <p><strong>Remember:</strong> Adding threads introduces coordination responsibilities. Correct synchronisation and careful design are essential.</p>
   </div>
 
-  <h3>10.4 Connections to Other Operating-System Concepts</h3>
+  <h2 id="threads-section-13-heading">13. Connections to Other Operating-System Concepts</h2>
 
   <p>Threads are closely connected to several other operating-system topics.</p>
 
   <p>Understanding these relationships helps build a complete picture of how an operating system manages execution.</p>
 
-  <h4>10.4.1 Operating Systems</h4>
+  <h3>13.1 Operating Systems</h3>
 
   <p>The operating system manages processes, threads, memory, devices and other resources.</p>
 
   <p>Threads are one of the mechanisms through which programs perform work.</p>
 
-  <h4>10.4.2 Programs</h4>
+  <h3>13.2 Programs</h3>
 
   <p>A program contains instructions.</p>
 
   <p>When a program is executed, the operating system creates or manages an execution environment in which processes and threads can operate.</p>
 
-  <h4>10.4.3 Processes</h4>
+  <h3>13.3 Processes</h3>
 
   <p>A process is an executing program instance with its own resource environment.</p>
 
@@ -417,13 +417,13 @@ order: 10
 
   <p>Threads within the same process commonly share many resources.</p>
 
-  <h4>10.4.4 Process Control Block (PCB)</h4>
+  <h3>13.4 Process Control Block (PCB)</h3>
 
   <p>A Process Control Block is a conceptual operating-system data structure containing information used to manage a process.</p>
 
   <p>Depending on the operating system, this may include process identification, state, resource and memory-management information.</p>
 
-  <h4>10.4.5 Thread Control Block (TCB)</h4>
+  <h3>13.5 Thread Control Block (TCB)</h3>
 
   <p>A Thread Control Block is a conceptual term for information maintained to manage an individual thread.</p>
 
@@ -431,19 +431,19 @@ order: 10
 
   <p>The exact names and structures vary between operating systems.</p>
 
-  <h4>10.4.6 CPU Scheduling</h4>
+  <h3>13.6 CPU Scheduling</h3>
 
   <p>CPU scheduling determines which eligible thread or execution entity should receive CPU time.</p>
 
   <p>The scheduler helps share processing resources among competing work.</p>
 
-  <h4>10.4.7 Context Switching</h4>
+  <h3>13.7 Context Switching</h3>
 
   <p>Context switching allows CPU execution to move from one thread to another.</p>
 
   <p>The necessary execution context is saved and restored so that threads can resume their work.</p>
 
-  <h4>10.4.8 Memory Management</h4>
+  <h3>13.8 Memory Management</h3>
 
   <p>Threads share many parts of their process’s virtual address space.</p>
 
@@ -451,25 +451,25 @@ order: 10
 
   <p>Memory management therefore plays an important role in supporting multithreaded processes.</p>
 
-  <h4>10.4.9 Synchronisation</h4>
+  <h3>13.9 Synchronisation</h3>
 
   <p>Synchronisation coordinates access to shared resources and helps ensure that concurrent operations produce correct results.</p>
 
   <p>Mutexes, semaphores, condition variables and atomic operations are examples of related mechanisms.</p>
 
-  <h4>10.4.10 Race Conditions</h4>
+  <h3>13.10 Race Conditions</h3>
 
   <p>Race conditions demonstrate why shared-data access must be designed carefully.</p>
 
   <p>They connect thread management with synchronisation, critical sections and thread safety.</p>
 
-  <h4>10.4.11 Deadlocks</h4>
+  <h3>13.11 Deadlocks</h3>
 
   <p>Deadlocks can arise when threads wait for resources held by one another.</p>
 
   <p>They connect thread synchronisation with resource allocation and operating-system resource management.</p>
 
-  <h4>10.4.12 Multicore Processing</h4>
+  <h3>13.12 Multicore Processing</h3>
 
   <p>A multicore processor contains multiple CPU cores.</p>
 
