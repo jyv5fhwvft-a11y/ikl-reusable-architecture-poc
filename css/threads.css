@@ -464,6 +464,138 @@
     margin: 10px 0;
 }
 
+/* 10B. RACE CONDITION AND SYNCHRONISATION SIMULATION
+   --------------------------------------------------------- */
+
+.threads-simulation .threads-race-scenarios {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.threads-simulation .threads-race-scenarios button {
+    min-height: 44px;
+    padding: 10px 18px;
+    border: 1px solid var(--threads-blue);
+    border-radius: var(--threads-radius-small);
+    background: var(--threads-blue);
+    color: var(--threads-white);
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.threads-simulation .threads-race-scenarios button.threads-button-secondary {
+    background: var(--threads-white);
+    color: var(--threads-blue);
+}
+
+.threads-simulation .threads-race-scenarios button:focus-visible,
+.threads-simulation .threads-simulation-controls button:focus-visible {
+    outline: 3px solid var(--threads-amber);
+    outline-offset: 3px;
+}
+
+.threads-simulation .threads-race-balance {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 22px 0;
+    padding: 20px;
+    background: var(--threads-blue-light);
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--threads-blue);
+    border-radius: var(--threads-radius-medium);
+}
+
+.threads-simulation .threads-race-balance span {
+    color: var(--threads-muted);
+    font-weight: 700;
+}
+
+.threads-simulation #threads-race-balance {
+    color: var(--threads-navy);
+    font-size: clamp(26px, 5vw, 36px);
+    font-weight: 800;
+}
+
+.threads-simulation .threads-race-thread {
+    min-width: 0;
+    padding: 18px;
+    background: var(--threads-background);
+    border: 1px solid var(--threads-border);
+    border-radius: var(--threads-radius-medium);
+}
+
+.threads-simulation .threads-race-thread h4 {
+    margin: 0 0 10px;
+    color: var(--threads-navy);
+}
+
+.threads-simulation .threads-race-thread p {
+    overflow-wrap: anywhere;
+}
+
+.threads-simulation .threads-race-lock {
+    margin: 20px 0;
+    padding: 16px;
+    background: var(--threads-amber-light);
+    border: 1px solid #FDE68A;
+    border-radius: var(--threads-radius-small);
+}
+
+.threads-simulation .threads-race-operation-list {
+    padding-left: 28px;
+}
+
+.threads-simulation .threads-race-operation-list li {
+    margin: 9px 0;
+    padding: 10px 12px;
+    border: 1px solid var(--threads-border);
+    border-radius: var(--threads-radius-small);
+    background: var(--threads-white);
+}
+
+.threads-simulation .threads-race-operation-list li.is-current {
+    background: var(--threads-blue-light);
+    border-color: var(--threads-blue);
+    border-left: 4px solid var(--threads-blue);
+}
+
+.threads-simulation .threads-race-operation-list li.is-complete {
+    background: var(--threads-teal-light);
+    border-color: #99F6E4;
+}
+
+.threads-simulation #threads-race-status {
+    margin-top: 18px;
+}
+
+.threads-simulation .threads-race-result {
+    margin-top: 18px;
+    padding: 18px;
+    background: var(--threads-teal-light);
+    border: 1px solid #99F6E4;
+    border-left: 5px solid var(--threads-teal);
+    border-radius: var(--threads-radius-medium);
+}
+
+.threads-simulation .threads-race-result:empty {
+    display: none;
+}
+
+.threads-simulation .threads-race-result strong {
+    color: var(--threads-navy);
+    font-size: 18px;
+}
+
+.threads-simulation .threads-race-result p {
+    margin: 8px 0 0;
+}
+
 
 /* 11. TABLET AND SMALL LAPTOP LAYOUT
    --------------------------------------------------------- */
