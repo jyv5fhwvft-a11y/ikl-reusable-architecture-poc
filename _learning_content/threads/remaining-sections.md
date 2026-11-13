@@ -249,7 +249,7 @@ order: 10
 
   <p>A semaphore and a mutex are related synchronisation tools, but they are not interchangeable in every situation. A mutex generally has ownership semantics: the thread that acquires it is expected to release it.</p>
 
-  <h4>10.3.5 Condition Variables</h4>
+  <h3>12.5 Condition Variables</h3>
 
   <p>A condition variable allows threads to wait until a particular condition becomes true.</p>
 
@@ -259,7 +259,7 @@ order: 10
 
   <p>The waiting thread wakes and checks the condition again while following the required locking protocol.</p>
 
-  <h4>10.3.6 Atomic Operations</h4>
+  <h3>12.6 Atomic Operations</h3>
 
   <p>An atomic operation is performed as an indivisible operation from the perspective of other threads.</p>
 
@@ -267,7 +267,7 @@ order: 10
 
   <p>Atomic operations are useful for certain shared-data problems, but they do not automatically make every multi-step operation safe.</p>
 
-  <h4>10.3.7 Deadlocks</h4>
+  <h3>12.7 Deadlocks</h3>
 
   <p>A deadlock occurs when two or more threads become permanently blocked because each is waiting for a resource held by another.</p>
 
@@ -291,7 +291,7 @@ order: 10
     <li>Use suitable timeout or recovery strategies where appropriate.</li>
   </ul>
 
-  <h4>10.3.8 Starvation</h4>
+  <h3>12.8 Starvation</h3>
 
   <p>Starvation occurs when a thread waits for a very long time, or indefinitely, because it repeatedly fails to obtain the resources or CPU time it needs.</p>
 
@@ -307,7 +307,7 @@ order: 10
 
   <p>The effectiveness of these approaches depends on the operating system and application design.</p>
 
-  <h4>10.3.9 Thread Safety</h4>
+  <h3>12.9 Thread Safety</h3>
 
   <p>Thread safety means that a component behaves correctly when accessed by multiple threads according to its intended usage rules.</p>
 
@@ -323,7 +323,7 @@ order: 10
 
   <p>Thread safety is a property of the implementation and its usage, not simply a result of using multiple threads.</p>
 
-  <h4>10.3.10 Overhead and Resource Contention</h4>
+  <h3>12.10 Overhead and Resource Contention</h3>
 
   <p>Threads are not free.</p>
 
@@ -338,7 +338,7 @@ order: 10
 
   <p>Too many threads competing for the same CPU, memory or locks can reduce performance.</p>
 
-  <h4>10.3.11 Troubleshooting Guide</h4>
+  <h3>12.11 Troubleshooting Guide</h3>
 
   <table>
     <thead>
