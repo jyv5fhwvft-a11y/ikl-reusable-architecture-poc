@@ -1106,6 +1106,94 @@ a:hover {
 }
 
 /* END SHARED IKL EDUCATIONAL COMPONENT STYLING */
+/* =========================================================
+   22. SHARED IKL ANSWER REVEAL COMPONENT
+   Used by assessments across future concept pages.
+   ========================================================= */
+
+.concept-section .concept-answer-reveal {
+    margin: 18px 0 26px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+    overflow: hidden;
+    background: var(--color-white);
+}
+
+/* Reveal control */
+
+.concept-section .concept-answer-reveal summary {
+    display: block;
+    position: relative;
+    padding: 15px 46px 15px 18px;
+
+    color: var(--color-navy);
+    background: #EFF6FF;
+
+    border-left: 5px solid var(--color-blue);
+
+    font-weight: 700;
+    line-height: 1.5;
+
+    cursor: pointer;
+    list-style: none;
+}
+
+/* Hide the browser's default marker */
+
+.concept-section .concept-answer-reveal summary::-webkit-details-marker {
+    display: none;
+}
+
+/* Add a clear reveal indicator */
+
+.concept-section .concept-answer-reveal summary::after {
+    content: "+";
+    position: absolute;
+    top: 50%;
+    right: 18px;
+    transform: translateY(-50%);
+
+    color: var(--color-blue);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+/* Change the indicator when the answer is open */
+
+.concept-section .concept-answer-reveal[open] summary::after {
+    content: "−";
+}
+
+/* Keyboard focus */
+
+.concept-section .concept-answer-reveal summary:focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: -3px;
+}
+
+/* Revealed answer and explanation */
+
+.concept-section .concept-answer-content {
+    padding: 20px;
+
+    background: #F8FAFC;
+    border-top: 1px solid var(--color-border);
+}
+
+.concept-section .concept-answer-content p:last-child {
+    margin-bottom: 0;
+}
+
+@media (max-width: 600px) {
+    .concept-section .concept-answer-reveal summary {
+        padding: 14px 42px 14px 14px;
+        font-size: 15px;
+    }
+
+    .concept-section .concept-answer-content {
+        padding: 16px;
+    }
+}
 
 
 
