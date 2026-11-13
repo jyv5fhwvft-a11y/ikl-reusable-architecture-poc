@@ -1,0 +1,454 @@
+/* =========================================================
+   INTERACTIVE KNOWLEDGE LEXICON
+   CONCEPT 003 — THREADS
+   File: css/threads.css
+
+   Shared stylesheet for all Threads simulations.
+
+   Simulation 1: Thread Lifecycle and Scheduling
+   Simulation 2: One CPU Core versus Multiple CPU Cores
+   Simulation 3: Race Conditions and Synchronisation
+
+   This stylesheet is scoped to Threads simulation components.
+   ========================================================= */
+
+
+/* 1. THREADS SIMULATION DESIGN TOKENS
+   --------------------------------------------------------- */
+
+.threads-simulation {
+    --threads-navy: #102A43;
+    --threads-blue: #2563EB;
+    --threads-teal: #0D9488;
+    --threads-amber: #F59E0B;
+
+    --threads-background: #F8FAFC;
+    --threads-white: #FFFFFF;
+
+    --threads-text: #243B53;
+    --threads-muted: #627D98;
+    --threads-border: #E2E8F0;
+
+    --threads-blue-light: #EFF6FF;
+    --threads-teal-light: #F0FDFA;
+    --threads-amber-light: #FFFBEB;
+
+    --threads-radius-small: 8px;
+    --threads-radius-medium: 14px;
+    --threads-radius-large: 20px;
+
+    --threads-shadow:
+        0 4px 16px rgba(16, 42, 67, 0.06);
+
+    width: 100%;
+    margin: 24px 0;
+    color: var(--threads-text);
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+
+/* 2. SHARED SIMULATION PANELS
+   --------------------------------------------------------- */
+
+.threads-simulation-panel {
+    min-width: 0;
+    margin: 20px 0;
+    padding: 24px;
+
+    background: var(--threads-white);
+
+    border: 1px solid var(--threads-border);
+    border-radius: var(--threads-radius-medium);
+
+    box-shadow: var(--threads-shadow);
+}
+
+.threads-simulation-panel h3 {
+    margin: 0 0 12px;
+    color: var(--threads-navy);
+    font-size: 21px;
+    line-height: 1.4;
+}
+
+.threads-simulation-panel p {
+    margin: 0 0 14px;
+}
+
+.threads-simulation-panel p:last-child {
+    margin-bottom: 0;
+}
+
+
+/* 3. LIFECYCLE SIMULATION
+   --------------------------------------------------------- */
+
+.threads-simulation .threads-lifecycle-state {
+    margin: 22px 0;
+    padding: 26px;
+
+    background: var(--threads-blue-light);
+
+    border: 1px solid #BFDBFE;
+    border-left: 5px solid var(--threads-blue);
+
+    border-radius: var(--threads-radius-medium);
+}
+
+.threads-simulation .threads-simulation-label {
+    margin: 0 0 10px;
+
+    color: var(--threads-muted);
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+}
+
+.threads-simulation #threads-lifecycle-state {
+    margin: 0 0 12px;
+
+    color: var(--threads-blue);
+
+    font-size: clamp(25px, 5vw, 34px);
+    line-height: 1.2;
+    font-weight: 800;
+}
+
+.threads-simulation #threads-lifecycle-title {
+    margin: 0 0 12px;
+
+    color: var(--threads-navy);
+
+    font-size: 19px;
+    line-height: 1.4;
+}
+
+.threads-simulation #threads-lifecycle-explanation {
+    margin: 0 0 18px;
+
+    color: var(--threads-text);
+    line-height: 1.8;
+}
+
+.threads-simulation .threads-lifecycle-detail {
+    padding: 16px 18px;
+
+    background: var(--threads-white);
+
+    border: 1px solid var(--threads-border);
+    border-radius: var(--threads-radius-small);
+}
+
+.threads-simulation .threads-lifecycle-detail strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--threads-navy);
+}
+
+.threads-simulation #threads-lifecycle-detail {
+    margin: 0;
+    color: var(--threads-muted);
+    line-height: 1.7;
+}
+
+
+/* 4. SIMULATION PROGRESS
+   --------------------------------------------------------- */
+
+.threads-simulation-progress {
+    margin: 0 0 20px;
+}
+
+.threads-simulation-progress-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 9px;
+
+    color: var(--threads-navy);
+
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.threads-simulation-progress-track {
+    width: 100%;
+    height: 12px;
+
+    overflow: hidden;
+
+    background: var(--threads-border);
+    border-radius: 20px;
+}
+
+.threads-simulation-progress-fill {
+    width: 14%;
+    height: 100%;
+
+    background: var(--threads-teal);
+    border-radius: 20px;
+
+    transition: width 0.3s ease;
+}
+
+
+/* 5. SHARED SIMULATION CONTROLS
+   --------------------------------------------------------- */
+
+.threads-simulation-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    margin: 22px 0;
+}
+
+.threads-simulation button {
+    min-height: 44px;
+    padding: 11px 18px;
+
+    border: 1px solid var(--threads-blue);
+    border-radius: var(--threads-radius-small);
+
+    background: var(--threads-blue);
+    color: var(--threads-white);
+
+    font: inherit;
+    font-size: 14px;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.threads-simulation button:hover:not(:disabled) {
+    background: var(--threads-navy);
+    border-color: var(--threads-navy);
+}
+
+.threads-simulation button:active:not(:disabled) {
+    transform: translateY(1px);
+}
+
+.threads-simulation button:focus-visible {
+    outline: 3px solid var(--threads-amber);
+    outline-offset: 3px;
+}
+
+.threads-simulation button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* 6. SECONDARY CONTROL STYLE
+   --------------------------------------------------------- */
+
+.threads-simulation .threads-button-secondary {
+    background: var(--threads-white);
+    color: var(--threads-blue);
+}
+
+.threads-simulation .threads-button-secondary:hover:not(:disabled) {
+    background: var(--threads-blue-light);
+    color: var(--threads-navy);
+    border-color: var(--threads-blue);
+}
+
+
+/* 7. SIMULATION STATUS AND FEEDBACK
+   --------------------------------------------------------- */
+
+.threads-simulation-status {
+    margin: 18px 0 0;
+    padding: 14px 18px;
+
+    background: var(--threads-teal-light);
+    color: #086B62;
+
+    border-left: 4px solid var(--threads-teal);
+    border-radius: var(--threads-radius-small);
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.7;
+}
+
+
+/* 8. SHARED GRID FOR FUTURE SIMULATIONS
+   --------------------------------------------------------- */
+
+.threads-simulation-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin: 20px 0;
+}
+
+.threads-simulation-grid > * {
+    min-width: 0;
+}
+
+
+/* 9. SHARED INFORMATION AND WARNING PANELS
+   --------------------------------------------------------- */
+
+.threads-simulation-note {
+    margin: 20px 0;
+    padding: 18px 20px;
+
+    background: var(--threads-amber-light);
+
+    border-left: 5px solid var(--threads-amber);
+    border-radius: var(--threads-radius-small);
+}
+
+.threads-simulation-note strong {
+    color: var(--threads-navy);
+}
+
+.threads-simulation-success {
+    padding: 18px 20px;
+
+    background: var(--threads-teal-light);
+    color: #086B62;
+
+    border-left: 5px solid var(--threads-teal);
+    border-radius: var(--threads-radius-small);
+}
+
+.threads-simulation-highlight {
+    padding: 18px 20px;
+
+    background: var(--threads-blue-light);
+
+    border-left: 5px solid var(--threads-blue);
+    border-radius: var(--threads-radius-small);
+}
+
+
+/* 10. SHARED TABLE SUPPORT
+   --------------------------------------------------------- */
+
+.threads-simulation table {
+    width: 100%;
+    margin: 20px 0;
+
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.threads-simulation th,
+.threads-simulation td {
+    padding: 12px 14px;
+
+    border: 1px solid var(--threads-border);
+
+    vertical-align: top;
+}
+
+.threads-simulation th {
+    background: var(--threads-blue-light);
+    color: var(--threads-navy);
+    font-weight: 700;
+}
+
+.threads-simulation td {
+    background: var(--threads-white);
+}
+
+
+/* 11. TABLET AND SMALL LAPTOP LAYOUT
+   --------------------------------------------------------- */
+
+@media (max-width: 850px) {
+
+    .threads-simulation-panel {
+        padding: 20px;
+    }
+
+    .threads-simulation-grid {
+        gap: 14px;
+    }
+
+}
+
+
+/* 12. MOBILE LAYOUT
+   --------------------------------------------------------- */
+
+@media (max-width: 600px) {
+
+    .threads-simulation-panel {
+        padding: 16px;
+    }
+
+    .threads-simulation .threads-lifecycle-state {
+        padding: 20px;
+    }
+
+    .threads-simulation-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .threads-simulation-controls {
+        display: grid;
+
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+
+        gap: 10px;
+    }
+
+    .threads-simulation-controls button {
+        width: 100%;
+        padding: 11px 8px;
+    }
+
+    .threads-simulation table {
+        font-size: 14px;
+    }
+
+    .threads-simulation th,
+    .threads-simulation td {
+        padding: 9px;
+    }
+
+}
+
+
+/* 13. ACCESSIBILITY — REDUCED MOTION
+   --------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+
+    .threads-simulation *,
+    .threads-simulation *::before,
+    .threads-simulation *::after {
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+    }
+
+}
