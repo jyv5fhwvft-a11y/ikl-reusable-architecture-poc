@@ -196,8 +196,7 @@ order: 10
   <p><strong>Incorrect:</strong> Using a mutex automatically makes an entire application thread-safe.</p>
 
   <p><strong>Correct:</strong> A mutex protects a particular critical section when used correctly. Poor locking design can still cause deadlocks, starvation or other problems.</p>
-
-  <h3>10.3 Limitations, Synchronisation and Troubleshooting</h3>
+  <h2 id="threads-section-12-heading">12. Limitations, Synchronisation and Troubleshooting</h2>
 
   <p>Threads offer important benefits, but they also introduce challenges.</p>
 
