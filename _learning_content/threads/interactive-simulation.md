@@ -167,7 +167,8 @@ order: 8
       </tr>
     </tbody>
   </table>
-
+  
+<div id="threads-cpu-cores-simulation" class="threads-simulation" aria-live="polite"></div>
   <div class="concept-note">
     <h4>Important learning point</h4>
     <ul>
