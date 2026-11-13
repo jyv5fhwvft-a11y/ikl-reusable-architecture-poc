@@ -377,6 +377,93 @@
     background: var(--threads-white);
 }
 
+/* 10A. CPU CORES SIMULATION
+   --------------------------------------------------------- */
+
+.threads-simulation label[for="threads-cpu-core-count"] {
+    display: block;
+    margin: 18px 0 8px;
+
+    color: var(--threads-navy);
+    font-weight: 700;
+}
+
+.threads-simulation #threads-cpu-core-count {
+    width: 100%;
+    max-width: 320px;
+    min-height: 44px;
+    padding: 10px 14px;
+
+    background: var(--threads-white);
+    color: var(--threads-text);
+
+    border: 1px solid var(--threads-border);
+    border-radius: var(--threads-radius-small);
+
+    font: inherit;
+    font-size: 15px;
+}
+
+.threads-simulation #threads-cpu-core-count:focus-visible {
+    outline: 3px solid var(--threads-amber);
+    outline-offset: 3px;
+}
+
+.threads-simulation .threads-cpu-core {
+    border-top: 4px solid var(--threads-border);
+}
+
+.threads-simulation .threads-cpu-core.is-active {
+    background: var(--threads-blue-light);
+    border: 1px solid #BFDBFE;
+    border-top: 4px solid var(--threads-blue);
+}
+
+.threads-simulation .threads-cpu-core > strong {
+    display: block;
+    margin-bottom: 12px;
+
+    color: var(--threads-navy);
+    font-size: 18px;
+}
+
+.threads-simulation .threads-cpu-core p {
+    margin: 8px 0 14px;
+}
+
+.threads-simulation .threads-cpu-active-label,
+.threads-simulation .threads-cpu-idle-label {
+    display: inline-block;
+    padding: 5px 12px;
+
+    border-radius: 20px;
+
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.4px;
+}
+
+.threads-simulation .threads-cpu-active-label {
+    background: var(--threads-teal-light);
+    color: #086B62;
+}
+
+.threads-simulation .threads-cpu-idle-label {
+    background: var(--threads-background);
+    color: var(--threads-muted);
+}
+
+.threads-simulation .threads-cpu-thread h4 {
+    margin: 0 0 12px;
+
+    color: var(--threads-navy);
+    font-size: 18px;
+}
+
+.threads-simulation .threads-cpu-thread p {
+    margin: 10px 0;
+}
+
 
 /* 11. TABLET AND SMALL LAPTOP LAYOUT
    --------------------------------------------------------- */
