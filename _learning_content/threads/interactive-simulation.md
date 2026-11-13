@@ -7,7 +7,6 @@ section_title: Interactive Thread Experiences
 block_type: html-section
 order: 8
 ---
-
 <section id="threads-interactive-experiences" class="concept-section" aria-labelledby="threads-section-8-heading">
 
   <h2 id="threads-section-8-heading">8. Interactive Thread Experiences</h2>
@@ -74,6 +73,8 @@ order: 8
   </ol>
 
   <p>The simulation should visually highlight the current state and show a short explanation whenever the thread changes state.</p>
+
+  <div id="threads-lifecycle-simulation" class="threads-simulation" aria-live="polite"></div>
 
   <div class="concept-note">
     <h4>Important learning point</h4>
