@@ -863,7 +863,7 @@ flowchart TD
     <li>Good thread design balances responsiveness, correctness and performance.</li>
   </ul>
 
-  <h3>15.20 Final Learning Reflection</h3>
+ <h3>15.1 Final Learning Reflection</h3>
 
   <p>
     You have explored threads progressively, beginning with simple explanations
