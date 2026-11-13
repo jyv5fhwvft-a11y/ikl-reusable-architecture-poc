@@ -10,7 +10,7 @@ order: 10
 
 <section id="threads-practical-applications-and-revision" class="concept-section" aria-labelledby="threads-section-10-heading">
 
-  <h2 id="threads-section-10-heading">10. Practical Applications, Common Mistakes, Troubleshooting, Connections, Assessment and Quick Revision</h2>
+  <h2 id="threads-section-10-heading">10. Practical Applications</h2>
 
   <h3>10.1 Threads in Real-World Applications</h3>
 
