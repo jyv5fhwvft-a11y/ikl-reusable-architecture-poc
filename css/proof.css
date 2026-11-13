@@ -959,3 +959,153 @@ a:hover {
 /* END DEFAULT IKL CONCEPT SECTION DESIGN SYSTEM */
 
 
+/* =========================================================
+   21. SHARED IKL EDUCATIONAL COMPONENT STYLING
+   Aligned with the established Ping and Process designs.
+   ========================================================= */
+
+/* Section card hover — matching Ping */
+
+.concept-section {
+    overflow-wrap: anywhere;
+    transition:
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+.concept-section:hover {
+    box-shadow: var(--shadow-hover);
+    border-color: var(--color-blue);
+}
+
+/* Internal headings — matching Process */
+
+.concept-section h3 {
+    margin: 30px 0 12px;
+    color: var(--color-blue);
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.concept-section h3:first-of-type {
+    margin-top: 20px;
+}
+
+.concept-section h4 {
+    margin: 22px 0 10px;
+    color: var(--color-navy);
+    font-size: 17px;
+    font-weight: 700;
+}
+
+/* Concept identity cards — matching Process */
+
+.concept-section .concept-identity-card {
+    margin: 20px 0;
+    padding: 24px;
+
+    background: #EFF6FF;
+
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-small);
+}
+
+.concept-section .concept-identity-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Information and warning notes — matching Process */
+
+.concept-section .concept-note {
+    margin: 24px 0;
+    padding: 20px 22px;
+
+    background: #FFFBEB;
+
+    border-left: 5px solid var(--color-amber);
+    border-radius: var(--radius-small);
+}
+
+.concept-section .concept-note p:last-child {
+    margin-bottom: 0;
+}
+
+/* Responsive table containers */
+
+.concept-section .concept-table-wrapper {
+    width: 100%;
+    max-width: 100%;
+    margin: 22px 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Tables — matching Process */
+
+.concept-section table {
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.concept-section th,
+.concept-section td {
+    padding: 13px 15px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+}
+
+.concept-section th {
+    color: var(--color-white);
+    background: var(--color-navy);
+}
+
+.concept-section tr:nth-child(even) {
+    background: #F8FAFC;
+}
+
+/* Knowledge-check panels */
+
+.concept-section .concept-knowledge-check {
+    margin: 24px 0;
+    padding: 24px;
+
+    background: #F8FAFC;
+
+    border: 1px solid var(--color-border);
+    border-left: 5px solid var(--color-teal);
+    border-radius: var(--radius-medium);
+}
+
+.concept-section .concept-knowledge-check h4:first-child {
+    margin-top: 0;
+}
+
+.concept-section .concept-knowledge-check p:last-child {
+    margin-bottom: 0;
+}
+
+/* Tablet and iPad table support */
+
+@media (max-width: 760px) {
+    .concept-section .concept-identity-card,
+    .concept-section .concept-knowledge-check {
+        padding: 20px;
+    }
+
+    .concept-section .concept-note {
+        padding: 18px;
+    }
+
+    .concept-section table {
+        min-width: 520px;
+    }
+}
+
+/* END SHARED IKL EDUCATIONAL COMPONENT STYLING */
+
+
+
