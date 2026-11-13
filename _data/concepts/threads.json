@@ -14,7 +14,9 @@
   "scripts": [
     "/js/mermaid-renderer.js",
     "/js/threads-lifecycle-simulation.js",
-    "/js/threads-cpu-cores-simulation.js"
+    "/js/threads-cpu-cores-simulation.js",
+    "/js/threads-race-condition-simulation.js"
+    
   ],
   "learning_levels": [
     "first-grader",
