@@ -695,14 +695,14 @@ flowchart TD
     covered throughout this lesson.
   </p>
 
-  <h4>15.1 What is a thread?</h4>
+  <h4>What is a thread?</h4>
 
   <p>
     A thread is a path of execution within a process. It represents a sequence
     of instructions that can be scheduled by the operating system to use CPU time.
   </p>
 
-  <h4>15.2 What does a process provide?</h4>
+  <h4>What does a process provide?</h4>
 
   <p>
     A process provides the resource environment in which its threads operate.
@@ -710,7 +710,7 @@ flowchart TD
     associated resources.
   </p>
 
-  <h4>15.3 What do threads in the same process share?</h4>
+  <h4>What do threads in the same process share?</h4>
 
   <p>Threads commonly share:</p>
 
@@ -721,7 +721,7 @@ flowchart TD
     <li>Open files and other process-associated resources.</li>
   </ul>
 
-  <h4>15.4 What does each thread maintain independently?</h4>
+  <h4>What does each thread maintain independently?</h4>
 
   <ul>
     <li>Thread identifier (Thread ID).</li>
@@ -732,7 +732,7 @@ flowchart TD
     <li>Thread-local storage, where supported.</li>
   </ul>
 
-  <h4>15.5 What are the main thread lifecycle states?</h4>
+  <h4>What are the main thread lifecycle states?</h4>
 
   <ul>
     <li><strong>New:</strong> The thread is being created.</li>
@@ -748,7 +748,7 @@ flowchart TD
     transitions.
   </p>
 
-  <h4>15.6 What is thread scheduling?</h4>
+  <h4>What is thread scheduling?</h4>
 
   <p>
     Thread scheduling is the process of selecting an eligible thread to receive
@@ -756,7 +756,7 @@ flowchart TD
     when it runs.
   </p>
 
-  <h4>15.7 What is a context switch?</h4>
+  <h4>What is a context switch?</h4>
 
   <p>
     A context switch occurs when CPU execution moves from one thread to another.
@@ -764,7 +764,7 @@ flowchart TD
     execution information of the next thread is restored.
   </p>
 
-  <h4>15.8 What is concurrency?</h4>
+  <h4>What is concurrency?</h4>
 
   <p>
     Concurrency means multiple tasks can make progress during overlapping
@@ -772,14 +772,14 @@ flowchart TD
     switching between threads.
   </p>
 
-  <h4>15.9 What is parallelism?</h4>
+  <h4>What is parallelism?</h4>
 
   <p>
     Parallelism means multiple tasks execute simultaneously using separate
     processing resources, such as multiple CPU cores.
   </p>
 
-  <h4>15.10 What is a race condition?</h4>
+  <h4>What is a race condition?</h4>
 
   <p>
     A race condition occurs when the result of concurrent operations depends
@@ -787,42 +787,42 @@ flowchart TD
     access shared data without appropriate coordination.
   </p>
 
-  <h4>15.11 What is a critical section?</h4>
+  <h4>What is a critical section?</h4>
 
   <p>
     A critical section is a part of a program that accesses shared data or
     resources and must be protected against conflicting concurrent access.
   </p>
 
-  <h4>15.12 What is synchronisation?</h4>
+  <h4>What is synchronisation?</h4>
 
   <p>
     Synchronisation coordinates threads so that their operations occur safely
     and in the required order when they share resources.
   </p>
 
-  <h4>15.13 What is a mutex?</h4>
+  <h4>What is a mutex?</h4>
 
   <p>
     A mutex is a mutual-exclusion mechanism that allows one thread at a time
     to hold a lock protecting a critical section.
   </p>
 
-  <h4>15.14 What is a semaphore?</h4>
+  <h4>What is a semaphore?</h4>
 
   <p>
     A semaphore is a synchronisation mechanism that uses a counter to control
     access to resources or coordinate activities between threads.
   </p>
 
-  <h4>15.15 What is a deadlock?</h4>
+  <h4>What is a deadlock?</h4>
 
   <p>
     A deadlock occurs when threads cannot proceed because they are waiting
     for resources held by one another, creating a circular waiting situation.
   </p>
 
-  <h4>15.16 What is starvation?</h4>
+  <h4>What is starvation?</h4>
 
   <p>
     Starvation occurs when a thread waits indefinitely or for an excessively
@@ -830,7 +830,7 @@ flowchart TD
     opportunity it needs.
   </p>
 
-  <h4>15.17 Why are threads useful?</h4>
+  <h4>Why are threads useful?</h4>
 
   <ul>
     <li>They can improve application responsiveness.</li>
@@ -840,7 +840,7 @@ flowchart TD
     <li>They are useful in browsers, servers, games, multimedia applications and many other systems.</li>
   </ul>
 
-  <h4>15.18 What are the main challenges of multithreading?</h4>
+  <h4>What are the main challenges of multithreading?</h4>
 
   <ul>
     <li>Race conditions and lost updates.</li>
@@ -851,7 +851,7 @@ flowchart TD
     <li>Difficulty testing and debugging concurrent behaviour.</li>
   </ul>
 
-  <h4>15.19 Final Memory Model</h4>
+  <h4>Final Memory Model</h4>
 
   <ul>
     <li>One process can contain one or multiple threads.</li>
