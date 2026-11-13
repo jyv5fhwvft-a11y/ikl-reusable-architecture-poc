@@ -145,7 +145,7 @@ order: 10
 
   <p>These are illustrative examples. Real applications may combine threads, processes, asynchronous operations and other execution models.</p>
 
-  <h3>10.2 Common Mistakes and Misunderstandings</h3>
+  <h2 id="threads-section-11-heading">11. Common Mistakes and Misunderstandings</h2>
 
   <p>Understanding what threads are is important. Understanding what they are not is equally important.</p>
 
