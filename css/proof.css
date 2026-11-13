@@ -689,3 +689,273 @@ a:hover {
     }
 }
 
+/* =========================================================
+   20. DEFAULT IKL CONCEPT SECTION DESIGN SYSTEM
+   ========================================================= */
+
+.concept-section {
+    width: 100%;
+    min-width: 0;
+    margin: 0 auto 30px;
+    padding: 30px;
+
+    background: var(--color-white);
+    color: var(--color-slate);
+
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-large);
+    box-shadow: var(--shadow-card);
+
+    scroll-margin-top: 24px;
+}
+
+/* Main educational section heading */
+
+.concept-section > h2 {
+    margin: 0 0 22px;
+    padding: 0 0 14px;
+
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 700;
+    line-height: 1.3;
+
+    border-bottom: 2px solid var(--color-border);
+}
+
+/* Internal heading hierarchy */
+
+.concept-section h3 {
+    margin: 28px 0 12px;
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    font-size: 21px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.concept-section h4 {
+    margin: 22px 0 10px;
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.45;
+}
+
+.concept-section h5,
+.concept-section h6 {
+    margin: 18px 0 8px;
+    color: var(--color-navy);
+    font-family: var(--font-heading);
+    line-height: 1.45;
+}
+
+/* Educational text and lists */
+
+.concept-section p {
+    margin: 0 0 18px;
+    color: var(--color-slate);
+    font-family: var(--font-body);
+    line-height: 1.8;
+}
+
+.concept-section p:last-child {
+    margin-bottom: 0;
+}
+
+.concept-section ul,
+.concept-section ol {
+    margin: 12px 0 22px;
+    padding-left: 26px;
+}
+
+.concept-section li {
+    margin-bottom: 10px;
+    padding-left: 4px;
+    color: var(--color-slate);
+    line-height: 1.75;
+}
+
+.concept-section li::marker {
+    color: var(--color-blue);
+    font-weight: 700;
+}
+
+.concept-section strong {
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* Links and keyboard accessibility */
+
+.concept-section a {
+    color: var(--color-blue);
+    font-weight: 600;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+}
+
+.concept-section a:hover {
+    color: var(--color-teal);
+}
+
+.concept-section a:focus-visible {
+    outline: 3px solid var(--color-teal);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Tables */
+
+.concept-section table {
+    width: 100%;
+    margin: 22px 0;
+    border-collapse: collapse;
+    color: var(--color-slate);
+    font-size: 14px;
+}
+
+.concept-section th,
+.concept-section td {
+    padding: 12px 14px;
+    border: 1px solid var(--color-border);
+    text-align: left;
+    vertical-align: top;
+    line-height: 1.6;
+}
+
+.concept-section th {
+    background: #EFF6FF;
+    color: var(--color-navy);
+    font-weight: 700;
+}
+
+/* Code examples */
+
+.concept-section pre {
+    max-width: 100%;
+    overflow-x: auto;
+    margin: 20px 0;
+    padding: 18px;
+
+    background: #F1F5F9;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+
+    color: var(--color-navy);
+    font-family: var(--font-code);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+.concept-section code {
+    font-family: var(--font-code);
+    overflow-wrap: anywhere;
+}
+
+.concept-section :not(pre) > code {
+    padding: 2px 6px;
+    background: #EFF6FF;
+    border-radius: 5px;
+    color: var(--color-navy);
+    font-size: 0.9em;
+}
+
+/* Explanatory quotations */
+
+.concept-section blockquote {
+    margin: 22px 0;
+    padding: 18px 22px;
+
+    background: #EFF6FF;
+    border-left: 5px solid var(--color-blue);
+    border-radius: var(--radius-medium);
+
+    color: var(--color-navy);
+}
+
+/* Images and diagrams */
+
+.concept-section figure {
+    max-width: 100%;
+    margin: 22px 0;
+}
+
+.concept-section img,
+.concept-section svg {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tablet and iPad layout */
+
+@media (max-width: 760px) {
+    .concept-section {
+        margin-bottom: 25px;
+        padding: 24px 20px;
+    }
+
+    .concept-section > h2 {
+        font-size: 25px;
+    }
+
+    .concept-section h3 {
+        font-size: 20px;
+    }
+}
+
+/* Smaller mobile screens */
+
+@media (max-width: 600px) {
+    .concept-section {
+        margin-bottom: 20px;
+        padding: 20px 16px;
+        border-radius: var(--radius-medium);
+    }
+
+    .concept-section > h2 {
+        margin-bottom: 18px;
+        padding-bottom: 11px;
+        font-size: 23px;
+    }
+
+    .concept-section h3 {
+        margin-top: 24px;
+        font-size: 19px;
+    }
+
+    .concept-section h4 {
+        font-size: 17px;
+    }
+
+    .concept-section p,
+    .concept-section li {
+        font-size: 15px;
+    }
+
+    .concept-section table {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .concept-section pre {
+        padding: 14px;
+        font-size: 12px;
+    }
+}
+
+/* Respect reduced-motion preferences */
+
+@media (prefers-reduced-motion: reduce) {
+    .concept-section {
+        scroll-behavior: auto;
+        transition: none;
+    }
+}
+
+/* END DEFAULT IKL CONCEPT SECTION DESIGN SYSTEM */
+
+
