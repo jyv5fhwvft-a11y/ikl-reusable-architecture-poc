@@ -218,7 +218,7 @@ order: 10
 
   <p><strong>Possible solution:</strong> Protect the critical section using an appropriate synchronisation mechanism.</p>
 
-  <h4>10.3.3 Mutexes</h4>
+  <h3>12.3 Mutexes</h3>
 
   <p>A mutex, or mutual-exclusion lock, allows one thread at a time to enter a protected critical section.</p>
 
