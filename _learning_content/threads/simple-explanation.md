@@ -8,6 +8,9 @@ block_type: html-section
 order: 2
 ---
 <section id="threads-simple-explanation" class="concept-section" aria-labelledby="threads-section-2-heading">
+    <span id="ikl-understand-it"
+          class="ikl-learning-anchor"
+          aria-hidden="true"></span>
 
     <h2 id="threads-section-2-heading">
         2. Threads Explained Like You’re Five
