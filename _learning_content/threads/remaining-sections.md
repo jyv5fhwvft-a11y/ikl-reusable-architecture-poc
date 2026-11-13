@@ -510,153 +510,180 @@ flowchart TD
     <li>Multicore processing explains how parallel execution can occur.</li>
   </ul>
 
-  <h3>10.5 Assessment — Test Your Understanding</h3>
+  <h2 id="threads-section-14-heading">14. Assessment — Test Your Understanding</h2>
 
-  <p>Answer the following twelve questions to check your understanding of threads.</p>
+  <p>
+    This assessment contains twelve questions designed to test your understanding
+    of threads in an operating system. The questions progress from fundamental
+    definitions to practical situations involving scheduling, concurrency,
+    synchronisation and performance.
+  </p>
+
+  <p>
+    Read each question carefully, select the best answer and then review the
+    explanation. The explanations are included to help you understand the
+    reasoning behind each answer.
+  </p>
 
   <h4>Question 1 — What is a thread?</h4>
 
   <ol type="A">
-    <li>A complete computer program stored on disk.</li>
+    <li>A complete program stored on a storage device.</li>
     <li>A path of execution within a process.</li>
-    <li>A separate physical CPU.</li>
-    <li>A type of storage device.</li>
+    <li>A physical processor inside the computer.</li>
+    <li>A separate operating system.</li>
   </ol>
 
   <p><strong>Correct answer: B</strong></p>
-  <p><strong>Explanation:</strong> A thread is an execution path within a process. It has its own execution context and uses the resources of its process.</p>
+  <p><strong>Explanation:</strong> A thread is a unit of execution within a process. It represents a sequence of instructions that the CPU can execute. A process can contain one or multiple threads.</p>
 
-  <h4>Question 2 — What is commonly shared by threads in the same process?</h4>
+  <h4>Question 2 — Which resources are commonly shared by threads belonging to the same process?</h4>
 
   <ol type="A">
-    <li>Their individual program counters.</li>
-    <li>Their individual CPU registers.</li>
-    <li>Their process’s heap memory.</li>
-    <li>Their individual stacks.</li>
+    <li>Their individual program counters and CPU registers.</li>
+    <li>Their individual stacks and execution states.</li>
+    <li>The process's code, global data and heap memory.</li>
+    <li>A separate copy of the entire process for every thread.</li>
   </ol>
 
   <p><strong>Correct answer: C</strong></p>
-  <p><strong>Explanation:</strong> Threads in the same process commonly share heap memory, code, global data and other process resources. Their execution contexts remain individual.</p>
+  <p><strong>Explanation:</strong> Threads within the same process commonly share its code, global data, heap memory and other process resources. Each thread nevertheless maintains its own execution context, including its stack, program counter and CPU registers.</p>
 
-  <h4>Question 3 — Which component is individual to each thread?</h4>
-
-  <ol type="A">
-    <li>Program code.</li>
-    <li>Global variables.</li>
-    <li>Heap memory.</li>
-    <li>Program counter.</li>
-  </ol>
-
-  <p><strong>Correct answer: D</strong></p>
-  <p><strong>Explanation:</strong> Each thread maintains its own program counter so it can keep track of its own execution position.</p>
-
-  <h4>Question 4 — What does the Ready state mean?</h4>
+  <h4>Question 3 — Why does each thread need its own program counter and stack?</h4>
 
   <ol type="A">
-    <li>The thread has terminated.</li>
-    <li>The thread is waiting for CPU time and is eligible to run.</li>
-    <li>The thread is currently executing.</li>
-    <li>The thread is permanently blocked.</li>
+    <li>Because every thread must run a different operating system.</li>
+    <li>Because each thread must remember its own execution position and function calls.</li>
+    <li>Because threads cannot share process memory.</li>
+    <li>Because each thread must have a separate physical CPU.</li>
   </ol>
 
   <p><strong>Correct answer: B</strong></p>
-  <p><strong>Explanation:</strong> A Ready thread is prepared to execute but has not yet been selected to run on a CPU.</p>
+  <p><strong>Explanation:</strong> The program counter records the next instruction for a thread to execute. Its stack maintains information such as function calls, local variables and return addresses. These individual resources allow threads to follow different execution paths within the same process.</p>
 
-  <h4>Question 5 — What is concurrency?</h4>
-
-  <ol type="A">
-    <li>Multiple tasks making progress during overlapping periods.</li>
-    <li>Every task executing on a separate computer.</li>
-    <li>A process permanently stopping.</li>
-    <li>A single instruction running without interruption.</li>
-  </ol>
-
-  <p><strong>Correct answer: A</strong></p>
-  <p><strong>Explanation:</strong> Concurrency allows multiple tasks to make progress over overlapping periods. They may take turns on one CPU core.</p>
-
-  <h4>Question 6 — What is parallelism?</h4>
+  <h4>Question 4 — A thread is Ready. What does this mean?</h4>
 
   <ol type="A">
-    <li>Tasks waiting for the same resource.</li>
-    <li>Tasks executing simultaneously on separate processing resources.</li>
-    <li>A thread entering the Blocked state.</li>
-    <li>A process being terminated.</li>
-  </ol>
-
-  <p><strong>Correct answer: B</strong></p>
-  <p><strong>Explanation:</strong> Parallelism means work is actually being performed at the same time using separate processing resources, such as different CPU cores.</p>
-
-  <h4>Question 7 — What is a race condition?</h4>
-
-  <ol type="A">
-    <li>A thread completing before another thread.</li>
-    <li>A CPU core becoming too hot.</li>
-    <li>A result depending on the timing or ordering of concurrent operations.</li>
-    <li>A program being stored in memory.</li>
+    <li>It has finished executing.</li>
+    <li>It is waiting for an event and cannot execute.</li>
+    <li>It is prepared to execute but is waiting to be allocated CPU time.</li>
+    <li>It has been permanently removed from the process.</li>
   </ol>
 
   <p><strong>Correct answer: C</strong></p>
-  <p><strong>Explanation:</strong> A race condition occurs when concurrent operations interact in a way that makes the result depend on their timing or ordering.</p>
+  <p><strong>Explanation:</strong> A Ready thread has everything it needs to run except access to a CPU. It waits in a ready queue until the scheduler selects it for execution.</p>
+
+  <h4>Question 5 — What is the difference between concurrency and parallelism?</h4>
+
+  <ol type="A">
+    <li>They both mean that every task must execute on a different computer.</li>
+    <li>Concurrency means tasks make progress over overlapping periods; parallelism means tasks execute simultaneously.</li>
+    <li>Concurrency requires multiple CPU cores, while parallelism requires only one.</li>
+    <li>They are two different names for a blocked thread.</li>
+  </ol>
+
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> Concurrency is about managing multiple tasks that make progress during overlapping periods. On a single CPU core, the operating system can switch between threads. Parallelism involves actual simultaneous execution using multiple processing resources, such as separate CPU cores.</p>
+
+  <h4>Question 6 — A computer has one CPU core and three Ready threads. How can all three threads make progress?</h4>
+
+  <ol type="A">
+    <li>The single core executes all three threads at exactly the same instant.</li>
+    <li>The operating system schedules them to take turns using CPU time.</li>
+    <li>The threads automatically create two additional CPU cores.</li>
+    <li>The operating system must terminate two of the threads.</li>
+  </ol>
+
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> A single CPU core can execute one thread at a time. The scheduler can rapidly switch between Ready threads, allowing each to make progress. This is an example of concurrency, not simultaneous parallel execution.</p>
+
+  <h4>Question 7 — Two threads update the same bank account balance. Both read $100, independently calculate a new balance of $110 and then write their results. What problem might occur?</h4>
+
+  <ol type="A">
+    <li>A context switch.</li>
+    <li>A race condition that may cause a lost update.</li>
+    <li>A successful deadlock prevention mechanism.</li>
+    <li>A memory allocation failure.</li>
+  </ol>
+
+  <p><strong>Correct answer: B</strong></p>
+  <p><strong>Explanation:</strong> Both threads may read the same original value before either update is written. One update can overwrite the other, leaving the balance at $110 instead of the expected $120. The result depends on the timing and ordering of concurrent operations.</p>
 
   <h4>Question 8 — What is the main purpose of a mutex?</h4>
 
   <ol type="A">
+    <li>To give every thread its own CPU core.</li>
     <li>To create a new process.</li>
-    <li>To increase the number of CPU cores.</li>
-    <li>To protect a critical section through mutual exclusion.</li>
-    <li>To terminate blocked threads.</li>
+    <li>To provide mutual exclusion when accessing a protected critical section.</li>
+    <li>To increase the amount of physical memory.</li>
   </ol>
 
   <p><strong>Correct answer: C</strong></p>
-  <p><strong>Explanation:</strong> A mutex allows one thread at a time to enter a protected critical section, provided relevant accesses follow the same locking discipline.</p>
+  <p><strong>Explanation:</strong> A mutex is a synchronisation mechanism that allows only one thread at a time to hold the lock and enter the protected critical section. When threads follow the same locking discipline, it helps prevent conflicting access to shared data.</p>
 
-  <h4>Question 9 — What is a context switch?</h4>
+  <h4>Question 9 — What happens during a thread context switch?</h4>
 
   <ol type="A">
-    <li>Deleting a program.</li>
-    <li>Saving and restoring execution context when CPU execution moves between threads.</li>
-    <li>Increasing the amount of heap memory.</li>
-    <li>Changing a process into a file.</li>
+    <li>The entire operating system is restarted.</li>
+    <li>The current thread's execution context is saved and another thread's context is restored.</li>
+    <li>The current process is always deleted.</li>
+    <li>All shared memory is erased.</li>
   </ol>
 
   <p><strong>Correct answer: B</strong></p>
-  <p><strong>Explanation:</strong> Context switching allows a thread to pause and another thread to execute. The necessary execution information is preserved so work can resume.</p>
+  <p><strong>Explanation:</strong> During a context switch, the operating system preserves the necessary execution information of the thread being paused and restores the information needed by the next thread. This allows each thread to resume its work later.</p>
 
-  <h4>Question 10 — What is a deadlock?</h4>
+  <h4>Question 10 — Thread A holds Resource 1 and waits for Resource 2. Thread B holds Resource 2 and waits for Resource 1. What situation does this describe?</h4>
 
   <ol type="A">
-    <li>A thread completing successfully.</li>
-    <li>A CPU executing multiple instructions.</li>
-    <li>Threads becoming blocked while waiting for resources held by one another.</li>
-    <li>A program opening a file.</li>
+    <li>Normal parallel execution.</li>
+    <li>Starvation-free scheduling.</li>
+    <li>Deadlock.</li>
+    <li>Successful thread termination.</li>
   </ol>
 
   <p><strong>Correct answer: C</strong></p>
-  <p><strong>Explanation:</strong> Deadlock occurs when threads cannot proceed because of a circular dependency involving resources they hold and resources they are waiting for.</p>
+  <p><strong>Explanation:</strong> Each thread is waiting for a resource held by the other. Neither can proceed or release the resource it already holds. This circular waiting situation is a deadlock.</p>
 
-  <h4>Question 11 — Why does each thread need its own stack?</h4>
+  <h4>Question 11 — A web browser uses separate threads for handling user input, loading web content and playing media. What is a major benefit of this design?</h4>
 
   <ol type="A">
-    <li>To store a separate copy of the entire operating system.</li>
-    <li>To maintain its own function calls, local variables and return addresses.</li>
-    <li>To create additional CPU cores.</li>
-    <li>To store all process-wide global variables.</li>
+    <li>It guarantees that the browser will never encounter an error.</li>
+    <li>It allows different activities to make progress independently, improving responsiveness.</li>
+    <li>It guarantees that every activity executes on a separate physical CPU.</li>
+    <li>It removes the need for memory management.</li>
   </ol>
 
   <p><strong>Correct answer: B</strong></p>
-  <p><strong>Explanation:</strong> Each thread may execute different functions and therefore needs its own stack to maintain its individual execution information.</p>
+  <p><strong>Explanation:</strong> Separating activities into threads can help a browser remain responsive while other work continues. For example, the user interface may remain available while a page loads. The operating system schedules the threads, and they may execute concurrently or in parallel depending on available processing resources.</p>
 
-  <h4>Question 12 — Does adding more threads always improve performance?</h4>
+  <h4>Question 12 — Does increasing the number of threads always make a program faster?</h4>
 
   <ol type="A">
-    <li>Yes, more threads always make programs faster.</li>
-    <li>Yes, because every thread receives a separate CPU core.</li>
-    <li>No, because scheduling overhead, resource contention and synchronisation can reduce performance.</li>
-    <li>No, because an operating system can only support one thread.</li>
+    <li>Yes. Every additional thread automatically receives a separate CPU core.</li>
+    <li>Yes. More threads always reduce the amount of work performed.</li>
+    <li>No. Scheduling overhead, resource contention and synchronisation can reduce performance.</li>
+    <li>No. Operating systems cannot execute more than one thread per process.</li>
   </ol>
 
   <p><strong>Correct answer: C</strong></p>
-  <p><strong>Explanation:</strong> Threads can improve performance and responsiveness, but excessive threads or poorly coordinated work can create overhead and contention.</p>
+  <p><strong>Explanation:</strong> Threads can improve responsiveness and performance, but creating too many threads can increase scheduling and context-switching overhead. Threads may also compete for shared resources or spend time waiting for locks. Effective thread design depends on the workload and available hardware.</p>
+
+  <h4>Assessment Reflection</h4>
+
+  <p>
+    After answering the questions, review any explanations that you found
+    difficult. Pay particular attention to the distinction between processes
+    and threads, concurrency and parallelism, and the problems caused by
+    unsynchronised access to shared data.
+  </p>
+
+  <p>
+    Understanding these relationships will help you connect threads to CPU
+    scheduling, memory management, synchronisation and the wider architecture
+    of an operating system.
+  </p>
+
 
   <h3>10.6 Quick Revision — Threads at a Glance</h3>
 
