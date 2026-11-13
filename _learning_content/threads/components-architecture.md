@@ -9,6 +9,9 @@ order: 6
 ---
 
 <section id="threads-components-architecture" class="concept-section" aria-labelledby="threads-section-6-heading">
+  <span id="ikl-learn-how-it-works"
+        class="ikl-learning-anchor"
+        aria-hidden="true"></span>
 
   <h2 id="threads-section-6-heading">6. Thread Components and Architecture</h2>
 
