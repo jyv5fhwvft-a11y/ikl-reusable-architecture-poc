@@ -200,7 +200,7 @@ order: 10
 
   <p>Threads offer important benefits, but they also introduce challenges.</p>
 
-  <h4>10.3.1 Race Conditions</h4>
+  <h3>12.1 Race Conditions</h3>
 
   <p>A race condition occurs when the result of concurrent operations depends on their timing or ordering.</p>
 
