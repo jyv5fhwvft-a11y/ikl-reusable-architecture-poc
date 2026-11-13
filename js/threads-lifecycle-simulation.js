@@ -1,4 +1,3 @@
-
 /* =========================================================
    IKL — THREADS LIFECYCLE SIMULATION
    File: threads-lifecycle-simulation.js
