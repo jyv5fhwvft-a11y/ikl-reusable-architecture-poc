@@ -210,7 +210,7 @@ order: 10
 
   <p><strong>Possible solution:</strong> Use appropriate synchronisation, such as a mutex or an atomic operation, depending on the data and operation involved.</p>
 
-  <h4>10.3.2 Critical Sections</h4>
+  <h3>12.2 Critical Sections</h3>
 
   <p>A critical section is a part of a program that accesses shared data or resources requiring coordinated access.</p>
 
