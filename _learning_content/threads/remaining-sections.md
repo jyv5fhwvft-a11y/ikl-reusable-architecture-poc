@@ -234,7 +234,7 @@ order: 10
     <p><strong>Important:</strong> All relevant accesses must follow the same locking discipline. A mutex does not protect data from code that accesses it without acquiring the lock.</p>
   </div>
 
-  <h4>10.3.4 Semaphores</h4>
+  <h3>12.4 Semaphores</h3>
 
   <p>A semaphore is a synchronisation mechanism that uses a counter to control access to resources or coordinate activities.</p>
 
