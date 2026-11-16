@@ -57,7 +57,7 @@ const concepts = [
     description:
       "Units of execution that operate within a process.",
     status: "In development",
-    fileAvailable: false
+    fileAvailable: true
   },
   {
     name: "Virtual Memory",
@@ -117,7 +117,7 @@ const menu = document.getElementById("menuToggle");
    ========================================================= */
 
 // Find and display concepts matching the visitor's search.
-function renderResults(query) {
+function renderResults(query, searchContext = "concept") {
   const term = query.trim().toLowerCase();
 
   results.replaceChildren();
@@ -141,8 +141,12 @@ function renderResults(query) {
 
   // Display the no-results message when nothing matches.
   if (!matches.length) {
+    const message = searchContext === "subject"
+      ? "No matching subject found yet. Try another word or subject."
+      : "No matching concept found yet. Try another word or subject.";
+
     results.innerHTML =
-      '<p class="no-results no-match">No matching concept found yet. Try another word or subject.</p>';
+      `<p class="no-results no-match">${message}</p>`;
     return;
   }
 
@@ -160,7 +164,16 @@ function renderResults(query) {
 
     card.append(title, description);
 
-    // Link to the generated HTML page when available.
+    // Show the development status without preventing access to an existing page.
+    if (concept.status !== "Ready in POC") {
+      const status = document.createElement("span");
+      status.className = "result-status";
+      status.textContent = concept.status;
+
+      card.append(status);
+    }
+
+    // Link to the generated HTML page whenever the page exists.
     if (concept.fileAvailable) {
       const link = document.createElement("a");
 
@@ -168,13 +181,6 @@ function renderResults(query) {
       link.textContent = "Open concept →";
 
       card.append(link);
-    } else {
-      // Clearly identify concepts that are not yet available.
-      const status = document.createElement("span");
-      status.className = "result-status";
-      status.textContent = concept.status;
-
-      card.append(status);
     }
 
     results.append(card);
@@ -227,7 +233,7 @@ if (input && results) {
     card.addEventListener("click", () => {
       input.value = card.dataset.subject;
 
-      renderResults(input.value);
+      renderResults(input.value, "subject");
     });
   });
 }
